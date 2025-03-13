@@ -6,15 +6,11 @@ package vistas;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.FlatLightLaf;
-import com.formdev.flatlaf.icons.FlatAnimatedIcon;
 import com.formdev.flatlaf.icons.*;
-import com.formdev.flatlaf.icons.FlatTreeClosedIcon;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.geom.RoundRectangle2D;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -35,7 +31,7 @@ public class login extends javax.swing.JFrame {
         clave = new javax.swing.JTextField();
         usuario = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        boton_ingresar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,12 +48,13 @@ public class login extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(51, 153, 255));
         jLabel1.setText("Inicio de sesion");
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 255));
-        jButton1.setFont(new java.awt.Font("Fira Code", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Ingresar");
-        jButton1.setAutoscrolls(true);
-        jButton1.setBorderPainted(false);
+        boton_ingresar.setBackground(new java.awt.Color(0, 153, 255));
+        boton_ingresar.setFont(new java.awt.Font("Fira Code", 1, 18)); // NOI18N
+        boton_ingresar.setForeground(new java.awt.Color(255, 255, 255));
+        boton_ingresar.setText("Ingresar");
+        boton_ingresar.setAutoscrolls(true);
+        boton_ingresar.setBorderPainted(false);
+        boton_ingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Persona.png"))); // NOI18N
 
@@ -79,7 +76,7 @@ public class login extends javax.swing.JFrame {
                         .addComponent(jLabel4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(139, 139, 139)
-                        .addComponent(jButton1)))
+                        .addComponent(boton_ingresar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -93,9 +90,9 @@ public class login extends javax.swing.JFrame {
                 .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(clave, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addComponent(boton_ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         clave.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Clave");
@@ -104,6 +101,8 @@ public class login extends javax.swing.JFrame {
         usuario.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Usuario");
         Icon iconoPersona = new ImageIcon(getClass().getResource("/imagenes/Male User.png"));
         usuario.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, iconoPersona);
+        Icon iconoP = new ImageIcon(getClass().getResource("/imagenes/genero.png"));
+        boton_ingresar.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, iconoP);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,8 +162,8 @@ public class login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton boton_ingresar;
     private javax.swing.JTextField clave;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;

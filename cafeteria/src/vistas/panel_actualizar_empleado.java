@@ -56,26 +56,34 @@ public class panel_actualizar_empleado extends javax.swing.JPanel {
 
         txt_cedula.setEditable(false);
         txt_cedula.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        txt_cedula.setForeground(new java.awt.Color(102, 102, 102));
         txt_cedula.setText("cedula");
 
         txt_nombre.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        txt_nombre.setForeground(new java.awt.Color(102, 102, 102));
         txt_nombre.setText("nombre");
 
         txt_apellido.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        txt_apellido.setForeground(new java.awt.Color(102, 102, 102));
         txt_apellido.setText("apellido");
 
         txt_telefono.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        txt_telefono.setForeground(new java.awt.Color(102, 102, 102));
         txt_telefono.setText("telefono");
 
         txt_direccion.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        txt_direccion.setForeground(new java.awt.Color(102, 102, 102));
         txt_direccion.setText("direccion");
 
         txt_correo.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        txt_correo.setForeground(new java.awt.Color(102, 102, 102));
         txt_correo.setText("email");
 
+        jDateChooser1.setForeground(new java.awt.Color(102, 102, 102));
         jDateChooser1.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
 
         jComboBox1.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        jComboBox1.setForeground(new java.awt.Color(102, 102, 102));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
 
         m2cedula_dato.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N

@@ -5,6 +5,8 @@
 package vistas;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -36,7 +38,7 @@ public class Panel_agregar_empleado extends javax.swing.JPanel {
         txt_direccion = new javax.swing.JTextField();
         txt_correo = new javax.swing.JTextField();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        genero = new javax.swing.JComboBox<>();
         m2cedula_dato = new javax.swing.JLabel();
         m1cedula_campo = new javax.swing.JLabel();
         m4nombre_campo = new javax.swing.JLabel();
@@ -46,35 +48,43 @@ public class Panel_agregar_empleado extends javax.swing.JPanel {
         m9telefono_campo = new javax.swing.JLabel();
         m11correo_campo = new javax.swing.JLabel();
         m13fechanacimiento_campo = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        boton_agregar = new javax.swing.JButton();
+        boton_cancelar = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("JetBrains Mono NL ExtraBold", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Agregar Empleado");
 
         txt_cedula.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        txt_cedula.setForeground(new java.awt.Color(102, 102, 102));
         txt_cedula.setText("cedula");
 
         txt_nombre.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        txt_nombre.setForeground(new java.awt.Color(102, 102, 102));
         txt_nombre.setText("nombre");
 
         txt_apellido.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        txt_apellido.setForeground(new java.awt.Color(102, 102, 102));
         txt_apellido.setText("apellido");
 
         txt_telefono.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        txt_telefono.setForeground(new java.awt.Color(102, 102, 102));
         txt_telefono.setText("telefono");
 
         txt_direccion.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        txt_direccion.setForeground(new java.awt.Color(102, 102, 102));
         txt_direccion.setText("direccion");
 
         txt_correo.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        txt_correo.setForeground(new java.awt.Color(102, 102, 102));
         txt_correo.setText("email");
 
+        jDateChooser1.setBorder(txt_nombre.getBorder());
         jDateChooser1.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
 
-        jComboBox1.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
+        genero.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        genero.setForeground(new java.awt.Color(102, 102, 102));
+        genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
 
         m2cedula_dato.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
         m2cedula_dato.setForeground(new java.awt.Color(255, 102, 102));
@@ -121,15 +131,15 @@ public class Panel_agregar_empleado extends javax.swing.JPanel {
         m13fechanacimiento_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
         m13fechanacimiento_campo.setText("Rellena el campo");
 
-        jButton1.setBackground(new java.awt.Color(102, 153, 255));
-        jButton1.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Agregar");
+        boton_agregar.setBackground(new java.awt.Color(102, 153, 255));
+        boton_agregar.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        boton_agregar.setForeground(new java.awt.Color(255, 255, 255));
+        boton_agregar.setText("Agregar");
 
-        jButton2.setBackground(new java.awt.Color(255, 102, 102));
-        jButton2.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Cancelar");
+        boton_cancelar.setBackground(new java.awt.Color(255, 102, 102));
+        boton_cancelar.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        boton_cancelar.setForeground(new java.awt.Color(255, 255, 255));
+        boton_cancelar.setText("Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -144,7 +154,7 @@ public class Panel_agregar_empleado extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -168,9 +178,9 @@ public class Panel_agregar_empleado extends javax.swing.JPanel {
                             .addComponent(m1cedula_campo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(m10telefono_dato, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(m11correo_campo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(boton_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boton_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -200,7 +210,7 @@ public class Panel_agregar_empleado extends javax.swing.JPanel {
                     .addComponent(m13fechanacimiento_campo, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -219,8 +229,8 @@ public class Panel_agregar_empleado extends javax.swing.JPanel {
                     .addComponent(m7direccion_campo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(boton_agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(boton_cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -230,13 +240,15 @@ public class Panel_agregar_empleado extends javax.swing.JPanel {
         txt_telefono.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Telefono");
         txt_direccion.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Direccion");
         txt_correo.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Email");
+        Icon iconogenero = new ImageIcon(getClass().getResource("/imagenes/genero.png"));
+        genero.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, iconogenero);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton boton_agregar;
+    private javax.swing.JButton boton_cancelar;
+    private javax.swing.JComboBox<String> genero;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel m10telefono_dato;
