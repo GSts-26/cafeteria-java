@@ -49,7 +49,7 @@ public class login extends javax.swing.JFrame {
         jLabel1.setText("Inicio de sesion");
 
         boton_ingresar.setBackground(new java.awt.Color(0, 153, 255));
-        boton_ingresar.setFont(new java.awt.Font("Fira Code", 1, 18)); // NOI18N
+        boton_ingresar.setFont(new java.awt.Font("JetBrains Mono ExtraBold", 0, 18)); // NOI18N
         boton_ingresar.setForeground(new java.awt.Color(255, 255, 255));
         boton_ingresar.setText("Ingresar");
         boton_ingresar.setAutoscrolls(true);
