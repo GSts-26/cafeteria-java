@@ -36,17 +36,17 @@ public class login extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        clave.setFont(new java.awt.Font("Fira Code", 0, 14)); // NOI18N
+        clave.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
 
-        usuario.setFont(new java.awt.Font("Fira Code", 0, 14)); // NOI18N
+        usuario.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Fira Code", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel1.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(198, 124, 78));
         jLabel1.setText("Inicio de sesion");
 
-        boton_ingresar.setBackground(new java.awt.Color(0, 153, 255));
-        boton_ingresar.setFont(new java.awt.Font("JetBrains Mono ExtraBold", 0, 18)); // NOI18N
-        boton_ingresar.setForeground(new java.awt.Color(255, 255, 255));
+        boton_ingresar.setBackground(new java.awt.Color(249, 242, 237));
+        boton_ingresar.setFont(new java.awt.Font("Sora", 1, 18)); // NOI18N
+        boton_ingresar.setForeground(new java.awt.Color(198, 124, 78));
         boton_ingresar.setText("Ingresar");
         boton_ingresar.setAutoscrolls(true);
         boton_ingresar.setBorderPainted(false);
@@ -63,7 +63,9 @@ public class login extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(clave, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel1)))
                 .addGap(84, 84, 84))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

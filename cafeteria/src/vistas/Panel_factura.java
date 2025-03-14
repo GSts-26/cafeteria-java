@@ -63,7 +63,7 @@ public class Panel_factura extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Fira Code", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
         jLabel1.setText("Factura");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
@@ -103,7 +103,7 @@ public class Panel_factura extends javax.swing.JPanel {
         add(txt_filtrado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 244, 36));
         txt_filtrado1.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingresa el dato a buscar");
 
-        combo_filtro.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        combo_filtro.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         combo_filtro.setForeground(new java.awt.Color(102, 102, 102));
         combo_filtro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Empleado", "Fecha", "" }));
         combo_filtro.addActionListener(new java.awt.event.ActionListener() {
@@ -117,12 +117,12 @@ public class Panel_factura extends javax.swing.JPanel {
         add(txt_filtrado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 244, 36));
         txt_filtrado2.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingresa el dato a buscar");
 
-        ms_cliente.setFont(new java.awt.Font("JetBrains Mono", 0, 14)); // NOI18N
+        ms_cliente.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         ms_cliente.setText("Filtrado por ");
         add(ms_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
         boton_filtar_fecha.setBackground(new java.awt.Color(102, 153, 255));
-        boton_filtar_fecha.setFont(new java.awt.Font("JetBrains Mono ExtraBold", 0, 14)); // NOI18N
+        boton_filtar_fecha.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         boton_filtar_fecha.setForeground(new java.awt.Color(255, 255, 255));
         boton_filtar_fecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Fecha.png"))); // NOI18N
         boton_filtar_fecha.setText("Filtrar fecha");

@@ -48,43 +48,43 @@ public class Agregar_ingredientes extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel2.setFont(new java.awt.Font("Fira Code", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Ingredientes");
 
         boton_agregar_info_nutricional.setBackground(new java.awt.Color(255, 153, 0));
-        boton_agregar_info_nutricional.setFont(new java.awt.Font("JetBrains Mono ExtraBold", 0, 15)); // NOI18N
+        boton_agregar_info_nutricional.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         boton_agregar_info_nutricional.setForeground(new java.awt.Color(255, 255, 255));
         boton_agregar_info_nutricional.setText("Agregar info nutricional");
         boton_agregar_info_nutricional.setBorderPainted(false);
         boton_agregar_info_nutricional.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        txt_nombre_ingrediente.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        txt_nombre_ingrediente.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         txt_nombre_ingrediente.setForeground(new java.awt.Color(153, 153, 153));
 
         txt_id.setEditable(false);
-        txt_id.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        txt_id.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         txt_id.setForeground(new java.awt.Color(153, 153, 153));
         txt_id.setText("ID");
 
-        jLabel1.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         jLabel1.setText("Información nutricional");
 
-        combo_nutrientes.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        combo_nutrientes.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         combo_nutrientes.setForeground(new java.awt.Color(102, 102, 102));
         combo_nutrientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Proteinas", "Calorias", "Carbohidratos", "Azucares" }));
 
-        jLabel3.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         jLabel3.setText("Gramos");
 
         boton_agregar_ingrediente.setBackground(new java.awt.Color(102, 204, 255));
-        boton_agregar_ingrediente.setFont(new java.awt.Font("JetBrains Mono ExtraBold", 0, 15)); // NOI18N
+        boton_agregar_ingrediente.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         boton_agregar_ingrediente.setForeground(new java.awt.Color(255, 255, 255));
         boton_agregar_ingrediente.setText("Agregar ingrediente");
         boton_agregar_ingrediente.setBorderPainted(false);
         boton_agregar_ingrediente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        txt_cantidad_nutricional.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        txt_cantidad_nutricional.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         txt_cantidad_nutricional.setForeground(new java.awt.Color(102, 102, 102));
 
         jLabel4.setFont(new java.awt.Font("JetBrains Mono", 1, 14)); // NOI18N
@@ -162,7 +162,7 @@ public class Agregar_ingredientes extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txt_nombre_ingrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1)
