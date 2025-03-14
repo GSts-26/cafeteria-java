@@ -26,7 +26,7 @@ public class Panel_agregar_empleado extends javax.swing.JPanel {
         txt_telefono = new javax.swing.JTextField();
         txt_direccion = new javax.swing.JTextField();
         txt_correo = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        fecha_nacimiento = new com.toedter.calendar.JDateChooser();
         genero = new javax.swing.JComboBox<>();
         m2cedula_dato = new javax.swing.JLabel();
         m1cedula_campo = new javax.swing.JLabel();
@@ -40,85 +40,115 @@ public class Panel_agregar_empleado extends javax.swing.JPanel {
         boton_agregar = new javax.swing.JButton();
         boton_cancelar = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setBorder(boton_cancelar.getBorder());
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setFont(new java.awt.Font("JetBrains Mono NL ExtraBold", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("Agregar Empleado");
+        jLabel1.setText("Nuevo Empleado");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         txt_cedula.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
         txt_cedula.setForeground(new java.awt.Color(102, 102, 102));
         txt_cedula.setText("cedula");
+        add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 151, 36));
+        txt_cedula.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Cedula");
 
         txt_nombre.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
         txt_nombre.setForeground(new java.awt.Color(102, 102, 102));
         txt_nombre.setText("nombre");
+        add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 256, 36));
+        txt_nombre.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Nombre");
 
         txt_apellido.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
         txt_apellido.setForeground(new java.awt.Color(102, 102, 102));
         txt_apellido.setText("apellido");
+        add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 256, 36));
+        txt_apellido.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Apellido");
 
         txt_telefono.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
         txt_telefono.setForeground(new java.awt.Color(102, 102, 102));
         txt_telefono.setText("telefono");
+        add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 256, 36));
+        txt_telefono.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Telefono");
 
         txt_direccion.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
         txt_direccion.setForeground(new java.awt.Color(102, 102, 102));
         txt_direccion.setText("direccion");
+        add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 256, 36));
+        txt_direccion.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Direccion");
 
         txt_correo.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
         txt_correo.setForeground(new java.awt.Color(102, 102, 102));
         txt_correo.setText("email");
+        add(txt_correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 256, 36));
+        txt_correo.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Email");
 
-        jDateChooser1.setBorder(txt_nombre.getBorder());
-        jDateChooser1.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        fecha_nacimiento.setBorder(txt_nombre.getBorder());
+        fecha_nacimiento.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        add(fecha_nacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 142, 36));
 
         genero.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
         genero.setForeground(new java.awt.Color(102, 102, 102));
         genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
+        add(genero, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, -1, 36));
+        Icon iconogenero = new ImageIcon(getClass().getResource("/imagenes/genero.png"));
+        genero.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, iconogenero);
 
         m2cedula_dato.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
         m2cedula_dato.setForeground(new java.awt.Color(255, 102, 102));
         m2cedula_dato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
         m2cedula_dato.setText("Dato no admitido");
+        add(m2cedula_dato, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 128, -1, -1));
 
         m1cedula_campo.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
         m1cedula_campo.setForeground(new java.awt.Color(255, 102, 102));
         m1cedula_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
         m1cedula_campo.setText("Rellena el campo");
+        add(m1cedula_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 128, -1, -1));
 
         m4nombre_campo.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
         m4nombre_campo.setForeground(new java.awt.Color(255, 102, 102));
         m4nombre_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
         m4nombre_campo.setText("Rellena el campo");
+        add(m4nombre_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, -1));
 
         m5apellido_campo.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
         m5apellido_campo.setForeground(new java.awt.Color(255, 102, 102));
         m5apellido_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
         m5apellido_campo.setText("Rellena el campo");
+        add(m5apellido_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
         m7direccion_campo.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
         m7direccion_campo.setForeground(new java.awt.Color(255, 102, 102));
         m7direccion_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
         m7direccion_campo.setText("Rellena el campo");
+        add(m7direccion_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, -1, -1));
 
         m10telefono_dato.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
         m10telefono_dato.setForeground(new java.awt.Color(255, 102, 102));
         m10telefono_dato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
         m10telefono_dato.setText("Dato no admitido");
+        add(m10telefono_dato, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
 
         m9telefono_campo.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
         m9telefono_campo.setForeground(new java.awt.Color(255, 102, 102));
         m9telefono_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
         m9telefono_campo.setText("Rellena el campo");
+        add(m9telefono_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
 
         m11correo_campo.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
         m11correo_campo.setForeground(new java.awt.Color(255, 102, 102));
         m11correo_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
         m11correo_campo.setText("Rellena el campo");
+        add(m11correo_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, -1, 20));
 
         m13fechanacimiento_campo.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
         m13fechanacimiento_campo.setForeground(new java.awt.Color(255, 102, 102));
         m13fechanacimiento_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
         m13fechanacimiento_campo.setText("Rellena el campo");
+        add(m13fechanacimiento_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, -1, -1));
 
         boton_agregar.setBackground(new java.awt.Color(102, 153, 255));
         boton_agregar.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
@@ -130,114 +160,14 @@ public class Panel_agregar_empleado extends javax.swing.JPanel {
                 boton_agregarActionPerformed(evt);
             }
         });
+        add(boton_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, 117, 39));
 
         boton_cancelar.setBackground(new java.awt.Color(255, 102, 102));
         boton_cancelar.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
         boton_cancelar.setForeground(new java.awt.Color(255, 255, 255));
         boton_cancelar.setText("Cancelar");
         boton_cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(132, 132, 132)
-                .addComponent(jLabel1)
-                .addGap(111, 236, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(m13fechanacimiento_campo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_cedula)
-                            .addComponent(txt_nombre, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txt_apellido)
-                            .addComponent(txt_telefono)
-                            .addComponent(txt_correo)
-                            .addComponent(txt_direccion, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(m2cedula_dato, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(m4nombre_campo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(m5apellido_campo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(m7direccion_campo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(m9telefono_campo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(m1cedula_campo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(m10telefono_dato, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(m11correo_campo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(boton_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(boton_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1)
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(m1cedula_campo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(m2cedula_dato))
-                    .addComponent(txt_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(m4nombre_campo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(m5apellido_campo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17)
-                        .addComponent(txt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(m13fechanacimiento_campo, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(m11correo_campo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(m9telefono_campo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(m10telefono_dato)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(m7direccion_campo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(boton_agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(boton_cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-
-        txt_cedula.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Cedula");
-        txt_nombre.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Nombre");
-        txt_apellido.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Apellido");
-        txt_telefono.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Telefono");
-        txt_direccion.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Direccion");
-        txt_correo.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Email");
-        Icon iconogenero = new ImageIcon(getClass().getResource("/imagenes/genero.png"));
-        genero.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, iconogenero);
+        add(boton_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 560, 125, 39));
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_agregarActionPerformed
@@ -248,8 +178,8 @@ public class Panel_agregar_empleado extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_agregar;
     private javax.swing.JButton boton_cancelar;
+    private com.toedter.calendar.JDateChooser fecha_nacimiento;
     private javax.swing.JComboBox<String> genero;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel m10telefono_dato;
     private javax.swing.JLabel m11correo_campo;

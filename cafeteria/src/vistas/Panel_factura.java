@@ -60,7 +60,6 @@ public class Panel_factura extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         cedula_empleado = new javax.swing.JLabel();
         nombre_empleado = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -262,10 +261,6 @@ public class Panel_factura extends javax.swing.JPanel {
         panel_detalle_factura.add(nombre_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 500, -1, -1));
 
         add(panel_detalle_factura, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 650, 570));
-
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Notificacion.png"))); // NOI18N
-        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void combo_filtroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_filtroActionPerformed
@@ -316,7 +311,6 @@ public class Panel_factura extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;

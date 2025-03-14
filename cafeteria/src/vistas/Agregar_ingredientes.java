@@ -13,13 +13,20 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class Agregar_ingredientes extends javax.swing.JDialog {
 
+    private void ocultar() {
+        ms_nombre_ingrediente_dato.setVisible(false);
+        ms_nombre_ingrediente_campo.setVisible(false);
+        ms_cantidad_nutricional_dato.setVisible(false);
+        ms_cantidad_nutricional_campo.setVisible(false);
+    }
+
     public Agregar_ingredientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        ocultar();
         txt_nombre_ingrediente.requestFocus();
     }
-
-   
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -194,9 +201,9 @@ public class Agregar_ingredientes extends javax.swing.JDialog {
     public static void main(String args[]) {
         FlatLightLaf.setup();
         try {
-
+            
             UIManager.setLookAndFeel(new FlatLightLaf());
-
+            
             UIManager.put("OptionPane.background", new Color(240, 240, 240)); // Fondo del panel
             UIManager.put("OptionPane.messageForeground", new Color(50, 50, 50)); // Color del texto
 
@@ -208,7 +215,7 @@ public class Agregar_ingredientes extends javax.swing.JDialog {
             UIManager.put("Component.arc", 25);
             UIManager.put("TextComponent.arc", 25);
             UIManager.put("ComboBox.arc", 90);
-
+            
             UIManager.put("ComboBox.buttonArrowColor", new Color(0, 122, 255)); // Color azul de las flechas
 
             UIManager.put("TableHeader.font", new Font("Fira Code Medium", Font.PLAIN, 15));

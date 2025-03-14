@@ -44,7 +44,6 @@ public class panel_productos extends javax.swing.JPanel {
         ms_nuevo_producto = new javax.swing.JLabel();
         txt_filtrado_producto = new javax.swing.JTextField();
         txt_filtrado_categoria = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -176,10 +175,6 @@ public class panel_productos extends javax.swing.JPanel {
         add(txt_filtrado_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 270, 36));
         txt_filtrado_categoria.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingresa nombre");
         txt_filtrado_categoria.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSearchIcon());
-
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Notificacion.png"))); // NOI18N
-        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -190,7 +185,6 @@ public class panel_productos extends javax.swing.JPanel {
     private javax.swing.JPanel card_layout_empleado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel ms_informacion;

@@ -140,7 +140,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="Icon iconoP = new ImageIcon(getClass().getResource(&quot;/imagenes/genero.png&quot;));&#xa;boton_ingresar.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, iconoP);"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//Icon iconoP = new ImageIcon(getClass().getResource(&quot;/imagenes/genero.png&quot;));&#xa;//boton_ingresar.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, iconoP);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">

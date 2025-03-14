@@ -1,12 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package vistas;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.FlatLightLaf;
-import com.formdev.flatlaf.icons.*;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.Icon;
@@ -101,8 +97,8 @@ public class login extends javax.swing.JFrame {
         usuario.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Usuario");
         Icon iconoPersona = new ImageIcon(getClass().getResource("/imagenes/Male User.png"));
         usuario.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, iconoPersona);
-        Icon iconoP = new ImageIcon(getClass().getResource("/imagenes/genero.png"));
-        boton_ingresar.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, iconoP);
+        //Icon iconoP = new ImageIcon(getClass().getResource("/imagenes/genero.png"));
+        //boton_ingresar.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, iconoP);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

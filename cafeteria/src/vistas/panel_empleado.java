@@ -24,7 +24,6 @@ public class panel_empleado extends javax.swing.JPanel {
         card_layout_empleado = new javax.swing.JPanel();
         txt_filtrado = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -89,10 +88,6 @@ public class panel_empleado extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
         jLabel2.setText("Filtrado de empleados");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 56, -1, -1));
-
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Notificacion.png"))); // NOI18N
-        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -102,7 +97,6 @@ public class panel_empleado extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txt_filtrado;
     // End of variables declaration//GEN-END:variables
