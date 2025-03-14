@@ -24,6 +24,7 @@ public class panel_empleado extends javax.swing.JPanel {
         card_layout_empleado = new javax.swing.JPanel();
         txt_filtrado = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -57,7 +58,7 @@ public class panel_empleado extends javax.swing.JPanel {
             Tabla_empleado.getColumnModel().getColumn(7).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 155, 521, 263));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 155, 550, 263));
 
         jLabel1.setFont(new java.awt.Font("Fira Code", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
@@ -69,12 +70,13 @@ public class panel_empleado extends javax.swing.JPanel {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Empleado.png"))); // NOI18N
         jButton1.setText("Nuevo empleado");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setIconTextGap(7);
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 76, -1, 48));
 
         card_layout_empleado.setBackground(new java.awt.Color(204, 255, 255));
         card_layout_empleado.setLayout(new java.awt.CardLayout());
-        add(card_layout_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(533, 19, 592, 625));
+        add(card_layout_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, 592, 625));
 
         txt_filtrado.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
         txt_filtrado.setForeground(new java.awt.Color(153, 153, 153));
@@ -87,6 +89,10 @@ public class panel_empleado extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
         jLabel2.setText("Filtrado de empleados");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 56, -1, -1));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Notificacion.png"))); // NOI18N
+        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -96,6 +102,7 @@ public class panel_empleado extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txt_filtrado;
     // End of variables declaration//GEN-END:variables

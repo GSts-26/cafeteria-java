@@ -44,12 +44,13 @@ public class panel_productos extends javax.swing.JPanel {
         ms_nuevo_producto = new javax.swing.JLabel();
         txt_filtrado_producto = new javax.swing.JTextField();
         txt_filtrado_categoria = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         card_layout_empleado.setBackground(new java.awt.Color(204, 255, 255));
         card_layout_empleado.setLayout(new java.awt.CardLayout());
-        add(card_layout_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(533, 19, 592, 625));
+        add(card_layout_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, 592, 625));
 
         jLabel1.setFont(new java.awt.Font("Fira Code", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
@@ -126,6 +127,7 @@ public class panel_productos extends javax.swing.JPanel {
         boton_nueva_categoria.setForeground(new java.awt.Color(255, 255, 255));
         boton_nueva_categoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Agregar.png"))); // NOI18N
         boton_nueva_categoria.setText("Nuevo");
+        boton_nueva_categoria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add(boton_nueva_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, -1, 36));
 
         boton_nuevo_producto.setBackground(new java.awt.Color(102, 204, 255));
@@ -133,12 +135,14 @@ public class panel_productos extends javax.swing.JPanel {
         boton_nuevo_producto.setForeground(new java.awt.Color(255, 255, 255));
         boton_nuevo_producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Agregar.png"))); // NOI18N
         boton_nuevo_producto.setText("Nuevo");
+        boton_nuevo_producto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add(boton_nuevo_producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 22, -1, 36));
 
         boton_ver_informacion.setBackground(new java.awt.Color(255, 153, 0));
         boton_ver_informacion.setFont(new java.awt.Font("JetBrains Mono ExtraBold", 0, 18)); // NOI18N
         boton_ver_informacion.setForeground(new java.awt.Color(255, 255, 255));
         boton_ver_informacion.setText("Ver información ");
+        boton_ver_informacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add(boton_ver_informacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 22, -1, 36));
 
         ms_informacion.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
@@ -172,6 +176,10 @@ public class panel_productos extends javax.swing.JPanel {
         add(txt_filtrado_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 270, 36));
         txt_filtrado_categoria.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingresa nombre");
         txt_filtrado_categoria.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSearchIcon());
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Notificacion.png"))); // NOI18N
+        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -182,6 +190,7 @@ public class panel_productos extends javax.swing.JPanel {
     private javax.swing.JPanel card_layout_empleado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel ms_informacion;

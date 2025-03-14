@@ -40,7 +40,6 @@ public class Agregar_ingredientes extends javax.swing.JDialog {
         ms_nombre_ingrediente_campo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(550, 500));
 
         jLabel2.setFont(new java.awt.Font("Fira Code", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
