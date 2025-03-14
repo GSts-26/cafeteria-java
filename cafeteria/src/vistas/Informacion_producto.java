@@ -53,7 +53,10 @@ public class Informacion_producto extends javax.swing.JDialog {
         Area_ingredientes.setRows(5);
         jScrollPane1.setViewportView(Area_ingredientes);
 
-        jButton1.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        jButton1.setBackground(new java.awt.Color(198, 124, 78));
+        jButton1.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(249, 242, 237));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
         jButton1.setText("Añadir");
 
         descripcion_producto.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N

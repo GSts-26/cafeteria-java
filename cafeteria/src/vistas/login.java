@@ -1,6 +1,6 @@
-
 package vistas;
 
+import Conexion.conexion;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Color;
@@ -9,23 +9,25 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import metodos.metodo_login;
 
 public class login extends javax.swing.JFrame {
 
+    metodos.metodo_login entrar = new metodo_login();
+    
     public login() {
-
+        
         initComponents();
-     
-     
+        
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        clave = new javax.swing.JTextField();
-        usuario = new javax.swing.JTextField();
+        txt_clave = new javax.swing.JTextField();
+        txt_usuario = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         boton_ingresar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -36,9 +38,14 @@ public class login extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        clave.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        txt_clave.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
 
-        usuario.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        txt_usuario.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        txt_usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_usuarioActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(198, 124, 78));
@@ -51,6 +58,11 @@ public class login extends javax.swing.JFrame {
         boton_ingresar.setAutoscrolls(true);
         boton_ingresar.setBorderPainted(false);
         boton_ingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_ingresarActionPerformed(evt);
+            }
+        });
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Persona.png"))); // NOI18N
 
@@ -61,8 +73,8 @@ public class login extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 80, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(clave, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_clave, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(jLabel1)))
@@ -85,20 +97,20 @@ public class login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
-                .addComponent(clave, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_clave, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(boton_ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
-        clave.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Clave");
+        txt_clave.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Clave");
         Icon iconoClave = new ImageIcon(getClass().getResource("/imagenes/Password.png"));
-        clave.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, iconoClave);
-        usuario.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Usuario");
+        txt_clave.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, iconoClave);
+        txt_usuario.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Usuario");
         Icon iconoPersona = new ImageIcon(getClass().getResource("/imagenes/Male User.png"));
-        usuario.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, iconoPersona);
+        txt_usuario.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, iconoPersona);
         //Icon iconoP = new ImageIcon(getClass().getResource("/imagenes/genero.png"));
         //boton_ingresar.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, iconoP);
 
@@ -117,12 +129,20 @@ public class login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void boton_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_ingresarActionPerformed
+        entrar.acceso(txt_usuario, txt_clave);
+    }//GEN-LAST:event_boton_ingresarActionPerformed
+
+    private void txt_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usuarioActionPerformed
+        txt_clave.requestFocus();
+    }//GEN-LAST:event_txt_usuarioActionPerformed
+    
     public static void main(String args[]) {
         FlatLightLaf.setup();
         try {
-
+            
             UIManager.setLookAndFeel(new FlatLightLaf());
-
+            
             UIManager.put("OptionPane.background", new Color(240, 240, 240)); // Fondo del panel
             UIManager.put("OptionPane.messageForeground", new Color(50, 50, 50)); // Color del texto
 
@@ -134,7 +154,7 @@ public class login extends javax.swing.JFrame {
             UIManager.put("Component.arc", 25);
             UIManager.put("TextComponent.arc", 25);
             UIManager.put("ComboBox.arc", 90);
-
+            
             UIManager.put("ComboBox.buttonArrowColor", new Color(0, 122, 255)); // Color azul de las flechas
 
             UIManager.put("TableHeader.font", new Font("Fira Code Medium", Font.PLAIN, 15));
@@ -154,17 +174,17 @@ public class login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new login().setVisible(true);
-
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_ingresar;
-    private javax.swing.JTextField clave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField usuario;
+    private javax.swing.JTextField txt_clave;
+    private javax.swing.JTextField txt_usuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,12 +1,17 @@
 
 package vistas;
 
+import Conexion.conexion;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.icons.*;
 import utils.render;
+import java.sql.*;
+import javax.swing.JOptionPane;
 
 public class panel_empleado extends javax.swing.JPanel {
 
+    Conexion.conexion conex =  new conexion();
+    
     public panel_empleado() {
         
         initComponents();
@@ -170,6 +175,7 @@ public class panel_empleado extends javax.swing.JPanel {
         boton_agregar.setBackground(new java.awt.Color(198, 124, 78));
         boton_agregar.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         boton_agregar.setForeground(new java.awt.Color(249, 242, 237));
+        boton_agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
         boton_agregar.setText("Agregar");
         boton_agregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         boton_agregar.addActionListener(new java.awt.event.ActionListener() {
@@ -177,7 +183,7 @@ public class panel_empleado extends javax.swing.JPanel {
                 boton_agregarActionPerformed(evt);
             }
         });
-        jPanel3.add(boton_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, 117, 39));
+        jPanel3.add(boton_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, 130, 39));
 
         boton_cancelar.setBackground(new java.awt.Color(249, 242, 237));
         boton_cancelar.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
@@ -199,7 +205,7 @@ public class panel_empleado extends javax.swing.JPanel {
 
         card_layout_empleado.add(jPanel3, "card2");
 
-        add(card_layout_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, 490, 625));
+        add(card_layout_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 50, 510, 625));
 
         txt_filtrado.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         txt_filtrado.setForeground(new java.awt.Color(153, 153, 153));
@@ -225,6 +231,7 @@ public class panel_empleado extends javax.swing.JPanel {
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 560, 10));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -240,8 +247,9 @@ public class panel_empleado extends javax.swing.JPanel {
         jLabel6.setText("Agrega un empleado");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 540, 400));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 560, 400));
 
+        Tabla_empleado.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         Tabla_empleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -272,13 +280,13 @@ public class panel_empleado extends javax.swing.JPanel {
             Tabla_empleado.getColumnModel().getColumn(7).setResizable(false);
         }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 580, 460));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 600, 460));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 580, 520));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 610, 520));
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_agregarActionPerformed
-
+      
     }//GEN-LAST:event_boton_agregarActionPerformed
 
 

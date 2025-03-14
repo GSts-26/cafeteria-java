@@ -99,7 +99,7 @@ public class Panel_factura extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 497, 170));
 
-        txt_filtrado1.setFont(new java.awt.Font("Fira Code", 0, 14)); // NOI18N
+        txt_filtrado1.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         add(txt_filtrado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 244, 36));
         txt_filtrado1.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingresa el dato a buscar");
 
@@ -113,7 +113,7 @@ public class Panel_factura extends javax.swing.JPanel {
         });
         add(combo_filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 152, 36));
 
-        txt_filtrado2.setFont(new java.awt.Font("Fira Code", 0, 14)); // NOI18N
+        txt_filtrado2.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         add(txt_filtrado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 244, 36));
         txt_filtrado2.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingresa el dato a buscar");
 
@@ -121,7 +121,7 @@ public class Panel_factura extends javax.swing.JPanel {
         ms_cliente.setText("Filtrado por ");
         add(ms_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
-        boton_filtar_fecha.setBackground(new java.awt.Color(102, 153, 255));
+        boton_filtar_fecha.setBackground(new java.awt.Color(205, 178, 150));
         boton_filtar_fecha.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         boton_filtar_fecha.setForeground(new java.awt.Color(255, 255, 255));
         boton_filtar_fecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Fecha.png"))); // NOI18N
@@ -145,8 +145,8 @@ public class Panel_factura extends javax.swing.JPanel {
         ms_fechas.setText("Ingresa las dos fechas");
         add(ms_fechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, -1, -1));
 
-        boton_ver_factura.setBackground(new java.awt.Color(204, 102, 0));
-        boton_ver_factura.setFont(new java.awt.Font("JetBrains Mono ExtraBold", 0, 14)); // NOI18N
+        boton_ver_factura.setBackground(new java.awt.Color(198, 124, 78));
+        boton_ver_factura.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         boton_ver_factura.setForeground(new java.awt.Color(255, 255, 255));
         boton_ver_factura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Factura.png"))); // NOI18N
         boton_ver_factura.setText("Ver factura");
@@ -171,25 +171,26 @@ public class Panel_factura extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
         panel_detalle_factura.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("JetBrains Mono", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         jLabel3.setText("Fecha Factura");
         panel_detalle_factura.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, -1, -1));
 
-        genero_cliente.setFont(new java.awt.Font("JetBrains Mono", 0, 14)); // NOI18N
+        genero_cliente.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         genero_cliente.setForeground(new java.awt.Color(102, 102, 102));
         genero_cliente.setText("Genero");
         panel_detalle_factura.add(genero_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
-        cedula_cliente.setFont(new java.awt.Font("JetBrains Mono", 0, 14)); // NOI18N
+        cedula_cliente.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         cedula_cliente.setForeground(new java.awt.Color(102, 102, 102));
         cedula_cliente.setText("Cedula");
         panel_detalle_factura.add(cedula_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
-        nombre_cliente.setFont(new java.awt.Font("JetBrains Mono", 0, 14)); // NOI18N
+        nombre_cliente.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         nombre_cliente.setForeground(new java.awt.Color(102, 102, 102));
         nombre_cliente.setText("Nombre");
         panel_detalle_factura.add(nombre_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
+        jTable1.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -219,43 +220,43 @@ public class Panel_factura extends javax.swing.JPanel {
 
         panel_detalle_factura.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 590, 210));
 
-        jLabel4.setFont(new java.awt.Font("JetBrains Mono", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         jLabel4.setText("Atendido por");
         panel_detalle_factura.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("JetBrains Mono", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         jLabel5.setText("Numero de factura");
         panel_detalle_factura.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
 
-        fecha_factura.setFont(new java.awt.Font("JetBrains Mono", 0, 14)); // NOI18N
+        fecha_factura.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         fecha_factura.setForeground(new java.awt.Color(102, 102, 102));
         fecha_factura.setText("fecha");
         panel_detalle_factura.add(fecha_factura, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, -1, -1));
 
-        numero_factura.setFont(new java.awt.Font("JetBrains Mono", 0, 14)); // NOI18N
+        numero_factura.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         numero_factura.setForeground(new java.awt.Color(102, 102, 102));
         numero_factura.setText("numero");
         panel_detalle_factura.add(numero_factura, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("JetBrains Mono", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         jLabel6.setText("Compra realizada por");
         panel_detalle_factura.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
-        total.setFont(new java.awt.Font("JetBrains Mono", 0, 14)); // NOI18N
+        total.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         total.setForeground(new java.awt.Color(102, 102, 102));
         total.setText("Total");
         panel_detalle_factura.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("JetBrains Mono", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         jLabel7.setText("Valor total");
         panel_detalle_factura.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
 
-        cedula_empleado.setFont(new java.awt.Font("JetBrains Mono", 0, 14)); // NOI18N
+        cedula_empleado.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         cedula_empleado.setForeground(new java.awt.Color(102, 102, 102));
         cedula_empleado.setText("Cedula");
         panel_detalle_factura.add(cedula_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 480, -1, -1));
 
-        nombre_empleado.setFont(new java.awt.Font("JetBrains Mono", 0, 14)); // NOI18N
+        nombre_empleado.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         nombre_empleado.setForeground(new java.awt.Color(102, 102, 102));
         nombre_empleado.setText("Nombre");
         panel_detalle_factura.add(nombre_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 500, -1, -1));

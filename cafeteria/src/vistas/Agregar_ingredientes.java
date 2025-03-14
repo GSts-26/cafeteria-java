@@ -53,8 +53,9 @@ public class Agregar_ingredientes extends javax.swing.JDialog {
         jLabel2.setText("Ingredientes");
 
         boton_agregar_info_nutricional.setBackground(new java.awt.Color(255, 153, 0));
-        boton_agregar_info_nutricional.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        boton_agregar_info_nutricional.setFont(new java.awt.Font("Sora", 1, 15)); // NOI18N
         boton_agregar_info_nutricional.setForeground(new java.awt.Color(255, 255, 255));
+        boton_agregar_info_nutricional.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
         boton_agregar_info_nutricional.setText("Agregar info nutricional");
         boton_agregar_info_nutricional.setBorderPainted(false);
         boton_agregar_info_nutricional.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -78,8 +79,9 @@ public class Agregar_ingredientes extends javax.swing.JDialog {
         jLabel3.setText("Gramos");
 
         boton_agregar_ingrediente.setBackground(new java.awt.Color(102, 204, 255));
-        boton_agregar_ingrediente.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        boton_agregar_ingrediente.setFont(new java.awt.Font("Sora", 1, 15)); // NOI18N
         boton_agregar_ingrediente.setForeground(new java.awt.Color(255, 255, 255));
+        boton_agregar_ingrediente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
         boton_agregar_ingrediente.setText("Agregar ingrediente");
         boton_agregar_ingrediente.setBorderPainted(false);
         boton_agregar_ingrediente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
