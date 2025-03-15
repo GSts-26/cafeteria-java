@@ -5,9 +5,11 @@ import Conexion.conexion;
 import com.toedter.calendar.JDateChooser;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class metodo_empleado {
 
+    DefaultTableModel modelo_tabla;
     conexion conex = new conexion();
     private panel_empleado empleado;
     private long cedula = 0;
@@ -18,6 +20,7 @@ public class metodo_empleado {
     private long telefono = 0;
     private String email = null;
     private String direccion = null;
+    
 
     public metodo_empleado(panel_empleado vista_empleado) {
         this.empleado = vista_empleado;
@@ -51,6 +54,22 @@ public class metodo_empleado {
             System.out.println("Entro al catch" + e.getMessage());
         }
 
+    }
+
+    public void listarEmpleado() {
+        modelo_tabla = (DefaultTableModel) empleado.getTabla_empleado().getModel();
+        String consulta = "SELECT * FROM empleado";
+        try (Connection con = conex.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(consulta);
+           ResultSet rs = ps.executeQuery();
+           while(rs.next()){
+               modelo_tabla.addRow(new Object[]{
+               rs.getLong("cedula"),
+               rs.getString("nombre"),
+               rs.getDate("nacimiento")});
+           }
+        } catch (Exception e) {
+        }
     }
 
 }

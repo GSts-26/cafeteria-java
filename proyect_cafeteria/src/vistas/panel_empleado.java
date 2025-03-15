@@ -4,6 +4,8 @@ import Conexion.conexion;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.icons.*;
 import com.toedter.calendar.JDateChooser;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import utils.render;
 import metodos.metodo_empleado;
 
@@ -11,22 +13,25 @@ public class panel_empleado extends javax.swing.JPanel {
 
     Conexion.conexion conex = new conexion();
     metodo_empleado agregar = new metodo_empleado(this);
-private void ocultar_mensajes(){
-    m10telefono_dato.setVisible(false);
-    m11correo_campo.setVisible(false);
-    m13fechanacimiento_campo.setVisible(false);
-    m1cedula_campo.setVisible(false);
-    m2cedula_dato.setVisible(false);
-    m4nombre_campo.setVisible(false);
-    m5apellido_campo.setVisible(false);
-    m7direccion_campo.setVisible(false);
-    m9telefono_campo.setVisible(false);
-}
+
+    private void ocultar_mensajes() {
+        m10telefono_dato.setVisible(false);
+        m11correo_campo.setVisible(false);
+        m13fechanacimiento_campo.setVisible(false);
+        m1cedula_campo.setVisible(false);
+        m2cedula_dato.setVisible(false);
+        m4nombre_campo.setVisible(false);
+        m5apellido_campo.setVisible(false);
+        m7direccion_campo.setVisible(false);
+        m9telefono_campo.setVisible(false);
+    }
+
     public panel_empleado() {
         initComponents();
-       ocultar_mensajes();
+        ocultar_mensajes();
         Tabla_empleado.setDefaultRenderer(Object.class, new render());
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -292,6 +297,10 @@ private void ocultar_mensajes(){
     private void boton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_agregarActionPerformed
         agregar.agregar_empleado();
     }//GEN-LAST:event_boton_agregarActionPerformed
+ 
+    public JTable getTabla_empleado() {
+        return Tabla_empleado;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
