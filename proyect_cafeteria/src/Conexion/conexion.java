@@ -17,7 +17,11 @@ public class conexion {
         config.setJdbcUrl("jdbc:postgresql://aws-0-sa-east-1.pooler.supabase.com:5432/postgres");
         config.setUsername("postgres.pyhqsjvywazyifwdeyax");
         config.setPassword("afeteria_1234");
-        config.setMaximumPoolSize(10); // Puedes ajustar el tamaño del pool según lo necesario
+        config.setMaximumPoolSize(6); 
+         config.setMinimumIdle(2);        
+        config.setConnectionTimeout(30000); // Timeout de conexión (30 segundos)
+        config.setIdleTimeout(600000);     // Tiempo de inactividad antes de cerrar conexiones (10 minutos)
+        config.setMaxLifetime(300000);    // Vida máxima de una conexión (30 minutos)
 
         dataSource = new HikariDataSource(config);
     }

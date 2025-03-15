@@ -5,8 +5,11 @@
 package vistas;
 
 import com.formdev.flatlaf.FlatClientProperties;
-import java.awt.Color;
-import java.awt.Font;
+import com.toedter.calendar.JDateChooser;
+import java.awt.*;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+import metodos.Controller_cliente;
 
 /**
  *
@@ -14,12 +17,11 @@ import java.awt.Font;
  */
 public class Clientes extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Clientes
-     */
+    Controller_cliente controlador = new Controller_cliente(this);
+
     public Clientes() {
         initComponents();
-        
+        controlador.mostrar();
     }
 
     /**
@@ -62,6 +64,7 @@ public class Clientes extends javax.swing.JPanel {
         txtEmail = new javax.swing.JTextField();
         boton_crear = new javax.swing.JButton();
         boton_crear2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(249, 249, 249));
         setForeground(new java.awt.Color(94, 83, 82));
@@ -79,6 +82,11 @@ public class Clientes extends javax.swing.JPanel {
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 40));
 
         contenido_table.setBackground(new java.awt.Color(255, 255, 255));
+        contenido_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                contenido_tableMouseEntered(evt);
+            }
+        });
         contenido_table.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Sora", 1, 21)); // NOI18N
@@ -349,6 +357,14 @@ public class Clientes extends javax.swing.JPanel {
         add(crear_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 40, 440, 560));
         crear_cliente.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void styles() {
@@ -359,10 +375,6 @@ public class Clientes extends javax.swing.JPanel {
                 "separatorColor:#FFFFFF;bottomSeparatorColor:#ECECEC;height:40");
 
     }
-
-    private void T_ClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_T_ClientesMouseClicked
-
-    }//GEN-LAST:event_T_ClientesMouseClicked
 
     private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
         // TODO add your handling code here:
@@ -385,8 +397,21 @@ public class Clientes extends javax.swing.JPanel {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void boton_crear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_crear2ActionPerformed
-        // TODO add your handling code here:
+        controlador.ingresar();
+        
     }//GEN-LAST:event_boton_crear2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        controlador.mostrar();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void contenido_tableMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contenido_tableMouseEntered
+        controlador.mostrar();
+    }//GEN-LAST:event_contenido_tableMouseEntered
+
+    private void T_ClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_T_ClientesMouseClicked
+        controlador.eliminar();
+    }//GEN-LAST:event_T_ClientesMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -397,6 +422,7 @@ public class Clientes extends javax.swing.JPanel {
     private javax.swing.JPanel contenido_table;
     private javax.swing.JPanel crear_cliente;
     private javax.swing.JPanel info;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -422,4 +448,41 @@ public class Clientes extends javax.swing.JPanel {
     private javax.swing.JTextField txtnombre;
     private javax.swing.JTextField txttelefono;
     // End of variables declaration//GEN-END:variables
+
+    public JTextField getTxtDireccion() {
+        return txtDireccion;
+    }
+
+    public JTextField getTxtEmail() {
+        return txtEmail;
+    }
+
+    public JTextField getTxtcedula() {
+        return txtcedula;
+    }
+
+    public JComboBox<String> getTxtgenero() {
+        return txtgenero;
+    }
+
+    public JDateChooser getTxtnacimiento() {
+        return txtnacimiento;
+    }
+
+    public JTextField getTxtnombre() {
+        return txtnombre;
+    }
+
+    public JTextField getTxttelefono() {
+        return txttelefono;
+    }
+
+    public javax.swing.JTable getT_Clientes() {
+        return T_Clientes;
+    }
+
+    public javax.swing.JPanel getAdvertencia() {
+        return advertencia;
+    }
+
 }
