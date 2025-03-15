@@ -245,11 +245,11 @@ public class panel_empleado extends javax.swing.JPanel {
 
         jLabel13.setFont(new java.awt.Font("Sora", 1, 28)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(94, 83, 82));
-        jLabel13.setText("Agrega Un Cliente");
+        jLabel13.setText("Agrega Un Empleado");
 
         jLabel14.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(94, 83, 82));
-        jLabel14.setText("No Tienes Clientes, Ingresa tu primer cliente a la plataforma");
+        jLabel14.setText("No Tienes Empleado, Ingresa tu primer Empleado a la plataforma");
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-hombre-en-corbata-violeta-100.png"))); // NOI18N
 
@@ -257,18 +257,19 @@ public class panel_empleado extends javax.swing.JPanel {
         advertencia.setLayout(advertenciaLayout);
         advertenciaLayout.setHorizontalGroup(
             advertenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, advertenciaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel13)
+                .addGap(109, 109, 109))
             .addGroup(advertenciaLayout.createSequentialGroup()
                 .addGroup(advertenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(advertenciaLayout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(jLabel14))
-                    .addGroup(advertenciaLayout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(jLabel13))
-                    .addGroup(advertenciaLayout.createSequentialGroup()
                         .addGap(216, 216, 216)
-                        .addComponent(jLabel15)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                        .addComponent(jLabel15))
+                    .addGroup(advertenciaLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel14)))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         advertenciaLayout.setVerticalGroup(
             advertenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,6 +287,7 @@ public class panel_empleado extends javax.swing.JPanel {
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
+        Tabla_empleado.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         Tabla_empleado.setForeground(new java.awt.Color(94, 83, 82));
         Tabla_empleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -320,7 +322,7 @@ public class panel_empleado extends javax.swing.JPanel {
         ///
         //T_productos.setBorder(new MatteBorder(1, 0, 0, 0, Color.decode("0xECECEC")));
 
-        contenido_table.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 550, 340));
+        contenido_table.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 560, 430));
 
         info.setBackground(new java.awt.Color(198, 124, 78));
         info.setForeground(new java.awt.Color(255, 255, 255));
