@@ -6,10 +6,9 @@ package vistas;
 
 import com.formdev.flatlaf.*;
 import com.formdev.flatlaf.icons.FlatSearchIcon;
-import com.formdev.flatlaf.ui.FlatLineBorder;
+
 import java.awt.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.*;
 
 
@@ -345,8 +344,8 @@ public class inicio extends javax.swing.JFrame {
     private void productos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productos1ActionPerformed
         Contenido.add(vistaEmpleado, "empleados");
         Vista.show(Contenido, "empleados");
-        this.revalidate();
         this.repaint();
+        this.revalidate();
     }//GEN-LAST:event_productos1ActionPerformed
 
     private void productos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productos2ActionPerformed
@@ -364,8 +363,8 @@ public class inicio extends javax.swing.JFrame {
     private void productos5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productos5ActionPerformed
         Contenido.add(vistaClientes, "clientes");
         Vista.show(Contenido, "clientes");
-        this.revalidate();
         this.repaint();
+        this.revalidate();
     }//GEN-LAST:event_productos5ActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked

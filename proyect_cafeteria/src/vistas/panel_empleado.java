@@ -4,29 +4,35 @@ import Conexion.conexion;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.icons.*;
 import com.toedter.calendar.JDateChooser;
+import javax.swing.JPanel;
+import javax.swing.JTable;
 import utils.render;
 import metodos.metodo_empleado;
 
 public class panel_empleado extends javax.swing.JPanel {
 
     Conexion.conexion conex = new conexion();
-    metodo_empleado agregar = new metodo_empleado(this);
-private void ocultar_mensajes(){
-    m10telefono_dato.setVisible(false);
-    m11correo_campo.setVisible(false);
-    m13fechanacimiento_campo.setVisible(false);
-    m1cedula_campo.setVisible(false);
-    m2cedula_dato.setVisible(false);
-    m4nombre_campo.setVisible(false);
-    m5apellido_campo.setVisible(false);
-    m7direccion_campo.setVisible(false);
-    m9telefono_campo.setVisible(false);
-}
+    metodo_empleado controlador = new metodo_empleado(this);
+
+    private void ocultar_mensajes() {
+        m10telefono_dato.setVisible(false);
+        m11correo_campo.setVisible(false);
+        m13fechanacimiento_campo.setVisible(false);
+        m1cedula_campo.setVisible(false);
+        m2cedula_dato.setVisible(false);
+        m4nombre_campo.setVisible(false);
+        m5apellido_campo.setVisible(false);
+        m7direccion_campo.setVisible(false);
+        m9telefono_campo.setVisible(false);
+    }
+
     public panel_empleado() {
         initComponents();
-       ocultar_mensajes();
-        Tabla_empleado.setDefaultRenderer(Object.class, new render());
+        ocultar_mensajes();
+        controlador.listarEmpleado();
+//        Tabla_empleado.setDefaultRenderer(Object.class, new render());
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -60,7 +66,7 @@ private void ocultar_mensajes(){
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jPanel2 = new javax.swing.JPanel();
+        panel_no_hay_empleados = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -227,31 +233,52 @@ private void ocultar_mensajes(){
 
         jLabel3.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setText("Lista de clientes");
+        jLabel3.setText("Lista de Empleados");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         jSeparator1.setBackground(new java.awt.Color(204, 102, 0));
         jSeparator1.setForeground(new java.awt.Color(204, 102, 0));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 560, 10));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panel_no_hay_empleados.setBackground(new java.awt.Color(255, 255, 255));
+        panel_no_hay_empleados.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Empleado panel.png"))); // NOI18N
         jLabel4.setBorder(boton_agregar.getBorder());
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel5.setText("No tienes empleados, Ingresa tu primer empleado a la plataforma ");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Sora", 1, 28)); // NOI18N
         jLabel6.setText("Agrega un empleado");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 560, 400));
+        javax.swing.GroupLayout panel_no_hay_empleadosLayout = new javax.swing.GroupLayout(panel_no_hay_empleados);
+        panel_no_hay_empleados.setLayout(panel_no_hay_empleadosLayout);
+        panel_no_hay_empleadosLayout.setHorizontalGroup(
+            panel_no_hay_empleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_no_hay_empleadosLayout.createSequentialGroup()
+                .addGap(210, 210, 210)
+                .addComponent(jLabel4))
+            .addGroup(panel_no_hay_empleadosLayout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(jLabel6))
+            .addGroup(panel_no_hay_empleadosLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel5))
+        );
+        panel_no_hay_empleadosLayout.setVerticalGroup(
+            panel_no_hay_empleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_no_hay_empleadosLayout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jLabel4)
+                .addGap(4, 4, 4)
+                .addComponent(jLabel6)
+                .addGap(13, 13, 13)
+                .addComponent(jLabel5))
+        );
+
+        jPanel1.add(panel_no_hay_empleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 560, 400));
 
         Tabla_empleado.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         Tabla_empleado.setModel(new javax.swing.table.DefaultTableModel(
@@ -272,6 +299,14 @@ private void ocultar_mensajes(){
         });
         Tabla_empleado.getTableHeader().setResizingAllowed(false);
         Tabla_empleado.getTableHeader().setReorderingAllowed(false);
+        Tabla_empleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tabla_empleadoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Tabla_empleadoMouseEntered(evt);
+            }
+        });
         jScrollPane1.setViewportView(Tabla_empleado);
         if (Tabla_empleado.getColumnModel().getColumnCount() > 0) {
             Tabla_empleado.getColumnModel().getColumn(0).setResizable(false);
@@ -290,9 +325,28 @@ private void ocultar_mensajes(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_agregarActionPerformed
-        agregar.agregar_empleado();
+        controlador.agregar_empleado();
+//        controlador.listarEmpleado();
     }//GEN-LAST:event_boton_agregarActionPerformed
 
+    private void Tabla_empleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_empleadoMouseClicked
+        controlador.eliminar();
+        this.revalidate();
+        this.repaint();
+
+
+    }//GEN-LAST:event_Tabla_empleadoMouseClicked
+
+    private void Tabla_empleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_empleadoMouseEntered
+    }//GEN-LAST:event_Tabla_empleadoMouseEntered
+
+    public javax.swing.JTable getTabla_empleado() {
+        return Tabla_empleado;
+    }
+
+    public javax.swing.JPanel getPanel_noHay_empleado() {
+        return panel_no_hay_empleados;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabla_empleado;
@@ -310,7 +364,6 @@ private void ocultar_mensajes(){
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
@@ -323,6 +376,7 @@ private void ocultar_mensajes(){
     private javax.swing.JLabel m5apellido_campo;
     private javax.swing.JLabel m7direccion_campo;
     private javax.swing.JLabel m9telefono_campo;
+    private javax.swing.JPanel panel_no_hay_empleados;
     private javax.swing.JTextField txt_apellido;
     private javax.swing.JTextField txt_cedula;
     private javax.swing.JTextField txt_correo;
