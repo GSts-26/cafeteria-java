@@ -107,18 +107,18 @@ public class compras extends javax.swing.JPanel {
         jLabel6.setText("Productos Añadidos");
         crear_cliente.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, 20));
 
+        jTextField1.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(94, 83, 82));
-        jTextField1.setText("jTextField1");
         jTextField1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Empleado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sora", 0, 14), new java.awt.Color(94, 83, 82))); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
-        crear_cliente.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 300, 50));
+        crear_cliente.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 300, 50));
 
+        jTextField2.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(94, 83, 82));
-        jTextField2.setText("jTextField1");
         jTextField2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sora", 0, 14), new java.awt.Color(94, 83, 82))); // NOI18N
         crear_cliente.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 300, 50));
 
@@ -159,7 +159,7 @@ public class compras extends javax.swing.JPanel {
         jLabel12.setForeground(new java.awt.Color(94, 83, 82));
         jLabel12.setText("Categorias");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

@@ -12,20 +12,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 
-/**
- *
- * @author Admin
- */
+
 public class inicio extends javax.swing.JFrame {
 
     CardLayout Vista;
     Clientes vistaClientes = new Clientes();
+    panel_empleado vistaEmpleado = new panel_empleado();
+
     public inicio() {
         initComponents();
         Vista = (CardLayout) Contenido.getLayout();
     }
 
-  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -136,7 +134,7 @@ public class inicio extends javax.swing.JFrame {
                 .addComponent(titulo)
                 .addGap(66, 66, 66)
                 .addComponent(buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 278, Short.MAX_VALUE)
                 .addComponent(contenedor_notificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(boton_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,7 +168,7 @@ public class inicio extends javax.swing.JFrame {
         buscador.putClientProperty(FlatClientProperties.STYLE,
             "arc: 18");
 
-        jPanel1.add(encabezado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1350, -1));
+        jPanel1.add(encabezado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1380, -1));
 
         menu_lateral.setBackground(new java.awt.Color(255, 255, 255));
         menu_lateral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -320,15 +318,15 @@ public class inicio extends javax.swing.JFrame {
 
         Contenido.setBackground(new java.awt.Color(249, 249, 249));
         Contenido.setLayout(new java.awt.CardLayout());
-        jPanel1.add(Contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 1130, 650));
+        jPanel1.add(Contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 1140, 650));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1376, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,28 +339,31 @@ public class inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActionPerformed
-        // TODO add your handling code here:
+    
     }//GEN-LAST:event_menuActionPerformed
 
     private void productos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productos1ActionPerformed
-        
+        Contenido.add(vistaEmpleado, "empleados");
+        Vista.show(Contenido, "empleados");
+        this.revalidate();
+        this.repaint();
     }//GEN-LAST:event_productos1ActionPerformed
 
     private void productos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productos2ActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_productos2ActionPerformed
 
     private void productos3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productos3ActionPerformed
-        // TODO add your handling code here:
+     
     }//GEN-LAST:event_productos3ActionPerformed
 
     private void productos4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productos4ActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_productos4ActionPerformed
 
     private void productos5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productos5ActionPerformed
-        Contenido.add(vistaClientes, "empleados");
-        Vista.show(Contenido, "empleados");
+        Contenido.add(vistaClientes, "clientes");
+        Vista.show(Contenido, "clientes");
         this.revalidate();
         this.repaint();
     }//GEN-LAST:event_productos5ActionPerformed
@@ -372,21 +373,44 @@ public class inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void buscadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorKeyReleased
-        
+
     }//GEN-LAST:event_buscadorKeyReleased
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String args[]) {
-        FlatLightLaf.setup();
+       FlatLightLaf.setup();
         try {
+            
             UIManager.setLookAndFeel(new FlatLightLaf());
-           
-        } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(inicio.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            
+            UIManager.put("OptionPane.background", new Color(240, 240, 240)); // Fondo del panel
+            UIManager.put("OptionPane.messageForeground", new Color(50, 50, 50)); // Color del texto
 
+//            UIManager.put("Button.background", new Color(0, 122, 255)); // Fondo de los botones
+//            UIManager.put("Button.foreground", Color.BLACK); // Color del texto en botones
+//            UIManager.put("Button.font", new Font("Fira Code", Font.PLAIN, 14)); // Fuente del botón
+            UIManager.put("OptionPane.messageFont", new Font("Fira Code", Font.PLAIN, 14)); // Fuente del mensaje
+            UIManager.put("Button.arc", 25);
+            UIManager.put("Component.arc", 25);
+            UIManager.put("TextComponent.arc", 25);
+            UIManager.put("ComboBox.arc", 90);
+            
+            UIManager.put("ComboBox.buttonArrowColor", new Color(0, 122, 255)); // Color azul de las flechas
+
+            UIManager.put("TableHeader.font", new Font("Fira Code Medium", Font.PLAIN, 15));
+            UIManager.put("TableHeader.foreground", Color.WHITE); // Texto blanco
+            UIManager.put("TableHeader.background", new Color(120, 144, 156)); // Azul Material Desig
+            UIManager.put("Table.arc", 90); // Bordes redondeados
+            UIManager.put("Table.showHorizontalLines", false); // Oculta líneas horizontales
+            UIManager.put("Table.showVerticalLines", false);   // Oculta líneas verticales
+            UIManager.put("Table.intercellSpacing", new java.awt.Dimension(0, 0)); // Espaciado entre celdas
+            UIManager.put("Table.selectionBackground", "#D9E6F2"); // Color de fondo al seleccionar
+            UIManager.put("Table.selectionForeground", "#000000"); // Color del texto seleccionado
+            UIManager.put("Table.background", "#60B3E6"); // Fondo general de la tabla
+            UIManager.put("Table.foreground", "#333333"); // Color del texto general
+        } catch (UnsupportedLookAndFeelException ex) {
+            System.err.println("Failed to initialize LaF");
+        }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
