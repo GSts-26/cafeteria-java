@@ -5,6 +5,7 @@ import Conexion.conexion;
 import com.toedter.calendar.JDateChooser;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 public class metodo_empleado {
@@ -57,7 +58,6 @@ public class metodo_empleado {
     }
 
     public void listarEmpleado() {
-
         modelo_tabla = (DefaultTableModel) empleado.getTabla_empleado().getModel();
         modelo_tabla.setRowCount(0);
 
@@ -66,7 +66,7 @@ public class metodo_empleado {
             PreparedStatement ps = con.prepareStatement(consulta);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                empleado.getPanel_noHay_empleado().setVisible(false);
+                empleado.getadv().setVisible(false);
                 do {
                     modelo_tabla.addRow(new Object[]{
                         rs.getLong("cedula"),
@@ -81,7 +81,9 @@ public class metodo_empleado {
                 } while (rs.next());
             } else {
                 System.out.println("vacio");
-                empleado.getPanel_noHay_empleado().setVisible(true);
+               
+                    empleado.getadv().setVisible(true);
+                
             }
 
         } catch (SQLException e) {
