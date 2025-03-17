@@ -3,6 +3,7 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -418,7 +419,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JButton" name="productos4">
+            <Component class="javax.swing.JButton" name="categorias">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f9" green="f9" red="f9" type="rgb"/>
@@ -444,7 +445,7 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="productos4ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="categoriasActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="menu.putClientProperty(FlatClientProperties.STYLE, &#xa;    &quot;focusedBackground:#fef0e1;focusedForeground:#ea6e00&quot;);&#xa;menu.putClientProperty(FlatClientProperties.STYLE,&#xa;                        &quot;arc: 30&quot;);"/>

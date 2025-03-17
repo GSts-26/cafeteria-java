@@ -6,18 +6,17 @@ package vistas;
 
 import com.formdev.flatlaf.*;
 import com.formdev.flatlaf.icons.FlatSearchIcon;
-import com.formdev.flatlaf.ui.FlatLineBorder;
-import java.awt.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.*;
 
+import java.awt.*;
+
+import javax.swing.*;
 
 public class inicio extends javax.swing.JFrame {
 
     CardLayout Vista;
     Clientes vistaClientes = new Clientes();
     panel_empleado vistaEmpleado = new panel_empleado();
+    Categorias vistaCategoria = new Categorias();
 
     public inicio() {
         initComponents();
@@ -43,7 +42,7 @@ public class inicio extends javax.swing.JFrame {
         productos1 = new javax.swing.JButton();
         productos2 = new javax.swing.JButton();
         productos3 = new javax.swing.JButton();
-        productos4 = new javax.swing.JButton();
+        categorias = new javax.swing.JButton();
         productos5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -51,6 +50,7 @@ public class inicio extends javax.swing.JFrame {
         Contenido = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(249, 249, 249));
         jPanel1.setPreferredSize(new java.awt.Dimension(1340, 760));
@@ -251,22 +251,22 @@ public class inicio extends javax.swing.JFrame {
         productos3.putClientProperty(FlatClientProperties.STYLE,
             "focusedBackground:#F3AB52;focusedForeground:#FFFFFF");
 
-        productos4.setBackground(new java.awt.Color(249, 249, 249));
-        productos4.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
-        productos4.setForeground(new java.awt.Color(94, 83, 82));
-        productos4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-categorias-35.png"))); // NOI18N
-        productos4.setText("Categorias");
-        productos4.setBorderPainted(false);
-        productos4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        productos4.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        productos4.setPreferredSize(new java.awt.Dimension(76, 23));
-        productos4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        productos4.addActionListener(new java.awt.event.ActionListener() {
+        categorias.setBackground(new java.awt.Color(249, 249, 249));
+        categorias.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
+        categorias.setForeground(new java.awt.Color(94, 83, 82));
+        categorias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-categorias-35.png"))); // NOI18N
+        categorias.setText("Categorias");
+        categorias.setBorderPainted(false);
+        categorias.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        categorias.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        categorias.setPreferredSize(new java.awt.Dimension(76, 23));
+        categorias.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        categorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                productos4ActionPerformed(evt);
+                categoriasActionPerformed(evt);
             }
         });
-        menu_lateral.add(productos4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, 68));
+        menu_lateral.add(categorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, 68));
         menu.putClientProperty(FlatClientProperties.STYLE,
             "focusedBackground:#fef0e1;focusedForeground:#ea6e00");
         menu.putClientProperty(FlatClientProperties.STYLE,
@@ -339,75 +339,81 @@ public class inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActionPerformed
-    
+
     }//GEN-LAST:event_menuActionPerformed
 
     private void productos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productos1ActionPerformed
         Contenido.add(vistaEmpleado, "empleados");
         Vista.show(Contenido, "empleados");
-        this.revalidate();
         this.repaint();
+        this.revalidate();
     }//GEN-LAST:event_productos1ActionPerformed
 
     private void productos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productos2ActionPerformed
-      
+
     }//GEN-LAST:event_productos2ActionPerformed
 
     private void productos3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productos3ActionPerformed
-     
+
     }//GEN-LAST:event_productos3ActionPerformed
 
-    private void productos4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productos4ActionPerformed
-       
-    }//GEN-LAST:event_productos4ActionPerformed
+    private void categoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriasActionPerformed
+        Contenido.add(vistaCategoria, "categorias");
+        Vista.show(Contenido, "categorias");
+        this.repaint();
+        this.revalidate();
+    }//GEN-LAST:event_categoriasActionPerformed
 
     private void productos5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productos5ActionPerformed
         Contenido.add(vistaClientes, "clientes");
         Vista.show(Contenido, "clientes");
-        this.revalidate();
         this.repaint();
+        this.revalidate();
     }//GEN-LAST:event_productos5ActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        this.dispose();
+
+        int opcion = JOptionPane.showConfirmDialog(null, "Deseas cerrar sesion?", "Cerrar sesion", JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION);
+        if (opcion == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void buscadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscadorKeyReleased
 
     }//GEN-LAST:event_buscadorKeyReleased
 
-    
     public static void main(String args[]) {
-       FlatLightLaf.setup();
+        FlatLightLaf.setup();
         try {
-            
+
             UIManager.setLookAndFeel(new FlatLightLaf());
-            
+
             UIManager.put("OptionPane.background", new Color(240, 240, 240)); // Fondo del panel
             UIManager.put("OptionPane.messageForeground", new Color(50, 50, 50)); // Color del texto
 
 //            UIManager.put("Button.background", new Color(0, 122, 255)); // Fondo de los botones
 //            UIManager.put("Button.foreground", Color.BLACK); // Color del texto en botones
 //            UIManager.put("Button.font", new Font("Fira Code", Font.PLAIN, 14)); // Fuente del botón
-            UIManager.put("OptionPane.messageFont", new Font("Fira Code", Font.PLAIN, 14)); // Fuente del mensaje
+            UIManager.put("OptionPane.messageFont", new Font("Sora", Font.PLAIN, 14)); // Fuente del mensaje
             UIManager.put("Button.arc", 25);
             UIManager.put("Component.arc", 25);
             UIManager.put("TextComponent.arc", 25);
             UIManager.put("ComboBox.arc", 90);
-            
+
             UIManager.put("ComboBox.buttonArrowColor", new Color(0, 122, 255)); // Color azul de las flechas
 
-            UIManager.put("TableHeader.font", new Font("Fira Code Medium", Font.PLAIN, 15));
-            UIManager.put("TableHeader.foreground", Color.WHITE); // Texto blanco
-            UIManager.put("TableHeader.background", new Color(120, 144, 156)); // Azul Material Desig
-            UIManager.put("Table.arc", 90); // Bordes redondeados
-            UIManager.put("Table.showHorizontalLines", false); // Oculta líneas horizontales
-            UIManager.put("Table.showVerticalLines", false);   // Oculta líneas verticales
-            UIManager.put("Table.intercellSpacing", new java.awt.Dimension(0, 0)); // Espaciado entre celdas
-            UIManager.put("Table.selectionBackground", "#D9E6F2"); // Color de fondo al seleccionar
-            UIManager.put("Table.selectionForeground", "#000000"); // Color del texto seleccionado
-            UIManager.put("Table.background", "#60B3E6"); // Fondo general de la tabla
-            UIManager.put("Table.foreground", "#333333"); // Color del texto general
+//            UIManager.put("TableHeader.font", new Font("Fira Code Medium", Font.PLAIN, 15));
+//            UIManager.put("TableHeader.foreground", Color.WHITE); // Texto blanco
+//            UIManager.put("TableHeader.background", new Color(120, 144, 156)); // Azul Material Desig
+//            UIManager.put("Table.arc", 90); // Bordes redondeados
+//            UIManager.put("Table.showHorizontalLines", false); // Oculta líneas horizontales
+//            UIManager.put("Table.showVerticalLines", false);   // Oculta líneas verticales
+//            UIManager.put("Table.intercellSpacing", new java.awt.Dimension(0, 0)); // Espaciado entre celdas
+//            UIManager.put("Table.selectionBackground", "#D9E6F2"); // Color de fondo al seleccionar
+//            UIManager.put("Table.selectionForeground", "#000000"); // Color del texto seleccionado
+//            UIManager.put("Table.background", "#FFFFFF"); // Fondo general de la tabla
+//            UIManager.put("Table.foreground", "#333333"); // Color del texto general
         } catch (UnsupportedLookAndFeelException ex) {
             System.err.println("Failed to initialize LaF");
         }
@@ -424,6 +430,7 @@ public class inicio extends javax.swing.JFrame {
     private javax.swing.JPanel Contenido;
     private javax.swing.JButton boton_crear;
     private javax.swing.JTextField buscador;
+    private javax.swing.JButton categorias;
     private javax.swing.JPanel contenedor_notificacion;
     private javax.swing.JPanel encabezado;
     private javax.swing.JLabel jLabel2;
@@ -438,7 +445,6 @@ public class inicio extends javax.swing.JFrame {
     private javax.swing.JButton productos1;
     private javax.swing.JButton productos2;
     private javax.swing.JButton productos3;
-    private javax.swing.JButton productos4;
     private javax.swing.JButton productos5;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
