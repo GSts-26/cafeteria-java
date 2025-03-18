@@ -14,11 +14,11 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import metodos.metodo_categoria;
+import controladores.metodo_categoria;
 
 public class Categorias extends javax.swing.JPanel {
 
-    metodos.metodo_categoria controlador = new metodo_categoria(this);
+    controladores.metodo_categoria controlador = new metodo_categoria(this);
 
     public Categorias() {
         initComponents();

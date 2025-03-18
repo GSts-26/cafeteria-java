@@ -1,4 +1,4 @@
-package metodos;
+package controladores;
 
 import java.sql.*;
 import Conexion.conexion;

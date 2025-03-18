@@ -7,7 +7,7 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import metodos.metodo_empleado;
+import controladores.metodo_empleado;
 
 public class panel_empleado extends javax.swing.JPanel {
 

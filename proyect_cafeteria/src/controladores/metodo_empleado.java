@@ -1,5 +1,5 @@
 
-package metodos;
+package controladores;
 
 import vistas.panel_empleado;
 import Conexion.conexion;

@@ -1,5 +1,5 @@
 
-package metodos;
+package controladores;
 
 import vistas.Categorias;
 import java.sql.*;
