@@ -390,6 +390,38 @@ public class Panel_factura extends javax.swing.JPanel {
     private javax.swing.JTextField txt_filtrado2;
     // End of variables declaration//GEN-END:variables
 
+    public JLabel getlbl_cedula_cliente() {
+        return cedula_cliente;
+    }
+
+    public JLabel getlbl_nombre_cliente() {
+        return nombre_cliente;
+    }
+
+    public JLabel getlbl_genero_cliente() {
+        return genero_cliente;
+    }
+
+    public JLabel getlbl_numero_factura() {
+        return numero_factura;
+    }
+
+    public JLabel getlbl_fecha_factura() {
+        return fecha_factura;
+    }
+
+    public JLabel gettotal_factura() {
+        return total;
+    }
+
+    public JLabel getnombre_empleado() {
+        return nombre_empleado;
+    }
+
+    public JLabel getCedula_empleado() {
+        return cedula_empleado;
+    }
+
     public JComboBox<String> getCombo_filtro() {
         return combo_filtro;
     }
