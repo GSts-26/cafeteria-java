@@ -2,7 +2,7 @@
 package controladores;
 
 import vistas.panel_empleado;
-import Conexion.conexion;
+import modelos.Bd.conexion;
 import com.toedter.calendar.JDateChooser;
 import java.sql.*;
 import javax.swing.JOptionPane;
