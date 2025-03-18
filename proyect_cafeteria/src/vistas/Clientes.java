@@ -9,7 +9,7 @@ import com.toedter.calendar.JDateChooser;
 import java.awt.*;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
-import metodos.Controller_cliente;
+import Controladores.Controller_cliente;
 
 /**
  *

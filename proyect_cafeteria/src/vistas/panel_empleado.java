@@ -1,17 +1,17 @@
 package vistas;
 
-import Conexion.conexion;
+import modelos.bd.conexion;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.icons.*;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import utils.render;
-import metodos.metodo_empleado;
+import Controladores.metodo_empleado;
 
 public class panel_empleado extends javax.swing.JPanel {
 
-    Conexion.conexion conex = new conexion();
+    modelos.bd.conexion conex = new conexion();
     metodo_empleado agregar = new metodo_empleado(this);
 
     private void ocultar_mensajes() {

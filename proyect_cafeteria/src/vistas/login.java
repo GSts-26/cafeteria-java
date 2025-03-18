@@ -1,6 +1,6 @@
 package vistas;
 
-import Conexion.conexion;
+import modelos.bd.conexion;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Color;
@@ -9,11 +9,11 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import metodos.metodo_login;
+import Controladores.metodo_login;
 
 public class login extends javax.swing.JFrame {
 
-    metodos.metodo_login entrar = new metodo_login();
+    Controladores.metodo_login entrar = new metodo_login();
     
     public login() {
         

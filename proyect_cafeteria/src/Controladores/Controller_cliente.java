@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package metodos;
+package Controladores;
 
 import vistas.Clientes;
 
 import java.sql.*;
-import Conexion.conexion;
+import modelos.bd.conexion;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -22,7 +22,7 @@ public class Controller_cliente {
     private Clientes vista;
     DefaultTableModel modeloClientes;
 
-    Conexion.conexion conex = new conexion();
+    modelos.bd.conexion conex = new conexion();
 
     public Controller_cliente(Clientes Views_client) {
         this.vista = Views_client;

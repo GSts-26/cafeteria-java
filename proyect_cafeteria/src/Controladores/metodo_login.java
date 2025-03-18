@@ -1,13 +1,13 @@
-package metodos;
+package Controladores;
 
 import java.sql.*;
-import Conexion.conexion;
+import modelos.bd.conexion;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class metodo_login {
 
-    Conexion.conexion conex = new conexion();
+    modelos.bd.conexion conex = new conexion();
 
     public void acceso(JTextField txtUsuario, JTextField txtClave) {
         String usuario_obtenido = txtUsuario.getText().trim();

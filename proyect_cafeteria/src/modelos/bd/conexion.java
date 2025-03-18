@@ -1,4 +1,4 @@
-package Conexion;
+package modelos.bd;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
