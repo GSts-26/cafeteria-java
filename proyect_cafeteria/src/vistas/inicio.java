@@ -403,15 +403,15 @@ public class inicio extends javax.swing.JFrame {
 
             UIManager.put("ComboBox.buttonArrowColor", new Color(0, 122, 255)); // Color azul de las flechas
 
-//            UIManager.put("TableHeader.font", new Font("Fira Code Medium", Font.PLAIN, 15));
-//            UIManager.put("TableHeader.foreground", Color.WHITE); // Texto blanco
-//            UIManager.put("TableHeader.background", new Color(120, 144, 156)); // Azul Material Desig
-//            UIManager.put("Table.arc", 90); // Bordes redondeados
-//            UIManager.put("Table.showHorizontalLines", false); // Oculta líneas horizontales
-//            UIManager.put("Table.showVerticalLines", false);   // Oculta líneas verticales
-//            UIManager.put("Table.intercellSpacing", new java.awt.Dimension(0, 0)); // Espaciado entre celdas
-//            UIManager.put("Table.selectionBackground", "#D9E6F2"); // Color de fondo al seleccionar
-//            UIManager.put("Table.selectionForeground", "#000000"); // Color del texto seleccionado
+            UIManager.put("TableHeader.font", new Font("Fira Code Medium", Font.PLAIN, 15));
+            UIManager.put("TableHeader.foreground", Color.WHITE); // Texto blanco
+            UIManager.put("TableHeader.background", new Color(120, 144, 156)); // Azul Material Desig
+            UIManager.put("Table.arc", 90); // Bordes redondeados
+            UIManager.put("Table.showHorizontalLines", false); // Oculta líneas horizontales
+            UIManager.put("Table.showVerticalLines", false);   // Oculta líneas verticales
+            UIManager.put("Table.intercellSpacing", new java.awt.Dimension(0, 0)); // Espaciado entre celdas
+            UIManager.put("Table.selectionBackground", "#D9E6F2"); // Color de fondo al seleccionar
+            UIManager.put("Table.selectionForeground", "#000000"); // Color del texto seleccionado
 //            UIManager.put("Table.background", "#FFFFFF"); // Fondo general de la tabla
 //            UIManager.put("Table.foreground", "#333333"); // Color del texto general
         } catch (UnsupportedLookAndFeelException ex) {

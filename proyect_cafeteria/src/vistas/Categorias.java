@@ -6,6 +6,7 @@ package vistas;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.icons.FlatSearchIcon;
+import java.awt.CardLayout;
 import static java.awt.SystemColor.info;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -22,6 +23,8 @@ public class Categorias extends javax.swing.JPanel {
     public Categorias() {
         initComponents();
         controlador.listarCategorias();
+        boton_actualizar.setVisible(false);
+        controlador.ocultar();
     }
 
     @SuppressWarnings("unchecked")
@@ -40,6 +43,7 @@ public class Categorias extends javax.swing.JPanel {
         txt_id = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         m_nombre_campo = new javax.swing.JLabel();
+        boton_actualizar = new javax.swing.JButton();
         contenido_table = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
@@ -111,6 +115,16 @@ public class Categorias extends javax.swing.JPanel {
 
         txt_nombre.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         txt_nombre.setForeground(new java.awt.Color(94, 83, 82));
+        txt_nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_nombreActionPerformed(evt);
+            }
+        });
+        txt_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_nombreKeyReleased(evt);
+            }
+        });
         jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 250, 36));
         txt_nombre.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Nombre");
 
@@ -129,6 +143,20 @@ public class Categorias extends javax.swing.JPanel {
         m_nombre_campo.setText("Rellena el campo");
         jPanel1.add(m_nombre_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
 
+        boton_actualizar.setBackground(new java.awt.Color(198, 124, 78));
+        boton_actualizar.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
+        boton_actualizar.setForeground(new java.awt.Color(249, 242, 237));
+        boton_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-añadir-25.png"))); // NOI18N
+        boton_actualizar.setText("Actualizar");
+        boton_actualizar.setBorderPainted(false);
+        boton_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_actualizarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(boton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 153, 45));
+
         card_layout_categoria.add(jPanel1, "card2");
 
         add(card_layout_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 160, 370, 360));
@@ -144,6 +172,7 @@ public class Categorias extends javax.swing.JPanel {
         jSeparator2.setForeground(new java.awt.Color(198, 124, 78));
         contenido_table.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 510, 10));
 
+        no_hay_categorias.setBackground(new java.awt.Color(255, 255, 255));
         no_hay_categorias.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/no hay categoria.png"))); // NOI18N
@@ -252,10 +281,28 @@ public class Categorias extends javax.swing.JPanel {
 
     private void tabla_categoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_categoriaMouseClicked
         controlador.eliminar();
+        controlador.columSelect();
     }//GEN-LAST:event_tabla_categoriaMouseClicked
+
+    private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
+        if (controlador.camposVacios()) {
+            txt_nombre.requestFocus();
+        }
+    }//GEN-LAST:event_txt_nombreActionPerformed
+
+    private void txt_nombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombreKeyReleased
+        if (!controlador.camposVacios()) {
+
+        }
+    }//GEN-LAST:event_txt_nombreKeyReleased
+
+    private void boton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_actualizarActionPerformed
+        controlador.actualizar();
+    }//GEN-LAST:event_boton_actualizarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton boton_actualizar;
     private javax.swing.JButton boton_agregar;
     private javax.swing.JButton boton_cancelar;
     private javax.swing.JButton boton_nueva_categoria;
@@ -281,6 +328,14 @@ public class Categorias extends javax.swing.JPanel {
     private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_nombre;
     // End of variables declaration//GEN-END:variables
+
+    
+    public JTextField getTxt_id(){
+        return txt_id;
+    }
+    public JButton getBoton_update() {
+        return boton_actualizar;
+    }
 
     public JButton getBoton_agregar() {
         return boton_agregar;
@@ -312,5 +367,9 @@ public class Categorias extends javax.swing.JPanel {
 
     public JPanel getNohay() {
         return no_hay_categorias;
+    }
+
+    public JLabel getMensaje() {
+        return m_nombre_campo;
     }
 }
