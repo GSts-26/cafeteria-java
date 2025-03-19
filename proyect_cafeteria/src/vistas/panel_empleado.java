@@ -481,7 +481,7 @@ public class panel_empleado extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabla_empleado;
     private javax.swing.JPanel advertencia;
-    private javax.swing.JButton boton_actualizar;
+    public javax.swing.JButton boton_actualizar;
     private javax.swing.JButton boton_agregar;
     private javax.swing.JButton boton_cancelar;
     private javax.swing.JPanel card_layout_empleado;

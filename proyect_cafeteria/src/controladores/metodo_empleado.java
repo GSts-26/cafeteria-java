@@ -26,8 +26,8 @@ public class metodo_empleado {
     public metodo_empleado(panel_empleado vista_empleado) {
         this.empleado = vista_empleado;
     }
-
     public void agregar_empleado() {
+    
         cedula = empleado.getTxt_cedula();
         nombre = empleado.getTxt_nombre();
         apellido = empleado.getTxt_apellido();

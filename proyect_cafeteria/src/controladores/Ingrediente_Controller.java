@@ -35,7 +35,7 @@ public class Ingrediente_Controller {
     public void ingresar() {
         Ingrediente ingrediente = new Ingrediente(vista.txtNombre.getText(),(int) vista.txtcalorias.getValue(),(int)vista.txtCarbo.getValue(),(int)vista.txtAzucar.getValue(),(int)vista.txtproteinas.getValue());;
         IngredienteDAO.insertar(ingrediente);
-        JOptionPane.showMessageDialog(null, "Producto Ingresado");
+        JOptionPane.showMessageDialog(null, "Ingrediente Ingresado");
         mostrar();
     }
     

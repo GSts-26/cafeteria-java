@@ -49,6 +49,7 @@ public class productoController {
                 , ingredientes);
         productoDAO.insertar(producto);
         JOptionPane.showMessageDialog(null, "Producto Ingresado");
+       
         mostrar();
     }
     
