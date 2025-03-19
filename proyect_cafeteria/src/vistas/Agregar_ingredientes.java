@@ -85,6 +85,11 @@ public class Agregar_ingredientes extends javax.swing.JDialog {
         boton_agregar_ingrediente.setText("Agregar ingrediente");
         boton_agregar_ingrediente.setBorderPainted(false);
         boton_agregar_ingrediente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_agregar_ingrediente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_agregar_ingredienteActionPerformed(evt);
+            }
+        });
 
         txt_cantidad_nutricional.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         txt_cantidad_nutricional.setForeground(new java.awt.Color(102, 102, 102));
@@ -104,12 +109,12 @@ public class Agregar_ingredientes extends javax.swing.JDialog {
         ms_cantidad_nutricional_campo.setText("Rellena el campo");
 
         ms_nombre_ingrediente_dato.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
-        ms_nombre_ingrediente_dato.setForeground(new java.awt.Color(255, 102, 102));
+        ms_nombre_ingrediente_dato.setForeground(new java.awt.Color(198, 124, 78));
         ms_nombre_ingrediente_dato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
         ms_nombre_ingrediente_dato.setText("Dato no admitido");
 
         ms_nombre_ingrediente_campo.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
-        ms_nombre_ingrediente_campo.setForeground(new java.awt.Color(255, 102, 102));
+        ms_nombre_ingrediente_campo.setForeground(new java.awt.Color(198, 124, 78));
         ms_nombre_ingrediente_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
         ms_nombre_ingrediente_campo.setText("Rellena el campo");
 
@@ -141,9 +146,9 @@ public class Agregar_ingredientes extends javax.swing.JDialog {
                                 .addComponent(txt_cantidad_nutricional, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12)
                                 .addComponent(jLabel3))
-                            .addComponent(combo_nutrientes, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel4)))
+                            .addComponent(jLabel4)
+                            .addComponent(combo_nutrientes, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(txt_nombre_ingrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -162,34 +167,32 @@ public class Agregar_ingredientes extends javax.swing.JDialog {
                 .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txt_nombre_ingrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(combo_nutrientes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_cantidad_nutricional, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(jLabel3)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ms_cantidad_nutricional_dato)
-                            .addComponent(ms_cantidad_nutricional_campo))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(boton_agregar_ingrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(boton_agregar_info_nutricional, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32))
+                    .addComponent(txt_nombre_ingrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ms_nombre_ingrediente_dato)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ms_nombre_ingrediente_campo)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(ms_nombre_ingrediente_campo)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(combo_nutrientes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_cantidad_nutricional, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ms_cantidad_nutricional_dato)
+                    .addComponent(ms_cantidad_nutricional_campo))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(boton_agregar_ingrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boton_agregar_info_nutricional, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
         );
 
         txt_nombre_ingrediente.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Nombre");
@@ -199,6 +202,10 @@ public class Agregar_ingredientes extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void boton_agregar_ingredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_agregar_ingredienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_agregar_ingredienteActionPerformed
 
     public static void main(String args[]) {
         FlatLightLaf.setup();

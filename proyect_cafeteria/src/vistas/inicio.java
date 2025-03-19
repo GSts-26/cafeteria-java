@@ -16,6 +16,7 @@ public class inicio extends javax.swing.JFrame {
     CardLayout Vista;
     Clientes vistaClientes = new Clientes();
     panel_empleado vistaEmpleado = new panel_empleado();
+    panel_productos vistaProductos = new panel_productos();
     Categorias vistaCategoria = new Categorias();
 
     public inicio() {
@@ -355,6 +356,10 @@ public class inicio extends javax.swing.JFrame {
 
     private void productos3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productos3ActionPerformed
 
+        Contenido.add(vistaProductos, "productos");
+        Vista.show(Contenido, "productos");
+        this.repaint();
+        this.revalidate();
     }//GEN-LAST:event_productos3ActionPerformed
 
     private void categoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriasActionPerformed
@@ -400,6 +405,7 @@ public class inicio extends javax.swing.JFrame {
             UIManager.put("Component.arc", 25);
             UIManager.put("TextComponent.arc", 25);
             UIManager.put("ComboBox.arc", 90);
+            UIManager.put("Spinner.arrowButtonSize", 0);
 
             UIManager.put("ComboBox.buttonArrowColor", new Color(0, 122, 255)); // Color azul de las flechas
 
