@@ -8,6 +8,10 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import controladores.metodo_empleado;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JPanel;
+import javax.swing.JTable;
 
 public class panel_empleado extends javax.swing.JPanel {
 
@@ -293,7 +297,7 @@ public class panel_empleado extends javax.swing.JPanel {
 
         jLabel13.setFont(new java.awt.Font("Sora", 1, 28)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(94, 83, 82));
-        jLabel13.setText("Agrega Un Empleado");
+        jLabel13.setText("No hay empleados");
 
         jLabel14.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(94, 83, 82));
@@ -305,10 +309,6 @@ public class panel_empleado extends javax.swing.JPanel {
         advertencia.setLayout(advertenciaLayout);
         advertenciaLayout.setHorizontalGroup(
             advertenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, advertenciaLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel13)
-                .addGap(109, 109, 109))
             .addGroup(advertenciaLayout.createSequentialGroup()
                 .addGroup(advertenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(advertenciaLayout.createSequentialGroup()
@@ -316,7 +316,10 @@ public class panel_empleado extends javax.swing.JPanel {
                         .addComponent(jLabel15))
                     .addGroup(advertenciaLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(jLabel14)))
+                        .addComponent(jLabel14))
+                    .addGroup(advertenciaLayout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addComponent(jLabel13)))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         advertenciaLayout.setVerticalGroup(
@@ -331,7 +334,7 @@ public class panel_empleado extends javax.swing.JPanel {
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
-        contenido_table.add(advertencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 540, 270));
+        contenido_table.add(advertencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 540, 270));
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
@@ -370,7 +373,7 @@ public class panel_empleado extends javax.swing.JPanel {
         ///
         //T_productos.setBorder(new MatteBorder(1, 0, 0, 0, Color.decode("0xECECEC")));
 
-        contenido_table.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 560, 430));
+        contenido_table.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 570, 430));
 
         info.setBackground(new java.awt.Color(198, 124, 78));
         info.setForeground(new java.awt.Color(255, 255, 255));
@@ -518,95 +521,108 @@ public class panel_empleado extends javax.swing.JPanel {
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txt_telefono;
     // End of variables declaration//GEN-END:variables
-public JDateChooser getFecha_nacimiento() {
-        return fecha_nacimiento;
-    }
 
-    public String getTxt_filtradoStr() {
-        return txt_filtrado.getText();
-    }
-
-    public JLabel getlabelCount() {
-        return numero_empleados;
-    }
-
-    public String getGenero() {
-        return genero.getSelectedItem().toString();
-    }
-
-    public String getTxt_apellido() {
-        return txt_apellido.getText().trim();
-    }
-
-    public long getTxt_cedula() {
-        return Long.parseLong(txt_cedula.getText());
-    }
-
-    public String getTxt_cedulaStr() {
-        return txt_cedula.getText();
-    }
-
-    public String getTxt_telStr() {
-        return txt_telefono.getText().trim();
-    }
-
-    public String getTxt_correo() {
-        return txt_correo.getText().trim();
-    }
-
-    public String getTxt_direccion() {
-        return txt_direccion.getText().trim();
-    }
-
-    public String getTxt_nombre() {
-        return txt_nombre.getText().trim();
-    }
-
-    public long getTxt_telefono() {
-        return Long.parseLong(txt_telefono.getText());
-    }
-
-    public javax.swing.JTable getTabla_empleado() {
+   public String getGenero(){
+       return genero.getSelectedItem().toString();
+   }
+    public JTable getTabla_empleado() {
         return Tabla_empleado;
     }
 
-    public javax.swing.JPanel getadv() {
+    public JPanel getAdvertencia() {
         return advertencia;
     }
 
-    public JLabel getm10tel_dato() {
+    public JButton getBoton_actualizar() {
+        return boton_actualizar;
+    }
+
+    public JButton getBoton_agregar() {
+        return boton_agregar;
+    }
+
+    public JButton getBoton_cancelar() {
+        return boton_cancelar;
+    }
+
+    public JPanel getCard_layout_empleado() {
+        return card_layout_empleado;
+    }
+
+    public JPanel getContenido_table() {
+        return contenido_table;
+    }
+
+    public JDateChooser getFecha_nacimiento() {
+        return fecha_nacimiento;
+    }
+
+    public JLabel getM10telefono_dato() {
         return m10telefono_dato;
     }
 
-    public JLabel getm2ced_dato() {
-        return m2cedula_dato;
-    }
-
-    public JLabel getm11correo_campo() {
+    public JLabel getM11correo_campo() {
         return m11correo_campo;
     }
 
-    public JLabel getm13nacimiento_campo() {
+    public JLabel getM13fechanacimiento_campo() {
         return m13fechanacimiento_campo;
     }
 
-    public JLabel getm1ced_campo() {
+    public JLabel getM1cedula_campo() {
         return m1cedula_campo;
     }
 
-    public JLabel getm4nomb_campo() {
+    public JLabel getM2cedula_dato() {
+        return m2cedula_dato;
+    }
+
+    public JLabel getM4nombre_campo() {
         return m4nombre_campo;
     }
 
-    public JLabel getm5apell_campo() {
+    public JLabel getM5apellido_campo() {
         return m5apellido_campo;
     }
 
-    public JLabel getm7direccion_campo() {
+    public JLabel getM7direccion_campo() {
         return m7direccion_campo;
     }
 
-    public JLabel getm9tel_campo() {
+    public JLabel getM9telefono_campo() {
         return m9telefono_campo;
     }
+
+    public JLabel getNumero_empleados() {
+        return numero_empleados;
+    }
+
+    public JTextField getTxt_apellido() {
+        return txt_apellido;
+    }
+
+    public JTextField getTxt_cedula() {
+        return txt_cedula;
+    }
+
+    public JTextField getTxt_correo() {
+        return txt_correo;
+    }
+
+    public JTextField getTxt_direccion() {
+        return txt_direccion;
+    }
+
+    public JTextField getTxt_filtrado() {
+        return txt_filtrado;
+    }
+
+    public JTextField getTxt_nombre() {
+        return txt_nombre;
+    }
+
+    public JTextField getTxt_telefono() {
+        return txt_telefono;
+    }
+
 }

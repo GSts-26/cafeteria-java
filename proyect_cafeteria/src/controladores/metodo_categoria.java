@@ -3,7 +3,7 @@ package controladores;
 
 import vistas.Categorias;
 import java.sql.*;
-import modelos.Bd.conexion;
+import Modelo.bd.conexion;
 import javax.swing.JOptionPane;
 
 public class metodo_categoria {

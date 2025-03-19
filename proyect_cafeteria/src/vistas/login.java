@@ -1,6 +1,6 @@
 package vistas;
 
-import modelos.Bd.conexion;
+import Modelo.bd.conexion;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Color;

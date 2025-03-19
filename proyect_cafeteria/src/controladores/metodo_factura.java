@@ -2,7 +2,7 @@ package controladores;
 
 import vistas.Panel_factura;
 import java.sql.*;
-import modelos.Bd.conexion;
+import Modelo.bd.conexion;
 
 public class metodo_factura {
 
