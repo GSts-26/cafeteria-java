@@ -18,6 +18,7 @@ public class inicio extends javax.swing.JFrame {
     panel_empleado vistaEmpleado = new panel_empleado();
     panel_productos vistaProductos = new panel_productos();
     Categorias vistaCategoria = new Categorias();
+    Ingredientes vistaIngredientes = new Ingredientes();
 
     public inicio() {
         initComponents();
@@ -337,6 +338,7 @@ public class inicio extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActionPerformed
@@ -352,6 +354,10 @@ public class inicio extends javax.swing.JFrame {
 
     private void productos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productos2ActionPerformed
 
+        Contenido.add(vistaIngredientes, "ingredientes");
+        Vista.show(Contenido, "ingredientes");
+        this.repaint();
+        this.revalidate();
     }//GEN-LAST:event_productos2ActionPerformed
 
     private void productos3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productos3ActionPerformed

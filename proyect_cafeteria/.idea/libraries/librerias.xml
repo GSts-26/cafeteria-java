@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="librerias">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/librerias/flatlaf-3.5.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/librerias/slf4j-api-2.0.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/librerias/jcalendar-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/librerias/HikariCP-5.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

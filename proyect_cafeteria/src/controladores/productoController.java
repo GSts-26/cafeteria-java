@@ -10,7 +10,10 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
+import modelos.DAO.DaoIngredienteImpl;
 import modelos.DAO.DaoProductoImpl;
+import modelos.Entidades.Ingrediente;
 import modelos.Entidades.producto;
 import vistas.panel_productos;
 
@@ -22,20 +25,28 @@ public class productoController {
 
     private final panel_productos vista;
     private DaoProductoImpl productoDAO;
+    private DaoIngredienteImpl IngredienteDAO;
+
     private DefaultTableModel modeloProductos;
+    private DefaultTableModel modeloingredientes;
     private int ProductosContador;
+
     private List<producto> productos = new ArrayList<>();
-    private List<Integer> ingredientes = new ArrayList<>();
+    //private List<Integer> ingredientes = new ArrayList<>();
+
     JButton boton = new JButton();
 
     public productoController(panel_productos vista) {
         this.vista = vista;
         this.productoDAO = new DaoProductoImpl();
+        this.IngredienteDAO = new DaoIngredienteImpl();
         this.ProductosContador = 0;
+
     }
 
-    public void ingresar() {
-        producto producto = new producto(vista.txtprecio.getText(), (int) vista.txt_categoria.getSelectedItem(),vista.txtDescripcion.getText(), (Integer.parseInt(vista.txtprecio.getText())), ingredientes);
+    public void ingresar(ArrayList<Integer> ingredientes) {
+        producto producto = new producto(vista.txtprecio.getText(),Integer.parseInt(vista.txt_categoria.getSelectedItem().toString()), vista.txtDescripcion.getText(), (Integer.parseInt(vista.txtprecio.getText())),Integer.parseInt(vista.txtCantidad.getValue().toString()),Integer.parseInt(vista.txtStock.getValue().toString())
+                , ingredientes);
         productoDAO.insertar(producto);
         JOptionPane.showMessageDialog(null, "Producto Ingresado");
         mostrar();
@@ -47,7 +58,7 @@ public class productoController {
     boton.putClientProperty(FlatClientProperties.STYLE, "arc: 50");
     modeloProductos.setRowCount(0);
     ProductosContador = 0;
-    List<producto> productos = productoDAO.listar();
+     productos = productoDAO.listar();
     if (productos.isEmpty()) {
         vista.no_hay_productos.setVisible(true);
         System.out.println("No hay productos en la base de datos.");
@@ -58,10 +69,11 @@ public class productoController {
             modeloProductos.addRow(new Object[]{
                 Producto.getId(),
                 Producto.getNombre(),
-                Producto.getCategorias(),
+                Producto.getCategoria(),
+                    Producto.getCantidad(),
+                    Producto.getStock(),
                 Producto.getDescripcion(),
                 Producto.getPrecio(),
-                Producto.getIdIngredientes(),
                 boton
             });
         }
@@ -81,4 +93,17 @@ public class productoController {
     }
 }
 
+    public void rellenar_Combo_Ingredientes(){
+        vista.comboIngredientes.removeAllItems();
+        IngredienteDAO.listar().forEach(ingrediente -> {vista.comboIngredientes.addItem(ingrediente);});
+    }
+    public void agregar_Ingredientes(){
+        modeloingredientes = (DefaultTableModel) vista.T_ingredientes.getModel();
+        Ingrediente sele = (Ingrediente) vista.comboIngredientes.getSelectedItem();
+        modeloingredientes.addRow(new Object[]{
+                sele.getId(),
+                sele.getNombre(),
+                boton
+        });
+    }
 }

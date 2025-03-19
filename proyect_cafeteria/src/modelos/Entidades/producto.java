@@ -4,16 +4,35 @@
  */
 package modelos.Entidades;
 
+import java.sql.Array;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class producto {
     private int id;
     private String nombre;
     private int categoria;
-    private String Descripcion; 
+
+    public producto(int id, String nombre, int categoria, String descripcion, double precio, int cantidad, int stock) {
+        this.id = id;
+        this.nombre = nombre;
+        this.categoria = categoria;
+        Descripcion = descripcion;
+        this.precio = precio;
+        this.cantidad = cantidad;
+        this.stock = stock;
+    }
+
+    private String Descripcion;
     private double precio;
-    private List<Integer> idIngredientes;
+    private int cantidad;
+    private int stock;
+    private ArrayList<Integer> idIngredientes;
+
+
+
+
 
     public int getId() {
         return id;
@@ -31,20 +50,20 @@ public class producto {
         this.nombre = nombre;
     }
 
-    public int getCategorias() {
+    public int getCategoria() {
         return categoria;
     }
 
-    public void setCategorias(int categorias) {
-        this.categoria = categorias;
+    public void setCategoria(int categoria) {
+        this.categoria = categoria;
     }
 
     public String getDescripcion() {
         return Descripcion;
     }
 
-    public void setDescripcion(String Descripcion) {
-        this.Descripcion = Descripcion;
+    public void setDescripcion(String descripcion) {
+        Descripcion = descripcion;
     }
 
     public double getPrecio() {
@@ -55,29 +74,45 @@ public class producto {
         this.precio = precio;
     }
 
-    public List<Integer> getIdIngredientes() {
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public ArrayList<Integer> getIdIngredientes() {
         return idIngredientes;
     }
 
-    public void setIdIngredientes(List<Integer> idIngredientes) {
+    public void setIdIngredientes(ArrayList<Integer> idIngredientes) {
         this.idIngredientes = idIngredientes;
     }
 
-    public producto(int id, String nombre, int categorias, String Descripcion, double precio, List<Integer> idIngredientes) {
+
+
+    public producto(String nombre, int categoria, String descripcion, double precio, int cantidad, int stock, ArrayList<Integer> idIngredientes) {
         this.id = id;
         this.nombre = nombre;
-        this.categoria = categorias;
-        this.Descripcion = Descripcion;
+        this.categoria = categoria;
+        Descripcion = descripcion;
         this.precio = precio;
+        this.cantidad = cantidad;
+        this.stock = stock;
         this.idIngredientes = idIngredientes;
     }
-    public producto(String nombre, int categorias, String Descripcion, double precio, List<Integer> idIngredientes) {
-        this.id = id;
-        this.nombre = nombre;
-        this.categoria = categorias;
-        this.Descripcion = Descripcion;
-        this.precio = precio;
-        this.idIngredientes = idIngredientes;
-    }
+
+
+
+
 
 }

@@ -73,4 +73,17 @@ public class Ingrediente {
         this.proteinas = proteinas;
         this.azucar = azucar;
     }
+    public Ingrediente( String nombre, int calorias, int carbohidratos, int proteinas, int azucar) {
+        this.id = id;
+        this.nombre = nombre;
+        this.calorias = calorias;
+        this.carbohidratos = carbohidratos;
+        this.proteinas = proteinas;
+        this.azucar = azucar;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
 }

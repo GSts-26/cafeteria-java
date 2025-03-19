@@ -54,7 +54,7 @@ public class Controller_cliente {
                 "arc: 50");
         modeloClientes.setRowCount(0);
         clientesContador = 0;
-        List<Cliente> clientes = clienteDAO.listar();
+        clientes = clienteDAO.listar();
         if (clientes.isEmpty()) {
             vista.getAdvertencia().setVisible(true);
             System.out.println("No hay clientes en la base de datos.");

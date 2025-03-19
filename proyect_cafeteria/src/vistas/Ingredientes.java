@@ -5,17 +5,17 @@
 package vistas;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.icons.FlatSearchIcon;
+import controladores.Ingrediente_Controller;
 /**
  *
  * @author Admin
  */
 public class Ingredientes extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Ingredientes
-     */
+    Ingrediente_Controller controlador = new Ingrediente_Controller(this);
     public Ingredientes() {
         initComponents();
+        controlador.mostrar();
     }
 
     /**
@@ -37,26 +37,26 @@ public class Ingredientes extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        T_Clientes = new javax.swing.JTable();
+        T_Ingrediente = new javax.swing.JTable();
         info = new javax.swing.JPanel();
-        numero = new javax.swing.JLabel();
+        contadornumero = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        txtcedula = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        txtcalorias = new javax.swing.JSpinner();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
-        jSpinner3 = new javax.swing.JSpinner();
+        txtCarbo = new javax.swing.JSpinner();
+        txtAzucar = new javax.swing.JSpinner();
         jLabel11 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jSpinner4 = new javax.swing.JSpinner();
+        txtproteinas = new javax.swing.JSpinner();
         boton_crear = new javax.swing.JButton();
         boton_crear2 = new javax.swing.JButton();
 
@@ -88,7 +88,7 @@ public class Ingredientes extends javax.swing.JPanel {
         jLabel13.setFont(new java.awt.Font("Sora", 1, 28)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(94, 83, 82));
         jLabel13.setText("Agrega Un Ingrediente");
-        advertencia.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+        advertencia.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(94, 83, 82));
@@ -98,12 +98,12 @@ public class Ingredientes extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-ingredients-100.png"))); // NOI18N
         advertencia.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, -1));
 
-        contenido_table.add(advertencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 370, 390));
+        contenido_table.add(advertencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 350, 390));
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        T_Clientes.setForeground(new java.awt.Color(94, 83, 82));
-        T_Clientes.setModel(new javax.swing.table.DefaultTableModel(
+        T_Ingrediente.setForeground(new java.awt.Color(94, 83, 82));
+        T_Ingrediente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -119,25 +119,25 @@ public class Ingredientes extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        T_Clientes.setToolTipText("");
-        T_Clientes.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        T_Clientes.setFocusable(false);
-        T_Clientes.setRowHeight(35);
-        T_Clientes.setSelectionBackground(new java.awt.Color(254, 240, 225));
-        T_Clientes.setSelectionForeground(new java.awt.Color(60, 60, 60));
-        T_Clientes.getTableHeader().setResizingAllowed(false);
-        T_Clientes.getTableHeader().setReorderingAllowed(false);
-        T_Clientes.addMouseListener(new java.awt.event.MouseAdapter() {
+        T_Ingrediente.setToolTipText("");
+        T_Ingrediente.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        T_Ingrediente.setFocusable(false);
+        T_Ingrediente.setRowHeight(35);
+        T_Ingrediente.setSelectionBackground(new java.awt.Color(254, 240, 225));
+        T_Ingrediente.setSelectionForeground(new java.awt.Color(60, 60, 60));
+        T_Ingrediente.getTableHeader().setResizingAllowed(false);
+        T_Ingrediente.getTableHeader().setReorderingAllowed(false);
+        T_Ingrediente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                T_ClientesMouseClicked(evt);
+                T_IngredienteMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(T_Clientes);
-        if (T_Clientes.getColumnModel().getColumnCount() > 0) {
-            T_Clientes.getColumnModel().getColumn(0).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(1).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(1).setPreferredWidth(200);
-            T_Clientes.getColumnModel().getColumn(2).setPreferredWidth(100);
+        jScrollPane1.setViewportView(T_Ingrediente);
+        if (T_Ingrediente.getColumnModel().getColumnCount() > 0) {
+            T_Ingrediente.getColumnModel().getColumn(0).setResizable(false);
+            T_Ingrediente.getColumnModel().getColumn(1).setResizable(false);
+            T_Ingrediente.getColumnModel().getColumn(1).setPreferredWidth(200);
+            T_Ingrediente.getColumnModel().getColumn(2).setPreferredWidth(100);
         }
         ///
         //T_productos.setBorder(new MatteBorder(1, 0, 0, 0, Color.decode("0xECECEC")));
@@ -147,9 +147,9 @@ public class Ingredientes extends javax.swing.JPanel {
         info.setBackground(new java.awt.Color(198, 124, 78));
         info.setForeground(new java.awt.Color(255, 255, 255));
 
-        numero.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        numero.setForeground(new java.awt.Color(255, 255, 255));
-        numero.setText("0");
+        contadornumero.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        contadornumero.setForeground(new java.awt.Color(255, 255, 255));
+        contadornumero.setText("0");
 
         javax.swing.GroupLayout infoLayout = new javax.swing.GroupLayout(info);
         info.setLayout(infoLayout);
@@ -157,12 +157,12 @@ public class Ingredientes extends javax.swing.JPanel {
             infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(infoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(numero)
+                .addComponent(contadornumero)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         infoLayout.setVerticalGroup(
             infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(numero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(contadornumero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         contenido_table.add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, 25));
@@ -203,11 +203,11 @@ public class Ingredientes extends javax.swing.JPanel {
         jLabel7.setForeground(new java.awt.Color(94, 83, 82));
         jLabel7.setText("Nombre");
 
-        txtcedula.setFont(new java.awt.Font("Sora", 0, 13)); // NOI18N
-        txtcedula.setForeground(new java.awt.Color(94, 83, 82));
-        txtcedula.addActionListener(new java.awt.event.ActionListener() {
+        txtNombre.setFont(new java.awt.Font("Sora", 0, 13)); // NOI18N
+        txtNombre.setForeground(new java.awt.Color(94, 83, 82));
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtcedulaActionPerformed(evt);
+                txtNombreActionPerformed(evt);
             }
         });
 
@@ -242,19 +242,19 @@ public class Ingredientes extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtproteinas, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(jLabel16)
                     .addComponent(jLabel7)
-                    .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jSpinner3, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtAzucar, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtcalorias, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSpinner2, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addComponent(txtCarbo, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -265,29 +265,29 @@ public class Ingredientes extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addComponent(jLabel15)
                 .addGap(5, 5, 5)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtcalorias, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCarbo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtAzucar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtproteinas, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        txtcedula.putClientProperty(FlatClientProperties.STYLE,
+        txtNombre.putClientProperty(FlatClientProperties.STYLE,
             "arc: 12");
 
         boton_crear.setBackground(new java.awt.Color(249, 242, 237));
@@ -390,24 +390,26 @@ public class Ingredientes extends javax.swing.JPanel {
             "arc: 20");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void T_ClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_T_ClientesMouseClicked
+    private void T_IngredienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_T_IngredienteMouseClicked
        
-    }//GEN-LAST:event_T_ClientesMouseClicked
+    }//GEN-LAST:event_T_IngredienteMouseClicked
 
-    private void txtcedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcedulaActionPerformed
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtcedulaActionPerformed
+    }//GEN-LAST:event_txtNombreActionPerformed
 
     private void boton_crear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_crear2ActionPerformed
 
+        controlador.ingresar();
     }//GEN-LAST:event_boton_crear2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable T_Clientes;
-    private javax.swing.JPanel advertencia;
+    public javax.swing.JTable T_Ingrediente;
+    public javax.swing.JPanel advertencia;
     private javax.swing.JButton boton_crear;
     private javax.swing.JButton boton_crear2;
+    public javax.swing.JLabel contadornumero;
     private javax.swing.JPanel contenido_table;
     private javax.swing.JPanel info;
     private javax.swing.JLabel jLabel1;
@@ -430,11 +432,10 @@ public class Ingredientes extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JSpinner jSpinner4;
-    private javax.swing.JLabel numero;
-    public javax.swing.JTextField txtcedula;
+    public javax.swing.JSpinner txtAzucar;
+    public javax.swing.JSpinner txtCarbo;
+    public javax.swing.JTextField txtNombre;
+    public javax.swing.JSpinner txtcalorias;
+    public javax.swing.JSpinner txtproteinas;
     // End of variables declaration//GEN-END:variables
 }
