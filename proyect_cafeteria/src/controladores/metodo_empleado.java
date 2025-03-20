@@ -8,12 +8,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import Modelo.DAO.DAOGeneral;
+import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;
 
 public class metodo_empleado {
 
-    private final panel_empleado vista;
-    private final DAOEmpleadoimpl empleadoDao;
+    private panel_empleado vista;
+    private DAOEmpleadoimpl empleadoDao;
     private DefaultTableModel modeloTabla;
     private List<Empleado> listaEmpleado = new ArrayList<>();
 
@@ -86,6 +87,47 @@ public class metodo_empleado {
             empleadoDao.Eliminar(filaseleccionada);
             listarEmpleado();
 
+        }
+
+    }
+
+    public void rellenar() {
+        if (vista.getTabla_empleado().getSelectedColumn() == 8) {
+
+            modeloTabla = (DefaultTableModel) vista.getTabla_empleado().getModel();
+            int fila = vista.getTabla_empleado().getSelectedRow();
+            long cedula = Long.parseLong(modeloTabla.getValueAt(fila, 0).toString());
+            String nombre = modeloTabla.getValueAt(fila, 1).toString();
+            String apellido = modeloTabla.getValueAt(fila, 2).toString();
+//        Date fecha = (Date) modeloTabla.getValueAt(fila, 3);
+            String genero = modeloTabla.getValueAt(fila, 4).toString();
+            long telefono = Long.parseLong(modeloTabla.getValueAt(fila, 5).toString());
+            String email = modeloTabla.getValueAt(fila, 6).toString();
+            String direccion = modeloTabla.getValueAt(fila, 7).toString();
+//        System.out.println(cedula + "  " + nombre);
+
+            vista.getTxt_cedula().setText(String.valueOf(cedula));
+            vista.getTxt_nombre().setText(nombre);
+//        vistaactualizar.fecha_nacimiento.setDate(fecha);
+        }
+    }
+
+    public void actualizar() {
+        modeloTabla = (DefaultTableModel) vista.getTabla_empleado().getModel();
+        int fila = vista.getTabla_empleado().getSelectedRow();
+        long filaseleccionada = Long.parseLong(modeloTabla.getValueAt(fila, 0).toString());
+        if (vista.getTabla_empleado().getSelectedColumn() == 8) {
+
+            String nombre = vista.getTxt_nombre().getText();
+            Date nacimiento = (Date) vista.getFecha_nacimiento().getDate();
+            String genero = vista.getGenero();
+            long telefono = Long.parseLong(vista.getTxt_telefono().getText());
+            String email = vista.getTxt_correo().getText();
+            String direccion = vista.getTxt_direccion().getText();
+            String apellido = vista.getTxt_apellido().getText();
+
+            Empleado c = new Empleado(filaseleccionada, nombre, nacimiento, genero, telefono, email, direccion, apellido);
+            empleadoDao.Actualizar(c);
         }
 
     }

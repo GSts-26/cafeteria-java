@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import controladores.metodo_empleado;
+import java.awt.CardLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -54,7 +55,6 @@ public class panel_empleado extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        boton_actualizar = new javax.swing.JButton();
         card_layout_empleado = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         txt_cedula = new javax.swing.JTextField();
@@ -75,10 +75,9 @@ public class panel_empleado extends javax.swing.JPanel {
         m13fechanacimiento_campo = new javax.swing.JLabel();
         boton_agregar = new javax.swing.JButton();
         boton_cancelar = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
+        lbl_titulo = new javax.swing.JLabel();
         txt_telefono = new javax.swing.JTextField();
-        txt_filtrado = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        boton_actualizar = new javax.swing.JButton();
         contenido_table = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -90,7 +89,9 @@ public class panel_empleado extends javax.swing.JPanel {
         Tabla_empleado = new javax.swing.JTable();
         info = new javax.swing.JPanel();
         numero_empleados = new javax.swing.JLabel();
+        txt_filtrado = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -98,16 +99,6 @@ public class panel_empleado extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setText("Empleados");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 19, -1, -1));
-
-        boton_actualizar.setBackground(new java.awt.Color(198, 124, 78));
-        boton_actualizar.setFont(new java.awt.Font("Sora", 1, 15)); // NOI18N
-        boton_actualizar.setForeground(new java.awt.Color(249, 242, 237));
-        boton_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Empleado.png"))); // NOI18N
-        boton_actualizar.setText("Actualizar");
-        boton_actualizar.setBorderPainted(false);
-        boton_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        boton_actualizar.setIconTextGap(7);
-        add(boton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 76, -1, 48));
 
         card_layout_empleado.setBackground(new java.awt.Color(204, 255, 255));
         card_layout_empleado.setLayout(new java.awt.CardLayout());
@@ -248,10 +239,10 @@ public class panel_empleado extends javax.swing.JPanel {
         boton_cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel3.add(boton_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 560, 125, 39));
 
-        jLabel8.setFont(new java.awt.Font("Sora", 0, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel8.setText("Nuevo Empleado");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        lbl_titulo.setFont(new java.awt.Font("Sora", 0, 24)); // NOI18N
+        lbl_titulo.setForeground(new java.awt.Color(51, 51, 51));
+        lbl_titulo.setText("Nuevo Empleado");
+        jPanel3.add(lbl_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         txt_telefono.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         txt_telefono.setForeground(new java.awt.Color(102, 102, 102));
@@ -263,26 +254,23 @@ public class panel_empleado extends javax.swing.JPanel {
         jPanel3.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 256, 36));
         txt_telefono.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Telefono");
 
+        boton_actualizar.setBackground(new java.awt.Color(198, 124, 78));
+        boton_actualizar.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
+        boton_actualizar.setForeground(new java.awt.Color(249, 242, 237));
+        boton_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-añadir-25.png"))); // NOI18N
+        boton_actualizar.setText("Actualizar");
+        boton_actualizar.setBorderPainted(false);
+        boton_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_actualizarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(boton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, 150, 39));
+
         card_layout_empleado.add(jPanel3, "card2");
 
         add(card_layout_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 25, 490, 620));
-
-        txt_filtrado.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
-        txt_filtrado.setForeground(new java.awt.Color(153, 153, 153));
-        txt_filtrado.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_filtradoKeyReleased(evt);
-            }
-        });
-        add(txt_filtrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 84, 277, 40));
-        txt_filtrado.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingresa nombre o apellido");
-        txt_filtrado.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSearchIcon());
-
-        jLabel2.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
-        jLabel2.setText("Filtrado de empleados");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 56, -1, -1));
 
         contenido_table.setBackground(new java.awt.Color(255, 255, 255));
         contenido_table.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -400,6 +388,18 @@ public class panel_empleado extends javax.swing.JPanel {
         info.putClientProperty(FlatClientProperties.STYLE,
             "arc: 50");
 
+        txt_filtrado.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        txt_filtrado.setForeground(new java.awt.Color(153, 153, 153));
+        txt_filtrado.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sora", 0, 12))); // NOI18N
+        txt_filtrado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_filtradoKeyReleased(evt);
+            }
+        });
+        contenido_table.add(txt_filtrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 277, 40));
+        txt_filtrado.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingresa nombre o apellido");
+        txt_filtrado.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSearchIcon());
+
         add(contenido_table, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 600, 530));
         contenido_table.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
@@ -408,6 +408,19 @@ public class panel_empleado extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Gestion de empleados");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+
+        jButton1.setBackground(new java.awt.Color(198, 124, 78));
+        jButton1.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(249, 242, 237));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-añadir-25.png"))); // NOI18N
+        jButton1.setText("Nuevo");
+        jButton1.setBorderPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 120, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_agregarActionPerformed
@@ -420,12 +433,18 @@ public class panel_empleado extends javax.swing.JPanel {
         controlador.agregar_empleado();
         limpiar();
 
+
     }//GEN-LAST:event_boton_agregarActionPerformed
 
-   
 
     private void Tabla_empleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_empleadoMouseClicked
         controlador.eliminar();
+//
+        if (Tabla_empleado.getSelectedColumn() == 8) {
+            lbl_titulo.setText("Actualizar Empleado");
+            boton_agregar.setVisible(false);
+            boton_actualizar.setVisible(true);
+        }
     }//GEN-LAST:event_Tabla_empleadoMouseClicked
 
     private void txt_cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cedulaActionPerformed
@@ -480,6 +499,16 @@ public class panel_empleado extends javax.swing.JPanel {
         controlador.listarEmpleado();
     }//GEN-LAST:event_txt_filtradoKeyReleased
 
+    private void boton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_actualizarActionPerformed
+        controlador.actualizar();
+    }//GEN-LAST:event_boton_actualizarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        lbl_titulo.setText("Nuevo Empleado");
+        boton_actualizar.setVisible(false);
+        boton_agregar.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabla_empleado;
@@ -492,17 +521,17 @@ public class panel_empleado extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser fecha_nacimiento;
     private javax.swing.JComboBox<String> genero;
     private javax.swing.JPanel info;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lbl_titulo;
     private javax.swing.JLabel m10telefono_dato;
     private javax.swing.JLabel m11correo_campo;
     private javax.swing.JLabel m13fechanacimiento_campo;
@@ -522,9 +551,14 @@ public class panel_empleado extends javax.swing.JPanel {
     private javax.swing.JTextField txt_telefono;
     // End of variables declaration//GEN-END:variables
 
-   public String getGenero(){
-       return genero.getSelectedItem().toString();
-   }
+    public JLabel get_lbl_titulo() {
+        return lbl_titulo;
+    }
+
+    public String getGenero() {
+        return genero.getSelectedItem().toString();
+    }
+
     public JTable getTabla_empleado() {
         return Tabla_empleado;
     }
