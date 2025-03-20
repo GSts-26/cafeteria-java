@@ -5,13 +5,19 @@ import modelos.Bd.conexion;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
+
 import vistas.panel_informacion_producto;
 import vistas.panel_productos;
 
+
 public class InformacionProducto {
 
+
     List<String> productosIDS = new ArrayList<>();
+
+  
+      
+  
 
     private int totalProteina = 0;
     private int totalazucar = 0;
@@ -30,10 +36,13 @@ public class InformacionProducto {
 
     public void rellenar() {
 
-        JOptionPane.showMessageDialog(null, "En metodo rellenar");
+       
         int fila = product.getTabla_producto().getSelectedRow();
         String nombreP = product.getModelo_Tabla_producto().getValueAt(fila, 1).toString();
         int idP = Integer.parseInt(product.getModelo_Tabla_producto().getValueAt(fila, 0).toString());
+        double precioP = Double.parseDouble(product.getModelo_Tabla_producto().getValueAt(fila, 3).toString());
+        info.setLbl_precio_producto().setText(String.valueOf(precioP));
+
         info.setLbl_nombre_producto().setText(nombreP);
         info.setArea_ingredientes().setText("");
         productosIDS.clear();

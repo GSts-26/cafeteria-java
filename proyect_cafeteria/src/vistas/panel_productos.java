@@ -65,6 +65,11 @@ public class panel_productos extends javax.swing.JPanel {
     private void initComponents() {
 
         AgregarIngredientes = new javax.swing.JDialog();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        comboIngredientes = new javax.swing.JComboBox<>();
+        boton_crear4 = new javax.swing.JButton();
+        boton_crear5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         ms_informacion = new javax.swing.JLabel();
         ms_nuevo_producto = new javax.swing.JLabel();
@@ -117,16 +122,74 @@ public class panel_productos extends javax.swing.JPanel {
         AgregarIngredientes.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         AgregarIngredientes.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
 
+        jLabel17.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel17.setText("Añadir Ingrediente");
+
+        jLabel21.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel21.setText("Selecciona un ingrediente");
+
+        boton_crear4.setBackground(new java.awt.Color(198, 124, 78));
+        boton_crear4.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
+        boton_crear4.setForeground(new java.awt.Color(255, 255, 255));
+        boton_crear4.setText("Agregar Ingrediente");
+        boton_crear4.setBorder(null);
+        boton_crear4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_crear4ActionPerformed(evt);
+            }
+        });
+
+        boton_crear5.setBackground(new java.awt.Color(249, 242, 237));
+        boton_crear5.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
+        boton_crear5.setForeground(new java.awt.Color(198, 124, 78));
+        boton_crear5.setText("Registrar Nuevo");
+        boton_crear5.setBorder(null);
+
         javax.swing.GroupLayout AgregarIngredientesLayout = new javax.swing.GroupLayout(AgregarIngredientes.getContentPane());
         AgregarIngredientes.getContentPane().setLayout(AgregarIngredientesLayout);
         AgregarIngredientesLayout.setHorizontalGroup(
             AgregarIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 356, Short.MAX_VALUE)
+            .addGroup(AgregarIngredientesLayout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(80, 80, 80))
+            .addGroup(AgregarIngredientesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(AgregarIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(comboIngredientes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(boton_crear4, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(AgregarIngredientesLayout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addComponent(boton_crear5, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(AgregarIngredientesLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel17)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         AgregarIngredientesLayout.setVerticalGroup(
             AgregarIngredientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 297, Short.MAX_VALUE)
+            .addGroup(AgregarIngredientesLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(comboIngredientes, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(boton_crear4, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(boton_crear5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
         );
+
+        boton_crear.putClientProperty(FlatClientProperties.STYLE,
+            "arc: 20");
+        boton_crear.putClientProperty(FlatClientProperties.STYLE,
+            "arc: 20");
 
         setBackground(new java.awt.Color(249, 249, 249));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -551,6 +614,11 @@ public class panel_productos extends javax.swing.JPanel {
         this.revalidate();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void boton_crear4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_crear4ActionPerformed
+        controlador.agregar_Ingredientes();
+        AgregarIngredientes.dispose();
+    }//GEN-LAST:event_boton_crear4ActionPerformed
+
     public JTable getTabla_producto() {
         return tabla_producto;
     }
@@ -564,7 +632,10 @@ public class panel_productos extends javax.swing.JPanel {
     private javax.swing.JLabel TxtInfoPrecio;
     private javax.swing.JButton boton_crear;
     private javax.swing.JButton boton_crear2;
+    private javax.swing.JButton boton_crear4;
+    private javax.swing.JButton boton_crear5;
     private javax.swing.JPanel cardProductos;
+    public javax.swing.JComboBox<Object> comboIngredientes;
     public javax.swing.JLabel contar_productos;
     private javax.swing.JPanel crear_cliente;
     private javax.swing.JPanel info;
@@ -576,9 +647,11 @@ public class panel_productos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

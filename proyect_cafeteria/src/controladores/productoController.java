@@ -45,7 +45,7 @@ public class productoController {
     }
 
     public void ingresar(ArrayList<Integer> ingredientes) {
-        producto producto = new producto(vista.txtprecio.getText(),Integer.parseInt(vista.txt_categoria.getSelectedItem().toString()), vista.txtDescripcion.getText(), (Integer.parseInt(vista.txtprecio.getText())),Integer.parseInt(vista.txtCantidad.getValue().toString()),Integer.parseInt(vista.txtStock.getValue().toString())
+        producto producto = new producto(vista.txtNombre.getText(),Integer.parseInt(vista.txt_categoria.getSelectedItem().toString()), vista.txtDescripcion.getText(), (Integer.parseInt(vista.txtprecio.getText())),Integer.parseInt(vista.txtCantidad.getValue().toString()),Integer.parseInt(vista.txtStock.getValue().toString())
                 , ingredientes);
         productoDAO.insertar(producto);
         JOptionPane.showMessageDialog(null, "Producto Ingresado");
