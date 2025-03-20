@@ -294,13 +294,15 @@ public class Ingredientes extends javax.swing.JPanel {
         boton_crear.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         boton_crear.setForeground(new java.awt.Color(198, 124, 78));
         boton_crear.setText("Resetear");
-        boton_crear.setBorder(null);
+        boton_crear.setBorder(boton_crear2.getBorder());
+        boton_crear.setBorderPainted(false);
 
         boton_crear2.setBackground(new java.awt.Color(198, 124, 78));
         boton_crear2.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         boton_crear2.setForeground(new java.awt.Color(255, 255, 255));
         boton_crear2.setText("Crear Ingrediente");
-        boton_crear2.setBorder(null);
+        boton_crear2.setBorder(txtAzucar.getBorder());
+        boton_crear2.setBorderPainted(false);
         boton_crear2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_crear2ActionPerformed(evt);
