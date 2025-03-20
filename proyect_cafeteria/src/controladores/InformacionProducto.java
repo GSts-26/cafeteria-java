@@ -53,11 +53,11 @@ public class InformacionProducto {
 
         if (product.getTabla_producto().getSelectedColumn() == 5) {
             try (Connection cons = conexion.getConnection()) {
-                // Cargar la lista de ingredientes una sola vez y almacenarlos en un mapa
+            
                 Map<Integer, Ingrediente> ingredientesMap = new HashMap<>();
                 daoIngre.listar().forEach(ingrediente -> ingredientesMap.put(ingrediente.getId(), ingrediente));
 
-                // Obtener los IDs de los ingredientes del producto seleccionado
+            
                 String consulta = "SELECT ids_ingrediente FROM producto WHERE id=?";
                 PreparedStatement ps = cons.prepareStatement(consulta);
                 ps.setInt(1, idP);
@@ -71,14 +71,14 @@ public class InformacionProducto {
                             .forEach(productosIDS::add);
                 }
 
-                // Obtener la descripción del producto directamente usando forEach
+            
                 daoproduc.listar().forEach(prods -> {
                     if (idP == prods.getId()) {
                         info.getLbl_descripcion_producto().setText(prods.getDescripcion());
                     }
                 });
 
-                // Procesar los ingredientes usando el mapa y forEach
+                
                 productosIDS.forEach(prod -> {
                     int idIngrente = Integer.parseInt(prod);
                     Ingrediente ingrediente = ingredientesMap.get(idIngrente);
