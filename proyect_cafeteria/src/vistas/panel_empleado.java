@@ -170,56 +170,56 @@ public class panel_empleado extends javax.swing.JPanel {
         jPanel3.add(genero, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, -1, 36));
 
         m2cedula_dato.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
-        m2cedula_dato.setForeground(new java.awt.Color(255, 102, 102));
-        m2cedula_dato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
+        m2cedula_dato.setForeground(new java.awt.Color(198, 124, 78));
+        m2cedula_dato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m2cedula_dato.setText("Dato no admitido");
         jPanel3.add(m2cedula_dato, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 128, -1, -1));
 
         m1cedula_campo.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
-        m1cedula_campo.setForeground(new java.awt.Color(255, 102, 102));
-        m1cedula_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
+        m1cedula_campo.setForeground(new java.awt.Color(198, 124, 78));
+        m1cedula_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m1cedula_campo.setText("Rellena el campo");
         jPanel3.add(m1cedula_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 128, -1, -1));
 
         m4nombre_campo.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
-        m4nombre_campo.setForeground(new java.awt.Color(255, 102, 102));
-        m4nombre_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
+        m4nombre_campo.setForeground(new java.awt.Color(198, 124, 78));
+        m4nombre_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m4nombre_campo.setText("Rellena el campo");
         jPanel3.add(m4nombre_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, -1));
 
         m5apellido_campo.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
-        m5apellido_campo.setForeground(new java.awt.Color(255, 102, 102));
-        m5apellido_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
+        m5apellido_campo.setForeground(new java.awt.Color(198, 124, 78));
+        m5apellido_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m5apellido_campo.setText("Rellena el campo");
         jPanel3.add(m5apellido_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
         m7direccion_campo.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
-        m7direccion_campo.setForeground(new java.awt.Color(255, 102, 102));
-        m7direccion_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
+        m7direccion_campo.setForeground(new java.awt.Color(198, 124, 78));
+        m7direccion_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m7direccion_campo.setText("Rellena el campo");
         jPanel3.add(m7direccion_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, -1, -1));
 
         m10telefono_dato.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
-        m10telefono_dato.setForeground(new java.awt.Color(255, 102, 102));
-        m10telefono_dato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
+        m10telefono_dato.setForeground(new java.awt.Color(198, 124, 78));
+        m10telefono_dato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m10telefono_dato.setText("Dato no admitido");
         jPanel3.add(m10telefono_dato, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
 
         m9telefono_campo.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
-        m9telefono_campo.setForeground(new java.awt.Color(255, 102, 102));
-        m9telefono_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
+        m9telefono_campo.setForeground(new java.awt.Color(198, 124, 78));
+        m9telefono_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m9telefono_campo.setText("Rellena el campo");
         jPanel3.add(m9telefono_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
 
         m11correo_campo.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
-        m11correo_campo.setForeground(new java.awt.Color(255, 102, 102));
-        m11correo_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
+        m11correo_campo.setForeground(new java.awt.Color(198, 124, 78));
+        m11correo_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m11correo_campo.setText("Rellena el campo");
         jPanel3.add(m11correo_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, -1, 20));
 
         m13fechanacimiento_campo.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
-        m13fechanacimiento_campo.setForeground(new java.awt.Color(255, 102, 102));
-        m13fechanacimiento_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
+        m13fechanacimiento_campo.setForeground(new java.awt.Color(198, 124, 78));
+        m13fechanacimiento_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m13fechanacimiento_campo.setText("Rellena el campo");
         jPanel3.add(m13fechanacimiento_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, -1, -1));
 

@@ -244,10 +244,10 @@
                   <Font name="JetBrains Mono" size="12" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="66" green="66" red="ff" type="rgb"/>
+                  <Color blue="4e" green="7c" red="c6" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenes/Info1.png"/>
+                  <Image iconType="3" name="/imagenes/icons8-info-22 (1).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Dato no admitido"/>
               </Properties>
@@ -263,10 +263,10 @@
                   <Font name="JetBrains Mono" size="12" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="66" green="66" red="ff" type="rgb"/>
+                  <Color blue="4e" green="7c" red="c6" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenes/Info1.png"/>
+                  <Image iconType="3" name="/imagenes/icons8-info-22 (1).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Rellena el campo"/>
               </Properties>
@@ -282,10 +282,10 @@
                   <Font name="JetBrains Mono" size="12" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="66" green="66" red="ff" type="rgb"/>
+                  <Color blue="4e" green="7c" red="c6" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenes/Info1.png"/>
+                  <Image iconType="3" name="/imagenes/icons8-info-22 (1).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Rellena el campo"/>
               </Properties>
@@ -301,10 +301,10 @@
                   <Font name="JetBrains Mono" size="12" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="66" green="66" red="ff" type="rgb"/>
+                  <Color blue="4e" green="7c" red="c6" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenes/Info1.png"/>
+                  <Image iconType="3" name="/imagenes/icons8-info-22 (1).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Rellena el campo"/>
               </Properties>
@@ -320,10 +320,10 @@
                   <Font name="JetBrains Mono" size="12" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="66" green="66" red="ff" type="rgb"/>
+                  <Color blue="4e" green="7c" red="c6" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenes/Info1.png"/>
+                  <Image iconType="3" name="/imagenes/icons8-info-22 (1).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Rellena el campo"/>
               </Properties>
@@ -339,10 +339,10 @@
                   <Font name="JetBrains Mono" size="12" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="66" green="66" red="ff" type="rgb"/>
+                  <Color blue="4e" green="7c" red="c6" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenes/Info1.png"/>
+                  <Image iconType="3" name="/imagenes/icons8-info-22 (1).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Dato no admitido"/>
               </Properties>
@@ -358,10 +358,10 @@
                   <Font name="JetBrains Mono" size="12" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="66" green="66" red="ff" type="rgb"/>
+                  <Color blue="4e" green="7c" red="c6" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenes/Info1.png"/>
+                  <Image iconType="3" name="/imagenes/icons8-info-22 (1).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Rellena el campo"/>
               </Properties>
@@ -377,10 +377,10 @@
                   <Font name="JetBrains Mono" size="12" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="66" green="66" red="ff" type="rgb"/>
+                  <Color blue="4e" green="7c" red="c6" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenes/Info1.png"/>
+                  <Image iconType="3" name="/imagenes/icons8-info-22 (1).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Rellena el campo"/>
               </Properties>
@@ -396,10 +396,10 @@
                   <Font name="JetBrains Mono" size="12" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="66" green="66" red="ff" type="rgb"/>
+                  <Color blue="4e" green="7c" red="c6" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenes/Info1.png"/>
+                  <Image iconType="3" name="/imagenes/icons8-info-22 (1).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Rellena el campo"/>
               </Properties>

@@ -21,7 +21,7 @@ public class inicio extends javax.swing.JFrame {
     Ingredientes vistaIngredientes = new Ingredientes();
 
     public inicio() {
-        initComponents();
+        initComponents(); 
         Vista = (CardLayout) Contenido.getLayout();
     }
 

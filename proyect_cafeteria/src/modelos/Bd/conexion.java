@@ -12,9 +12,9 @@ public class conexion {
     // Bloque estático para inicializar el pool de conexiones
     static {
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:postgresql://aws-0-sa-east-1.pooler.supabase.com:5432/postgres");
-        config.setUsername("postgres.pyhqsjvywazyifwdeyax");
-        config.setPassword("afeteria_1234");
+        config.setJdbcUrl("jdbc:postgresql://aws-0-sa-east-1.pooler.supabase.com:6543/postgres");
+        config.setUsername("postgres.daiackbvsdzqgxbyurcq");
+        config.setPassword("cafeteria?123.sf"   );
         config.setDriverClassName("org.postgresql.Driver"); // Especifica el driver PostgreSQL
 
         // Configuración del pool de conexiones
