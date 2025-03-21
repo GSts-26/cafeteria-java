@@ -1,23 +1,24 @@
 package controladores;
 
-import modelos.Bd.conexion;
-
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
+import javax.swing.JOptionPane;
+import modelos.Bd.conexion;
+import modelos.DAO.DaoIngredienteImpl;
+import modelos.DAO.DaoProductoImpl;
+import modelos.Entidades.Ingrediente;
 import vistas.panel_informacion_producto;
 import vistas.panel_productos;
 
-
 public class InformacionProducto {
 
-
+    DaoProductoImpl daoproduc = new DaoProductoImpl();
+    DaoIngredienteImpl daoIngre = new DaoIngredienteImpl();
     List<String> productosIDS = new ArrayList<>();
-
-  
-      
-  
 
     private int totalProteina = 0;
     private int totalazucar = 0;
@@ -35,67 +36,71 @@ public class InformacionProducto {
     }
 
     public void rellenar() {
-
-       
         int fila = product.getTabla_producto().getSelectedRow();
         String nombreP = product.getModelo_Tabla_producto().getValueAt(fila, 1).toString();
         int idP = Integer.parseInt(product.getModelo_Tabla_producto().getValueAt(fila, 0).toString());
-        double precioP = Double.parseDouble(product.getModelo_Tabla_producto().getValueAt(fila, 3).toString());
-        info.setLbl_precio_producto().setText(String.valueOf(precioP));
+        double precio = Double.parseDouble(product.getModelo_Tabla_producto().getValueAt(fila, 3).toString());
 
         info.setLbl_nombre_producto().setText(nombreP);
-        info.setArea_ingredientes().setText("");
+        info.setLbl_precio_producto().setText(String.valueOf(precio));
+        info.getArea_ingredientes().setText("");
         productosIDS.clear();
         totalProteina = 0;
         totalazucar = 0;
         totalcalorias = 0;
         totalcarbohidratos = 0;
 
-        product.getModelo_Tabla_producto();
-        product.getTabla_producto();
-
         if (product.getTabla_producto().getSelectedColumn() == 5) {
             try (Connection cons = conexion.getConnection()) {
-                String consulta = "SELECT ids_ingrediente, descripcion FROM producto WHERE id=?";
-                String Ingrediente = "SELECT proteina, calorias, carbohidratos, azucar, nombre FROM ingredientes WHERE id=?";
+            
+                Map<Integer, Ingrediente> ingredientesMap = new HashMap<>();
+                daoIngre.listar().forEach(ingrediente -> ingredientesMap.put(ingrediente.getId(), ingrediente));
+
+            
+                String consulta = "SELECT ids_ingrediente FROM producto WHERE id=?";
                 PreparedStatement ps = cons.prepareStatement(consulta);
-                PreparedStatement psIngredientes = cons.prepareStatement(Ingrediente);
                 ps.setInt(1, idP);
                 ResultSet rsIds = ps.executeQuery();
-                while (rsIds.next()) {
-                    info.getLbl_descripcion_producto().setText(rsIds.getString("descripcion"));
+
+                if (rsIds.next()) {
                     String idsProductos = rsIds.getString("ids_ingrediente");
                     idsProductos = idsProductos.replace("{", "").replace("}", "");
-                    String[] arrayids = idsProductos.split(",");
-                    for (String arrayid : arrayids) {
-                        productosIDS.add(arrayid.trim());
-                    }
+                    Arrays.stream(idsProductos.split(","))
+                            .map(String::trim)
+                            .forEach(productosIDS::add);
                 }
 
-                for (String prod : productosIDS) {
-                    idIngrente = Integer.parseInt(prod);
-                    psIngredientes.setInt(1, idIngrente);
-                    ResultSet rsIngrediente = psIngredientes.executeQuery();
-                    while (rsIngrediente.next()) {
-                        info.setArea_ingredientes().append(rsIngrediente.getString("nombre") + "\n");
-                        totalProteina += rsIngrediente.getInt("proteina");
-                        totalazucar += rsIngrediente.getInt("azucar");
-                        totalcalorias += rsIngrediente.getInt("calorias");
-                        totalcarbohidratos += rsIngrediente.getInt("carbohidratos");
-
-                        info.setTxt_carbohidratos().setText(String.valueOf(totalcarbohidratos + "  " + "G"));
-                        info.setTxt_proteinas().setText(String.valueOf(totalProteina + "  " + "G"));
-                        info.setTxt_azucar().setText(String.valueOf(totalazucar + "  " + "G"));
-                        info.setTxt_calorias().setText(String.valueOf(totalcalorias + "  " + "KCAL"));
+            
+                daoproduc.listar().forEach(prods -> {
+                    if (idP == prods.getId()) {
+                        info.getLbl_descripcion_producto().setText(prods.getDescripcion());
                     }
-                }
+                });
+
+                
+                productosIDS.forEach(prod -> {
+                    int idIngrente = Integer.parseInt(prod);
+                    Ingrediente ingrediente = ingredientesMap.get(idIngrente);
+
+                    if (ingrediente != null) {
+                        info.getArea_ingredientes().append(ingrediente.getNombre() + "\n");
+                        totalProteina += ingrediente.getProteinas();
+                        totalazucar += ingrediente.getAzucar();
+                        totalcalorias += ingrediente.getCalorias();
+                        totalcarbohidratos += ingrediente.getCarbohidratos();
+                    }
+                });
+
+                // Actualizar los valores en la interfaz
+                info.setTxt_carbohidratos().setText(totalcarbohidratos + " G");
+                info.setTxt_proteinas().setText(totalProteina + " G");
+                info.setTxt_azucar().setText(totalazucar + " G");
+                info.setTxt_calorias().setText(totalcalorias + " KCAL");
 
             } catch (SQLException e) {
-
-                System.out.println(e.getMessage());
+                System.out.println("Error al rellenar la información del producto: " + e.getMessage());
             }
         }
-
     }
 
 }

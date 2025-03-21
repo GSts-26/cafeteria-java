@@ -180,7 +180,7 @@ public class panel_informacion_producto extends javax.swing.JPanel {
     private javax.swing.JTextField txt_proteinas;
     // End of variables declaration//GEN-END:variables
 
-    public JTextArea setArea_ingredientes() {
+    public JTextArea getArea_ingredientes() {
         return area_ingredientes;
     }
 
