@@ -369,6 +369,7 @@ public class inicio extends javax.swing.JFrame {
 
         Contenido.add(vistaProductos, "productos");
         Vista.show(Contenido, "productos");
+        
         this.repaint();
         this.revalidate();
     }//GEN-LAST:event_productos3ActionPerformed

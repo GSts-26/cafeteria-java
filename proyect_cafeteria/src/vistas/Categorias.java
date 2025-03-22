@@ -6,6 +6,7 @@ package vistas;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.icons.FlatSearchIcon;
+import controladores.categoriaController;
 import java.awt.CardLayout;
 import static java.awt.SystemColor.info;
 import javax.swing.JButton;
@@ -19,10 +20,11 @@ import controladores.metodo_categoria;
 public class Categorias extends javax.swing.JPanel {
 
     controladores.metodo_categoria controlador = new metodo_categoria(this);
+    categoriaController controlCate = new categoriaController(this);
 
     public Categorias() {
         initComponents();
-        controlador.listarCategorias();
+        controlCate.mostrar();
         boton_actualizar.setVisible(false);
         controlador.ocultar();
     }
@@ -276,12 +278,16 @@ public class Categorias extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_agregarActionPerformed
-        controlador.insertarCategoria();
+//        controlador.insertarCategoria();
+        controlCate.ingresar();
+
+        txt_nombre.setText("");
     }//GEN-LAST:event_boton_agregarActionPerformed
 
     private void tabla_categoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_categoriaMouseClicked
-        controlador.eliminar();
-        controlador.columSelect();
+//        controlador.eliminar();
+//        controlador.columSelect();
+        controlCate.accionTabla();
     }//GEN-LAST:event_tabla_categoriaMouseClicked
 
     private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
@@ -297,7 +303,7 @@ public class Categorias extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_nombreKeyReleased
 
     private void boton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_actualizarActionPerformed
-        controlador.actualizar();
+     
     }//GEN-LAST:event_boton_actualizarActionPerformed
 
 
@@ -329,10 +335,10 @@ public class Categorias extends javax.swing.JPanel {
     private javax.swing.JTextField txt_nombre;
     // End of variables declaration//GEN-END:variables
 
-    
-    public JTextField getTxt_id(){
+    public JTextField getTxt_id() {
         return txt_id;
     }
+
     public JButton getBoton_update() {
         return boton_actualizar;
     }
