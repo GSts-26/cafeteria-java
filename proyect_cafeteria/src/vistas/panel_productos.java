@@ -44,9 +44,9 @@ public class panel_productos extends javax.swing.JPanel {
 
         Vista = (CardLayout) cardProductos.getLayout();
         styles();
-
         controlador.rellenar_combo_categoria();
         controlador.mostrar();
+        controlador.ocultarMensajes();
     }
 
     private void styles() {
@@ -75,8 +75,6 @@ public class panel_productos extends javax.swing.JPanel {
         boton_crear4 = new javax.swing.JButton();
         boton_crear5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        ms_informacion = new javax.swing.JLabel();
-        ms_nuevo_producto = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         no_hay_productos = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -111,17 +109,21 @@ public class panel_productos extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
+        m4PrecioVacio = new javax.swing.JLabel();
+        m1NombreVacio2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         txtCantidad = new javax.swing.JSpinner();
         txtStock = new javax.swing.JSpinner();
         jLabel6 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        m5CantidadVacio = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         T_ingredientes = new javax.swing.JTable();
-        jLabel9 = new javax.swing.JLabel();
+        botonAgregarIngrediente = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         AgregarIngredientes.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         AgregarIngredientes.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
@@ -139,6 +141,11 @@ public class panel_productos extends javax.swing.JPanel {
         jLabel17.setText("Añadir Ingrediente");
 
         comboIngredientes.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        comboIngredientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                comboIngredientesMouseClicked(evt);
+            }
+        });
 
         boton_crear4.setBackground(new java.awt.Color(198, 124, 78));
         boton_crear4.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
@@ -221,29 +228,12 @@ public class panel_productos extends javax.swing.JPanel {
         );
 
         setBackground(new java.awt.Color(249, 249, 249));
-        addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                formMouseEntered(evt);
-            }
-        });
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(94, 83, 82));
         jLabel2.setText("Productos");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
-
-        ms_informacion.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
-        ms_informacion.setForeground(new java.awt.Color(102, 102, 102));
-        ms_informacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
-        ms_informacion.setText("Ver ingredientes y descripcion del producto");
-        add(ms_informacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
-
-        ms_nuevo_producto.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
-        ms_nuevo_producto.setForeground(new java.awt.Color(102, 102, 102));
-        ms_nuevo_producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
-        ms_nuevo_producto.setText("Agrega nuevo producto");
-        add(ms_nuevo_producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -266,6 +256,7 @@ public class panel_productos extends javax.swing.JPanel {
 
         jPanel1.add(no_hay_productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 570, 310));
 
+        tabla_producto.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         tabla_producto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -305,7 +296,6 @@ public class panel_productos extends javax.swing.JPanel {
 
         txt_filtrado_producto.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
         txt_filtrado_producto.setForeground(new java.awt.Color(153, 153, 153));
-        txt_filtrado_producto.setText("Ingresa nombre");
         jPanel1.add(txt_filtrado_producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 270, 36));
         txt_filtrado_producto.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingresa nombre");
         txt_filtrado_producto.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSearchIcon());
@@ -348,6 +338,7 @@ public class panel_productos extends javax.swing.JPanel {
         jButton1.setForeground(new java.awt.Color(249, 242, 237));
         jButton1.setText("Nuevo");
         jButton1.setBorderPainted(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -359,7 +350,7 @@ public class panel_productos extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(94, 83, 82));
-        jLabel4.setText("Gestiona tus productos");
+        jLabel4.setText("Gestiona y observa información de tus productos");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 60, -1, -1));
 
         cardProductos.setBackground(new java.awt.Color(255, 255, 255));
@@ -379,7 +370,13 @@ public class panel_productos extends javax.swing.JPanel {
         boton_crear.setText("Cancelar");
         boton_crear.setBorder(boton_crear2.getBorder());
         boton_crear.setBorderPainted(false);
-        crear_cliente.add(boton_crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 550, 130, 40));
+        boton_crear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_crearActionPerformed(evt);
+            }
+        });
+        crear_cliente.add(boton_crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 580, 130, 40));
         boton_crear.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
 
@@ -389,12 +386,13 @@ public class panel_productos extends javax.swing.JPanel {
         boton_crear2.setText("Crear Producto");
         boton_crear2.setBorder(boton_crear2.getBorder());
         boton_crear2.setBorderPainted(false);
+        boton_crear2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         boton_crear2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_crear2ActionPerformed(evt);
             }
         });
-        crear_cliente.add(boton_crear2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 550, 150, 40));
+        crear_cliente.add(boton_crear2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 580, 150, 40));
         boton_crear.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
 
@@ -416,29 +414,31 @@ public class panel_productos extends javax.swing.JPanel {
 
         jPanel6.setBackground(new java.awt.Color(198, 124, 78));
 
-        jLabel19.setText("jLabel19");
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-ingredients-40.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(32, 32, 32)
                 .addComponent(jLabel19)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel19)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 80));
+        info.putClientProperty(FlatClientProperties.STYLE,                         "arc: 50");
 
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 17, 150, 150));
 
+        txtprecio.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         txtprecio.setForeground(new java.awt.Color(94, 83, 82));
         txtprecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -450,7 +450,7 @@ public class panel_productos extends javax.swing.JPanel {
                 txtprecioKeyReleased(evt);
             }
         });
-        jPanel2.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 150, 30));
+        jPanel2.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 150, 30));
         txtprecio.putClientProperty(FlatClientProperties.STYLE,
             "arc: 12");
 
@@ -460,39 +460,38 @@ public class panel_productos extends javax.swing.JPanel {
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, 30));
 
         txtDescripcion.setColumns(20);
+        txtDescripcion.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         txtDescripcion.setRows(5);
         jScrollPane1.setViewportView(txtDescripcion);
+        txtDescripcion.setLineWrap(true);          // Habilita el salto de línea automático
+        txtDescripcion.setWrapStyleWord(true);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 150, -1));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 150, -1));
 
-        txt_categoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "16" }));
+        txt_categoria.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         txt_categoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_categoriaActionPerformed(evt);
             }
         });
-        txt_categoria.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                txt_categoriaPropertyChange(evt);
-            }
-        });
-        jPanel2.add(txt_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 150, 30));
+        jPanel2.add(txt_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 150, 30));
 
         jLabel8.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(94, 83, 82));
         jLabel8.setText("Descripcion");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, 20));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, 20));
 
         jLabel10.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(94, 83, 82));
         jLabel10.setText("Categoria");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
 
         jLabel18.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(94, 83, 82));
         jLabel18.setText("Precio");
-        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, -1, -1));
 
+        txtNombre.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(94, 83, 82));
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -508,17 +507,33 @@ public class panel_productos extends javax.swing.JPanel {
         txtprecio.putClientProperty(FlatClientProperties.STYLE,
             "arc: 12");
 
-        crear_cliente.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 190, 480));
+        m4PrecioVacio.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
+        m4PrecioVacio.setForeground(new java.awt.Color(198, 124, 78));
+        m4PrecioVacio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
+        m4PrecioVacio.setText("Rellena el campo");
+        jPanel2.add(m4PrecioVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, 160, -1));
+
+        m1NombreVacio2.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
+        m1NombreVacio2.setForeground(new java.awt.Color(198, 124, 78));
+        m1NombreVacio2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
+        m1NombreVacio2.setText("Rellena el campo");
+        jPanel2.add(m1NombreVacio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 160, -1));
+
+        crear_cliente.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 240, 520));
 
         jPanel3.setBackground(new java.awt.Color(249, 249, 249));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtCantidad.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         jPanel3.add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 114, 30));
-        jPanel3.add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 114, 30));
+
+        txtStock.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        jPanel3.add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 114, 30));
 
         jLabel6.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(94, 83, 82));
         jLabel6.setText("Stock-minimo");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(94, 83, 82));
@@ -530,7 +545,13 @@ public class panel_productos extends javax.swing.JPanel {
         jLabel15.setText("Inventario");
         jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        crear_cliente.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 180, 160));
+        m5CantidadVacio.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
+        m5CantidadVacio.setForeground(new java.awt.Color(198, 124, 78));
+        m5CantidadVacio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
+        m5CantidadVacio.setText("Rellena el campo");
+        jPanel3.add(m5CantidadVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 160, -1));
+
+        crear_cliente.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 210, 200));
 
         jPanel4.setBackground(new java.awt.Color(249, 249, 249));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -538,7 +559,7 @@ public class panel_productos extends javax.swing.JPanel {
         jLabel11.setFont(new java.awt.Font("Sora", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(94, 83, 82));
         jLabel11.setText("Ingredientes");
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         T_ingredientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -568,48 +589,72 @@ public class panel_productos extends javax.swing.JPanel {
             T_ingredientes.getColumnModel().getColumn(2).setPreferredWidth(45);
         }
 
-        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 42, 168, 200));
+        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 168, 200));
 
-        jLabel9.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(198, 124, 78));
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-add-25.png"))); // NOI18N
-        jLabel9.setText("Agregar ");
-        jLabel9.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jLabel9.setIconTextGap(0);
-        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel9MouseClicked(evt);
+        botonAgregarIngrediente.setBackground(new java.awt.Color(249, 242, 237));
+        botonAgregarIngrediente.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        botonAgregarIngrediente.setForeground(new java.awt.Color(198, 124, 78));
+        botonAgregarIngrediente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-add-25.png"))); // NOI18N
+        botonAgregarIngrediente.setText("Agregar");
+        botonAgregarIngrediente.setBorderPainted(false);
+        botonAgregarIngrediente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonAgregarIngrediente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botonAgregarIngrediente.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        botonAgregarIngrediente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregarIngredienteActionPerformed(evt);
             }
         });
-        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 250, 100, -1));
+        jPanel4.add(botonAgregarIngrediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, 40));
 
-        crear_cliente.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 180, 300));
+        crear_cliente.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 210, 300));
 
         cardProductos.add(crear_cliente, "card2");
         crear_cliente.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
 
-        add(cardProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 30, 550, 610));
+        add(cardProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 550, 630));
+
+        jButton2.setBackground(new java.awt.Color(249, 242, 237));
+        jButton2.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(198, 124, 78));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-restart-25.png"))); // NOI18N
+        jButton2.setText("Refrescar");
+        jButton2.setBorderPainted(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 16, -1, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_crear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_crear2ActionPerformed
+        if (!controlador.verificarCamposVacios()) {
+            return;
+        }
+
         for (int i = 0; i < T_ingredientes.getRowCount(); i++) {
             int valor = Integer.parseInt(T_ingredientes.getValueAt(i, 0).toString());
             ingredientes.add(valor);
         }
         controlador.ingresar(ingredientes);
+        controlador.limpiarCampos();
 
     }//GEN-LAST:event_boton_crear2ActionPerformed
 
     private void txtprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprecioActionPerformed
-        // TODO add your handling code here:
+        if (!controlador.verificarCamposVacios()) {
+
+        }
     }//GEN-LAST:event_txtprecioActionPerformed
 
     private void txtprecioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtprecioKeyReleased
-
+        if (!controlador.verificarCamposVacios());
         try {
             String texto = txtprecio.getText().replaceAll("[^\\d]", "");
-
             // Convertir a número
             long numero = Long.parseLong(texto);
 
@@ -622,19 +667,18 @@ public class panel_productos extends javax.swing.JPanel {
     }//GEN-LAST:event_txtprecioKeyReleased
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
+        if (!controlador.verificarCamposVacios()) {
+
+        }
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
+
+        if (!controlador.datosIncorrectos() || !controlador.verificarCamposVacios()) {
+            return;
+        }
         txtInfoNombre.setText(txtNombre.getText());
     }//GEN-LAST:event_txtNombreKeyReleased
-
-    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        AgregarIngredientes.setSize(374, 370);
-        AgregarIngredientes.setLocationRelativeTo(null);
-        controlador.rellenar_Combo_Ingredientes();
-        AgregarIngredientes.setVisible(true);
-    }//GEN-LAST:event_jLabel9MouseClicked
 
     private void txt_categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_categoriaActionPerformed
         // TODO add your handling code here:
@@ -666,13 +710,25 @@ public class panel_productos extends javax.swing.JPanel {
         i.setVisible(true);
     }//GEN-LAST:event_boton_crear5ActionPerformed
 
-    private void txt_categoriaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txt_categoriaPropertyChange
-//        controlador.rellenar_combo_categoria();
-    }//GEN-LAST:event_txt_categoriaPropertyChange
+    private void boton_crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_crearActionPerformed
+        controlador.limpiarCampos();
+    }//GEN-LAST:event_boton_crearActionPerformed
 
-    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
-       controlador.rellenar_combo_categoria();
-    }//GEN-LAST:event_formMouseEntered
+    private void botonAgregarIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarIngredienteActionPerformed
+        AgregarIngredientes.setSize(374, 370);
+        AgregarIngredientes.setLocationRelativeTo(null);
+        controlador.rellenar_Combo_Ingredientes();
+        AgregarIngredientes.setVisible(true);
+    }//GEN-LAST:event_botonAgregarIngredienteActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        controlador.rellenar_combo_categoria();
+        controlador.mostrar();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void comboIngredientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboIngredientesMouseClicked
+       controlador.rellenar_Combo_Ingredientes();
+    }//GEN-LAST:event_comboIngredientesMouseClicked
 
     public JTable getTabla_producto() {
         return tabla_producto;
@@ -684,7 +740,8 @@ public class panel_productos extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog AgregarIngredientes;
     public javax.swing.JTable T_ingredientes;
-    private javax.swing.JLabel TxtInfoPrecio;
+    public javax.swing.JLabel TxtInfoPrecio;
+    private javax.swing.JButton botonAgregarIngrediente;
     private javax.swing.JButton boton_crear;
     private javax.swing.JButton boton_crear2;
     private javax.swing.JButton boton_crear4;
@@ -695,6 +752,7 @@ public class panel_productos extends javax.swing.JPanel {
     private javax.swing.JPanel crear_cliente;
     private javax.swing.JPanel info;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -713,7 +771,6 @@ public class panel_productos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -725,13 +782,14 @@ public class panel_productos extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel ms_informacion;
-    private javax.swing.JLabel ms_nuevo_producto;
+    public javax.swing.JLabel m1NombreVacio2;
+    public javax.swing.JLabel m4PrecioVacio;
+    public javax.swing.JLabel m5CantidadVacio;
     public javax.swing.JPanel no_hay_productos;
     public javax.swing.JTable tabla_producto;
     public javax.swing.JSpinner txtCantidad;
     public javax.swing.JTextArea txtDescripcion;
-    private javax.swing.JLabel txtInfoNombre;
+    public javax.swing.JLabel txtInfoNombre;
     public javax.swing.JTextField txtNombre;
     public javax.swing.JSpinner txtStock;
     public javax.swing.JComboBox<String> txt_categoria;

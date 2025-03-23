@@ -50,7 +50,10 @@ public class productoController {
     }
 
     public void ingresar(ArrayList<Integer> ingredientes) {
-        producto producto = new producto(vista.txtNombre.getText(), Integer.parseInt(vista.txt_categoria.getSelectedItem().toString()), vista.txtDescripcion.getText(), (Integer.parseInt(vista.txtprecio.getText())), Integer.parseInt(vista.txtCantidad.getValue().toString()), Integer.parseInt(vista.txtStock.getValue().toString()),
+        String id = vista.txt_categoria.getSelectedItem().toString();
+        String ids = id.split(" - ")[0];
+
+        producto producto = new producto(vista.txtNombre.getText(), Integer.parseInt(ids), vista.txtDescripcion.getText(), (Integer.parseInt(vista.txtprecio.getText())), Integer.parseInt(vista.txtCantidad.getValue().toString()), Integer.parseInt(vista.txtStock.getValue().toString()),
                 ingredientes);
         productoDAO.insertar(producto);
         JOptionPane.showMessageDialog(null, "Producto Ingresado");
@@ -76,10 +79,10 @@ public class productoController {
                     Producto.getId(),
                     Producto.getNombre(),
                     Producto.getCategoria(),
-                    Producto.getCantidad(),
-                    Producto.getStock(),
-                    Producto.getDescripcion(),
                     Producto.getPrecio(),
+                    Producto.getCantidad(),
+//                    Producto.getStock(),
+//                    Producto.getDescripcion(),
                     boton
                 });
             }
@@ -92,7 +95,7 @@ public class productoController {
         int fila = vista.tabla_producto.getSelectedRow();
 
         if (columna == 6) {
-            Long idEliminar = Long.parseLong(vista.tabla_producto.getValueAt(fila, 0).toString());
+            Long idEliminar = Long.valueOf(vista.tabla_producto.getValueAt(fila, 0).toString());
             productoDAO.eliminar(idEliminar);
             JOptionPane.showMessageDialog(null, "Producto Eliminado Correctamente");
             mostrar();
@@ -114,7 +117,7 @@ public class productoController {
         }
         vista.txt_categoria.removeAllItems();
         for (categoria categ : categoria) {
-            vista.txt_categoria.addItem(String.valueOf(categ.getId()));
+            vista.txt_categoria.addItem(String.valueOf(categ.getId() + " - " + categ.getNombre()));
 
         }
 
@@ -128,5 +131,61 @@ public class productoController {
             sele.getNombre(),
             boton
         });
+    }
+
+    public void limpiarCampos() {
+        vista.txtNombre.setText("");
+        vista.txtprecio.setText("");
+        vista.txtDescripcion.setText("");
+        vista.txtCantidad.setValue(0);
+        vista.txtStock.setValue(0);
+        vista.TxtInfoPrecio.setText("");
+        vista.txtInfoNombre.setText("");
+        modeloingredientes = (DefaultTableModel) vista.T_ingredientes.getModel();
+        modeloingredientes.setNumRows(0);
+
+    }
+
+    public void ocultarMensajes() {
+        vista.m1NombreVacio2.setVisible(false);
+        vista.m4PrecioVacio.setVisible(false);
+        vista.m5CantidadVacio.setVisible(false);
+    }
+
+    public boolean verificarCamposVacios() {
+        int numero = 0;
+        boolean ok = true;
+        if (vista.txtNombre.getText().isEmpty()) {
+            vista.m1NombreVacio2.setVisible(true);
+            ok = false;
+        } else {
+            vista.m1NombreVacio2.setVisible(false);
+        }
+        if (vista.txtprecio.getText().isEmpty()) {
+            vista.m4PrecioVacio.setVisible(true);
+            ok = false;
+        } else {
+            vista.m4PrecioVacio.setVisible(false);
+        }
+        if (vista.txtCantidad.getValue().equals(numero)) {
+            vista.m5CantidadVacio.setVisible(true);
+            ok = false;
+        } else {
+            vista.m5CantidadVacio.setVisible(false);
+        }
+        return ok;
+    }
+
+    public boolean datosIncorrectos() {
+        boolean ok = true;
+        for (int i = 0; i < vista.txtNombre.getText().length(); i++) {
+
+            if (!vista.txtNombre.getText().isEmpty() && Character.isDigit(vista.txtNombre.getText().charAt(i))) {
+                vista.txtNombre.setText("");
+                vista.txtNombre.requestFocus();
+                ok = false;
+            }
+        }
+        return ok;
     }
 }

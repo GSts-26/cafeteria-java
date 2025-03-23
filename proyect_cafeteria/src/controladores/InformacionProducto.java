@@ -44,6 +44,9 @@ public class InformacionProducto {
         info.setLbl_nombre_producto().setText(nombreP);
         info.setLbl_precio_producto().setText(String.valueOf(precio));
         info.getArea_ingredientes().setText("");
+        if (!info.getLbl_descripcion_producto().getText().isEmpty()) {
+            info.getLbl_descripcion_producto().setText("");
+        }
         productosIDS.clear();
         totalProteina = 0;
         totalazucar = 0;
@@ -51,12 +54,13 @@ public class InformacionProducto {
         totalcarbohidratos = 0;
 
         if (product.getTabla_producto().getSelectedColumn() == 5) {
+            product.tabla_producto.clearSelection();
+
             try (Connection cons = conexion.getConnection()) {
-            
+
                 Map<Integer, Ingrediente> ingredientesMap = new HashMap<>();
                 daoIngre.listar().forEach(ingrediente -> ingredientesMap.put(ingrediente.getId(), ingrediente));
 
-            
                 String consulta = "SELECT ids_ingrediente FROM producto WHERE id=?";
                 PreparedStatement ps = cons.prepareStatement(consulta);
                 ps.setInt(1, idP);
@@ -70,20 +74,23 @@ public class InformacionProducto {
                             .forEach(productosIDS::add);
                 }
 
-            
                 daoproduc.listar().forEach(prods -> {
                     if (idP == prods.getId()) {
-                        info.getLbl_descripcion_producto().setText(prods.getDescripcion());
+                        if (prods.getDescripcion().isEmpty()) {
+                            info.getLbl_descripcion_producto().append("Este Producto No tiene una descripcion");
+                        } else {
+
+                            info.getLbl_descripcion_producto().append(prods.getDescripcion());
+                        }
                     }
                 });
 
-                
                 productosIDS.forEach(prod -> {
                     int idIngrente = Integer.parseInt(prod);
                     Ingrediente ingrediente = ingredientesMap.get(idIngrente);
 
                     if (ingrediente != null) {
-                        info.getArea_ingredientes().append(ingrediente.getNombre() + "\n");
+                        info.getArea_ingredientes().append("-" + ingrediente.getNombre() + "\n");
                         totalProteina += ingrediente.getProteinas();
                         totalazucar += ingrediente.getAzucar();
                         totalcalorias += ingrediente.getCalorias();
@@ -96,7 +103,6 @@ public class InformacionProducto {
                 info.setTxt_proteinas().setText(totalProteina + " G");
                 info.setTxt_azucar().setText(totalazucar + " G");
                 info.setTxt_calorias().setText(totalcalorias + " KCAL");
-
             } catch (SQLException e) {
                 System.out.println("Error al rellenar la información del producto: " + e.getMessage());
             }

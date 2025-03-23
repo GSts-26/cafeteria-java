@@ -137,7 +137,7 @@ public class inicio extends javax.swing.JFrame {
                 .addComponent(titulo)
                 .addGap(66, 66, 66)
                 .addComponent(buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 278, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 398, Short.MAX_VALUE)
                 .addComponent(contenedor_notificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(boton_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -171,7 +171,7 @@ public class inicio extends javax.swing.JFrame {
         buscador.putClientProperty(FlatClientProperties.STYLE,
             "arc: 18");
 
-        jPanel1.add(encabezado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1380, -1));
+        jPanel1.add(encabezado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1500, -1));
 
         menu_lateral.setBackground(new java.awt.Color(255, 255, 255));
         menu_lateral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -191,7 +191,7 @@ public class inicio extends javax.swing.JFrame {
                 menuActionPerformed(evt);
             }
         });
-        menu_lateral.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 70, 68));
+        menu_lateral.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 90, 68));
         menu.putClientProperty(FlatClientProperties.STYLE,
             "focusedBackground:#F3AB52;focusedForeground:#FFFFFF");
 
@@ -210,7 +210,7 @@ public class inicio extends javax.swing.JFrame {
                 productos1ActionPerformed(evt);
             }
         });
-        menu_lateral.add(productos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 330, -1, 68));
+        menu_lateral.add(productos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 90, 68));
         menu.putClientProperty(FlatClientProperties.STYLE,
             "focusedBackground:#fef0e1;focusedForeground:#ea6e00");
 
@@ -229,7 +229,7 @@ public class inicio extends javax.swing.JFrame {
                 productos2ActionPerformed(evt);
             }
         });
-        menu_lateral.add(productos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 230, 70, 68));
+        menu_lateral.add(productos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 220, 90, 68));
         menu.putClientProperty(FlatClientProperties.STYLE,
             "focusedBackground:#fef0e1;focusedForeground:#ea6e00");
         menu.putClientProperty(FlatClientProperties.STYLE,
@@ -250,7 +250,7 @@ public class inicio extends javax.swing.JFrame {
                 productos3ActionPerformed(evt);
             }
         });
-        menu_lateral.add(productos3, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 120, 70, 68));
+        menu_lateral.add(productos3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 90, 68));
         productos3.putClientProperty(FlatClientProperties.STYLE,
             "focusedBackground:#F3AB52;focusedForeground:#FFFFFF");
 
@@ -269,7 +269,7 @@ public class inicio extends javax.swing.JFrame {
                 categoriasActionPerformed(evt);
             }
         });
-        menu_lateral.add(categorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, 68));
+        menu_lateral.add(categorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 90, 68));
         menu.putClientProperty(FlatClientProperties.STYLE,
             "focusedBackground:#fef0e1;focusedForeground:#ea6e00");
         menu.putClientProperty(FlatClientProperties.STYLE,
@@ -290,7 +290,7 @@ public class inicio extends javax.swing.JFrame {
                 productos5ActionPerformed(evt);
             }
         });
-        menu_lateral.add(productos5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 68, 68));
+        menu_lateral.add(productos5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 90, 68));
         menu.putClientProperty(FlatClientProperties.STYLE,
             "focusedBackground:#fef0e1;focusedForeground:#ea6e00");
 
@@ -321,14 +321,14 @@ public class inicio extends javax.swing.JFrame {
 
         Contenido.setBackground(new java.awt.Color(249, 249, 249));
         Contenido.setLayout(new java.awt.CardLayout());
-        jPanel1.add(Contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 1140, 650));
+        jPanel1.add(Contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 1280, 650));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1376, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1511, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

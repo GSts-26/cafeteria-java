@@ -37,13 +37,18 @@ public class panel_informacion_producto extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         area_ingredientes = new javax.swing.JTextArea();
         descripcion_producto = new javax.swing.JLabel();
-        lbl_descripcion_producto = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         txt_azucar = new javax.swing.JTextField();
         txt_carbohidratos = new javax.swing.JTextField();
         txt_proteinas = new javax.swing.JTextField();
         txt_calorias = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         lbl_precio_producto = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lbl_descripcion_producto = new javax.swing.JTextArea();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -68,10 +73,6 @@ public class panel_informacion_producto extends javax.swing.JPanel {
         descripcion_producto.setFont(new java.awt.Font("Sora", 0, 17)); // NOI18N
         descripcion_producto.setText("Descripcion");
 
-        lbl_descripcion_producto.setFont(new java.awt.Font("Sora", 0, 16)); // NOI18N
-        lbl_descripcion_producto.setText("la descripcion del producto seleccionado");
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_azucar.setEditable(false);
@@ -98,9 +99,29 @@ public class panel_informacion_producto extends javax.swing.JPanel {
         txt_calorias.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Calorias", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sora", 0, 13))); // NOI18N
         jPanel2.add(txt_calorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 156, 45));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/calorias.png"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-hidratos-de-carbono-23.png"))); // NOI18N
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 110, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-sugar-cubes-25.png"))); // NOI18N
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 170, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-protein-40.png"))); // NOI18N
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
+
         lbl_precio_producto.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
         lbl_precio_producto.setForeground(new java.awt.Color(198, 124, 78));
         lbl_precio_producto.setText("$1288");
+
+        lbl_descripcion_producto.setEditable(false);
+        lbl_descripcion_producto.setColumns(20);
+        lbl_descripcion_producto.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        lbl_descripcion_producto.setRows(5);
+        jScrollPane2.setViewportView(lbl_descripcion_producto);
+        lbl_descripcion_producto.setLineWrap(true);
+        lbl_descripcion_producto.setWrapStyleWord(true);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -126,8 +147,10 @@ public class panel_informacion_producto extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(lbl_nombre_producto))
-                            .addComponent(descripcion_producto)
-                            .addComponent(lbl_descripcion_producto))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(descripcion_producto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -153,13 +176,13 @@ public class panel_informacion_producto extends javax.swing.JPanel {
                         .addGap(60, 60, 60)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(17, 17, 17)
-                .addComponent(descripcion_producto)
-                .addGap(8, 8, 8)
-                .addComponent(lbl_descripcion_producto)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(descripcion_producto)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 540, 550));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 540, 560));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -167,11 +190,16 @@ public class panel_informacion_producto extends javax.swing.JPanel {
     private javax.swing.JTextArea area_ingredientes;
     private javax.swing.JLabel descripcion_producto;
     private javax.swing.JLabel descripcion_producto1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbl_descripcion_producto;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea lbl_descripcion_producto;
     private javax.swing.JLabel lbl_nombre_producto;
     private javax.swing.JLabel lbl_precio_producto;
     private javax.swing.JTextField txt_azucar;
@@ -188,7 +216,7 @@ public class panel_informacion_producto extends javax.swing.JPanel {
         return descripcion_producto;
     }
 
-    public JLabel getLbl_descripcion_producto() {
+    public JTextArea getLbl_descripcion_producto() {
         return lbl_descripcion_producto;
     }
 
