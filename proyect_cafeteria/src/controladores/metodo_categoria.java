@@ -90,22 +90,7 @@ public class metodo_categoria {
         }
     }
     
-    public void ocultar() {
-        categorias.getMensaje().setVisible(false);
-    }
-    
-    public boolean camposVacios() {
-        boolean vacio = false;
-        if (categorias.getTxt_nombre().getText().isEmpty()) {
-            categorias.getMensaje().setVisible(true);
-            vacio = true;
-        } else {
-            categorias.getMensaje().setVisible(false);
-            return vacio;
-            
-        }
-        return vacio;
-    }
+  
     
     public void columSelect() {
         int colum = categorias.getTabla_cate().getSelectedColumn();

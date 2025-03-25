@@ -415,28 +415,29 @@ public class panel_productos extends javax.swing.JPanel {
         jPanel6.setBackground(new java.awt.Color(198, 124, 78));
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-ingredients-40.png"))); // NOI18N
+        jLabel19.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(44, 44, 44)
                 .addComponent(jLabel19)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel19)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 80));
+        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 130, 80));
         info.putClientProperty(FlatClientProperties.STYLE,                         "arc: 50");
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 17, 150, 150));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 17, 200, 150));
 
         txtprecio.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         txtprecio.setForeground(new java.awt.Color(94, 83, 82));
@@ -561,6 +562,7 @@ public class panel_productos extends javax.swing.JPanel {
         jLabel11.setText("Ingredientes");
         jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
+        T_ingredientes.setFont(new java.awt.Font("Sora", 0, 13)); // NOI18N
         T_ingredientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -674,10 +676,10 @@ public class panel_productos extends javax.swing.JPanel {
 
     private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
 
+        txtInfoNombre.setText(txtNombre.getText());
         if (!controlador.datosIncorrectos() || !controlador.verificarCamposVacios()) {
             return;
         }
-        txtInfoNombre.setText(txtNombre.getText());
     }//GEN-LAST:event_txtNombreKeyReleased
 
     private void txt_categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_categoriaActionPerformed
@@ -727,7 +729,7 @@ public class panel_productos extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void comboIngredientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboIngredientesMouseClicked
-       controlador.rellenar_Combo_Ingredientes();
+        controlador.rellenar_Combo_Ingredientes();
     }//GEN-LAST:event_comboIngredientesMouseClicked
 
     public JTable getTabla_producto() {

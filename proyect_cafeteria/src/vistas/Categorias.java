@@ -16,17 +16,22 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import controladores.metodo_categoria;
+import utils.render;
 
 public class Categorias extends javax.swing.JPanel {
 
-    controladores.metodo_categoria controlador = new metodo_categoria(this);
     categoriaController controlCate = new categoriaController(this);
+
+    private void styles() {
+        tabla_categoria.setDefaultRenderer(Object.class, new render());
+    }
 
     public Categorias() {
         initComponents();
+        styles();
         controlCate.mostrar();
-        boton_actualizar.setVisible(false);
-        controlador.ocultar();
+        controlCate.ocultar();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -44,8 +49,9 @@ public class Categorias extends javax.swing.JPanel {
         txt_nombre = new javax.swing.JTextField();
         txt_id = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        m_nombre_campo = new javax.swing.JLabel();
         boton_actualizar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        m1nombreCampo = new javax.swing.JLabel();
         contenido_table = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
@@ -78,6 +84,11 @@ public class Categorias extends javax.swing.JPanel {
         boton_nueva_categoria.setText("Nuevo");
         boton_nueva_categoria.setBorderPainted(false);
         boton_nueva_categoria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_nueva_categoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_nueva_categoriaActionPerformed(evt);
+            }
+        });
         add(boton_nueva_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 106, -1, 45));
 
         ms_nueva_categoria.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
@@ -90,7 +101,7 @@ public class Categorias extends javax.swing.JPanel {
         card_layout_categoria.setLayout(new java.awt.CardLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(boton_agregar.getBorder());
+        jPanel1.setBorder(contenido_table.getBorder());
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         boton_agregar.setBackground(new java.awt.Color(198, 124, 78));
@@ -113,6 +124,11 @@ public class Categorias extends javax.swing.JPanel {
         boton_cancelar.setText("Cancelar");
         boton_cancelar.setBorderPainted(false);
         boton_cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_cancelarActionPerformed(evt);
+            }
+        });
         jPanel1.add(boton_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 136, 45));
 
         txt_nombre.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
@@ -137,13 +153,7 @@ public class Categorias extends javax.swing.JPanel {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/categoria.png"))); // NOI18N
         jLabel3.setToolTipText("");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
-
-        m_nombre_campo.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
-        m_nombre_campo.setForeground(new java.awt.Color(255, 102, 102));
-        m_nombre_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
-        m_nombre_campo.setText("Rellena el campo");
-        jPanel1.add(m_nombre_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, -1));
 
         boton_actualizar.setBackground(new java.awt.Color(198, 124, 78));
         boton_actualizar.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
@@ -158,6 +168,17 @@ public class Categorias extends javax.swing.JPanel {
             }
         });
         jPanel1.add(boton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 153, 45));
+
+        jLabel4.setFont(new java.awt.Font("Sora", 1, 21)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel4.setText("Nueva categoria");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        m1nombreCampo.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
+        m1nombreCampo.setForeground(new java.awt.Color(198, 124, 78));
+        m1nombreCampo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
+        m1nombreCampo.setText("Rellena el campo");
+        jPanel1.add(m1nombreCampo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
 
         card_layout_categoria.add(jPanel1, "card2");
 
@@ -279,7 +300,14 @@ public class Categorias extends javax.swing.JPanel {
 
     private void boton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_agregarActionPerformed
 //        controlador.insertarCategoria();
-        controlCate.ingresar();
+
+        if (!controlCate.campoVacio()) {
+            txt_nombre.requestFocus();
+            return;
+        } else {
+
+            controlCate.ingresar();
+        }
 
         txt_nombre.setText("");
     }//GEN-LAST:event_boton_agregarActionPerformed
@@ -287,33 +315,43 @@ public class Categorias extends javax.swing.JPanel {
     private void tabla_categoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_categoriaMouseClicked
 //        controlador.eliminar();
 //        controlador.columSelect();
-        controlCate.accionTabla();
+        int columna = tabla_categoria.getSelectedColumn();
+        if (columna == 2) {
+            controlCate.accionTabla();
+        } else if (columna == 3) {
+
+            controlCate.accionTabla();
+        }
     }//GEN-LAST:event_tabla_categoriaMouseClicked
 
     private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
-        if (controlador.camposVacios()) {
-            txt_nombre.requestFocus();
-        }
+
     }//GEN-LAST:event_txt_nombreActionPerformed
 
     private void txt_nombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombreKeyReleased
-        if (!controlador.camposVacios()) {
-
-        }
+        controlCate.campoVacio();
     }//GEN-LAST:event_txt_nombreKeyReleased
 
     private void boton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_actualizarActionPerformed
-     
+        controlCate.actualizar();
     }//GEN-LAST:event_boton_actualizarActionPerformed
+
+    private void boton_nueva_categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_nueva_categoriaActionPerformed
+        controlCate.rellenarNuevaCategoria();
+    }//GEN-LAST:event_boton_nueva_categoriaActionPerformed
+
+    private void boton_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_cancelarActionPerformed
+        controlCate.limpiar();
+    }//GEN-LAST:event_boton_cancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton boton_actualizar;
-    private javax.swing.JButton boton_agregar;
+    public javax.swing.JButton boton_actualizar;
+    public javax.swing.JButton boton_agregar;
     private javax.swing.JButton boton_cancelar;
     private javax.swing.JButton boton_nueva_categoria;
     private javax.swing.JPanel card_layout_categoria;
-    private javax.swing.JLabel contar_categoria;
+    public javax.swing.JLabel contar_categoria;
     private javax.swing.JPanel contenido_table;
     private javax.swing.JPanel info;
     private javax.swing.JLabel jLabel1;
@@ -321,12 +359,13 @@ public class Categorias extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel m_nombre_campo;
+    public javax.swing.JLabel m1nombreCampo;
     private javax.swing.JLabel ms_nueva_categoria;
     private javax.swing.JPanel no_hay_categorias;
     private javax.swing.JTable tabla_categoria;
@@ -375,7 +414,4 @@ public class Categorias extends javax.swing.JPanel {
         return no_hay_categorias;
     }
 
-    public JLabel getMensaje() {
-        return m_nombre_campo;
-    }
 }

@@ -46,6 +46,7 @@ public class panel_informacion_producto extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         lbl_precio_producto = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         lbl_descripcion_producto = new javax.swing.JTextArea();
@@ -55,10 +56,11 @@ public class panel_informacion_producto extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         lbl_nombre_producto.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
-        lbl_nombre_producto.setForeground(new java.awt.Color(51, 51, 51));
+        lbl_nombre_producto.setForeground(new java.awt.Color(94, 83, 82));
         lbl_nombre_producto.setText("Nombre Producto");
 
         descripcion_producto1.setFont(new java.awt.Font("Sora", 0, 17)); // NOI18N
+        descripcion_producto1.setForeground(new java.awt.Color(94, 83, 82));
         descripcion_producto1.setText("Ingredientes");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-ingredients-100.png"))); // NOI18N
@@ -71,32 +73,33 @@ public class panel_informacion_producto extends javax.swing.JPanel {
         jScrollPane1.setViewportView(area_ingredientes);
 
         descripcion_producto.setFont(new java.awt.Font("Sora", 0, 17)); // NOI18N
-        descripcion_producto.setText("Descripcion");
+        descripcion_producto.setForeground(new java.awt.Color(94, 83, 82));
+        descripcion_producto.setText("Descripción");
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_azucar.setEditable(false);
         txt_azucar.setBackground(new java.awt.Color(255, 255, 255));
         txt_azucar.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
-        txt_azucar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Azucar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sora", 0, 13))); // NOI18N
+        txt_azucar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Azucar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sora", 0, 13), new java.awt.Color(94, 83, 82))); // NOI18N
         jPanel2.add(txt_azucar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 156, 45));
 
         txt_carbohidratos.setEditable(false);
         txt_carbohidratos.setBackground(new java.awt.Color(255, 255, 255));
         txt_carbohidratos.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
-        txt_carbohidratos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Carbohidratos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sora", 0, 13))); // NOI18N
+        txt_carbohidratos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Carbohidratos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sora", 0, 13), new java.awt.Color(94, 83, 82))); // NOI18N
         jPanel2.add(txt_carbohidratos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 156, 45));
 
         txt_proteinas.setEditable(false);
         txt_proteinas.setBackground(new java.awt.Color(255, 255, 255));
         txt_proteinas.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
-        txt_proteinas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Proteinas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sora", 0, 13))); // NOI18N
+        txt_proteinas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Carbohidratos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sora", 0, 13), new java.awt.Color(94, 83, 82))); // NOI18N
         jPanel2.add(txt_proteinas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 156, 45));
 
         txt_calorias.setEditable(false);
         txt_calorias.setBackground(new java.awt.Color(255, 255, 255));
         txt_calorias.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
-        txt_calorias.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Calorias", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sora", 0, 13))); // NOI18N
+        txt_calorias.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Proteinas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sora", 0, 13), new java.awt.Color(94, 83, 82))); // NOI18N
         jPanel2.add(txt_calorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 156, 45));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/calorias.png"))); // NOI18N
@@ -110,6 +113,11 @@ public class panel_informacion_producto extends javax.swing.JPanel {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-protein-40.png"))); // NOI18N
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Sora", 1, 15)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel6.setText("Información nutricional");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         lbl_precio_producto.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
         lbl_precio_producto.setForeground(new java.awt.Color(198, 124, 78));
@@ -195,6 +203,7 @@ public class panel_informacion_producto extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

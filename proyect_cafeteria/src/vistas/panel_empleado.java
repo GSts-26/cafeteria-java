@@ -3,45 +3,31 @@ package vistas;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.icons.*;
 import com.toedter.calendar.JDateChooser;
+import controladores.Controller_cliente;
+import controladores.EmpleadoController;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import controladores.metodo_empleado;
+import modelos.Entidades.Empleado;
+import utils.render;
 
 public class panel_empleado extends javax.swing.JPanel {
 
-    metodo_empleado controlador = new metodo_empleado(this);
+    EmpleadoController c = new EmpleadoController(this);
 
-    private void limpiar() {
-        JTextField[] campos = {txt_cedula, txt_nombre, txt_apellido, txt_correo, txt_direccion, txt_telefono};
-        JDateChooser[] chooser = {fecha_nacimiento};
-        for (JTextField campo : campos) {
-            campo.setText("");
-        }
-        for (JDateChooser choose : chooser) {
-            choose.setDate(null);
-        }
-        txt_cedula.requestFocus();
-    }
-
-    private void ocultar_mensajes() {
-        m10telefono_dato.setVisible(false);
-        m11correo_campo.setVisible(false);
-        m13fechanacimiento_campo.setVisible(false);
-        m1cedula_campo.setVisible(false);
-        m2cedula_dato.setVisible(false);
-        m4nombre_campo.setVisible(false);
-        m5apellido_campo.setVisible(false);
-        m7direccion_campo.setVisible(false);
-        m9telefono_campo.setVisible(false);
+    private void Styles() {
+        Tabla_empleado.setDefaultRenderer(Object.class, new render());
     }
 
     public panel_empleado() {
         initComponents();
-        ocultar_mensajes();
-
-        controlador.listarEmpleado();
+        Styles();
+        //ocultar los mensajes de errores
+        c.ocultar();
+// muestra los datos de los empleados en la tabla
+        c.mostrar();
 //        Tabla_empleado.setDefaultRenderer(Object.class, new render());
     }
 
@@ -70,8 +56,9 @@ public class panel_empleado extends javax.swing.JPanel {
         m13fechanacimiento_campo = new javax.swing.JLabel();
         boton_agregar = new javax.swing.JButton();
         boton_cancelar = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
+        lblEmpleado = new javax.swing.JLabel();
         txt_telefono = new javax.swing.JTextField();
+        boton_actualizar = new javax.swing.JButton();
         contenido_table = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -85,6 +72,7 @@ public class panel_empleado extends javax.swing.JPanel {
         numero_empleados = new javax.swing.JLabel();
         txt_filtrado = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        nuevoEmpleado = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -223,19 +211,24 @@ public class panel_empleado extends javax.swing.JPanel {
                 boton_agregarActionPerformed(evt);
             }
         });
-        jPanel3.add(boton_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, 130, 39));
+        jPanel3.add(boton_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 560, 130, 39));
 
         boton_cancelar.setBackground(new java.awt.Color(249, 242, 237));
         boton_cancelar.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         boton_cancelar.setForeground(new java.awt.Color(198, 124, 78));
         boton_cancelar.setText("Cancelar");
         boton_cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(boton_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 560, 125, 39));
+        boton_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_cancelarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(boton_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 560, 125, 39));
 
-        jLabel8.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(94, 83, 82));
-        jLabel8.setText("Nuevo Empleado");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        lblEmpleado.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
+        lblEmpleado.setForeground(new java.awt.Color(94, 83, 82));
+        lblEmpleado.setText("Nuevo Empleado");
+        jPanel3.add(lblEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         txt_telefono.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         txt_telefono.setForeground(new java.awt.Color(102, 102, 102));
@@ -246,6 +239,20 @@ public class panel_empleado extends javax.swing.JPanel {
         });
         jPanel3.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 256, 36));
         txt_telefono.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Telefono");
+
+        boton_actualizar.setBackground(new java.awt.Color(198, 124, 78));
+        boton_actualizar.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
+        boton_actualizar.setForeground(new java.awt.Color(249, 242, 237));
+        boton_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-añadir-25.png"))); // NOI18N
+        boton_actualizar.setText("Actualizar");
+        boton_actualizar.setBorderPainted(false);
+        boton_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_actualizarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(boton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 560, 150, 39));
 
         card_layout_empleado.add(jPanel3, "card2");
 
@@ -326,6 +333,7 @@ public class panel_empleado extends javax.swing.JPanel {
         });
         Tabla_empleado.setToolTipText("");
         Tabla_empleado.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        Tabla_empleado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Tabla_empleado.setFocusable(false);
         Tabla_empleado.setRowHeight(35);
         Tabla_empleado.setSelectionBackground(new java.awt.Color(254, 240, 225));
@@ -383,50 +391,71 @@ public class panel_empleado extends javax.swing.JPanel {
         contenido_table.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
 
+        jLabel3.setBackground(new java.awt.Color(228, 191, 194));
         jLabel3.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Gestion de empleados");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+
+        nuevoEmpleado.setBackground(new java.awt.Color(249, 242, 237));
+        nuevoEmpleado.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
+        nuevoEmpleado.setForeground(new java.awt.Color(198, 124, 78));
+        nuevoEmpleado.setText("Nuevo");
+        nuevoEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        nuevoEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoEmpleadoActionPerformed(evt);
+            }
+        });
+        add(nuevoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 125, 39));
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_agregarActionPerformed
-        if (!controlador.camposVacios("fecha_nacimiento")) {
+        if (!c.camposVacios("fecha_nacimiento")) {
             return;
         }
-        if (!controlador.camposVacios("cedula") || !controlador.camposVacios("nombre") || !controlador.camposVacios("apellido") || !controlador.camposVacios("telefono") || !controlador.camposVacios("correo") || !controlador.camposVacios("direccion")) {
+        if (!c.camposVacios("cedula") || !c.camposVacios("nombre") || !c.camposVacios("apellido") || !c.camposVacios("telefono") || !c.camposVacios("correo") || !c.camposVacios("direccion")) {
             return;
         }
-        controlador.agregar_empleado();
-        limpiar();
+//        controlador.agregar_empleado();
+        c.insertar();
+
 
     }//GEN-LAST:event_boton_agregarActionPerformed
 
-   
 
     private void Tabla_empleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_empleadoMouseClicked
-        controlador.eliminar();
+
+        int columna = Tabla_empleado.getSelectedColumn();
+        if (columna == 8) {
+            c.rellenarActualizar();
+
+        } else if (columna == 9) {
+            c.eliminar();
+
+        }
     }//GEN-LAST:event_Tabla_empleadoMouseClicked
 
     private void txt_cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cedulaActionPerformed
-        if (controlador.datosIncorrectos()) {
+        if (c.datosIncorrectos()) {
             txt_nombre.requestFocus();
         }
-        if (!controlador.camposVacios("cedula")) {
+        if (!c.camposVacios("cedula")) {
             txt_cedula.requestFocus();
         }
     }//GEN-LAST:event_txt_cedulaActionPerformed
 
     private void txt_telefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_telefonoActionPerformed
-        if (controlador.datosIncorrectos()) {
+        if (c.datosIncorrectos()) {
             txt_correo.requestFocus();
         }
-        if (!controlador.camposVacios("telefono")) {
+        if (!c.camposVacios("telefono")) {
             txt_telefono.requestFocus();
         }
     }//GEN-LAST:event_txt_telefonoActionPerformed
 
     private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
-        if (controlador.camposVacios("nombre")) {
+        if (c.camposVacios("nombre")) {
             txt_apellido.requestFocus();
         } else {
             txt_nombre.requestFocus();
@@ -434,7 +463,7 @@ public class panel_empleado extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_nombreActionPerformed
 
     private void txt_apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_apellidoActionPerformed
-        if (controlador.camposVacios("apellido")) {
+        if (c.camposVacios("apellido")) {
             fecha_nacimiento.requestFocus();
         } else {
             txt_apellido.requestFocus();
@@ -442,7 +471,7 @@ public class panel_empleado extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_apellidoActionPerformed
 
     private void txt_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_correoActionPerformed
-        if (controlador.camposVacios("correo")) {
+        if (c.camposVacios("correo")) {
             txt_direccion.requestFocus();
         } else {
             txt_correo.requestFocus();
@@ -450,25 +479,42 @@ public class panel_empleado extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_correoActionPerformed
 
     private void txt_direccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_direccionActionPerformed
-        if (!controlador.camposVacios("direccion")) {
+        if (!c.camposVacios("direccion")) {
             txt_direccion.requestFocus();
         }
     }//GEN-LAST:event_txt_direccionActionPerformed
 
     private void txt_filtradoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_filtradoKeyReleased
-        controlador.listarEmpleado();
+//        controlador.listarEmpleado();
     }//GEN-LAST:event_txt_filtradoKeyReleased
+
+    private void boton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_actualizarActionPerformed
+        c.actualizar();
+        c.nuevoEmpleado();
+
+    }//GEN-LAST:event_boton_actualizarActionPerformed
+
+    private void nuevoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoEmpleadoActionPerformed
+        c.nuevoEmpleado();
+    }//GEN-LAST:event_nuevoEmpleadoActionPerformed
+
+    private void boton_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_cancelarActionPerformed
+        c.limpiarCampos();
+        // nuevo empleado cambia el boton de agregar por eliminar y cambia el nuevo empleado por actualizar empleado
+        c.nuevoEmpleado();
+    }//GEN-LAST:event_boton_cancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Tabla_empleado;
-    private javax.swing.JPanel advertencia;
-    private javax.swing.JButton boton_agregar;
+    public javax.swing.JTable Tabla_empleado;
+    public javax.swing.JPanel advertencia;
+    public javax.swing.JButton boton_actualizar;
+    public javax.swing.JButton boton_agregar;
     private javax.swing.JButton boton_cancelar;
     private javax.swing.JPanel card_layout_empleado;
     private javax.swing.JPanel contenido_table;
-    private com.toedter.calendar.JDateChooser fecha_nacimiento;
-    private javax.swing.JComboBox<String> genero;
+    public com.toedter.calendar.JDateChooser fecha_nacimiento;
+    public javax.swing.JComboBox<String> genero;
     private javax.swing.JPanel info;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
@@ -476,10 +522,10 @@ public class panel_empleado extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    public javax.swing.JLabel lblEmpleado;
     private javax.swing.JLabel m10telefono_dato;
     private javax.swing.JLabel m11correo_campo;
     private javax.swing.JLabel m13fechanacimiento_campo;
@@ -489,14 +535,15 @@ public class panel_empleado extends javax.swing.JPanel {
     private javax.swing.JLabel m5apellido_campo;
     private javax.swing.JLabel m7direccion_campo;
     private javax.swing.JLabel m9telefono_campo;
-    private javax.swing.JLabel numero_empleados;
-    private javax.swing.JTextField txt_apellido;
-    private javax.swing.JTextField txt_cedula;
-    private javax.swing.JTextField txt_correo;
-    private javax.swing.JTextField txt_direccion;
+    private javax.swing.JButton nuevoEmpleado;
+    public javax.swing.JLabel numero_empleados;
+    public javax.swing.JTextField txt_apellido;
+    public javax.swing.JTextField txt_cedula;
+    public javax.swing.JTextField txt_correo;
+    public javax.swing.JTextField txt_direccion;
     private javax.swing.JTextField txt_filtrado;
-    private javax.swing.JTextField txt_nombre;
-    private javax.swing.JTextField txt_telefono;
+    public javax.swing.JTextField txt_nombre;
+    public javax.swing.JTextField txt_telefono;
     // End of variables declaration//GEN-END:variables
 public JDateChooser getFecha_nacimiento() {
         return fecha_nacimiento;
