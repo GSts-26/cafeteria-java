@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -40,10 +41,13 @@ public class categoriaController implements Runnable {
 
     public void mostrar() {
 
-        botonEditar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-editar-20.png")));
-        botonEliminar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-trash-25.png")));
-        botonEliminar.putClientProperty(FlatClientProperties.STYLE, "arc: 20; " + "background: #E6D2D4;");
-        botonEditar.putClientProperty(FlatClientProperties.STYLE, "arc: 20;" + "background: #F9F2ED;");
+        botonEditar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-edit-30.png")));
+        botonEliminar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-trash-30.png")));
+        botonEditar.setBorder(BorderFactory.createEmptyBorder());
+        botonEliminar.setBorder(BorderFactory.createEmptyBorder());
+
+//        botonEliminar.putClientProperty(FlatClientProperties.STYLE, "arc: 20; " + "background: #E6D2D4;");
+//        botonEditar.putClientProperty(FlatClientProperties.STYLE, "arc: 20;" + "background: #F9F2ED;");
         lista = categoriaDao.listar();
         contar();
         if (lista.isEmpty()) {
@@ -68,7 +72,7 @@ public class categoriaController implements Runnable {
     }
 
     public void rellenarNuevaCategoria() {
-        
+
         vistaCategoria.boton_agregar.setVisible(true);
         vistaCategoria.boton_actualizar.setVisible(false);
         vistaCategoria.jLabel4.setText("Nueva categoria");

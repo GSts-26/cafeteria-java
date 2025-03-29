@@ -9,6 +9,7 @@ import modelos.DAO.DaoEmpleado;
 import modelos.Entidades.Empleado;
 import vistas.panel_empleado;
 import java.util.*;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -88,10 +89,13 @@ public class EmpleadoController {
         DefaultTableModel modeloTabla = (DefaultTableModel) vistas.Tabla_empleado.getModel();
         modeloTabla.setRowCount(0);
 
-        botonEditar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-editar-20.png")));
-        botonEliminar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-trash-25.png")));
-        botonEliminar.putClientProperty(FlatClientProperties.STYLE, "arc: 20; " + "background: #E6D2D4;" );
-        botonEditar.putClientProperty(FlatClientProperties.STYLE, "arc: 20;" + "background: #F9F2ED;");
+        botonEditar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-edit-30.png")));
+        botonEliminar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-trash-30.png")));
+        botonEliminar.setBorder(BorderFactory.createEmptyBorder());
+        botonEditar.setBorder(BorderFactory.createEmptyBorder());
+
+//        botonEliminar.putClientProperty(FlatClientProperties.STYLE, "arc: 20; " + "background: #E6D2D4;" );
+//        botonEditar.putClientProperty(FlatClientProperties.STYLE, "arc: 20;" + "background: #F9F2ED;");
         listaEmpleado = empleadoDao.listar();
         if (listaEmpleado.isEmpty()) {
             System.out.println("No hay Empleados");

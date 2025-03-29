@@ -3,6 +3,7 @@ package controladores;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -63,10 +64,12 @@ public class Ingrediente_Controller {
     public void mostrar() {
         modeloIngrediente = (DefaultTableModel) vista.T_Ingrediente.getModel();
         modeloIngrediente.setRowCount(0);
-        botonEditar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-editar-20.png")));
-        botonEliminar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-trash-25.png")));
-        botonEliminar.putClientProperty(FlatClientProperties.STYLE, "arc: 20; " + "background: #E6D2D4;");
-        botonEditar.putClientProperty(FlatClientProperties.STYLE, "arc: 20;" + "background: #F9F2ED;");
+        botonEditar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-edit-30.png")));
+        botonEliminar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-trash-30.png")));
+        botonEditar.setBorder(BorderFactory.createEmptyBorder());
+        botonEliminar.setBorder(BorderFactory.createEmptyBorder());
+//        botonEliminar.putClientProperty(FlatClientProperties.STYLE, "arc: 20; " + "background: #E6D2D4;");
+//        botonEditar.putClientProperty(FlatClientProperties.STYLE, "arc: 20;" + "background: #F9F2ED;");
         ingredientesContador = 0;
         ListaIngrediente = IngredienteDAO.listar();
         if (ListaIngrediente.isEmpty()) {

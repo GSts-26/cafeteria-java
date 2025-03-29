@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -75,12 +76,15 @@ public class productoController implements Runnable {
 
 //  botones para editar y eliminar
     private void estilosBotones() {
-        botonEditar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-editar-20.png")));
-        botonVer.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-ver-25.png")));
-        botonBorrar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-trash-25.png")));
-        botonBorrar.putClientProperty(FlatClientProperties.STYLE, "arc: 20; " + "background: #E6D2D4;");
-        botonEditar.putClientProperty(FlatClientProperties.STYLE, "arc: 20;" + "background: #F9F2ED;");
-        botonVer.putClientProperty(FlatClientProperties.STYLE, "arc: 20;" + "background: #99CCFF;");
+        botonEditar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-edit-30.png")));
+        botonVer.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-eye-30.png")));
+        botonBorrar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-trash-30.png")));
+        botonBorrar.setBorder(BorderFactory.createEmptyBorder());
+        botonEditar.setBorder(BorderFactory.createEmptyBorder());
+        botonVer.setBorder(BorderFactory.createEmptyBorder());
+//        botonBorrar.putClientProperty(FlatClientProperties.STYLE, "arc: 20; ");
+//        botonEditar.putClientProperty(FlatClientProperties.STYLE, "arc: 20;" );
+//        botonVer.putClientProperty(FlatClientProperties.STYLE, "arc: 20;" );
     }
 
     // rellenar la tabla con los datos del producto

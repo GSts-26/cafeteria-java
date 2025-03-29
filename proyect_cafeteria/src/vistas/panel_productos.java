@@ -161,7 +161,6 @@ public class panel_productos extends javax.swing.JPanel {
         botonAgregarIngrediente = new javax.swing.JButton();
         boton_actualizar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
 
         AgregarIngredientes.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         AgregarIngredientes.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
@@ -903,9 +902,6 @@ public class panel_productos extends javax.swing.JPanel {
             }
         });
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 16, -1, 40));
-
-        jLabel9.setText("Validaciones cuando queremos ver la infonutricional y  no hay ingredientes");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_crearActionPerformed
@@ -1152,7 +1148,6 @@ public class panel_productos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
