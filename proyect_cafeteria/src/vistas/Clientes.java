@@ -32,7 +32,6 @@ public class Clientes extends javax.swing.JPanel {
 //        T_Clientes.setDefaultRenderer(Object.class, new render());
     }
 
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -74,7 +73,6 @@ public class Clientes extends javax.swing.JPanel {
         m3FechaVacia = new javax.swing.JLabel();
         m2NombreVacio = new javax.swing.JLabel();
         boton_actualizar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         nuevoCliente = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(249, 249, 249));
@@ -385,7 +383,8 @@ public class Clientes extends javax.swing.JPanel {
         boton_crear.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         boton_crear.setForeground(new java.awt.Color(255, 255, 255));
         boton_crear.setText("Crear Cliente");
-        boton_crear.setBorder(null);
+        boton_crear.setBorder(txtcedula.getBorder());
+        boton_crear.setBorderPainted(false);
         boton_crear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_crearActionPerformed(evt);
@@ -448,9 +447,6 @@ public class Clientes extends javax.swing.JPanel {
         add(crear_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 40, 440, 580));
         crear_cliente.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
-
-        jLabel1.setText("Falta actualizar y limpiar los campos");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, -1, -1));
 
         nuevoCliente.setBackground(new java.awt.Color(249, 242, 237));
         nuevoCliente.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
@@ -601,7 +597,6 @@ public class Clientes extends javax.swing.JPanel {
     private javax.swing.JPanel contenido_table;
     private javax.swing.JPanel crear_cliente;
     private javax.swing.JPanel info;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

@@ -26,7 +26,6 @@ public class inicio extends javax.swing.JFrame {
         Vista = (CardLayout) Contenido.getLayout();
     }
 
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 

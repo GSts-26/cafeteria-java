@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controladores;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -15,10 +12,6 @@ import modelos.Entidades.Ingrediente;
 import vistas.Agregar_ingredientes;
 import vistas.Ingredientes;
 
-/**
- *
- * @author SENA
- */
 public class Ingrediente_Controller {
 
     private Ingredientes vista;
@@ -27,7 +20,8 @@ public class Ingrediente_Controller {
     private DefaultTableModel modeloIngrediente;
     private int ingredientesContador;
     private List<Ingrediente> ListaIngrediente = new ArrayList<>();
-    JButton boton = new JButton();
+    JButton botonEditar = new JButton();
+    JButton botonEliminar = new JButton();
 
     public Ingrediente_Controller(Agregar_ingredientes vista1) {
         this.vista1 = vista1;
@@ -40,6 +34,7 @@ public class Ingrediente_Controller {
         this.IngredienteDAO = new DaoIngredienteImpl();
         this.ingredientesContador = 0;
     }
+    
 
     public void ingresar() {
         Ingrediente ingrediente = new Ingrediente(vista.txtNombre.getText(), (int) vista.txtcalorias.getValue(), (int) vista.txtCarbo.getValue(), (int) vista.txtAzucar.getValue(), (int) vista.txtproteinas.getValue());;
@@ -47,26 +42,31 @@ public class Ingrediente_Controller {
         JOptionPane.showMessageDialog(null, "Ingrediente Ingresado");
         mostrar();
     }
-
-    public void ingresar1() {
-
-        String nombre = vista1.txtNombre.getText();
-        int calorias = Integer.parseInt(vista1.txtcalorias.getText());
-        int carbohidrato = Integer.parseInt(vista1.txtCarbo.getText());
-        int azucar = Integer.parseInt(vista1.txtAzucar.getText());
-        int proteinas = Integer.parseInt(vista1.txtproteinas.getText());
-        Ingrediente ingrediente = new Ingrediente(nombre, calorias, carbohidrato, azucar, proteinas);
-        IngredienteDAO.insertar(ingrediente);
-        JOptionPane.showMessageDialog(null, "Ingrediente Ingresado");
-        this.limpiar();
+// metodos para el dialog de agregar ingredientes
+    
+    
+  
+//    public void ingresar1() {
+//
+//        String nombre = vista1.txtNombre.getText();
+//        int calorias = Integer.parseInt(vista1.txtcalorias.getText());
+//        int carbohidrato = Integer.parseInt(vista1.txtCarbo.getText());
+//        int azucar = Integer.parseInt(vista1.txtAzucar.getText());
+//        int proteinas = Integer.parseInt(vista1.txtproteinas.getText());
+//        Ingrediente ingrediente = new Ingrediente(nombre, calorias, carbohidrato, azucar, proteinas);
+//        IngredienteDAO.insertar(ingrediente);
+//        JOptionPane.showMessageDialog(null, "Ingrediente Ingresado");
+//        this.limpiarAgreIngrediente();
 //        mostrar();
-    }
+//    }
 
     public void mostrar() {
         modeloIngrediente = (DefaultTableModel) vista.T_Ingrediente.getModel();
-        boton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-editar-20.png")));
-        boton.putClientProperty(FlatClientProperties.STYLE, "arc: 50");
         modeloIngrediente.setRowCount(0);
+        botonEditar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-editar-20.png")));
+        botonEliminar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-trash-25.png")));
+        botonEliminar.putClientProperty(FlatClientProperties.STYLE, "arc: 20; " + "background: #E6D2D4;");
+        botonEditar.putClientProperty(FlatClientProperties.STYLE, "arc: 20;" + "background: #F9F2ED;");
         ingredientesContador = 0;
         ListaIngrediente = IngredienteDAO.listar();
         if (ListaIngrediente.isEmpty()) {
@@ -79,112 +79,81 @@ public class Ingrediente_Controller {
                 modeloIngrediente.addRow(new Object[]{
                     ingrediente.getId(),
                     ingrediente.getNombre(),
-                    boton
+                    botonEditar,
+                    botonEliminar
                 });
             }
             vista.contadornumero.setText(String.valueOf(ingredientesContador));
         }
     }
 
-    public void limpiar() {
-        vista1.txtNombre.setText("");
-        vista1.txtAzucar.setText("");
-        vista1.txtCarbo.setText("");
-        vista1.txtcalorias.setText("");
-        vista1.txtproteinas.setText("");
+
+   
+
+  
+
+  
+
+    public void rellenarACtu() {
+        vista.lblIngrediente.setText("Actualizar Ingrediente");
+        vista.boton_actualizar.setVisible(true);
+        vista.boton_crear.setVisible(false);
     }
 
-    public void ocultarM() {
-        vista1.m1NombreVacio.setVisible(false);
-        vista1.m2CalVacio.setVisible(false);
-        vista1.m3CarboVacio.setVisible(false);
-        vista1.m4AzucarVacio.setVisible(false);
-        vista1.m5ProteVacio.setVisible(false);
+    public void rellenarNuevo() {
+        vista.lblIngrediente.setText("Nuevo Ingrediente");
+        vista.boton_actualizar.setVisible(false);
+        vista.boton_crear.setVisible(true);
+        resetear();
     }
 
-    public boolean campoVacio() {
-
-        if (vista1.txtNombre.getText().isEmpty()) {
-            vista1.m1NombreVacio.setVisible(true);
-            vista1.txtNombre.requestFocus();
-            return false;
-        } else {
-            vista1.m1NombreVacio.setVisible(false);
-        }
-
-        if (vista1.txtcalorias.getText().isEmpty()) {
-            vista1.m2CalVacio.setVisible(true);
-            vista1.txtcalorias.requestFocus();
-            return false;
-        } else {
-            vista1.m2CalVacio.setVisible(false);
-        }
-
-        if (vista1.txtCarbo.getText().isEmpty()) {
-            vista1.m3CarboVacio.setVisible(true);
-            vista1.txtCarbo.requestFocus();
-            return false;
-        } else {
-            vista1.m3CarboVacio.setVisible(false);
-        }
-
-        if (vista1.txtAzucar.getText().isEmpty()) {
-            vista1.m4AzucarVacio.setVisible(true);
-            vista1.txtAzucar.requestFocus();
-            return false;
-        } else {
-            vista1.m4AzucarVacio.setVisible(false);
-        }
-
-        if (vista1.txtproteinas.getText().isEmpty()) {
-            vista1.m5ProteVacio.setVisible(true);
-            vista1.txtproteinas.requestFocus();
-            return false;
-        } else {
-            vista1.m5ProteVacio.setVisible(false);
-        }
-
-        // Si todos los campos están llenos, retornar verdadero
-        return true;
-    }
-
-    public void DatosNoAdmiditodos() {
-        for (int i = 0; i < vista1.txtNombre.getText().length(); i++) {
-            if (Character.isDigit(vista1.txtNombre.getText().charAt(i))) {
-                vista1.txtNombre.setText("");
-            }
-        }
-        for (int i = 0; i < vista1.txtAzucar.getText().length(); i++) {
-            if (!Character.isDigit(vista1.txtAzucar.getText().charAt(i))) {
-                vista1.txtAzucar.setText("");
-            }
-        }
-        for (int i = 0; i < vista1.txtCarbo.getText().length(); i++) {
-            if (!Character.isDigit(vista1.txtCarbo.getText().charAt(i))) {
-                vista1.txtCarbo.setText("");
-            }
-        }
-        for (int i = 0; i < vista1.txtcalorias.getText().length(); i++) {
-            if (!Character.isDigit(vista1.txtcalorias.getText().charAt(i))) {
-                vista1.txtcalorias.setText("");
-            }
-        }
-        for (int i = 0; i < vista1.txtproteinas.getText().length(); i++) {
-            if (!Character.isDigit(vista1.txtproteinas.getText().charAt(i))) {
-                vista1.txtproteinas.setText("");
-            }
-        }
+    public void resetear() {
+        vista.txtNombre.setText("");
+        vista.txtcalorias.setValue(0);
+        vista.txtCarbo.setValue(0);
+        vista.txtAzucar.setValue(0);
+        vista.txtproteinas.setValue(0);
 
     }
-//    public void Acciones_tabla() {
-//    int columna = vista.tabla_producto.getSelectedColumn();
-//    int fila = vista.tabla_producto.getSelectedRow();
-//
-//    if (columna == 6) {
-//        Long idEliminar = Long.parseLong(vista.tabla_producto.getValueAt(fila, 0).toString());
-//        IngredienteDAO.eliminar(idEliminar);
-//        JOptionPane.showMessageDialog(null, "Producto Eliminado Correctamente");
-//        mostrar();
-//    }
-//}
+    int idIngre = 0;
+
+    public void Acciones_tabla() {
+        ArrayList<Integer> lista = new ArrayList<>();
+        DefaultTableModel modelo = (DefaultTableModel) vista.T_Ingrediente.getModel();
+        int columna = vista.T_Ingrediente.getSelectedColumn();
+        int fila = vista.T_Ingrediente.getSelectedRow();
+        int idEliminar = Integer.parseInt(modelo.getValueAt(fila, 0).toString());
+        idIngre = Integer.parseInt(modelo.getValueAt(fila, 0).toString());
+
+        if (columna == 3) {
+            IngredienteDAO.eliminar(idEliminar);
+            JOptionPane.showMessageDialog(null, "Ingrediente Eliminado Correctamente", "Eliminado", JOptionPane.INFORMATION_MESSAGE);
+            mostrar();
+        } else if (columna == 2) {
+            rellenarACtu();
+            String nombre = modelo.getValueAt(fila, 1).toString();
+            vista.txtNombre.setText(nombre);
+            lista = IngredienteDAO.obtenerInfoNutri(idEliminar);
+            vista.txtcalorias.setValue(lista.get(0));
+            vista.txtCarbo.setValue(lista.get(1));
+            vista.txtAzucar.setValue(lista.get(2));
+            vista.txtproteinas.setValue(lista.get(3));
+
+        }
+    }
+
+    public void actualizar() {
+        String nombre = vista.txtNombre.getText();
+        int cal = Integer.parseInt(vista.txtcalorias.getValue().toString());
+        int carbo = Integer.parseInt(vista.txtCarbo.getValue().toString());
+        int azucar = Integer.parseInt(vista.txtAzucar.getValue().toString());
+        int proteina = Integer.parseInt(vista.txtproteinas.getValue().toString());
+        Ingrediente ingre = new Ingrediente(idIngre, nombre, cal, carbo, proteina, azucar);
+        IngredienteDAO.actualizar(ingre);
+        JOptionPane.showMessageDialog(null, "Datos modificados", "Modificado", JOptionPane.INFORMATION_MESSAGE);
+        mostrar();
+        rellenarNuevo();
+    }
+    
+    
 }

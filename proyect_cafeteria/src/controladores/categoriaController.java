@@ -3,6 +3,8 @@ package controladores;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -11,32 +13,33 @@ import modelos.DAO.DaoProductoImpl;
 import vistas.Categorias;
 import modelos.Entidades.categoria;
 
-public class categoriaController {
-    
+public class categoriaController implements Runnable {
+
     private DaoCategoria categoriaDao;
     private Categorias vistaCategoria;
     private List<categoria> lista = new ArrayList<>();
     JButton botonEditar = new JButton();
     JButton botonEliminar = new JButton();
-    
+    private Thread s;
+
     public categoriaController(Categorias catee) {
         this.vistaCategoria = catee;
         this.categoriaDao = new DaoCategoria();
-        
+
     }
-    
+
     public void ingresar() {
-        
+
         String nombre = vistaCategoria.getTxt_nombre().getText();
         categoria cate = new categoria(nombre);
         categoriaDao.insertar(cate);
 //        vistaCategoria.getTxt_nombre().setText("");
         mostrar();
-        
+
     }
-    
+
     public void mostrar() {
-        
+
         botonEditar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-editar-20.png")));
         botonEliminar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-trash-25.png")));
         botonEliminar.putClientProperty(FlatClientProperties.STYLE, "arc: 20; " + "background: #E6D2D4;");
@@ -57,24 +60,23 @@ public class categoriaController {
             }
         }
     }
-    
+
     public void rellenarActualizar() {
-        vistaCategoria.getTxt_id().setEditable(false);
         vistaCategoria.boton_agregar.setVisible(false);
         vistaCategoria.boton_actualizar.setVisible(true);
         vistaCategoria.jLabel4.setText("Actualizar categoria");
     }
-    
+
     public void rellenarNuevaCategoria() {
-        vistaCategoria.getTxt_id().setEditable(true);
+        
         vistaCategoria.boton_agregar.setVisible(true);
         vistaCategoria.boton_actualizar.setVisible(false);
         vistaCategoria.jLabel4.setText("Nueva categoria");
         limpiar();
     }
-    
+
     public void limpiar() {
-        vistaCategoria.getTxt_id().setEditable(true);
+        vistaCategoria.getTxt_id().setEditable(false);
         vistaCategoria.getTxt_id().requestFocus();
         vistaCategoria.getTxt_id().setText("");
         vistaCategoria.getTxt_nombre().setText("");
@@ -82,16 +84,16 @@ public class categoriaController {
         vistaCategoria.boton_actualizar.setVisible(false);
         vistaCategoria.jLabel4.setText("Nueva categoria");
     }
-    
+
     public void actualizar() {
         categoria c = new categoria(Integer.parseInt(vistaCategoria.getTxt_id().getText()), vistaCategoria.getTxt_nombre().getText());
         categoriaDao.actualizar(c);
         mostrar();
         limpiar();
         JOptionPane.showMessageDialog(null, "Datos modificados", "Modificado", JOptionPane.INFORMATION_MESSAGE);
-        
+
     }
-    
+
     public void accionTabla() {
         int fila = vistaCategoria.getTabla_cate().getSelectedRow();
         int filaseleccionada = Integer.parseInt(vistaCategoria.getModel_tabla().getValueAt(fila, 0).toString());
@@ -101,18 +103,19 @@ public class categoriaController {
             categoriaDao.eliminar(filaseleccionada);
             mostrar();
         } else if (columna == 2) {
+
             vistaCategoria.getTxt_id().setText(String.valueOf(filaseleccionada));
             vistaCategoria.getTxt_nombre().setText(nombre);
             rellenarActualizar();
-            
+
         }
     }
-    
+
     public void contar() {
         int numero = categoriaDao.contarCategorias();
         vistaCategoria.contar_categoria.setText(String.valueOf(numero));
     }
-    
+
     public boolean campoVacio() {
         if (vistaCategoria.getTxt_nombre().getText().isEmpty()) {
             vistaCategoria.m1nombreCampo.setVisible(true);
@@ -121,11 +124,26 @@ public class categoriaController {
             vistaCategoria.m1nombreCampo.setVisible(false);
             return true;
         }
-        
+
     }
-    
+
     public void ocultar() {
         vistaCategoria.m1nombreCampo.setVisible(false);
         vistaCategoria.boton_actualizar.setVisible(false);
+    }
+
+    @Override
+    public void run() {
+        try {
+            for (int i = 0; i < 10; i++) {
+                s = new Thread(this);
+
+                s.start();
+                Thread.sleep(400);
+                System.out.println("ggg");
+            }
+        } catch (InterruptedException ex) {
+            Logger.getLogger(categoriaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

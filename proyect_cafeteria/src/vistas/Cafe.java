@@ -4,17 +4,33 @@
  */
 package vistas;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Admin
  */
-public class Cafe {
+public class Cafe implements Runnable {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Thread f = new Thread(new Cafe());
+
+        f.start();
+
     }
-    
+
+    @Override
+
+    public void run() {
+        try {
+            for (int i = 0; i < 10; i++) {
+                Thread.sleep(4000);
+                JOptionPane.showMessageDialog(null, "ok");
+            }
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Cafe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package controladores;
 
 import vistas.Clientes;
@@ -20,10 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import modelos.DAO.DaoClienteImpl;
 import modelos.Entidades.Cliente;
 
-/**
- *
- * @author SENA
- */
+
 public class Controller_cliente {
 
     private final Clientes vista; //vista del panel

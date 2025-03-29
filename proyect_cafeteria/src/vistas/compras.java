@@ -29,7 +29,6 @@ public class compras extends javax.swing.JPanel {
          });
         Agregar.setVisible(true);
     }
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 

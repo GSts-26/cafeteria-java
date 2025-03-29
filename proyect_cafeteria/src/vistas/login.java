@@ -1,6 +1,5 @@
 package vistas;
 
-import modelos.Bd.conexion;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Color;
@@ -21,7 +20,6 @@ public class login extends javax.swing.JFrame {
         
     }
     
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 

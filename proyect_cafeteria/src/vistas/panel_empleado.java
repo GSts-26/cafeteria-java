@@ -3,14 +3,11 @@ package vistas;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.icons.*;
 import com.toedter.calendar.JDateChooser;
-import controladores.Controller_cliente;
 import controladores.EmpleadoController;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import controladores.metodo_empleado;
-import modelos.Entidades.Empleado;
 import utils.render;
 
 public class panel_empleado extends javax.swing.JPanel {
@@ -31,7 +28,6 @@ public class panel_empleado extends javax.swing.JPanel {
 //        Tabla_empleado.setDefaultRenderer(Object.class, new render());
     }
 
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 

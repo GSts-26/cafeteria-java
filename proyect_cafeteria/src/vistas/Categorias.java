@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package vistas;
 
 import com.formdev.flatlaf.FlatClientProperties;
@@ -15,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import controladores.metodo_categoria;
+
 import utils.render;
 
 public class Categorias extends javax.swing.JPanel {
@@ -34,7 +31,6 @@ public class Categorias extends javax.swing.JPanel {
 
     }
 
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -307,6 +303,7 @@ public class Categorias extends javax.swing.JPanel {
         } else {
 
             controlCate.ingresar();
+//            c.actualizarCombo();
         }
 
         txt_nombre.setText("");
