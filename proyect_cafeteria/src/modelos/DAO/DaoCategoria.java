@@ -16,49 +16,44 @@ public class DaoCategoria implements DAOGeneral<categoria> {
     @Override
     public void insertar(categoria t) {
         String consulta = "INSERT INTO categoria (nombre) VALUES(?)";
-        try (Connection con = conexion.getConnection()) {
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(consulta)) {
 
-            PreparedStatement ps = con.prepareStatement(consulta);
             ps.setString(1, t.getNombre());
-            int fila_insertadad = ps.executeUpdate();
-            if (fila_insertadad > 0) {
-                listar();
-//                t.getTxt_nombre().setText("");
+            int fila_insertada = ps.executeUpdate();
 
+            if (fila_insertada > 0) {
+                listar();
                 JOptionPane.showMessageDialog(null, "Categoria agregada", "Agregado", JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (SQLException e) {
-            System.out.println("Entro al catch" + e.getMessage());
+            System.out.println("Error al insertar: " + e.getMessage());
         }
-
     }
 
     @Override
     public void actualizar(categoria t) {
-        String consulta = "update categoria set nombre=? where id=?";
-        try (Connection con = conexion.getConnection()) {
-            PreparedStatement ps = con.prepareStatement(consulta);
+        String consulta = "UPDATE categoria SET nombre=? WHERE id=?";
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(consulta)) {
+
             ps.setString(1, t.getNombre());
             ps.setInt(2, t.getId());
             ps.executeUpdate();
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            System.out.println("Error al actualizar: " + e.getMessage());
         }
     }
 
     public void eliminar(int id) {
         String consulta = "DELETE FROM categoria WHERE id=?";
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(consulta)) {
 
-        try (Connection con = conexion.getConnection()) {
-            PreparedStatement ps = con.prepareStatement(consulta);
             ps.setInt(1, id);
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Categoria eliminada", "Eliminada", JOptionPane.INFORMATION_MESSAGE);
             listar();
-
         } catch (SQLException e) {
-            System.out.println("Entro al catch" + e.getMessage());
+            System.out.println("Error al eliminar: " + e.getMessage());
         }
-
     }
 
     @Override
@@ -66,34 +61,29 @@ public class DaoCategoria implements DAOGeneral<categoria> {
         String consulta = "SELECT * FROM categoria";
         List<categoria> listacate = new ArrayList<>();
 
-        try (Connection con = conexion.getConnection()) {
-            PreparedStatement ps = con.prepareStatement(consulta);
-            ResultSet rs = ps.executeQuery();
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(consulta); ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
-                categoria cate = new categoria(rs.getInt("id"),
-                        rs.getString("nombre"));
+                categoria cate = new categoria(rs.getInt("id"), rs.getString("nombre"));
                 listacate.add(cate);
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Error al listar: " + e.getMessage());
         }
         return listacate;
-
     }
 
     public int contarCategorias() {
         int numero = 0;
-        String consulta = "select count(*) from categoria";
-        try (Connection con = conexion.getConnection()) {
-            PreparedStatement ps = con.prepareStatement(consulta);
-            ResultSet rs = ps.executeQuery();
+        String consulta = "SELECT COUNT(*) FROM categoria";
+
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(consulta); ResultSet rs = ps.executeQuery()) {
+
             if (rs.next()) {
                 numero = rs.getInt(1);
             }
-
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Error al contar categorias: " + e.getMessage());
         }
         return numero;
     }

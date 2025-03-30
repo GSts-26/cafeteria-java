@@ -17,32 +17,34 @@ import java.util.ArrayList;
  */
 public class DaoClienteImpl implements DAOGeneral<Cliente> {
 
-    conexion conex = new modelos.Bd.conexion();
-
     @Override
     public void insertar(Cliente t) {
-        try (Connection con = conex.getConnection();) {
-            PreparedStatement st = con.prepareStatement("INSERT INTO public.cliente (cedula, nombre, nacimiento, genero, telefono, email, direccion) VALUES(?, ?, ?, ?, ?, ?, ?)");
+        String consulta = "INSERT INTO public.cliente (cedula, nombre, nacimiento, genero, telefono, email, direccion) VALUES(?, ?, ?, ?, ?, ?, ?)";
+
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement st = con.prepareStatement(consulta)) {
+
             st.setLong(1, t.getCedula());
             st.setString(2, t.getNombre());
-            st.setDate(3, (t.getFechaNacimiento()));
+            st.setDate(3, t.getFechaNacimiento());
             st.setString(4, t.getGenero());
             st.setLong(5, t.getTelefono());
             st.setString(6, t.getEmail());
             st.setString(7, t.getDireccion());
             st.executeUpdate();
-            System.out.println("ingresado");
+
+            System.out.println("Cliente ingresado");
             this.listar();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (SQLException e) {
+            System.out.println("Error al insertar: " + e.getMessage());
         }
     }
 
     @Override
     public void actualizar(Cliente t) {
-        String consulta = "update cliente set nombre=?, nacimiento=?, genero=?, telefono=?, email=?, direccion=? where cedula=?";
-        try (Connection con = conexion.getConnection()) {
-            PreparedStatement ps = con.prepareStatement(consulta);
+        String consulta = "UPDATE cliente SET nombre=?, nacimiento=?, genero=?, telefono=?, email=?, direccion=? WHERE cedula=?";
+
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(consulta)) {
+
             ps.setString(1, t.getNombre());
             ps.setDate(2, t.getFechaNacimiento());
             ps.setString(3, t.getGenero());
@@ -51,25 +53,24 @@ public class DaoClienteImpl implements DAOGeneral<Cliente> {
             ps.setString(6, t.getDireccion());
             ps.setLong(7, t.getCedula());
             ps.executeUpdate();
-            listar();
-            con.close();
-            ps.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
 
+            listar();
+        } catch (SQLException e) {
+            System.out.println("Error al actualizar: " + e.getMessage());
+        }
     }
 
     @Override
     public void eliminar(Long cedula) {
-        try (Connection con = conex.getConnection();) {
-            PreparedStatement st = con.prepareStatement("DELETE FROM public.cliente WHERE cedula = ?");
+        String consulta = "DELETE FROM public.cliente WHERE cedula = ?";
+
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement st = con.prepareStatement(consulta)) {
+
             st.setLong(1, cedula);
             st.executeUpdate();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar: " + e.getMessage());
         }
-
     }
 
     @Override
@@ -77,7 +78,7 @@ public class DaoClienteImpl implements DAOGeneral<Cliente> {
         List<Cliente> listaClientes = new ArrayList<>();
         String sql = "SELECT * FROM public.cliente";
 
-        try (Connection con = conex.getConnection(); PreparedStatement st = con.prepareStatement(sql); ResultSet rs = st.executeQuery()) {
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement st = con.prepareStatement(sql); ResultSet rs = st.executeQuery()) {
 
             while (rs.next()) {
                 Cliente cliente = new Cliente(
@@ -91,9 +92,10 @@ public class DaoClienteImpl implements DAOGeneral<Cliente> {
                 );
                 listaClientes.add(cliente);
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (SQLException e) {
+            System.out.println("Error al listar: " + e.getMessage());
         }
         return listaClientes;
     }
+
 }

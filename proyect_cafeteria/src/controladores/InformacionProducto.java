@@ -24,7 +24,6 @@ public class InformacionProducto {
     private int totalazucar = 0;
     private int totalcalorias = 0;
     private int totalcarbohidratos = 0;
-    modelos.Bd.conexion con = new conexion();
     private int idIngrente = 0;
 
     private panel_informacion_producto info;
@@ -56,13 +55,13 @@ public class InformacionProducto {
         if (product.getTabla_producto().getSelectedColumn() == 5) {
             product.tabla_producto.clearSelection();
 
-            try (Connection cons = conexion.getConnection()) {
+            try (Connection con = conexion.getInstance().getConnection()) {
 
                 Map<Integer, Ingrediente> ingredientesMap = new HashMap<>();
                 daoIngre.listar().forEach(ingrediente -> ingredientesMap.put(ingrediente.getId(), ingrediente));
 
                 String consulta = "SELECT ids_ingrediente FROM producto WHERE id=?";
-                PreparedStatement ps = cons.prepareStatement(consulta);
+                PreparedStatement ps = con.prepareStatement(consulta);
                 ps.setInt(1, idP);
                 ResultSet rsIds = ps.executeQuery();
 

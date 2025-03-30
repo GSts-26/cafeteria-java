@@ -1,5 +1,6 @@
 package modelos.DAO;
 
+import java.util.HashMap;
 import modelos.Entidades.*;
 import java.util.List;
 
@@ -21,11 +22,23 @@ public interface DAOGeneral<T> {
 
     public List<T> listar();
 
-    interface ClienteDAO extends DAOGeneral<Cliente> {
-    }
     interface ProductosDAO extends DAOGeneral<producto> {
-        
-    }interface IngredientesDAO extends DAOGeneral<Ingrediente> {
-        
+
+        public List<String> buscarIngredientes(Long id);
     }
+
+    interface DaoVenta extends DAOGeneral<CarroCompras> {
+
+        int insertreturning(CarroCompras compras);
+
+        CarroCompras activo(long cedulaempleado);
+
+        void actualizarValor(CarroCompras compras);
+    }
+
+    interface DaoItemsCarro extends DAOGeneral<itemsCarro> {
+        public HashMap<Integer, Object> listar(int idcarro);
+        void EliminarTodo();
+    }
+
 }

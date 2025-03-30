@@ -17,12 +17,10 @@ import java.util.ArrayList;
  */
 public class DaoIngredienteImpl implements DAOGeneral<Ingrediente> {
 
-    conexion conex = new modelos.Bd.conexion();
-
     @Override
     public void insertar(Ingrediente t) {
-        try (Connection con = conex.getConnection();) {
-            PreparedStatement st = con.prepareStatement("INSERT INTO public.ingredientes ( nombre, calorias, carbohidratos, proteina, azucar) VALUES(?, ?, ?, ?, ?)");
+        String sql = "INSERT INTO public.ingredientes (nombre, calorias, carbohidratos, proteina, azucar) VALUES(?, ?, ?, ?, ?)";
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement st = con.prepareStatement(sql)) {
 
             st.setString(1, t.getNombre());
             st.setInt(2, t.getCalorias());
@@ -30,18 +28,18 @@ public class DaoIngredienteImpl implements DAOGeneral<Ingrediente> {
             st.setInt(4, t.getProteinas());
             st.setInt(5, t.getAzucar());
             st.executeUpdate();
+
             this.listar();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
 
     @Override
     public void actualizar(Ingrediente t) {
-        String consulta = "update ingredientes set nombre=?, calorias=?, carbohidratos=?, azucar=?, proteina=? where id=?";
+        String sql = "UPDATE ingredientes SET nombre=?, calorias=?, carbohidratos=?, azucar=?, proteina=? WHERE id=?";
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
 
-        try (Connection con = conexion.getConnection()) {
-            PreparedStatement ps = con.prepareStatement(consulta);
             ps.setString(1, t.getNombre());
             ps.setInt(2, t.getCalorias());
             ps.setInt(3, t.getCarbohidratos());
@@ -49,10 +47,10 @@ public class DaoIngredienteImpl implements DAOGeneral<Ingrediente> {
             ps.setInt(5, t.getProteinas());
             ps.setInt(6, t.getId());
             ps.executeUpdate();
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
     }
 
     @Override
@@ -60,7 +58,7 @@ public class DaoIngredienteImpl implements DAOGeneral<Ingrediente> {
         List<Ingrediente> listaIngredientes = new ArrayList<>();
         String sql = "SELECT * FROM public.ingredientes";
 
-        try (Connection con = conex.getConnection(); PreparedStatement st = con.prepareStatement(sql); ResultSet rs = st.executeQuery()) {
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement st = con.prepareStatement(sql); ResultSet rs = st.executeQuery()) {
 
             while (rs.next()) {
                 Ingrediente ing = new Ingrediente(
@@ -73,18 +71,20 @@ public class DaoIngredienteImpl implements DAOGeneral<Ingrediente> {
                 );
                 listaIngredientes.add(ing);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return listaIngredientes;
     }
 
+    
     public void eliminar(int id) {
-        String consulta = "delete from ingredientes where id=?";
-        try (Connection con = conexion.getConnection()) {
-            PreparedStatement ps = con.prepareStatement(consulta);
+        String sql = "DELETE FROM ingredientes WHERE id=?";
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+
             ps.setInt(1, id);
             ps.executeUpdate();
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -92,21 +92,19 @@ public class DaoIngredienteImpl implements DAOGeneral<Ingrediente> {
 
     public ArrayList<Integer> obtenerInfoNutri(int id) {
         ArrayList<Integer> lista = new ArrayList<>();
-        String consulta = "select calorias, carbohidratos, azucar, proteina  from ingredientes where id=?";
-        try (Connection con = conexion.getConnection()) {
-            PreparedStatement ps = con.prepareStatement(consulta);
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                int calorias = rs.getInt("calorias");
-                int carbos = rs.getInt("carbohidratos");
-                int azucar = rs.getInt("azucar");
-                int prote = rs.getInt("proteina");
-                lista.add(calorias);
-                lista.add(carbos);
-                lista.add(azucar);
-                lista.add(prote);
+        String sql = "SELECT calorias, carbohidratos, azucar, proteina FROM ingredientes WHERE id=?";
 
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    lista.add(rs.getInt("calorias"));
+                    lista.add(rs.getInt("carbohidratos"));
+                    lista.add(rs.getInt("azucar"));
+                    lista.add(rs.getInt("proteina"));
+                }
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -118,4 +116,5 @@ public class DaoIngredienteImpl implements DAOGeneral<Ingrediente> {
     public void eliminar(Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
 }

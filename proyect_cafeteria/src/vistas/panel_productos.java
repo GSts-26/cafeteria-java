@@ -9,17 +9,17 @@ import com.formdev.flatlaf.icons.FlatSearchIcon;
 import controladores.InformacionProducto;
 import controladores.productoController;
 import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.Font;
+import java.io.File;
+import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
-import javax.swing.JFrame;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.SpinnerNumberModel;
-import javax.swing.SwingUtilities;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import utils.render;
 
@@ -31,17 +31,24 @@ public class panel_productos extends javax.swing.JPanel {
 
     productoController controlador = new productoController(this);
     private ArrayList<Integer> ingredientes = new ArrayList<>();
-
     panel_informacion_producto info_producto = new panel_informacion_producto();
-
     InformacionProducto control = new InformacionProducto(this, info_producto);
-
     CardLayout Vista;
+    JFileChooser j = new JFileChooser("d:");
+
+// ("cloudinary://154771117917672:HnTeJ6oI9zTirPJd560vtpN0tiQ@ddc47jehx");
+//    Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
+//            "cloud_name", "ddc47jehx",
+//            "api_key", "154771117917672",
+//            "api_secret", "HnTeJ6oI9zTirPJd560vtpN0tiQ",
+//            "secure", true));
+
+
 
     public panel_productos() {
         initComponents();
-
         styles();
+        System.out.println(System.getProperty("java.class.path"));
         Vista = (CardLayout) cardProductos.getLayout();
         controlador.rellenar_combo_categoria();
         controlador.mostrar();
@@ -49,6 +56,7 @@ public class panel_productos extends javax.swing.JPanel {
         controlador.ocultarMensajeIngredientes();
     }
 
+    
     private void AbrirInfoProducto() {
         cardProductos.add(info_producto, "info");
         Vista.show(cardProductos, "info");
@@ -135,7 +143,7 @@ public class panel_productos extends javax.swing.JPanel {
         TxtInfoPrecio = new javax.swing.JLabel();
         txtInfoNombre = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
         txtprecio = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -664,24 +672,28 @@ public class panel_productos extends javax.swing.JPanel {
 
         jPanel6.setBackground(new java.awt.Color(198, 124, 78));
 
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-ingredients-40.png"))); // NOI18N
-        jLabel19.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton6.setText("jButton1");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jLabel19)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel19)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(jButton6)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 130, 80));
@@ -931,7 +943,7 @@ public class panel_productos extends javax.swing.JPanel {
             // Convertir a número
             long numero = Long.parseLong(texto);
 
-            NumberFormat format = NumberFormat.getInstance(new Locale("es", "CO"));
+            NumberFormat format = NumberFormat.getInstance(Locale.of("es", "CO"));
             txtprecio.setText(format.format(numero));
             TxtInfoPrecio.setText("$" + format.format(numero));
         } catch (NumberFormatException e) {
@@ -1093,6 +1105,17 @@ public class panel_productos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_actualizar1ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imágenes", "jpg", "png");
+        j.setFileFilter(filtro);
+        int r = j.showSaveDialog(null);
+        if (r == JFileChooser.APPROVE_OPTION) {
+            File fichero = j.getSelectedFile();
+        } else {
+            System.out.println("cancelado");
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     public JTable getTabla_producto() {
         return tabla_producto;
     }
@@ -1121,6 +1144,10 @@ public class panel_productos extends javax.swing.JPanel {
     private javax.swing.JPanel info;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1131,7 +1158,6 @@ public class panel_productos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;

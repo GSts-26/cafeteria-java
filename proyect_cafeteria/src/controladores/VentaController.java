@@ -19,23 +19,11 @@ import vistas.menu.producto_info;
 public class VentaController {
 
     private final compras vista;
-    private DaoProductoImpl ProductosDAO;
-    private List<producto> ListaProductos = new ArrayList<>();
+  
 
     public VentaController(compras vista) {
         this.vista = vista;
-        this.ProductosDAO = new DaoProductoImpl();
         
     }
-    
-    public void relenar_productos(){
-    ListaProductos = ProductosDAO.listar();
-    vista.contenido_producto.setLayout(new GridLayout(0, 4, 16, 16));
-
-        for (producto producto : ListaProductos) {     
-            vista.contenido_producto.add(new producto_info(producto));
-            vista.contenido_producto.revalidate();
-vista.contenido_producto.repaint();
-        }
-    }
+   
 }

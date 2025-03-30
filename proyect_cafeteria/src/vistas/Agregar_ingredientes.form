@@ -392,7 +392,7 @@
                   <Color blue="4e" green="7c" red="c6" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenes/Info1.png"/>
+                  <Image iconType="3" name="/imagenes/icons8-info-22 (1).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Rellena el campo"/>
               </Properties>
@@ -414,7 +414,7 @@
                   <Color blue="4e" green="7c" red="c6" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenes/Info1.png"/>
+                  <Image iconType="3" name="/imagenes/icons8-info-22 (1).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Rellena el campo"/>
               </Properties>
@@ -436,7 +436,7 @@
                   <Color blue="4e" green="7c" red="c6" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenes/Info1.png"/>
+                  <Image iconType="3" name="/imagenes/icons8-info-22 (1).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Rellena el campo"/>
               </Properties>
@@ -458,7 +458,7 @@
                   <Color blue="4e" green="7c" red="c6" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenes/Info1.png"/>
+                  <Image iconType="3" name="/imagenes/icons8-info-22 (1).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Rellena el campo"/>
               </Properties>
@@ -480,7 +480,7 @@
                   <Color blue="4e" green="7c" red="c6" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenes/Info1.png"/>
+                  <Image iconType="3" name="/imagenes/icons8-info-22 (1).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Rellena el campo"/>
               </Properties>

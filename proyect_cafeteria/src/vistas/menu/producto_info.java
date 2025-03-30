@@ -13,11 +13,12 @@ import modelos.Entidades.producto;
 public class producto_info extends javax.swing.JPanel {
 
     private producto producto;
-    compras c = new compras();
+      private compras comprasPanel;
 
-    public producto_info(producto producto) {
+    public producto_info(producto producto, compras comprasPanel) {
         initComponents();
         this.producto = producto;
+          this.comprasPanel = comprasPanel;
         rellenar_campos();
         this.putClientProperty(FlatClientProperties.STYLE,
                 "arc: 30");
@@ -109,7 +110,7 @@ public class producto_info extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        c.mostrarInformacion(producto);
+         comprasPanel.mostrarInformacion(producto);
         this.setBorder(new FlatLineBorder(new Insets(0, 0, 0, 0), new java.awt.Color(240, 132, 156), 1, 25));
 
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -1,35 +1,60 @@
 package controladores;
 
-import java.sql.*;
-import modelos.Bd.conexion;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+import modelos.Bd.conexion;
+import modelos.DAO.DaoLogin;
+import modelos.Entidades.usuario;
+import vistas.inicio;
+import vistas.login;
 
 public class metodo_login {
 
-    modelos.Bd.conexion conex = new conexion();
+    private final login vista; //vista del panel
+    private DaoLogin loginDAO;
+    inicio ventanaprincipal;
 
-    public void acceso(JTextField txtUsuario, JTextField txtClave) {
-        String usuario_obtenido = txtUsuario.getText().trim();
-        String clave_obtenida = txtClave.getText().trim();
-        String rol_obtenido = null;
-        String consulta_datos = "SELECT * FROM usuario WHERE usuario=? AND clave=?";
-        try (Connection con = conex.getConnection()) {
-            PreparedStatement ps = con.prepareStatement(consulta_datos);
-            ps.setString(1, usuario_obtenido);
-            ps.setString(2, clave_obtenida);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                rol_obtenido = rs.getString("rol");
-                if (rol_obtenido.equalsIgnoreCase("empleado")) {
+    public metodo_login(login login) {
+        this.vista = login;
+        this.loginDAO = new DaoLogin();
+    }
+
+    usuario usuariologeado;
+    
+    public void cargarinterfaz(){
+    ventanaprincipal = new inicio();
+    }
+
+    public void acceso() {
+        usuariologeado = loginDAO.userselect(vista.txt_usuario.getText().trim(), vista.txt_clave.getText().trim());
+        if (usuariologeado != null) {
+            String rol = usuariologeado.getRol();
+            switch (rol) {
+                case "empleado":
                     JOptionPane.showMessageDialog(null, "Ingresando como Empleado");
-                } else if (rol_obtenido.equalsIgnoreCase("administrador")) {
+                    ventanaprincipal.setVisible(true);
+                    abrirVentanaPrincipal();
+                    break;
+                case "administrador":
                     JOptionPane.showMessageDialog(null, "Ingresando como Administrador");
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Datos incorrecto");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null,
+                            "Rol no reconocido",
+                            "Error de autenticación",
+                            JOptionPane.WARNING_MESSAGE);
+                    break;
             }
-        } catch (Exception e) {
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "Credenciales incorrectas",
+                    "Error de autenticación",
+                    JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    private void abrirVentanaPrincipal() {
+        vista.dispose();
+        ventanaprincipal.obteneruser(this.usuariologeado);
+        ventanaprincipal.setVisible(true);
     }
 }

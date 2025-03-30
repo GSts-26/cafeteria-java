@@ -23,6 +23,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Sora" size="24" style="1"/>
         </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="52" green="53" red="5e" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Factura"/>
       </Properties>
       <Constraints>
@@ -64,6 +67,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Sora" size="28" style="1"/>
             </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="52" green="53" red="5e" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Haz tu primer factura"/>
           </Properties>
           <Constraints>
@@ -76,6 +82,9 @@
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Sora" size="15" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="52" green="53" red="5e" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="No tienes facturas, realiza una factura "/>
           </Properties>
@@ -204,6 +213,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Sora" size="14" style="0"/>
         </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="52" green="53" red="5e" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Filtrado por "/>
       </Properties>
       <Constraints>
@@ -247,10 +259,10 @@
           <Font name="Fira Code" size="12" style="0"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="33" red="ff" type="rgb"/>
+          <Color blue="4e" green="7c" red="c6" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/Info1.png"/>
+          <Image iconType="3" name="/imagenes/icons8-info-22 (1).png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ingresa las dos fechas"/>
       </Properties>
@@ -294,10 +306,10 @@
           <Font name="Fira Code" size="12" style="0"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="33" red="ff" type="rgb"/>
+          <Color blue="4e" green="7c" red="c6" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/Info1.png"/>
+          <Image iconType="3" name="/imagenes/icons8-info-22 (1).png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Selecci&#xf3;n invalida"/>
       </Properties>
@@ -357,7 +369,7 @@
               <Font name="Sora" size="14" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="66" green="66" red="66" type="rgb"/>
+              <Color blue="52" green="53" red="5e" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Genero"/>
           </Properties>
@@ -373,7 +385,7 @@
               <Font name="Sora" size="14" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="66" green="66" red="66" type="rgb"/>
+              <Color blue="52" green="53" red="5e" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cedula"/>
           </Properties>
@@ -389,7 +401,7 @@
               <Font name="Sora" size="14" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="66" green="66" red="66" type="rgb"/>
+              <Color blue="52" green="53" red="5e" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nombre"/>
           </Properties>
@@ -432,6 +444,9 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Sora" size="28" style="1"/>
                 </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="52" green="53" red="5e" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="No hay detalle de factura"/>
               </Properties>
               <Constraints>
@@ -444,6 +459,9 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Sora" size="15" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="52" green="53" red="5e" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Selecciona una factura para ver sus detalles"/>
               </Properties>
@@ -574,6 +592,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Sora" size="14" style="1"/>
             </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="52" green="53" red="5e" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Compra realizada por"/>
           </Properties>
           <Constraints>
@@ -588,7 +609,7 @@
               <Font name="Sora" size="14" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="66" green="66" red="66" type="rgb"/>
+              <Color blue="52" green="53" red="5e" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Total"/>
           </Properties>
@@ -602,6 +623,9 @@
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Sora" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="52" green="53" red="5e" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Valor total"/>
           </Properties>
@@ -676,6 +700,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Sora" size="12" style="0"/>
         </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="52" green="53" red="5e" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Fecha fin"/>
       </Properties>
       <Constraints>
@@ -688,6 +715,9 @@
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Sora" size="12" style="0"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="52" green="53" red="5e" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Fecha inicio"/>
       </Properties>

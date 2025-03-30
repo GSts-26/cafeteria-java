@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 public class metodo_empleado {
 
     DefaultTableModel modelo_tabla;
-    conexion conex = new conexion();
+
     private panel_empleado empleado;
     private long cedula = 0;
     private String nombre = null;
@@ -39,7 +39,7 @@ public class metodo_empleado {
         if (empleado.getTabla_empleado().getSelectedColumn() == 9) {
             int cedula_celeccionada = Integer.parseInt(modelo_tabla.getValueAt(fila, 0).toString());
             String consulta = "DELETE FROM empleado WHERE cedula=?";
-            try (Connection con = conex.getConnection()) {
+            try (Connection con = conexion.getInstance().getConnection()) {
                 PreparedStatement ps = con.prepareStatement(consulta);
                 ps.setLong(1, cedula_celeccionada);
                 ps.executeUpdate();

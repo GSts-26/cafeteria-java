@@ -194,31 +194,31 @@ public class Agregar_ingredientes extends javax.swing.JDialog {
 
         m1NombreVacio.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
         m1NombreVacio.setForeground(new java.awt.Color(198, 124, 78));
-        m1NombreVacio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
+        m1NombreVacio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m1NombreVacio.setText("Rellena el campo");
         jPanel2.add(m1NombreVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 65, -1, -1));
 
         m2CalVacio.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
         m2CalVacio.setForeground(new java.awt.Color(198, 124, 78));
-        m2CalVacio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
+        m2CalVacio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m2CalVacio.setText("Rellena el campo");
         jPanel2.add(m2CalVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 170, -1, -1));
 
         m4AzucarVacio.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
         m4AzucarVacio.setForeground(new java.awt.Color(198, 124, 78));
-        m4AzucarVacio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
+        m4AzucarVacio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m4AzucarVacio.setText("Rellena el campo");
         jPanel2.add(m4AzucarVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 323, -1, -1));
 
         m3CarboVacio.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
         m3CarboVacio.setForeground(new java.awt.Color(198, 124, 78));
-        m3CarboVacio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
+        m3CarboVacio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m3CarboVacio.setText("Rellena el campo");
         jPanel2.add(m3CarboVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 241, -1, -1));
 
         m5ProteVacio.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
         m5ProteVacio.setForeground(new java.awt.Color(198, 124, 78));
-        m5ProteVacio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
+        m5ProteVacio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m5ProteVacio.setText("Rellena el campo");
         jPanel2.add(m5ProteVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 399, -1, -1));
 
