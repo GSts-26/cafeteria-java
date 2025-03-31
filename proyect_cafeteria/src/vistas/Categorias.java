@@ -178,7 +178,7 @@ public class Categorias extends javax.swing.JPanel {
 
         card_layout_categoria.add(jPanel1, "card2");
 
-        add(card_layout_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 160, 370, 360));
+        add(card_layout_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 160, 380, 360));
 
         contenido_table.setBackground(new java.awt.Color(255, 255, 255));
         contenido_table.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

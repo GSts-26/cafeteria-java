@@ -21,6 +21,7 @@ public class inicio extends javax.swing.JFrame {
     Categorias vistaCategoria = new Categorias();
     Ingredientes vistaIngredientes = new Ingredientes();
     compras vistacompra = new compras();
+    Panel_factura vistaFactura = new Panel_factura();
     protected usuario c = null;
 
     public inicio() {
@@ -54,7 +55,7 @@ public class inicio extends javax.swing.JFrame {
         buscador = new javax.swing.JTextField();
         menu_lateral = new javax.swing.JPanel();
         menu = new javax.swing.JButton();
-        Ventas = new javax.swing.JButton();
+        Empleados = new javax.swing.JButton();
         ingrediente = new javax.swing.JButton();
         productos3 = new javax.swing.JButton();
         categorias = new javax.swing.JButton();
@@ -150,7 +151,7 @@ public class inicio extends javax.swing.JFrame {
                 .addComponent(titulo)
                 .addGap(66, 66, 66)
                 .addComponent(buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 278, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 268, Short.MAX_VALUE)
                 .addComponent(contenedor_notificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(boton_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,7 +185,7 @@ public class inicio extends javax.swing.JFrame {
         buscador.putClientProperty(FlatClientProperties.STYLE,
             "arc: 18");
 
-        jPanel1.add(encabezado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1380, -1));
+        jPanel1.add(encabezado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, -1));
 
         menu_lateral.setBackground(new java.awt.Color(255, 255, 255));
         menu_lateral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -206,21 +207,21 @@ public class inicio extends javax.swing.JFrame {
         menu.putClientProperty(FlatClientProperties.STYLE,
             "focusedBackground:#f5eae2;focusedForeground:#C67C4E");
 
-        Ventas.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
-        Ventas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-usuarios-36.png"))); // NOI18N
-        Ventas.setText("Ventas");
-        Ventas.setBorderPainted(false);
-        Ventas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Ventas.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        Ventas.setPreferredSize(new java.awt.Dimension(76, 23));
-        Ventas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Ventas.addActionListener(new java.awt.event.ActionListener() {
+        Empleados.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
+        Empleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-usuarios-36.png"))); // NOI18N
+        Empleados.setText("Empleados");
+        Empleados.setBorderPainted(false);
+        Empleados.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Empleados.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        Empleados.setPreferredSize(new java.awt.Dimension(76, 23));
+        Empleados.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Empleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VentasActionPerformed(evt);
+                EmpleadosActionPerformed(evt);
             }
         });
-        menu_lateral.add(Ventas, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, -1, 68));
-        Ventas.putClientProperty(FlatClientProperties.STYLE,
+        menu_lateral.add(Empleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, -1, 68));
+        Empleados.putClientProperty(FlatClientProperties.STYLE,
             "focusedBackground:#f5eae2;focusedForeground:#C67C4E");
 
         ingrediente.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
@@ -319,7 +320,7 @@ public class inicio extends javax.swing.JFrame {
 
         empleados1.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
         empleados1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-usuarios-36.png"))); // NOI18N
-        empleados1.setText("Empleados");
+        empleados1.setText("ventas");
         empleados1.setBorderPainted(false);
         empleados1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         empleados1.setMargin(new java.awt.Insets(2, 2, 2, 2));
@@ -330,8 +331,8 @@ public class inicio extends javax.swing.JFrame {
                 empleados1ActionPerformed(evt);
             }
         });
-        menu_lateral.add(empleados1, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 330, -1, 68));
-        Ventas.putClientProperty(FlatClientProperties.STYLE,
+        menu_lateral.add(empleados1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, -1, 68));
+        Empleados.putClientProperty(FlatClientProperties.STYLE,
             "focusedBackground:#f5eae2;focusedForeground:#C67C4E");
 
         jPanel1.add(menu_lateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 97, 220, 650));
@@ -340,15 +341,13 @@ public class inicio extends javax.swing.JFrame {
 
         Contenido.setBackground(new java.awt.Color(249, 249, 249));
         Contenido.setLayout(new java.awt.CardLayout());
-        jPanel1.add(Contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 1140, 650));
+        jPanel1.add(Contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 1150, 650));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1376, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1370, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,12 +368,12 @@ public class inicio extends javax.swing.JFrame {
         this.revalidate();
     }//GEN-LAST:event_menuActionPerformed
 
-    private void VentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VentasActionPerformed
+    private void EmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpleadosActionPerformed
         Contenido.add(vistaEmpleado, "empleados");
         Vista.show(Contenido, "empleados");
         this.repaint();
         this.revalidate();
-    }//GEN-LAST:event_VentasActionPerformed
+    }//GEN-LAST:event_EmpleadosActionPerformed
 
     private void ingredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingredienteActionPerformed
 
@@ -421,7 +420,10 @@ public class inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_buscadorKeyReleased
 
     private void empleados1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empleados1ActionPerformed
-        // TODO add your handling code here:
+        Contenido.add(vistaFactura, "factura");
+        Vista.show(Contenido, "factura");
+        this.repaint();
+        this.revalidate();
     }//GEN-LAST:event_empleados1ActionPerformed
 
     public static void main(String args[]) {
@@ -472,8 +474,8 @@ public class inicio extends javax.swing.JFrame {
     private javax.swing.JButton Clientes;
     private javax.swing.JLabel Coffee;
     private javax.swing.JPanel Contenido;
+    private javax.swing.JButton Empleados;
     private javax.swing.JLabel Rol;
-    private javax.swing.JButton Ventas;
     private javax.swing.JButton boton_crear;
     private javax.swing.JTextField buscador;
     private javax.swing.JButton categorias;

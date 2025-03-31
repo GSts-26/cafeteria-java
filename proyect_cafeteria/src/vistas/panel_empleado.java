@@ -100,7 +100,7 @@ public class panel_empleado extends javax.swing.JPanel {
                 txt_nombreActionPerformed(evt);
             }
         });
-        jPanel3.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 256, 36));
+        jPanel3.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 210, 36));
         txt_nombre.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Nombre");
 
         txt_apellido.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
@@ -252,7 +252,7 @@ public class panel_empleado extends javax.swing.JPanel {
 
         card_layout_empleado.add(jPanel3, "card2");
 
-        add(card_layout_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 40, 490, 620));
+        add(card_layout_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, 470, 620));
 
         contenido_table.setBackground(new java.awt.Color(255, 255, 255));
         contenido_table.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

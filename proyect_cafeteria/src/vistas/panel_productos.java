@@ -10,13 +10,9 @@ import controladores.InformacionProducto;
 import controladores.productoController;
 import java.awt.CardLayout;
 import java.io.File;
-import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -782,7 +778,7 @@ public class panel_productos extends javax.swing.JPanel {
         m1NombreVacio2.setText("Rellena el campo");
         jPanel2.add(m1NombreVacio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 160, -1));
 
-        crear_cliente.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 240, 520));
+        crear_cliente.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 240, 520));
 
         jPanel3.setBackground(new java.awt.Color(249, 249, 249));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -814,7 +810,7 @@ public class panel_productos extends javax.swing.JPanel {
         m5CantidadVacio.setText("Rellena el campo");
         jPanel3.add(m5CantidadVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 160, -1));
 
-        crear_cliente.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 210, 200));
+        crear_cliente.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 180, 200));
 
         jPanel4.setBackground(new java.awt.Color(249, 249, 249));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -851,14 +847,14 @@ public class panel_productos extends javax.swing.JPanel {
         jScrollPane2.setViewportView(T_ingredientes);
         if (T_ingredientes.getColumnModel().getColumnCount() > 0) {
             T_ingredientes.getColumnModel().getColumn(0).setResizable(false);
-            T_ingredientes.getColumnModel().getColumn(0).setPreferredWidth(30);
+            T_ingredientes.getColumnModel().getColumn(0).setPreferredWidth(45);
             T_ingredientes.getColumnModel().getColumn(1).setResizable(false);
             T_ingredientes.getColumnModel().getColumn(1).setPreferredWidth(91);
             T_ingredientes.getColumnModel().getColumn(2).setResizable(false);
             T_ingredientes.getColumnModel().getColumn(2).setPreferredWidth(45);
         }
 
-        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 168, 200));
+        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 180, 200));
 
         botonAgregarIngrediente.setBackground(new java.awt.Color(249, 242, 237));
         botonAgregarIngrediente.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
@@ -876,7 +872,7 @@ public class panel_productos extends javax.swing.JPanel {
         });
         jPanel4.add(botonAgregarIngrediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, 40));
 
-        crear_cliente.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 210, 300));
+        crear_cliente.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 180, 300));
 
         boton_actualizar.setBackground(new java.awt.Color(198, 124, 78));
         boton_actualizar.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
@@ -898,7 +894,7 @@ public class panel_productos extends javax.swing.JPanel {
         crear_cliente.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
 
-        add(cardProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 550, 630));
+        add(cardProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 520, 630));
 
         jButton2.setBackground(new java.awt.Color(249, 242, 237));
         jButton2.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
@@ -1144,9 +1140,6 @@ public class panel_productos extends javax.swing.JPanel {
     private javax.swing.JPanel info;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

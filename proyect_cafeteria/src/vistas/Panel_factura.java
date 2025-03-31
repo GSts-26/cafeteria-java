@@ -83,7 +83,7 @@ public class Panel_factura extends javax.swing.JPanel {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/no hay factura.png"))); // NOI18N
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Sora", 1, 28)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(94, 83, 82));
@@ -237,7 +237,7 @@ public class Panel_factura extends javax.swing.JPanel {
         jLabel11.setText("Selecciona una factura para ver sus detalles");
         jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 350, 20));
 
-        panel_detalle_factura.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 560, 200));
+        panel_detalle_factura.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 560, 190));
 
         jTable1.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(

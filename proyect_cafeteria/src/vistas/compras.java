@@ -414,7 +414,6 @@ public class compras extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Downloads\\Yellow And Black Corporate Moder (1).jpg")); // NOI18N
         jLabel2.setText("jLabel2");
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
@@ -458,7 +457,7 @@ public class compras extends javax.swing.JPanel {
         panel_crearOrdenLayout.setHorizontalGroup(
             panel_crearOrdenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_crearOrdenLayout.createSequentialGroup()
-                .addContainerGap(232, Short.MAX_VALUE)
+                .addContainerGap(252, Short.MAX_VALUE)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(242, 242, 242))
         );
@@ -473,7 +472,7 @@ public class compras extends javax.swing.JPanel {
         jPanel13.putClientProperty(FlatClientProperties.STYLE,
             "arc: 30");
 
-        add(panel_crearOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 660));
+        add(panel_crearOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 660));
 
         venta.setBackground(new java.awt.Color(249, 249, 249));
 
@@ -717,7 +716,6 @@ public class compras extends javax.swing.JPanel {
         jLabel19.setForeground(new java.awt.Color(94, 83, 82));
         jLabel19.setText("Tiene Una Orden Pendiente");
 
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Downloads\\Yellow And Black Corporate Moder.png")); // NOI18N
         jLabel8.setText("jLabel2");
 
         jButton2.setText("jButton2");

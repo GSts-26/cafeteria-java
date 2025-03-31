@@ -444,7 +444,7 @@ public class Clientes extends javax.swing.JPanel {
         boton_cancelar.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
 
-        add(crear_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 40, 440, 580));
+        add(crear_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 40, 440, 580));
         crear_cliente.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
 
