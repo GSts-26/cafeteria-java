@@ -29,7 +29,7 @@ public void insertar(producto t) {
 
     String sql = "INSERT INTO public.producto (nombre, id_familia, descripcion, precio, cantidad, existencias, ids_ingrediente) VALUES (?, ?, ?, ?, ?, ?, ?)";
     
-    try (Connection con = conexion.getInstance().getConnection();
+    try (Connection con = conexion.getConnection();
          PreparedStatement st = con.prepareStatement(sql)) {
 
         st.setString(1, t.getNombre());
@@ -56,7 +56,7 @@ public int actualizar(producto t, int id) {
 
     String consulta = "UPDATE producto SET nombre=?, id_familia=?, descripcion=?, precio=?, cantidad=?, existencias=?, ids_ingrediente=? WHERE id=?";
     
-    try (Connection con = conexion.getInstance().getConnection();
+    try (Connection con = conexion.getConnection();
          PreparedStatement ps = con.prepareStatement(consulta)) {
 
         ps.setString(1, t.getNombre());
@@ -82,7 +82,7 @@ public int actualizar(producto t, int id) {
 public void eliminarProducto(Long id) {
     String sql = "DELETE FROM public.producto WHERE id = ?";
     
-    try (Connection con = conexion.getInstance().getConnection();
+    try (Connection con = conexion.getConnection();
          PreparedStatement st = con.prepareStatement(sql)) {
 
         st.setLong(1, id);
@@ -97,7 +97,7 @@ public int eliminarIngrediente(int id) {
     int filaAfectada = 0;
     String consulta = "DELETE FROM ingredientes WHERE id=?";
     
-    try (Connection con = conexion.getInstance().getConnection();
+    try (Connection con = conexion.getConnection();
          PreparedStatement ps = con.prepareStatement(consulta)) {
 
         ps.setInt(1, id);
@@ -114,17 +114,19 @@ public String obtenerIdIngredientes(int id) {
     String ids = null;
     String consulta = "SELECT ids_ingrediente FROM producto WHERE id=?";
     
-    try (Connection con = conexion.getInstance().getConnection();
+    try (Connection con = conexion.getConnection();
          PreparedStatement ps = con.prepareStatement(consulta);
-         ResultSet rs = ps.executeQuery()) {
-
+         ) {
         ps.setInt(1, id);
-
+        ResultSet rs = ps.executeQuery();
+   
         if (rs.next()) {
             ids = rs.getString("ids_ingrediente");
         }
         
+        rs.close();
     } catch (SQLException e) {
+        System.out.println("Error en dao producto");
         System.out.println(e.getMessage());
     }
     
@@ -136,7 +138,7 @@ public List<producto> listar() {
     List<producto> listaProductos = new ArrayList<>();
     String sql = "SELECT * FROM public.producto";
 
-    try (Connection con = conexion.getInstance().getConnection();
+    try (Connection con = conexion.getConnection();
          PreparedStatement st = con.prepareStatement(sql);
          ResultSet rs = st.executeQuery()) {
 
@@ -169,7 +171,7 @@ public void actualizar(producto t) {
 public void eliminar(Long id) {
     String consulta = "DELETE FROM producto WHERE id=?";
     
-    try (Connection con = conexion.getInstance().getConnection();
+    try (Connection con = conexion.getConnection();
          PreparedStatement ps = con.prepareStatement(consulta)) {
 
         ps.setLong(1, id);

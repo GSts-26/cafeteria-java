@@ -69,8 +69,8 @@ public class Panel_factura extends javax.swing.JPanel {
         nombre_empleado = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        lblFin = new javax.swing.JLabel();
+        lblInicio = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -95,7 +95,7 @@ public class Panel_factura extends javax.swing.JPanel {
         jLabel15.setText("No tienes facturas, realiza una factura ");
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 320, 40));
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 490, 240));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 490, 230));
 
         tabla_factura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -152,12 +152,14 @@ public class Panel_factura extends javax.swing.JPanel {
         ms_cliente.setText("Filtrado por ");
         add(ms_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
-        boton_filtar_fecha.setBackground(new java.awt.Color(205, 178, 150));
-        boton_filtar_fecha.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
-        boton_filtar_fecha.setForeground(new java.awt.Color(255, 255, 255));
-        boton_filtar_fecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Fecha.png"))); // NOI18N
+        boton_filtar_fecha.setBackground(new java.awt.Color(249, 242, 237));
+        boton_filtar_fecha.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        boton_filtar_fecha.setForeground(new java.awt.Color(198, 124, 78));
+        boton_filtar_fecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Calendar.png"))); // NOI18N
         boton_filtar_fecha.setText("Filtrar fecha");
         boton_filtar_fecha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_filtar_fecha.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        boton_filtar_fecha.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         boton_filtar_fecha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 boton_filtar_fechaMouseEntered(evt);
@@ -177,17 +179,19 @@ public class Panel_factura extends javax.swing.JPanel {
         add(ms_fechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, -1, -1));
 
         boton_ver_factura.setBackground(new java.awt.Color(198, 124, 78));
-        boton_ver_factura.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
-        boton_ver_factura.setForeground(new java.awt.Color(255, 255, 255));
+        boton_ver_factura.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        boton_ver_factura.setForeground(new java.awt.Color(249, 242, 237));
         boton_ver_factura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Factura.png"))); // NOI18N
         boton_ver_factura.setText("Ver factura");
         boton_ver_factura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        boton_ver_factura.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        boton_ver_factura.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         boton_ver_factura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_ver_facturaActionPerformed(evt);
             }
         });
-        add(boton_ver_factura, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 160, 50));
+        add(boton_ver_factura, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 160, -1));
 
         ms_filas_facturas.setFont(new java.awt.Font("Fira Code", 0, 12)); // NOI18N
         ms_filas_facturas.setForeground(new java.awt.Color(198, 124, 78));
@@ -196,10 +200,9 @@ public class Panel_factura extends javax.swing.JPanel {
         add(ms_filas_facturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, -1, -1));
 
         panel_detalle_factura.setBackground(new java.awt.Color(255, 255, 255));
-        panel_detalle_factura.setBorder(boton_ver_factura.getBorder());
         panel_detalle_factura.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-cafe-40.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Cafe.png"))); // NOI18N
         panel_detalle_factura.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
@@ -319,18 +322,17 @@ public class Panel_factura extends javax.swing.JPanel {
         add(panel_detalle_factura, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 620, 570));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(boton_ver_factura.getBorder());
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 530, 320));
 
-        jLabel12.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(94, 83, 82));
-        jLabel12.setText("Fecha fin");
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, -1, -1));
+        lblFin.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
+        lblFin.setForeground(new java.awt.Color(94, 83, 82));
+        lblFin.setText("Fecha fin");
+        add(lblFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, -1, -1));
 
-        jLabel13.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(94, 83, 82));
-        jLabel13.setText("Fecha inicio");
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+        lblInicio.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
+        lblInicio.setForeground(new java.awt.Color(94, 83, 82));
+        lblInicio.setText("Fecha inicio");
+        add(lblInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void combo_filtroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_filtroActionPerformed
@@ -367,18 +369,16 @@ public class Panel_factura extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton boton_filtar_fecha;
-    private javax.swing.JButton boton_ver_factura;
+    public javax.swing.JButton boton_filtar_fecha;
+    public javax.swing.JButton boton_ver_factura;
     private javax.swing.JLabel cedula_cliente;
     private javax.swing.JLabel cedula_empleado;
-    private javax.swing.JComboBox<String> combo_filtro;
+    public javax.swing.JComboBox<String> combo_filtro;
     private javax.swing.JLabel fecha_factura;
     private javax.swing.JLabel genero_cliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
@@ -396,16 +396,18 @@ public class Panel_factura extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    public javax.swing.JLabel lblFin;
+    public javax.swing.JLabel lblInicio;
     private javax.swing.JLabel ms_cliente;
     private javax.swing.JLabel ms_fechas;
-    private javax.swing.JLabel ms_filas_facturas;
+    public javax.swing.JLabel ms_filas_facturas;
     private javax.swing.JLabel nombre_cliente;
     private javax.swing.JLabel nombre_empleado;
     private javax.swing.JLabel numero_factura;
     private javax.swing.JPanel panel_detalle_factura;
     private javax.swing.JTable tabla_factura;
     private javax.swing.JLabel total;
-    private javax.swing.JTextField txt_filtrado1;
-    private javax.swing.JTextField txt_filtrado2;
+    public javax.swing.JTextField txt_filtrado1;
+    public javax.swing.JTextField txt_filtrado2;
     // End of variables declaration//GEN-END:variables
 }

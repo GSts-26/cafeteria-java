@@ -55,7 +55,7 @@ public class InformacionProducto {
         if (product.getTabla_producto().getSelectedColumn() == 5) {
             product.tabla_producto.clearSelection();
 
-            try (Connection con = conexion.getInstance().getConnection()) {
+            try (Connection con = conexion.getConnection()) {
 
                 Map<Integer, Ingrediente> ingredientesMap = new HashMap<>();
                 daoIngre.listar().forEach(ingrediente -> ingredientesMap.put(ingrediente.getId(), ingrediente));

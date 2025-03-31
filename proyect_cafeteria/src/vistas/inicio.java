@@ -422,6 +422,8 @@ public class inicio extends javax.swing.JFrame {
     private void empleados1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empleados1ActionPerformed
         Contenido.add(vistaFactura, "factura");
         Vista.show(Contenido, "factura");
+        
+        
         this.repaint();
         this.revalidate();
     }//GEN-LAST:event_empleados1ActionPerformed

@@ -20,7 +20,7 @@ public class DaoCarro implements DAOGeneral.DaoVenta {
     @Override
     public void actualizar(CarroCompras t) {
         String sentencia = "update public.pedidos set Total = ? where id=?";
-        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement st = con.prepareStatement(sentencia)) {
+        try (Connection con = conexion.getConnection(); PreparedStatement st = con.prepareStatement(sentencia)) {
             st.setDouble(1, t.getTotal());
             st.setInt(2, t.getIdCarro());
             st.executeUpdate(sentencia);
@@ -32,7 +32,7 @@ public class DaoCarro implements DAOGeneral.DaoVenta {
     @Override
     public void eliminar(Long id) {
         String sql = "DELETE FROM public.carro_compra WHERE id = ?";
-        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement st = con.prepareStatement(sql)) {
+        try (Connection con = conexion.getConnection(); PreparedStatement st = con.prepareStatement(sql)) {
 
             st.setLong(1, id);
             st.executeUpdate();
@@ -52,7 +52,7 @@ public class DaoCarro implements DAOGeneral.DaoVenta {
         int id = 0;
         String sql = "INSERT INTO public.carro_compra (cliente, empleado, estado) VALUES(?, ?, ?) RETURNING id";
 
-        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement st = con.prepareStatement(sql)) {
+        try (Connection con = conexion.getConnection(); PreparedStatement st = con.prepareStatement(sql)) {
 
             // Asigna valores a la consulta
             st.setLong(1, t.getCliente());
@@ -77,7 +77,7 @@ public class DaoCarro implements DAOGeneral.DaoVenta {
         CarroCompras c = new CarroCompras();
         String sql = "SELECT id, cliente, empleado, estado FROM public.carro_compra WHERE empleado = ? AND estado = TRUE LIMIT 1";
 
-        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement st = con.prepareStatement(sql)) {
+        try (Connection con = conexion.getConnection(); PreparedStatement st = con.prepareStatement(sql)) {
 
             st.setLong(1, cedulaempleado);
 
@@ -100,7 +100,7 @@ public class DaoCarro implements DAOGeneral.DaoVenta {
     @Override
     public void actualizarValor(CarroCompras compras) {
 //        String sentencia = "update public.pedidos set valor_total = ? where id_pedido=?";
-//        try (Connection con = conexion.getInstance().getConnection(); Statement st = con.createStatement()) {
+//        try (Connection con = conexion.getConnection(); Statement st = con.createStatement()) {
 //            st.setLong(1, valor);
 //            st.setLong(2, pedido);
 //            st.executeUpdate(sentencia);

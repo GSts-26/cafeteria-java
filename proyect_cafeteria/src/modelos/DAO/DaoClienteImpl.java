@@ -21,7 +21,7 @@ public class DaoClienteImpl implements DAOGeneral<Cliente> {
     public void insertar(Cliente t) {
         String consulta = "INSERT INTO public.cliente (cedula, nombre, nacimiento, genero, telefono, email, direccion) VALUES(?, ?, ?, ?, ?, ?, ?)";
 
-        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement st = con.prepareStatement(consulta)) {
+        try (Connection con = conexion.getConnection(); PreparedStatement st = con.prepareStatement(consulta)) {
 
             st.setLong(1, t.getCedula());
             st.setString(2, t.getNombre());
@@ -43,7 +43,7 @@ public class DaoClienteImpl implements DAOGeneral<Cliente> {
     public void actualizar(Cliente t) {
         String consulta = "UPDATE cliente SET nombre=?, nacimiento=?, genero=?, telefono=?, email=?, direccion=? WHERE cedula=?";
 
-        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(consulta)) {
+        try (Connection con = conexion.getConnection(); PreparedStatement ps = con.prepareStatement(consulta)) {
 
             ps.setString(1, t.getNombre());
             ps.setDate(2, t.getFechaNacimiento());
@@ -64,7 +64,7 @@ public class DaoClienteImpl implements DAOGeneral<Cliente> {
     public void eliminar(Long cedula) {
         String consulta = "DELETE FROM public.cliente WHERE cedula = ?";
 
-        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement st = con.prepareStatement(consulta)) {
+        try (Connection con = conexion.getConnection(); PreparedStatement st = con.prepareStatement(consulta)) {
 
             st.setLong(1, cedula);
             st.executeUpdate();
@@ -78,7 +78,7 @@ public class DaoClienteImpl implements DAOGeneral<Cliente> {
         List<Cliente> listaClientes = new ArrayList<>();
         String sql = "SELECT * FROM public.cliente";
 
-        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement st = con.prepareStatement(sql); ResultSet rs = st.executeQuery()) {
+        try (Connection con = conexion.getConnection(); PreparedStatement st = con.prepareStatement(sql); ResultSet rs = st.executeQuery()) {
 
             while (rs.next()) {
                 Cliente cliente = new Cliente(

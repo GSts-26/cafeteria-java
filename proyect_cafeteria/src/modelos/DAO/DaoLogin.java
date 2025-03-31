@@ -16,7 +16,7 @@ public class DaoLogin {
     public usuario userselect(String usuario, String clave) {
         usuario user = null;
         String sql = "SELECT * FROM public.usuario where usuario =? and clave=?";
-        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement st = con.prepareStatement(sql)) {
+        try (Connection con = conexion.getConnection(); PreparedStatement st = con.prepareStatement(sql)) {
             st.setString(1, usuario);
             st.setString(2, clave);
             try (ResultSet rs = st.executeQuery()) {
