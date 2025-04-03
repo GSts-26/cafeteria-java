@@ -39,7 +39,7 @@ public class metodo_empleado {
         if (empleado.getTabla_empleado().getSelectedColumn() == 9) {
             int cedula_celeccionada = Integer.parseInt(modelo_tabla.getValueAt(fila, 0).toString());
             String consulta = "DELETE FROM empleado WHERE cedula=?";
-            try (Connection con = conexion.getConnection()) {
+            try (Connection con = conexion.getInstance().getConnection()) {
                 PreparedStatement ps = con.prepareStatement(consulta);
                 ps.setLong(1, cedula_celeccionada);
                 ps.executeUpdate();

@@ -22,10 +22,6 @@ import modelos.Entidades.categoria;
 import modelos.Entidades.producto;
 import vistas.panel_productos;
 
-/**
- *
- * @author Admin
- */
 public class productoController implements Runnable {
 
     private panel_productos vista;
@@ -53,10 +49,6 @@ public class productoController implements Runnable {
         this.IngredienteDAO = new DaoIngredienteImpl();
         this.categoriaDAO = new DaoCategoria();
         this.ProductosContador = 0;
-//        hiloCategoria = new Thread(this);
-//        hiloCategoria.start();
-//        run();
-
     }
 
 // ingresar datos de producto
@@ -82,13 +74,11 @@ public class productoController implements Runnable {
         botonBorrar.setBorder(BorderFactory.createEmptyBorder());
         botonEditar.setBorder(BorderFactory.createEmptyBorder());
         botonVer.setBorder(BorderFactory.createEmptyBorder());
-//        botonBorrar.putClientProperty(FlatClientProperties.STYLE, "arc: 20; ");
-//        botonEditar.putClientProperty(FlatClientProperties.STYLE, "arc: 20;" );
-//        botonVer.putClientProperty(FlatClientProperties.STYLE, "arc: 20;" );
     }
 
     // rellenar la tabla con los datos del producto
     public void mostrar() {
+
         modeloProductos = (DefaultTableModel) vista.tabla_producto.getModel();
         estilosBotones();
         modeloProductos.setRowCount(0);
@@ -132,7 +122,8 @@ public class productoController implements Runnable {
         Map<Integer, Ingrediente> ingredientesMap = new HashMap<>();
         // recorrer la lista de ingredientes y agregar el id del ingrediente y el objeto ingrediente
         IngredienteDAO.listar().forEach(ingrediente -> ingredientesMap.put(ingrediente.getId(), ingrediente));
-// Obtener los datos de la fila seleccionada
+
+        // Obtener los datos de la fila seleccionada
         DefaultTableModel modelo1 = (DefaultTableModel) vista.T_ingredientes.getModel();
         int fila = vista.tabla_producto.getSelectedRow();
         DefaultTableModel modelo = (DefaultTableModel) vista.tabla_producto.getModel();
@@ -156,35 +147,39 @@ public class productoController implements Runnable {
         vista.txtCantidad.setValue(Integer.parseInt(cantidad));
 
         // obtener el string que viene desde productoDao
-        String[] idsIngredientes = productoDAO.obtenerIdIngredientes(idprodu).replace("{", "").replace("}", "").split(",");
+        String[] idsIngredientes = productoDAO.obtenerIdIngredientes(idprodu).replace("{", "").replace("}", "").replace("\"", "").trim().split(",");
 
         // remplazar las llaves por espacio vacio y separarlo por comas
-//        String[] idarray = idsIngredientes.replace("{", "").replace("}", "").split(",");
         listaIds.clear();
         listaIds.addAll(Arrays.asList(idsIngredientes));
+
         // recorrer la lista de productos y verificar si el id seleccionado concide con el de la lista
         modelo1.setRowCount(0);
 
-        productoDAO.listar().forEach(prod -> {
+        int idIngre = 0;
+
+        // recorremos la lista de tipo producto 
+        //luego se compara los ids de la lista con el id que fue seleccionado
+        for (producto prod : productoDAO.listar()) {
             estilosBotones();
             if (prod.getId() == idprodu) {
-
                 vista.txtDescripcion.setText(prod.getDescripcion());
                 vista.txtStock.setValue(prod.getStock());
-                for (String listaId : listaIds) {
-                    int idIngre = Integer.parseInt(listaId);
-                    Ingrediente ingre = ingredientesMap.get(idIngre);
-                    if (ingre != null) {
-
-                        modelo1.addRow(new Object[]{
-                            listaId, ingre.getNombre(), botonBorrar});
+                for (String i : listaIds) {
+                    // tratar de convertir el string a numero
+                    try {
+                        idIngre = Integer.parseInt(i);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
                     }
-
+                    Ingrediente ing = ingredientesMap.get(idIngre);
+                    if (ing != null) {
+                        modelo1.addRow(new Object[]{
+                            i, ing.getNombre(), botonBorrar});
+                    }
                 }
             }
         }
-        );
-
     }
 
     // metodo para actualizar los datos del producto...
@@ -219,8 +214,8 @@ public class productoController implements Runnable {
         } else if (columna == 7) {
             Long idEliminar = Long.valueOf(vista.tabla_producto.getValueAt(fila, 0).toString());
             productoDAO.eliminar(idEliminar);
-            JOptionPane.showMessageDialog(null, "Producto Eliminado Correctamente");
             mostrar();
+            JOptionPane.showMessageDialog(null, "Producto Eliminado Correctamente");
         }
 
     }
@@ -228,25 +223,18 @@ public class productoController implements Runnable {
     // quitar ingrediente de un producto
     public void eliminaringrediente() {
         DefaultTableModel modelo = (DefaultTableModel) vista.T_ingredientes.getModel();
-
         int fila = vista.T_ingredientes.getSelectedRow();
         int columna = vista.T_ingredientes.getSelectedColumn();
         int idIngrediente = Integer.parseInt(modelo.getValueAt(fila, 0).toString());
         if (columna == 2) {
-//            int filaEliminada = productoDAO.eliminarIngrediente(idIngrediente);
-
             System.out.println("Fila eliminada correctamente...");
-//                vista.T_ingredientes.remove(vista.T_ingredientes.getSelectedRow());
-//            modelo.removeRow(fila);
             modelo.removeRow(vista.T_ingredientes.getSelectedRow());
-
         }
 
     }
 
     // Ingresar los ingredientes al comboBox
     public void rellenar_Combo_Ingredientes() {
-
         vista.comboIngredientes.removeAllItems();
         IngredienteDAO.listar().forEach(ingrediente -> {
             vista.comboIngredientes.addItem(ingrediente);
@@ -255,14 +243,12 @@ public class productoController implements Runnable {
 
     // Ingresar las categorias al comboBox
     public void rellenar_combo_categoria() {
-
         categoria = categoriaDAO.listar();
-        if (categoria.isEmpty()) {
-            System.out.println("vacia");
-        }
-        vista.txt_categoria.removeAllItems();
-        for (categoria categ : categoria) {
-            vista.txt_categoria.addItem(String.valueOf(categ.getId() + " - " + categ.getNombre()));
+        if (!categoria.isEmpty()) {
+            vista.txt_categoria.removeAllItems();
+            categoria.forEach(catego -> {
+                vista.txt_categoria.addItem(String.valueOf(catego.getId() + " - " + catego.getNombre()));
+            });
         }
     }
 

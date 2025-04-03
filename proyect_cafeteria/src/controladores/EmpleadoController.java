@@ -17,19 +17,19 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class EmpleadoController {
-
+    
     private panel_empleado vistas;
     private DaoEmpleado empleadoDao;
     private Empleado empleado;
     private List<Empleado> listaEmpleado = new ArrayList<>();
     JButton botonEditar = new JButton();
     JButton botonEliminar = new JButton();
-
+    
     public EmpleadoController(panel_empleado vistas) {
         this.vistas = vistas;
         this.empleadoDao = new DaoEmpleado();
     }
-
+    
     public void insertar() {
         long cedula = Long.parseLong(vistas.txt_cedula.getText());
         String nombre = vistas.txt_nombre.getText();
@@ -45,7 +45,7 @@ public class EmpleadoController {
         mostrar();
         limpiarCampos();
     }
-
+    
     public void actualizar() {
         long cedula = Long.parseLong(vistas.txt_cedula.getText());
         String nombre = vistas.txt_nombre.getText();
@@ -61,7 +61,7 @@ public class EmpleadoController {
         mostrar();
         limpiarCampos();
     }
-
+    
     public void eliminar() {
         DefaultTableModel modeloTabla = (DefaultTableModel) vistas.Tabla_empleado.getModel();
         int fila = vistas.Tabla_empleado.getSelectedRow();
@@ -71,24 +71,22 @@ public class EmpleadoController {
         limpiarCampos();
         JOptionPane.showMessageDialog(null, "Empleado eliminado", "Eliminado", JOptionPane.INFORMATION_MESSAGE);
     }
-
+    
     public void ocultar() {
         vistas.boton_actualizar.setVisible(false);
-        vistas.getm10tel_dato().setVisible(false);
         vistas.getm11correo_campo().setVisible(false);
         vistas.getm13nacimiento_campo().setVisible(false);
         vistas.getm1ced_campo().setVisible(false);
-        vistas.getm2ced_dato().setVisible(false);
         vistas.getm4nomb_campo().setVisible(false);
         vistas.getm5apell_campo().setVisible(false);
         vistas.getm7direccion_campo().setVisible(false);
         vistas.getm9tel_campo().setVisible(false);
     }
-
+    
     public void mostrar() {
         DefaultTableModel modeloTabla = (DefaultTableModel) vistas.Tabla_empleado.getModel();
         modeloTabla.setRowCount(0);
-
+        
         botonEditar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-edit-30.png")));
         botonEliminar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-trash-30.png")));
         botonEliminar.setBorder(BorderFactory.createEmptyBorder());
@@ -100,7 +98,7 @@ public class EmpleadoController {
         if (listaEmpleado.isEmpty()) {
             System.out.println("No hay Empleados");
             vistas.advertencia.setVisible(true);
-
+            
         } else {
             vistas.advertencia.setVisible(false);
             for (Empleado emp : listaEmpleado) {
@@ -128,11 +126,11 @@ public class EmpleadoController {
         vistas.boton_agregar.setVisible(true);
         vistas.txt_cedula.setEditable(true);
     }
-
+    
     public void rellenarActualizar() {
         DefaultTableModel modeloTabla = (DefaultTableModel) vistas.Tabla_empleado.getModel();
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-
+        
         int fila = vistas.Tabla_empleado.getSelectedRow();
         String cedulaSelec = modeloTabla.getValueAt(fila, 0).toString();
         String nombreSelec = modeloTabla.getValueAt(fila, 1).toString();
@@ -164,48 +162,47 @@ public class EmpleadoController {
         } catch (ParseException e) {
             System.out.println("Error al convertir la fecha: " + e.getMessage());
         }
-
+        
     }
 
 // contar la cantidad de empleados existentes
     public void contar() {
         vistas.numero_empleados.setText(String.valueOf(empleadoDao.contarEmpleado()));
     }
-
+    
     public boolean datosIncorrectos() {
         boolean ok = true;
-
+        
         for (int i = 0; i < vistas.getTxt_cedulaStr().length(); i++) {
-            if (Character.isLetter(vistas.getTxt_cedulaStr().charAt(i))) {
-                vistas.getm2ced_dato().setVisible(true);
+            if (!Character.isDigit(vistas.getTxt_cedulaStr().charAt(i))) {
+                vistas.txt_cedula.setText("");
                 ok = false;
-
+                
             } else {
-                vistas.getm2ced_dato().setVisible(false);
+                
                 ok = true;
-
+                
             }
         }
         for (int i = 0; i < vistas.getTxt_telStr().length(); i++) {
-            if (Character.isLetter(vistas.getTxt_telStr().charAt(i))) {
-                vistas.getm10tel_dato().setVisible(true);
+            if (!Character.isLetter(vistas.getTxt_telStr().charAt(i))) {
+                vistas.txt_telefono.setText("");
                 ok = false;
             } else {
-                vistas.getm10tel_dato().setVisible(false);
+                
                 ok = true;
-
+                
             }
         }
-
+        
         return ok;
     }
-
+    
     public boolean camposVacios(String campo) {
         boolean ok = true;
-
+        
         if (campo.equals("cedula")) {
             if (vistas.getTxt_cedulaStr().isEmpty()) {
-                vistas.getm2ced_dato().setVisible(false);
                 vistas.getm1ced_campo().setVisible(true);
                 ok = false;
             } else {
@@ -213,7 +210,7 @@ public class EmpleadoController {
             }
             return ok;
         }
-
+        
         if (campo.equals("nombre")) {
             if (vistas.getTxt_nombre().isEmpty()) {
                 vistas.getm4nomb_campo().setVisible(true);
@@ -223,7 +220,7 @@ public class EmpleadoController {
             }
             return ok;
         }
-
+        
         if (campo.equals("apellido")) {
             if (vistas.getTxt_apellido().isEmpty()) {
                 vistas.getm5apell_campo().setVisible(true);
@@ -233,7 +230,7 @@ public class EmpleadoController {
             }
             return ok;
         }
-
+        
         if (campo.equals("fecha_nacimiento")) {
             if (vistas.getFecha_nacimiento().getDate() == null) {
                 vistas.getm13nacimiento_campo().setVisible(true);
@@ -243,10 +240,9 @@ public class EmpleadoController {
             }
             return ok;
         }
-
+        
         if (campo.equals("telefono")) {
             if (vistas.getTxt_telStr().isEmpty()) {
-                vistas.getm10tel_dato().setVisible(false);
                 vistas.getm9tel_campo().setVisible(true);
                 ok = false;
             } else {
@@ -254,7 +250,7 @@ public class EmpleadoController {
             }
             return ok;
         }
-
+        
         if (campo.equals("correo")) {
             if (vistas.getTxt_correo().isEmpty()) {
                 vistas.getm11correo_campo().setVisible(true);
@@ -264,7 +260,7 @@ public class EmpleadoController {
             }
             return ok;
         }
-
+        
         if (campo.equals("direccion")) {
             if (vistas.getTxt_direccion().isEmpty()) {
                 vistas.getm7direccion_campo().setVisible(true);
@@ -276,7 +272,7 @@ public class EmpleadoController {
         }
         return ok;
     }
-
+    
     public void limpiarCampos() {
         JTextField[] campos = {vistas.txt_cedula, vistas.txt_nombre, vistas.txt_apellido, vistas.txt_correo, vistas.txt_direccion, vistas.txt_telefono};
         for (JTextField campo : campos) {
@@ -285,5 +281,5 @@ public class EmpleadoController {
         vistas.fecha_nacimiento.setDate(null);
         vistas.txt_cedula.requestFocus();
     }
-
+    
 }

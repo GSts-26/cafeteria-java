@@ -41,12 +41,10 @@ public class panel_empleado extends javax.swing.JPanel {
         txt_correo = new javax.swing.JTextField();
         fecha_nacimiento = new com.toedter.calendar.JDateChooser();
         genero = new javax.swing.JComboBox<>();
-        m2cedula_dato = new javax.swing.JLabel();
         m1cedula_campo = new javax.swing.JLabel();
         m4nombre_campo = new javax.swing.JLabel();
         m5apellido_campo = new javax.swing.JLabel();
         m7direccion_campo = new javax.swing.JLabel();
-        m10telefono_dato = new javax.swing.JLabel();
         m9telefono_campo = new javax.swing.JLabel();
         m11correo_campo = new javax.swing.JLabel();
         m13fechanacimiento_campo = new javax.swing.JLabel();
@@ -55,6 +53,14 @@ public class panel_empleado extends javax.swing.JPanel {
         lblEmpleado = new javax.swing.JLabel();
         txt_telefono = new javax.swing.JTextField();
         boton_actualizar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         contenido_table = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -90,7 +96,12 @@ public class panel_empleado extends javax.swing.JPanel {
                 txt_cedulaActionPerformed(evt);
             }
         });
-        jPanel3.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 151, 36));
+        txt_cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_cedulaKeyReleased(evt);
+            }
+        });
+        jPanel3.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 151, 30));
         txt_cedula.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Cedula");
 
         txt_nombre.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
@@ -100,7 +111,7 @@ public class panel_empleado extends javax.swing.JPanel {
                 txt_nombreActionPerformed(evt);
             }
         });
-        jPanel3.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 210, 36));
+        jPanel3.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 210, 30));
         txt_nombre.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Nombre");
 
         txt_apellido.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
@@ -110,7 +121,7 @@ public class panel_empleado extends javax.swing.JPanel {
                 txt_apellidoActionPerformed(evt);
             }
         });
-        jPanel3.add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 256, 36));
+        jPanel3.add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 256, 30));
         txt_apellido.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Apellido");
 
         txt_direccion.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
@@ -120,7 +131,7 @@ public class panel_empleado extends javax.swing.JPanel {
                 txt_direccionActionPerformed(evt);
             }
         });
-        jPanel3.add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 256, 36));
+        jPanel3.add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 390, 30));
         txt_direccion.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Direccion");
 
         txt_correo.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
@@ -130,70 +141,58 @@ public class panel_empleado extends javax.swing.JPanel {
                 txt_correoActionPerformed(evt);
             }
         });
-        jPanel3.add(txt_correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 256, 36));
+        jPanel3.add(txt_correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 390, 30));
         txt_correo.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Email");
 
         fecha_nacimiento.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
-        jPanel3.add(fecha_nacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 142, 36));
+        jPanel3.add(fecha_nacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 142, 36));
 
         genero.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         genero.setForeground(new java.awt.Color(102, 102, 102));
         genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
-        jPanel3.add(genero, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, -1, 36));
-
-        m2cedula_dato.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
-        m2cedula_dato.setForeground(new java.awt.Color(198, 124, 78));
-        m2cedula_dato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
-        m2cedula_dato.setText("Dato no admitido");
-        jPanel3.add(m2cedula_dato, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 128, -1, -1));
+        jPanel3.add(genero, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, 36));
 
         m1cedula_campo.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
         m1cedula_campo.setForeground(new java.awt.Color(198, 124, 78));
         m1cedula_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m1cedula_campo.setText("Rellena el campo");
-        jPanel3.add(m1cedula_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 128, -1, -1));
+        jPanel3.add(m1cedula_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         m4nombre_campo.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
         m4nombre_campo.setForeground(new java.awt.Color(198, 124, 78));
         m4nombre_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m4nombre_campo.setText("Rellena el campo");
-        jPanel3.add(m4nombre_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, -1));
+        jPanel3.add(m4nombre_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, -1, -1));
 
         m5apellido_campo.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
         m5apellido_campo.setForeground(new java.awt.Color(198, 124, 78));
         m5apellido_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m5apellido_campo.setText("Rellena el campo");
-        jPanel3.add(m5apellido_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+        jPanel3.add(m5apellido_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
         m7direccion_campo.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
         m7direccion_campo.setForeground(new java.awt.Color(198, 124, 78));
         m7direccion_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m7direccion_campo.setText("Rellena el campo");
-        jPanel3.add(m7direccion_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, -1, -1));
-
-        m10telefono_dato.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
-        m10telefono_dato.setForeground(new java.awt.Color(198, 124, 78));
-        m10telefono_dato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
-        m10telefono_dato.setText("Dato no admitido");
-        jPanel3.add(m10telefono_dato, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
+        jPanel3.add(m7direccion_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
 
         m9telefono_campo.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
         m9telefono_campo.setForeground(new java.awt.Color(198, 124, 78));
         m9telefono_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m9telefono_campo.setText("Rellena el campo");
-        jPanel3.add(m9telefono_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
+        jPanel3.add(m9telefono_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
 
         m11correo_campo.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
         m11correo_campo.setForeground(new java.awt.Color(198, 124, 78));
         m11correo_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m11correo_campo.setText("Rellena el campo");
-        jPanel3.add(m11correo_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, -1, 20));
+        jPanel3.add(m11correo_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, -1, 20));
 
         m13fechanacimiento_campo.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
         m13fechanacimiento_campo.setForeground(new java.awt.Color(198, 124, 78));
         m13fechanacimiento_campo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m13fechanacimiento_campo.setText("Rellena el campo");
-        jPanel3.add(m13fechanacimiento_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, -1, -1));
+        jPanel3.add(m13fechanacimiento_campo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, -1));
 
         boton_agregar.setBackground(new java.awt.Color(198, 124, 78));
         boton_agregar.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
@@ -233,7 +232,12 @@ public class panel_empleado extends javax.swing.JPanel {
                 txt_telefonoActionPerformed(evt);
             }
         });
-        jPanel3.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 256, 36));
+        txt_telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_telefonoKeyReleased(evt);
+            }
+        });
+        jPanel3.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 256, 30));
         txt_telefono.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Telefono");
 
         boton_actualizar.setBackground(new java.awt.Color(198, 124, 78));
@@ -249,6 +253,46 @@ public class panel_empleado extends javax.swing.JPanel {
             }
         });
         jPanel3.add(boton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 560, 150, 39));
+
+        jLabel6.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel6.setText("Dirección");
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, 20));
+
+        jLabel8.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel8.setText("Nombre");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, 20));
+
+        jLabel7.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel7.setText("Cedula");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, 20));
+
+        jLabel9.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel9.setText("Cedula");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, 20));
+
+        jLabel10.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel10.setText("Fecha De Nacimiento");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, 20));
+
+        jLabel11.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel11.setText("Apellido");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, 20));
+
+        jLabel12.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel12.setText("Telefono");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, 20));
+
+        jLabel16.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel16.setText("Email");
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, 20));
 
         card_layout_empleado.add(jPanel3, "card2");
 
@@ -500,6 +544,14 @@ public class panel_empleado extends javax.swing.JPanel {
         c.nuevoEmpleado();
     }//GEN-LAST:event_boton_cancelarActionPerformed
 
+    private void txt_cedulaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaKeyReleased
+       c.datosIncorrectos();
+    }//GEN-LAST:event_txt_cedulaKeyReleased
+
+    private void txt_telefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_telefonoKeyReleased
+       c.datosIncorrectos();
+    }//GEN-LAST:event_txt_telefonoKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTable Tabla_empleado;
@@ -513,20 +565,26 @@ public class panel_empleado extends javax.swing.JPanel {
     public javax.swing.JComboBox<String> genero;
     private javax.swing.JPanel info;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     public javax.swing.JLabel lblEmpleado;
-    private javax.swing.JLabel m10telefono_dato;
     private javax.swing.JLabel m11correo_campo;
     private javax.swing.JLabel m13fechanacimiento_campo;
     private javax.swing.JLabel m1cedula_campo;
-    private javax.swing.JLabel m2cedula_dato;
     private javax.swing.JLabel m4nombre_campo;
     private javax.swing.JLabel m5apellido_campo;
     private javax.swing.JLabel m7direccion_campo;
@@ -595,14 +653,6 @@ public JDateChooser getFecha_nacimiento() {
 
     public javax.swing.JPanel getadv() {
         return advertencia;
-    }
-
-    public JLabel getm10tel_dato() {
-        return m10telefono_dato;
-    }
-
-    public JLabel getm2ced_dato() {
-        return m2cedula_dato;
     }
 
     public JLabel getm11correo_campo() {

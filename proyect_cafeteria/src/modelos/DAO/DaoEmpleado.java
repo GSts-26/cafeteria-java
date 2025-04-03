@@ -32,7 +32,7 @@ public class DaoEmpleado implements DAOGeneral<Empleado> {
         String consulta = "insert into empleado values (?,?,?,?,?,?,?,?)";
         String agregarUsuario = "insert into usuario values (?,?,?)";
 
-        try (Connection con = conexion.getConnection(); PreparedStatement ps = con.prepareStatement(consulta); PreparedStatement psUsuario = con.prepareStatement(agregarUsuario)) {
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(consulta); PreparedStatement psUsuario = con.prepareStatement(agregarUsuario)) {
 
             // Insertar usuario
             psUsuario.setString(1, usuario);
@@ -63,7 +63,7 @@ public class DaoEmpleado implements DAOGeneral<Empleado> {
     public void actualizar(Empleado t) {
         String consulta = "UPDATE empleado SET nombre=?, nacimiento=?, genero=?, telefono=?, email=?, direccion=?, apellido=? WHERE cedula=?";
 
-        try (Connection con = conexion.getConnection(); PreparedStatement ps = con.prepareStatement(consulta)) {
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(consulta)) {
 
             ps.setString(1, t.getNombre());
             ps.setDate(2, new java.sql.Date(t.getNacimiento().getTime()));
@@ -86,7 +86,7 @@ public class DaoEmpleado implements DAOGeneral<Empleado> {
     public void eliminar(Long cedula) {
         String consulta = "DELETE FROM empleado WHERE cedula=?";
 
-        try (Connection con = conexion.getConnection(); PreparedStatement ps = con.prepareStatement(consulta)) {
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(consulta)) {
 
             ps.setLong(1, cedula);
             ps.executeUpdate();
@@ -101,7 +101,7 @@ public class DaoEmpleado implements DAOGeneral<Empleado> {
         List<Empleado> lista = new ArrayList<>();
         String consulta = "SELECT * FROM empleado";
 
-        try (Connection con = conexion.getConnection(); PreparedStatement ps = con.prepareStatement(consulta); ResultSet rs = ps.executeQuery()) {
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(consulta); ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
                 Empleado empleado = new Empleado(
@@ -116,6 +116,7 @@ public class DaoEmpleado implements DAOGeneral<Empleado> {
                 );
                 lista.add(empleado);
             }
+            rs.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -127,7 +128,7 @@ public class DaoEmpleado implements DAOGeneral<Empleado> {
         int numero = 0;
         String consulta = "SELECT COUNT(*) FROM empleado";
 
-        try (Connection con = conexion.getConnection(); PreparedStatement ps = con.prepareStatement(consulta); ResultSet rs = ps.executeQuery()) {
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(consulta); ResultSet rs = ps.executeQuery()) {
 
             if (rs.next()) {
                 numero = rs.getInt(1);

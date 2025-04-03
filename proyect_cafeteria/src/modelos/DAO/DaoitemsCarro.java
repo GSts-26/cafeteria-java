@@ -22,7 +22,7 @@ public class DaoitemsCarro implements DAOGeneral.DaoItemsCarro {
     @Override
     public void insertar(itemsCarro t) {
         String sql = ("INSERT INTO public.carro_productos (id_carro, producto, cantidad, total) VALUES(?, ?, ?,?)");
-        try (Connection con = conexion.getConnection(); PreparedStatement st = con.prepareStatement(sql)) {
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement st = con.prepareStatement(sql)) {
             st.setLong(1, t.getIdCarro_compra());
             st.setLong(2, (t.getProductos_compra()));
             st.setLong(3, t.getCantidad_producto());
@@ -41,7 +41,7 @@ public class DaoitemsCarro implements DAOGeneral.DaoItemsCarro {
     @Override
     public void eliminar(Long id) {
         String sql = "DELETE FROM public.carro_productos WHERE id_carro = ?";
-        try (Connection con = conexion.getConnection(); PreparedStatement st = con.prepareStatement(sql)) {
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement st = con.prepareStatement(sql)) {
             st.setLong(1, id);
             st.executeUpdate();
         } catch (Exception e) {
@@ -64,7 +64,7 @@ public class DaoitemsCarro implements DAOGeneral.DaoItemsCarro {
         HashMap<Integer, Object> mapaProductos = new HashMap<>();
         String sql = "SELECT producto, cantidad, total FROM public.carro_productos WHERE id_carro = ?";
 
-        try (Connection con = conexion.getConnection(); PreparedStatement st = con.prepareStatement(sql)) {
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement st = con.prepareStatement(sql)) {
 
             st.setInt(1, idcarro);
 

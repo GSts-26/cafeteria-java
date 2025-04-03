@@ -16,7 +16,7 @@ public class DaoCategoria implements DAOGeneral<categoria> {
     @Override
     public void insertar(categoria t) {
         String consulta = "INSERT INTO categoria (nombre) VALUES(?)";
-        try (Connection con = conexion.getConnection(); PreparedStatement ps = con.prepareStatement(consulta)) {
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(consulta)) {
 
             ps.setString(1, t.getNombre());
             int fila_insertada = ps.executeUpdate();
@@ -33,7 +33,7 @@ public class DaoCategoria implements DAOGeneral<categoria> {
     @Override
     public void actualizar(categoria t) {
         String consulta = "UPDATE categoria SET nombre=? WHERE id=?";
-        try (Connection con = conexion.getConnection(); PreparedStatement ps = con.prepareStatement(consulta)) {
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(consulta)) {
 
             ps.setString(1, t.getNombre());
             ps.setInt(2, t.getId());
@@ -45,7 +45,7 @@ public class DaoCategoria implements DAOGeneral<categoria> {
 
     public void eliminar(int id) {
         String consulta = "DELETE FROM categoria WHERE id=?";
-        try (Connection con = conexion.getConnection(); PreparedStatement ps = con.prepareStatement(consulta)) {
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(consulta)) {
 
             ps.setInt(1, id);
             ps.executeUpdate();
@@ -61,7 +61,7 @@ public class DaoCategoria implements DAOGeneral<categoria> {
         String consulta = "SELECT * FROM categoria";
         List<categoria> listacate = new ArrayList<>();
 
-        try (Connection con = conexion.getConnection(); PreparedStatement ps = con.prepareStatement(consulta); ResultSet rs = ps.executeQuery()) {
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(consulta); ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
                 categoria cate = new categoria(rs.getInt("id"), rs.getString("nombre"));
@@ -77,7 +77,7 @@ public class DaoCategoria implements DAOGeneral<categoria> {
         int numero = 0;
         String consulta = "SELECT COUNT(*) FROM categoria";
 
-        try (Connection con = conexion.getConnection(); PreparedStatement ps = con.prepareStatement(consulta); ResultSet rs = ps.executeQuery()) {
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(consulta); ResultSet rs = ps.executeQuery()) {
 
             if (rs.next()) {
                 numero = rs.getInt(1);

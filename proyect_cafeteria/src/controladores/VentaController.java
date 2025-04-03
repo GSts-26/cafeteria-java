@@ -20,7 +20,6 @@ public class VentaController {
 
     private final compras vista;
   
-
     public VentaController(compras vista) {
         this.vista = vista;
         

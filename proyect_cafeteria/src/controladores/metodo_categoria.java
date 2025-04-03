@@ -21,7 +21,7 @@ public class metodo_categoria  {
 
     public void contarCategorias()  {
         String consulta = "SELECT COUNT(*) FROM categoria";
-        try (Connection con = conexion.getConnection()) {
+        try (Connection con = conexion.getInstance().getConnection()) {
             PreparedStatement ps = con.prepareStatement(consulta);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {

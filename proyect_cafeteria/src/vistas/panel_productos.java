@@ -588,9 +588,13 @@ public class panel_productos extends javax.swing.JPanel {
         if (tabla_producto.getColumnModel().getColumnCount() > 0) {
             tabla_producto.getColumnModel().getColumn(0).setResizable(false);
             tabla_producto.getColumnModel().getColumn(1).setResizable(false);
+            tabla_producto.getColumnModel().getColumn(1).setPreferredWidth(150);
             tabla_producto.getColumnModel().getColumn(2).setResizable(false);
+            tabla_producto.getColumnModel().getColumn(2).setPreferredWidth(150);
             tabla_producto.getColumnModel().getColumn(3).setResizable(false);
+            tabla_producto.getColumnModel().getColumn(3).setPreferredWidth(130);
             tabla_producto.getColumnModel().getColumn(4).setResizable(false);
+            tabla_producto.getColumnModel().getColumn(4).setPreferredWidth(80);
             tabla_producto.getColumnModel().getColumn(5).setResizable(false);
             tabla_producto.getColumnModel().getColumn(6).setResizable(false);
             tabla_producto.getColumnModel().getColumn(7).setResizable(false);
@@ -847,9 +851,9 @@ public class panel_productos extends javax.swing.JPanel {
         jScrollPane2.setViewportView(T_ingredientes);
         if (T_ingredientes.getColumnModel().getColumnCount() > 0) {
             T_ingredientes.getColumnModel().getColumn(0).setResizable(false);
-            T_ingredientes.getColumnModel().getColumn(0).setPreferredWidth(45);
+            T_ingredientes.getColumnModel().getColumn(0).setPreferredWidth(70);
             T_ingredientes.getColumnModel().getColumn(1).setResizable(false);
-            T_ingredientes.getColumnModel().getColumn(1).setPreferredWidth(91);
+            T_ingredientes.getColumnModel().getColumn(1).setPreferredWidth(130);
             T_ingredientes.getColumnModel().getColumn(2).setResizable(false);
             T_ingredientes.getColumnModel().getColumn(2).setPreferredWidth(45);
         }

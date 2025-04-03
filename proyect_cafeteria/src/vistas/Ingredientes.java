@@ -55,7 +55,6 @@ public class Ingredientes extends javax.swing.JPanel {
         boton_cancelar = new javax.swing.JButton();
         boton_crear = new javax.swing.JButton();
         boton_actualizar = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(249, 249, 249));
@@ -100,6 +99,7 @@ public class Ingredientes extends javax.swing.JPanel {
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
+        T_Ingrediente.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         T_Ingrediente.setForeground(new java.awt.Color(94, 83, 82));
         T_Ingrediente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -367,9 +367,6 @@ public class Ingredientes extends javax.swing.JPanel {
         boton_cancelar.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
 
-        jLabel5.setText("Falta resetear los valores cuando se crea un ingrediente");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, -1, -1));
-
         jButton4.setBackground(new java.awt.Color(249, 242, 237));
         jButton4.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(198, 124, 78));
@@ -474,7 +471,6 @@ public class Ingredientes extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

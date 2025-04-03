@@ -11,6 +11,7 @@ import modelos.Bd.conexion;
 import modelos.DAO.DaoIngredienteImpl;
 import modelos.DAO.DaoProductoImpl;
 import modelos.Entidades.Ingrediente;
+import modelos.Entidades.producto;
 import vistas.panel_informacion_producto;
 import vistas.panel_productos;
 
@@ -34,6 +35,7 @@ public class InformacionProducto {
         this.info = info;
     }
 
+    //metodo para ver la informacion del producto, los ingredientes y su informacion nutricional
     public void rellenar() {
         int fila = product.getTabla_producto().getSelectedRow();
         String nombreP = product.getModelo_Tabla_producto().getValueAt(fila, 1).toString();
@@ -55,7 +57,7 @@ public class InformacionProducto {
         if (product.getTabla_producto().getSelectedColumn() == 5) {
             product.tabla_producto.clearSelection();
 
-            try (Connection con = conexion.getConnection()) {
+            try (Connection con = conexion.getInstance().getConnection()) {
 
                 Map<Integer, Ingrediente> ingredientesMap = new HashMap<>();
                 daoIngre.listar().forEach(ingrediente -> ingredientesMap.put(ingrediente.getId(), ingrediente));
@@ -66,11 +68,14 @@ public class InformacionProducto {
                 ResultSet rsIds = ps.executeQuery();
 
                 if (rsIds.next()) {
-                    String idsProductos = rsIds.getString("ids_ingrediente");
-                    idsProductos = idsProductos.replace("{", "").replace("}", "");
-                    Arrays.stream(idsProductos.split(","))
-                            .map(String::trim)
-                            .forEach(productosIDS::add);
+                    String[] idsProductos = rsIds.getString("ids_ingrediente").replace("{", "").replace("}", "").replace("\"", "").trim().split(",");
+//                    idsProductos = idsProductos.replace("{", "").replace("}", "").replace("\"", "").trim().split(",");
+//                    Arrays.stream(idsProductos.split(","))
+//                            .map(String::trim)
+//                            .forEach(productosIDS::add);
+                    for (String idsProducto : idsProductos) {
+                        productosIDS.add(idsProducto);
+                    }
                 }
 
                 daoproduc.listar().forEach(prods -> {
@@ -83,7 +88,6 @@ public class InformacionProducto {
                         }
                     }
                 });
-
                 productosIDS.forEach(prod -> {
                     int idIngrente = Integer.parseInt(prod);
                     Ingrediente ingrediente = ingredientesMap.get(idIngrente);

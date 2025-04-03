@@ -82,7 +82,7 @@ public class Clientes extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(94, 83, 82));
-        jLabel3.setText("Gestion De Empleados");
+        jLabel3.setText("Gestion De Clientes");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, 20));
 
         jLabel4.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
@@ -95,7 +95,7 @@ public class Clientes extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Sora", 1, 21)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(94, 83, 82));
-        jLabel2.setText("Lista De Empleados");
+        jLabel2.setText("Lista De Clientes");
         contenido_table.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 220, 40));
 
         jSeparator1.setForeground(new java.awt.Color(198, 124, 78));
@@ -146,6 +146,7 @@ public class Clientes extends javax.swing.JPanel {
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
+        T_Clientes.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         T_Clientes.setForeground(new java.awt.Color(94, 83, 82));
         T_Clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -382,7 +383,7 @@ public class Clientes extends javax.swing.JPanel {
         boton_crear.setBackground(new java.awt.Color(198, 124, 78));
         boton_crear.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         boton_crear.setForeground(new java.awt.Color(255, 255, 255));
-        boton_crear.setText("Crear Cliente");
+        boton_crear.setText("Crear");
         boton_crear.setBorder(txtcedula.getBorder());
         boton_crear.setBorderPainted(false);
         boton_crear.addActionListener(new java.awt.event.ActionListener() {
