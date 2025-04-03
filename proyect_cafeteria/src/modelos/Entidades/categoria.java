@@ -31,4 +31,9 @@ public class categoria {
     private int id;
     private String nombre;
 
+     @Override
+    public String toString() {
+        return nombre;
+    }
+
 }

@@ -74,7 +74,7 @@ public class panel_empleado extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel1.setText("Empleados");
+        jLabel1.setText("Panel de Empleados");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 19, -1, -1));
 
         card_layout_empleado.setBackground(new java.awt.Color(204, 255, 255));
@@ -259,11 +259,14 @@ public class panel_empleado extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Sora", 1, 21)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-empleados-20.png"))); // NOI18N
         jLabel4.setText("Lista De Empleados");
-        contenido_table.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 220, 40));
+        contenido_table.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 250, 40));
 
         jSeparator1.setForeground(new java.awt.Color(198, 124, 78));
         contenido_table.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 550, 10));
+
+        advertencia.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel13.setFont(new java.awt.Font("Sora", 1, 28)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(94, 83, 82));
@@ -302,10 +305,10 @@ public class panel_empleado extends javax.swing.JPanel {
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel14)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
-        contenido_table.add(advertencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 540, 270));
+        contenido_table.add(advertencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 540, 290));
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
@@ -345,7 +348,7 @@ public class panel_empleado extends javax.swing.JPanel {
         ///
         //T_productos.setBorder(new MatteBorder(1, 0, 0, 0, Color.decode("0xECECEC")));
 
-        contenido_table.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 560, 430));
+        contenido_table.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 560, 370));
 
         info.setBackground(new java.awt.Color(198, 124, 78));
         info.setForeground(new java.awt.Color(255, 255, 255));
@@ -368,7 +371,7 @@ public class panel_empleado extends javax.swing.JPanel {
             .addComponent(numero_empleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        contenido_table.add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 20, -1, 25));
+        contenido_table.add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 15, -1, 30));
         info.putClientProperty(FlatClientProperties.STYLE,
             "arc: 50");
 
@@ -379,7 +382,7 @@ public class panel_empleado extends javax.swing.JPanel {
                 txt_filtradoKeyReleased(evt);
             }
         });
-        contenido_table.add(txt_filtrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 277, 40));
+        contenido_table.add(txt_filtrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 330, 40));
         txt_filtrado.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingresa nombre o apellido");
         txt_filtrado.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSearchIcon());
 
@@ -389,8 +392,8 @@ public class panel_empleado extends javax.swing.JPanel {
 
         jLabel3.setBackground(new java.awt.Color(228, 191, 194));
         jLabel3.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("Gestion de empleados");
+        jLabel3.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel3.setText("Gestion de empleados desde aquí");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         nuevoEmpleado.setBackground(new java.awt.Color(249, 242, 237));
@@ -403,7 +406,7 @@ public class panel_empleado extends javax.swing.JPanel {
                 nuevoEmpleadoActionPerformed(evt);
             }
         });
-        add(nuevoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 125, 39));
+        add(nuevoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 125, 39));
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_agregarActionPerformed

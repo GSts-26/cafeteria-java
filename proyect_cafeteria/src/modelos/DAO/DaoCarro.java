@@ -84,11 +84,13 @@ public class DaoCarro implements DAOGeneral.DaoVenta {
             // Ejecuta la consulta y obtiene el estado del carro de compras
             try (ResultSet rs = st.executeQuery()) {
                 if (rs.next()) {
-                    
+                    System.out.println("si hay ");
                     c.setIdCarro(rs.getInt("id"));
                     c.setCliente(rs.getLong("cliente"));
                     c.setEmpleado(rs.getLong("empleado"));
                     c.setEstado(rs.getBoolean("estado"));
+                } else {
+                    System.out.println("no hay ");
                 }
             }
         } catch (Exception e) {

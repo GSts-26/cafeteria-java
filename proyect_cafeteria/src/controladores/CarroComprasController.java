@@ -10,12 +10,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.table.DefaultTableModel;
 import modelos.DAO.DaoProductoImpl;
 import modelos.DAO.DaoClienteImpl;
 import modelos.DAO.DaoIngredienteImpl;
 import modelos.DAO.DaoCarro;
+import modelos.DAO.DaoCategoria;
 import modelos.DAO.DaoitemsCarro;
 import modelos.Entidades.producto;
 import modelos.Entidades.CarroCompras;
@@ -38,6 +40,7 @@ public class CarroComprasController {
     private List<producto> ListaProductos = new ArrayList<>();
     private DaoCarro CarroDAO;
     private int carro;
+    private DaoCategoria categoriaDao;
     private double total = 0;
     HashMap<Integer, Object> productosCarro = new HashMap<>();
 
@@ -50,13 +53,14 @@ public class CarroComprasController {
 
     // Constructor que inicializa la vista y los DAOs
     public CarroComprasController(compras vista) {
+        this.categoriaDao = new DaoCategoria();
         this.vista = vista;
         this.ProductosDAO = new DaoProductoImpl();
         this.IngredientesDAO = new DaoIngredienteImpl();
         this.ClienteDAO = new DaoClienteImpl();
         this.CarroDAO = new DaoCarro();
         this.Daoitems = new DaoitemsCarro();
-        ListaProductos = ProductosDAO.listar(); // Carga la lista de productos
+        this.ListaProductos = ProductosDAO.listar(); // Carga la lista de productos
     }
 
     // Llena la interfaz con los productos disponibles
@@ -74,6 +78,12 @@ public class CarroComprasController {
     public void rellenarCliente() {
         ClienteDAO.listar().forEach(cliente -> {
             vista.comboClientes.addItem(cliente);
+        });
+    }
+
+    public void rellenarCtaegorias() {
+        categoriaDao.listar().forEach(cate -> {
+        vista.combocategoria.addItem(cate);
         });
     }
 
@@ -120,38 +130,73 @@ public class CarroComprasController {
     //metodo encargado de verificar si el empleado tiene un Carrito activo
     public void pedidoActivo() {
         DefaultTableModel modeloproductosCarro = (DefaultTableModel) vista.T_Productos.getModel();
-       
 
-        CarroCompras carro = CarroDAO.activo(123);
-        if (carro == null) {
-            vista.panel_crearOrden.setVisible(true);
-            vista.Panel_pedidoActivo.setVisible(false);
+        CarroCompras carro;
+        try {
+            carro = CarroDAO.activo(123);
+        } catch (Exception e) {
+
             return;
         }
 
+        // Validar carro
+        if (carro == null || carro.getIdCarro() == 0) {
+            actualizarVistaSinCarro();
+            return;
+        }
         this.carro = carro.getIdCarro();
-        System.out.println(this.carro);
-       
-        productosCarro = Daoitems.listar(carro.getIdCarro());
 
-       
-        for (Object obj : productosCarro.values()) {
-            if (obj instanceof itemsCarro) {
-                itemsCarro item = (itemsCarro) obj;
+        actualizarVistaConCarro(carro);
 
-                modeloproductosCarro.addRow(new Object[]{
-                    item.getProductos_compra(),
-                    item.getCantidad_producto(),
-                    item.getTotal_item()
-                });
-            }
+        // Procesar items del carro
+        procesarItemsCarro(carro, modeloproductosCarro);
 
-           
+    }
+
+    private void actualizarVistaSinCarro() {
+        SwingUtilities.invokeLater(() -> {
+            vista.panel_crearOrden.setVisible(true);
+            vista.Panel_pedidoActivo.setVisible(false);
+        });
+    }
+
+    private void actualizarVistaConCarro(CarroCompras carro) {
+        SwingUtilities.invokeLater(() -> {
             vista.panel_crearOrden.setVisible(false);
             vista.Panel_pedidoActivo.setVisible(true);
             vista.actualizarVistaCarro(carro);
+        });
+    }
+
+    private void procesarItemsCarro(CarroCompras carro, DefaultTableModel modelo) {
+        Map<?, ?> productosCarro;
+        try {
+            productosCarro = Daoitems.listar(carro.getIdCarro());
+        } catch (Exception e) {
+            return;
         }
 
+        if (productosCarro == null || productosCarro.isEmpty()) {
+            return;
+        }
+
+        SwingUtilities.invokeLater(() -> {
+
+            productosCarro.values().stream()
+                    .filter(obj -> obj instanceof itemsCarro)
+                    .map(obj -> (itemsCarro) obj)
+                    .forEach(item -> {
+                        modelo.addRow(new Object[]{
+                            item.getProductos_compra(),
+                            item.getCantidad_producto(),
+                            item.getTotal_item()
+                        });
+
+                        // Actualiza el total sumando (cantidad * precio)
+                        total += item.getTotal_item();
+                    });
+            vista.totalnumero.setText("$" + total);
+        });
     }
 
     //metodo que permite añadir un producto al Carro de compas
@@ -184,13 +229,17 @@ public class CarroComprasController {
         new SwingWorker<Void, Void>() {
             @Override
             protected Void doInBackground() throws Exception {
-
+                Daoitems.eliminar((long) carro);
                 return null;
             }
 
         }.execute();
+        productosCarro.clear();
         modeloproductosCarro = (DefaultTableModel) vista.T_Productos.getModel();
         modeloproductosCarro.setRowCount(0);
     }
 
+    public void OperacionBd() {
+        Daoitems.TransaccionOperacional(carro);
+    }
 }

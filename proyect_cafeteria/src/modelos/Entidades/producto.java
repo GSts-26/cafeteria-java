@@ -14,6 +14,9 @@ public class producto {
     private String nombre;
     private int categoria;
 
+     public producto() {
+    }
+     
     public producto(int id, String nombre, int categoria, String descripcion, double precio, int cantidad, int stock) {
         this.id = id;
         this.nombre = nombre;
@@ -23,6 +26,18 @@ public class producto {
         this.cantidad = cantidad;
         this.stock = stock;
     }
+    
+        public producto(int id, String nombre, int categoria, String Descripcion, double precio, int cantidad, int stock, ArrayList<Integer> idIngredientes) {
+        this.id = id;
+        this.nombre = nombre;
+        this.categoria = categoria;
+        this.Descripcion = Descripcion;
+        this.precio = precio;
+        this.cantidad = cantidad;
+        this.stock = stock;
+        this.idIngredientes = idIngredientes;
+    }
+   
 
     private String Descripcion;
     private double precio;

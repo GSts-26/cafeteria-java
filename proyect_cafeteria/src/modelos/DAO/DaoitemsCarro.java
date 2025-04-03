@@ -60,7 +60,7 @@ public class DaoitemsCarro implements DAOGeneral.DaoItemsCarro {
     }
 
     @Override
-    public  HashMap<Integer, Object> listar(int idcarro) {
+    public HashMap<Integer, Object> listar(int idcarro) {
         HashMap<Integer, Object> mapaProductos = new HashMap<>();
         String sql = "SELECT producto, cantidad, total FROM public.carro_productos WHERE id_carro = ?";
 
@@ -85,4 +85,35 @@ public class DaoitemsCarro implements DAOGeneral.DaoItemsCarro {
         return mapaProductos;
     }
 
+    public void TransaccionOperacional(int idCarro) {
+        String sql1 = "INSERT INTO venta (cliente, empleado, valor_total) SELECT cliente, empleado, total FROM carro_compra WHERE id = ?";
+        String sql2 = "INSERT INTO detalle_venta(id_venta,producto,cantidad,total_venta) SELECT id_carro, producto, cantidad, total FROM carro_productos WHERE id_carro = ?";
+        String sql3 = "DELETE FROM carro_compra WHERE id = ?";
+        String sql4 = "update producto p set  cantidad  = p.cantidad  - dp.cantidad from detalle_venta dp where dp.id_venta =? and dp.producto = id";
+
+        try (Connection con = conexion.getInstance().getConnection();) {
+            con.setAutoCommit(false);
+            try (PreparedStatement stmt1 = con.prepareStatement(sql1); PreparedStatement stmt2 = con.prepareStatement(sql2); PreparedStatement stmt3 = con.prepareStatement(sql3); PreparedStatement stm4 = con.prepareStatement(sql4);) {
+
+                stmt1.setInt(1, idCarro);
+                stmt2.setInt(1, idCarro);
+                stmt3.setInt(1, idCarro);
+                stm4.setInt(1, idCarro);
+
+                stmt1.executeUpdate();
+                stmt2.executeUpdate();
+                stmt3.executeUpdate();
+                stm4.executeUpdate();
+
+                con.commit();
+            } catch (Exception e) {
+                con.rollback();
+                System.out.println(e);
+                System.out.println("error en la transaccion");
+            }
+        } catch (Exception e) {
+            System.out.println("error en la conexion");
+
+        }
+    }
 }

@@ -20,6 +20,7 @@ public class producto_info extends javax.swing.JPanel {
         this.producto = producto;
           this.comprasPanel = comprasPanel;
         rellenar_campos();
+        System.out.println(producto.getIdIngredientes());
         this.putClientProperty(FlatClientProperties.STYLE,
                 "arc: 30");
     }
@@ -111,6 +112,7 @@ public class producto_info extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
          comprasPanel.mostrarInformacion(producto);
+         
         this.setBorder(new FlatLineBorder(new Insets(0, 0, 0, 0), new java.awt.Color(240, 132, 156), 1, 25));
 
     }//GEN-LAST:event_jButton1ActionPerformed
