@@ -1,6 +1,5 @@
 package controladores;
 
-import com.formdev.flatlaf.FlatClientProperties;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
@@ -9,60 +8,42 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelos.DAO.DaoIngredienteImpl;
+import modelos.DAO.EscuchadorIngrediente;
 import modelos.Entidades.Ingrediente;
-import vistas.Agregar_ingredientes;
 import vistas.Ingredientes;
 
-public class Ingrediente_Controller {
+public class Ingrediente_Controller implements EscuchadorIngrediente {
 
-    private Ingredientes vista;
-    private Agregar_ingredientes vista1;
-    private DaoIngredienteImpl IngredienteDAO;
+    private final Ingredientes vista;
+    private final DaoIngredienteImpl IngredienteDAO;
     private DefaultTableModel modeloIngrediente;
     private int ingredientesContador;
     private List<Ingrediente> ListaIngrediente = new ArrayList<>();
     JButton botonEditar = new JButton();
     JButton botonEliminar = new JButton();
 
-    public Ingrediente_Controller(Agregar_ingredientes vista1) {
-        this.vista1 = vista1;
-        this.IngredienteDAO = new DaoIngredienteImpl();
-
-    }
-
     public Ingrediente_Controller(Ingredientes vista) {
         this.vista = vista;
         this.IngredienteDAO = new DaoIngredienteImpl();
         this.ingredientesContador = 0;
+        EventBus.SubscribirseIngrediente(this);
+
     }
-    
 
     public void ingresar() {
         Ingrediente ingrediente = new Ingrediente(vista.txtNombre.getText(), (int) vista.txtcalorias.getValue(), (int) vista.txtCarbo.getValue(), (int) vista.txtAzucar.getValue(), (int) vista.txtproteinas.getValue());;
         IngredienteDAO.insertar(ingrediente);
         this.resetear();
-        JOptionPane.showMessageDialog(null, "Ingrediente Ingresado");
         mostrar();
+        JOptionPane.showMessageDialog(null, "Ingrediente Ingresado");
     }
-// metodos para el dialog de agregar ingredientes
-    
-    
-  
-//    public void ingresar1() {
-//
-//        String nombre = vista1.txtNombre.getText();
-//        int calorias = Integer.parseInt(vista1.txtcalorias.getText());
-//        int carbohidrato = Integer.parseInt(vista1.txtCarbo.getText());
-//        int azucar = Integer.parseInt(vista1.txtAzucar.getText());
-//        int proteinas = Integer.parseInt(vista1.txtproteinas.getText());
-//        Ingrediente ingrediente = new Ingrediente(nombre, calorias, carbohidrato, azucar, proteinas);
-//        IngredienteDAO.insertar(ingrediente);
-//        JOptionPane.showMessageDialog(null, "Ingrediente Ingresado");
-//        this.limpiarAgreIngrediente();
-//        mostrar();
-//    }
+
+    public void rellenarListaIngrediente() {
+        ListaIngrediente = IngredienteDAO.listar();
+    }
 
     public void mostrar() {
+        rellenarListaIngrediente();
         modeloIngrediente = (DefaultTableModel) vista.T_Ingrediente.getModel();
         modeloIngrediente.setRowCount(0);
         botonEditar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-edit-30.png")));
@@ -72,7 +53,7 @@ public class Ingrediente_Controller {
 //        botonEliminar.putClientProperty(FlatClientProperties.STYLE, "arc: 20; " + "background: #E6D2D4;");
 //        botonEditar.putClientProperty(FlatClientProperties.STYLE, "arc: 20;" + "background: #F9F2ED;");
         ingredientesContador = 0;
-        ListaIngrediente = IngredienteDAO.listar();
+
         if (ListaIngrediente.isEmpty()) {
             vista.advertencia.setVisible(true);
             System.out.println("No hay ingredientes en la base de datos.");
@@ -90,13 +71,6 @@ public class Ingrediente_Controller {
             vista.contadornumero.setText(String.valueOf(ingredientesContador));
         }
     }
-
-
-   
-
-  
-
-  
 
     public void rellenarACtu() {
         vista.lblIngrediente.setText("Actualizar Ingrediente");
@@ -154,10 +128,16 @@ public class Ingrediente_Controller {
         int proteina = Integer.parseInt(vista.txtproteinas.getValue().toString());
         Ingrediente ingre = new Ingrediente(idIngre, nombre, cal, carbo, proteina, azucar);
         IngredienteDAO.actualizar(ingre);
-        JOptionPane.showMessageDialog(null, "Datos modificados", "Modificado", JOptionPane.INFORMATION_MESSAGE);
         mostrar();
+        JOptionPane.showMessageDialog(null, "Datos modificados", "Modificado", JOptionPane.INFORMATION_MESSAGE);
         rellenarNuevo();
+        EventBus.PublishIngrediente();
+
     }
-    
-    
+
+    @Override
+    public void EscuchadorIngreActivo() {
+        mostrar();
+    }
+
 }

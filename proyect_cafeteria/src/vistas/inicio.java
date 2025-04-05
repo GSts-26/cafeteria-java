@@ -6,11 +6,13 @@ package vistas;
 
 import com.formdev.flatlaf.*;
 import com.formdev.flatlaf.icons.FlatSearchIcon;
+import controladores.notificacionController;
 
 import java.awt.*;
 
 import javax.swing.*;
 import modelos.Entidades.usuario;
+import utils.render;
 
 public class inicio extends javax.swing.JFrame {
 
@@ -22,10 +24,19 @@ public class inicio extends javax.swing.JFrame {
     Ingredientes vistaIngredientes = new Ingredientes();
     compras vistacompra = new compras();
     Panel_factura vistaFactura = new Panel_factura();
+    notificacionController controlador = new notificacionController(this);
     protected usuario c = null;
+    private Thread hilo;
+
+    private void styles() {
+        tabla_notificacion.setDefaultRenderer(Object.class, new render());
+    }
 
     public inicio() {
         initComponents();
+        styles();
+        controlador.ocultar();
+        controlador.CantidadEnBajoStock();
         Vista = (CardLayout) Contenido.getLayout();
         Contenido.add(vistacompra, "menu");
         Vista.show(Contenido, "menu");
@@ -43,6 +54,18 @@ public class inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Notificacion = new javax.swing.JDialog();
+        jPanel2 = new javax.swing.JPanel();
+        PanelSinAlertas = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tabla_notificacion = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtFiltrar = new javax.swing.JTextField();
+        reabastecerProducto = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -50,9 +73,10 @@ public class inicio extends javax.swing.JFrame {
         Coffee = new javax.swing.JLabel();
         titulo = new javax.swing.JLabel();
         contenedor_notificacion = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        BotonNotificacion = new javax.swing.JLabel();
         boton_crear = new javax.swing.JButton();
         buscador = new javax.swing.JTextField();
+        lblCantiEn_bajo_Stock = new javax.swing.JLabel();
         menu_lateral = new javax.swing.JPanel();
         menu = new javax.swing.JButton();
         Empleados = new javax.swing.JButton();
@@ -65,6 +89,114 @@ public class inicio extends javax.swing.JFrame {
         Rol = new javax.swing.JLabel();
         empleados1 = new javax.swing.JButton();
         Contenido = new javax.swing.JPanel();
+
+        Notificacion.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        PanelSinAlertas.setBackground(new java.awt.Color(255, 255, 255));
+        PanelSinAlertas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-check-100.png"))); // NOI18N
+        PanelSinAlertas.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel6.setText("Todo está abastecido. No hay faltantes por ahora");
+        PanelSinAlertas.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, 20));
+
+        jLabel7.setFont(new java.awt.Font("Sora", 1, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel7.setText("No tienes produtos en bajo Stock");
+        PanelSinAlertas.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
+
+        jPanel2.add(PanelSinAlertas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 420, 190));
+
+        jScrollPane4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
+        tabla_notificacion.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        tabla_notificacion.setForeground(new java.awt.Color(94, 83, 82));
+        tabla_notificacion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Producto", "Cantidad", "Limite", "Accion"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabla_notificacion.setToolTipText("");
+        tabla_notificacion.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tabla_notificacion.setFocusable(false);
+        tabla_notificacion.setRowHeight(35);
+        tabla_notificacion.setSelectionBackground(new java.awt.Color(254, 240, 225));
+        tabla_notificacion.setSelectionForeground(new java.awt.Color(60, 60, 60));
+        tabla_notificacion.getTableHeader().setResizingAllowed(false);
+        tabla_notificacion.getTableHeader().setReorderingAllowed(false);
+        tabla_notificacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabla_notificacionMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(tabla_notificacion);
+        if (tabla_notificacion.getColumnModel().getColumnCount() > 0) {
+            tabla_notificacion.getColumnModel().getColumn(0).setResizable(false);
+            tabla_notificacion.getColumnModel().getColumn(0).setPreferredWidth(200);
+            tabla_notificacion.getColumnModel().getColumn(1).setResizable(false);
+            tabla_notificacion.getColumnModel().getColumn(1).setPreferredWidth(130);
+            tabla_notificacion.getColumnModel().getColumn(2).setResizable(false);
+            tabla_notificacion.getColumnModel().getColumn(2).setPreferredWidth(120);
+            tabla_notificacion.getColumnModel().getColumn(3).setResizable(false);
+        }
+        ///
+        //T_productos.setBorder(new MatteBorder(1, 0, 0, 0, Color.decode("0xECECEC")));
+
+        jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 485, 272));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-error-50.png"))); // NOI18N
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 63, -1));
+
+        jLabel1.setFont(new java.awt.Font("Sora", 0, 30)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(198, 124, 78));
+        jLabel1.setText("Alerta de bajo Stock");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
+        jPanel2.add(txtFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 220, 30));
+        txtFiltrar.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingresa Producto");
+        txtFiltrar.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSearchIcon());
+
+        javax.swing.GroupLayout NotificacionLayout = new javax.swing.GroupLayout(Notificacion.getContentPane());
+        Notificacion.getContentPane().setLayout(NotificacionLayout);
+        NotificacionLayout.setHorizontalGroup(
+            NotificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(NotificacionLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        NotificacionLayout.setVerticalGroup(
+            NotificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(NotificacionLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        javax.swing.GroupLayout reabastecerProductoLayout = new javax.swing.GroupLayout(reabastecerProducto.getContentPane());
+        reabastecerProducto.getContentPane().setLayout(reabastecerProductoLayout);
+        reabastecerProductoLayout.setHorizontalGroup(
+            reabastecerProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        reabastecerProductoLayout.setVerticalGroup(
+            reabastecerProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -105,7 +237,17 @@ public class inicio extends javax.swing.JFrame {
 
         contenedor_notificacion.setBackground(new java.awt.Color(249, 249, 249));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/campana.png"))); // NOI18N
+        BotonNotificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/campana.png"))); // NOI18N
+        BotonNotificacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonNotificacionMouseClicked(evt);
+            }
+        });
+        BotonNotificacion.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                BotonNotificacionPropertyChange(evt);
+            }
+        });
 
         javax.swing.GroupLayout contenedor_notificacionLayout = new javax.swing.GroupLayout(contenedor_notificacion);
         contenedor_notificacion.setLayout(contenedor_notificacionLayout);
@@ -113,14 +255,14 @@ public class inicio extends javax.swing.JFrame {
             contenedor_notificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedor_notificacionLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6)
+                .addComponent(BotonNotificacion)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         contenedor_notificacionLayout.setVerticalGroup(
             contenedor_notificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedor_notificacionLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6)
+                .addComponent(BotonNotificacion)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -140,6 +282,15 @@ public class inicio extends javax.swing.JFrame {
             }
         });
 
+        lblCantiEn_bajo_Stock.setFont(new java.awt.Font("Sora", 1, 17)); // NOI18N
+        lblCantiEn_bajo_Stock.setForeground(new java.awt.Color(198, 124, 78));
+        lblCantiEn_bajo_Stock.setText("canti");
+        lblCantiEn_bajo_Stock.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                lblCantiEn_bajo_StockPropertyChange(evt);
+            }
+        });
+
         javax.swing.GroupLayout encabezadoLayout = new javax.swing.GroupLayout(encabezado);
         encabezado.setLayout(encabezadoLayout);
         encabezadoLayout.setHorizontalGroup(
@@ -151,7 +302,9 @@ public class inicio extends javax.swing.JFrame {
                 .addComponent(titulo)
                 .addGap(66, 66, 66)
                 .addComponent(buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 268, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
+                .addComponent(lblCantiEn_bajo_Stock)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(contenedor_notificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(boton_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -167,7 +320,8 @@ public class inicio extends javax.swing.JFrame {
                             .addComponent(Coffee, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(encabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(buscador, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblCantiEn_bajo_Stock))))
                     .addGroup(encabezadoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(encabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -422,11 +576,44 @@ public class inicio extends javax.swing.JFrame {
     private void empleados1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empleados1ActionPerformed
         Contenido.add(vistaFactura, "factura");
         Vista.show(Contenido, "factura");
-        
-        
+
         this.repaint();
         this.revalidate();
     }//GEN-LAST:event_empleados1ActionPerformed
+
+    private void tabla_notificacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_notificacionMouseClicked
+
+//        int columna = tabla_producto.getSelectedColumn();
+//        if (columna == 5) {
+//            AbrirInfoProducto();
+//            control.rellenar();
+//            System.out.println("columna 5");
+//        } else {
+//            controlador.Acciones_tabla();
+//            abrirNuevoProducto();
+//
+//        }
+
+    }//GEN-LAST:event_tabla_notificacionMouseClicked
+
+    private void BotonNotificacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonNotificacionMouseClicked
+
+        controlador.ProductosEnBajoStock();
+        Notificacion.setPreferredSize(new Dimension(577, 544));
+        Notificacion.setMinimumSize(new Dimension(577, 544));
+        Notificacion.setLocationRelativeTo(null);
+        Notificacion.setVisible(true);
+    }//GEN-LAST:event_BotonNotificacionMouseClicked
+
+    private void BotonNotificacionPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_BotonNotificacionPropertyChange
+
+    }//GEN-LAST:event_BotonNotificacionPropertyChange
+
+    private void lblCantiEn_bajo_StockPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblCantiEn_bajo_StockPropertyChange
+//        hilo = new Thread();
+//        hilo.start();
+//        controlador.CantidadEnBajoStock();
+    }//GEN-LAST:event_lblCantiEn_bajo_StockPropertyChange
 
     public static void main(String args[]) {
         FlatLightLaf.setup();
@@ -473,10 +660,13 @@ public class inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel BotonNotificacion;
     private javax.swing.JButton Clientes;
     private javax.swing.JLabel Coffee;
     private javax.swing.JPanel Contenido;
     private javax.swing.JButton Empleados;
+    private javax.swing.JDialog Notificacion;
+    public javax.swing.JPanel PanelSinAlertas;
     private javax.swing.JLabel Rol;
     private javax.swing.JButton boton_crear;
     private javax.swing.JTextField buscador;
@@ -485,15 +675,25 @@ public class inicio extends javax.swing.JFrame {
     private javax.swing.JButton empleados1;
     private javax.swing.JPanel encabezado;
     private javax.swing.JButton ingrediente;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane4;
+    public javax.swing.JLabel lblCantiEn_bajo_Stock;
     private javax.swing.JButton menu;
     private javax.swing.JPanel menu_lateral;
     private javax.swing.JLabel nombreUsuaio;
     private javax.swing.JButton productos3;
+    private javax.swing.JDialog reabastecerProducto;
+    public javax.swing.JTable tabla_notificacion;
     private javax.swing.JLabel titulo;
+    private javax.swing.JTextField txtFiltrar;
     // End of variables declaration//GEN-END:variables
 }

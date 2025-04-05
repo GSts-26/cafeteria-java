@@ -14,6 +14,7 @@ public class Ingredientes extends javax.swing.JPanel {
 
     public Ingredientes() {
         initComponents();
+        controlador.rellenarListaIngrediente();
         styles();
         controlador.mostrar();
     }
@@ -55,7 +56,6 @@ public class Ingredientes extends javax.swing.JPanel {
         boton_cancelar = new javax.swing.JButton();
         boton_crear = new javax.swing.JButton();
         boton_actualizar = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(249, 249, 249));
         setPreferredSize(new java.awt.Dimension(1131, 650));
@@ -367,20 +367,6 @@ public class Ingredientes extends javax.swing.JPanel {
         boton_cancelar.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
 
-        jButton4.setBackground(new java.awt.Color(249, 242, 237));
-        jButton4.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(198, 124, 78));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-restart-25.png"))); // NOI18N
-        jButton4.setText("Refrescar");
-        jButton4.setBorderPainted(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -388,13 +374,10 @@ public class Ingredientes extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(34, 34, 34)
-                        .addComponent(jButton4))
+                    .addComponent(jLabel4)
                     .addComponent(contenido_table, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(118, 118, 118))
         );
@@ -405,9 +388,7 @@ public class Ingredientes extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)
                         .addGap(20, 20, 20)
@@ -432,10 +413,6 @@ public class Ingredientes extends javax.swing.JPanel {
         controlador.ingresar();
     }//GEN-LAST:event_boton_crearActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        controlador.mostrar();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void boton_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_nuevoActionPerformed
         controlador.rellenarNuevo();
     }//GEN-LAST:event_boton_nuevoActionPerformed
@@ -459,7 +436,6 @@ public class Ingredientes extends javax.swing.JPanel {
     public javax.swing.JLabel contadornumero;
     private javax.swing.JPanel contenido_table;
     private javax.swing.JPanel info;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

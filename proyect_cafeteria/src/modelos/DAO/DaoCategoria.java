@@ -1,5 +1,6 @@
 package modelos.DAO;
 
+import controladores.EventBus;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,13 +18,10 @@ public class DaoCategoria implements DAOGeneral<categoria> {
     public void insertar(categoria t) {
         String consulta = "INSERT INTO categoria (nombre) VALUES(?)";
         try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(consulta)) {
-
             ps.setString(1, t.getNombre());
             int fila_insertada = ps.executeUpdate();
-
             if (fila_insertada > 0) {
                 listar();
-                JOptionPane.showMessageDialog(null, "Categoria agregada", "Agregado", JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (SQLException e) {
             System.out.println("Error al insertar: " + e.getMessage());
@@ -49,7 +47,6 @@ public class DaoCategoria implements DAOGeneral<categoria> {
 
             ps.setInt(1, id);
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Categoria eliminada", "Eliminada", JOptionPane.INFORMATION_MESSAGE);
             listar();
         } catch (SQLException e) {
             System.out.println("Error al eliminar: " + e.getMessage());

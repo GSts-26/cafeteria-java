@@ -1,6 +1,5 @@
 package controladores;
 
-import com.formdev.flatlaf.FlatClientProperties;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -10,11 +9,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import modelos.DAO.DaoCategoria;
-import modelos.DAO.DaoProductoImpl;
+import modelos.DAO.EscuchadorProducto;
 import vistas.Categorias;
 import modelos.Entidades.categoria;
 
-public class categoriaController implements Runnable {
+public class categoriaController {
 
     private DaoCategoria categoriaDao;
     private Categorias vistaCategoria;
@@ -30,12 +29,14 @@ public class categoriaController implements Runnable {
     }
 
     public void ingresar() {
-
         String nombre = vistaCategoria.getTxt_nombre().getText();
         categoria cate = new categoria(nombre);
         categoriaDao.insertar(cate);
 //        vistaCategoria.getTxt_nombre().setText("");
         mostrar();
+        JOptionPane.showMessageDialog(null, "Categoria agregada", "Agregado", JOptionPane.INFORMATION_MESSAGE);
+        // metodo que avisa cuando se ingresa una categoria
+        EventBus.PublishProducto();
 
     }
 
@@ -95,7 +96,8 @@ public class categoriaController implements Runnable {
         mostrar();
         limpiar();
         JOptionPane.showMessageDialog(null, "Datos modificados", "Modificado", JOptionPane.INFORMATION_MESSAGE);
-
+        // envia una alerta cuando se modifica una categoria
+        EventBus.PublishProducto();
     }
 
     public void accionTabla() {
@@ -106,12 +108,13 @@ public class categoriaController implements Runnable {
         if (columna == 3) {
             categoriaDao.eliminar(filaseleccionada);
             mostrar();
+            JOptionPane.showMessageDialog(null, "Categoria eliminada", "Eliminada", JOptionPane.INFORMATION_MESSAGE);
+            // metodo que envia una alerta cuando se elimina una categoria
+            EventBus.PublishProducto();
         } else if (columna == 2) {
-
             vistaCategoria.getTxt_id().setText(String.valueOf(filaseleccionada));
             vistaCategoria.getTxt_nombre().setText(nombre);
             rellenarActualizar();
-
         }
     }
 
@@ -136,18 +139,4 @@ public class categoriaController implements Runnable {
         vistaCategoria.boton_actualizar.setVisible(false);
     }
 
-    @Override
-    public void run() {
-        try {
-            for (int i = 0; i < 10; i++) {
-                s = new Thread(this);
-
-                s.start();
-                Thread.sleep(400);
-                System.out.println("ggg");
-            }
-        } catch (InterruptedException ex) {
-            Logger.getLogger(categoriaController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 }

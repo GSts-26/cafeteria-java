@@ -1,28 +1,15 @@
 package controladores;
 
-import com.formdev.flatlaf.FlatClientProperties;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
+import java.awt.Event;
+import java.util.*;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import modelos.DAO.DaoCategoria;
+import modelos.DAO.*;
+import modelos.Entidades.*;
 
-import modelos.DAO.DaoIngredienteImpl;
-import modelos.DAO.DaoProductoImpl;
-import modelos.Entidades.Ingrediente;
-import modelos.Entidades.categoria;
-import modelos.Entidades.producto;
 import vistas.panel_productos;
 
-public class productoController implements Runnable {
+public class productoController implements EscuchadorProducto, EscuchadorIngrediente {
 
     private panel_productos vista;
     private DaoProductoImpl productoDAO;
@@ -41,7 +28,6 @@ public class productoController implements Runnable {
     JButton botonVer = new JButton();
     JButton botonEditar = new JButton();
     JButton botonBorrar = new JButton();
-    private Thread hiloCategoria;
 
     public productoController(panel_productos vista) {
         this.vista = vista;
@@ -49,6 +35,8 @@ public class productoController implements Runnable {
         this.IngredienteDAO = new DaoIngredienteImpl();
         this.categoriaDAO = new DaoCategoria();
         this.ProductosContador = 0;
+        EventBus.SubscribirseProducto(this);
+        EventBus.SubscribirseIngrediente(this);
     }
 
 // ingresar datos de producto
@@ -56,13 +44,13 @@ public class productoController implements Runnable {
 
         String id = vista.txt_categoria.getSelectedItem().toString();
         String ids = id.split(" - ")[0];
-
         producto producto = new producto(vista.txtNombre.getText(), Integer.parseInt(ids), vista.txtDescripcion.getText(), (Integer.parseInt(vista.txtprecio.getText())), Integer.parseInt(vista.txtCantidad.getValue().toString()), Integer.parseInt(vista.txtStock.getValue().toString()),
                 ingredientes);
         productoDAO.insertar(producto);
-        JOptionPane.showMessageDialog(null, "Producto Ingresado");
-
+        // metodo que envia una alerta cuando se ingresa un producto
+        EventBus.PublishProducto();
         mostrar();
+        JOptionPane.showMessageDialog(null, "Producto Ingresado");
 
     }
 
@@ -195,6 +183,7 @@ public class productoController implements Runnable {
             nuevoProducto();
             limpiarCampos();
             mostrar();
+            EventBus.PublishProducto();
             JOptionPane.showMessageDialog(null, "Producto Actualizado");
 
         } else {
@@ -242,7 +231,7 @@ public class productoController implements Runnable {
     }
 
     // Ingresar las categorias al comboBox
-    public void rellenar_combo_categoria() {
+    private void rellenar_combo_categoria() {
         categoria = categoriaDAO.listar();
         if (!categoria.isEmpty()) {
             vista.txt_categoria.removeAllItems();
@@ -250,10 +239,6 @@ public class productoController implements Runnable {
                 vista.txt_categoria.addItem(String.valueOf(catego.getId() + " - " + catego.getNombre()));
             });
         }
-    }
-
-    public void actualizarCombo() {
-        rellenar_combo_categoria();
     }
 
 // Obtenemos el campo selecionado en el combobobox y se agrega a la tabla de ingredientes para el producto
@@ -265,6 +250,7 @@ public class productoController implements Runnable {
             sele.getNombre(),
             botonBorrar
         });
+
     }
 
     public void limpiarCampos() {
@@ -397,6 +383,8 @@ public class productoController implements Runnable {
         IngredienteDAO.insertar(ingre);
         limpiarIngredientes();
         rellenar_Combo_Ingredientes();
+        // metodo que envia una notificacion cuando se crea un ingrediente
+        EventBus.PublishIngrediente();
         JOptionPane.showMessageDialog(null, "Ingrediente Ingresado", "Ingresado", JOptionPane.INFORMATION_MESSAGE);
 
     }
@@ -431,18 +419,18 @@ public class productoController implements Runnable {
     }
 
     @Override
-    public void run() {
-//        while (true) {
-//            try {
-//                Thread.sleep(5000);
-//                rellenar_combo_categoria();
-//                System.out.println("Hilo ejecutandose");
-//
-//            } catch (InterruptedException ex) {
-//                Logger.getLogger(productoController.class.getName()).log(Level.SEVERE, null, ex);
-//                break;
-//            }
-//        }
+    public void EscuchadorProductoActivo() {
+        rellenar_combo_categoria();
+    }
+
+    @Override
+    public void EscuchadorIngreActivo() {
+        try {
+            rellenarActualizar();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Entro al catch de escuchador ingrediente en producto controller linea 432");
+        }
 
     }
+
 }

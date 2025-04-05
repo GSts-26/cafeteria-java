@@ -1,5 +1,6 @@
 package modelos.DAO;
 
+import controladores.EventBus;
 import java.util.List;
 import modelos.Bd.conexion;
 import modelos.Entidades.Ingrediente;
