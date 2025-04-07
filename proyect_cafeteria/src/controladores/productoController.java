@@ -17,6 +17,8 @@ import modelos.DAO.DaoCategoria;
 
 import modelos.DAO.DaoIngredienteImpl;
 import modelos.DAO.DaoProductoImpl;
+import modelos.DAO.EscuchadorIngrediente;
+import modelos.DAO.EscuchadorProducto;
 import modelos.Entidades.Ingrediente;
 import modelos.Entidades.categoria;
 import modelos.Entidades.producto;
@@ -26,7 +28,7 @@ import vistas.panel_productos;
  *
  * @author Admin
  */
-public class productoController implements Runnable {
+public class productoController implements EscuchadorProducto, EscuchadorIngrediente{
 
     private panel_productos vista;
     private DaoProductoImpl productoDAO;
@@ -445,18 +447,17 @@ public class productoController implements Runnable {
     }
 
     @Override
-    public void run() {
-//        while (true) {
-//            try {
-//                Thread.sleep(5000);
-//                rellenar_combo_categoria();
-//                System.out.println("Hilo ejecutandose");
-//
-//            } catch (InterruptedException ex) {
-//                Logger.getLogger(productoController.class.getName()).log(Level.SEVERE, null, ex);
-//                break;
-//            }
-//        }
+    public void EscuchadorProductoActivo() {
+        rellenar_combo_categoria();
+    }
+
+    @Override
+    public void EscuchadorIngreActivo() {
+        try {
+            rellenarActualizar();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Entro al catch de escuchador ingrediente en producto controller linea 432");
+        }
 
     }
 }

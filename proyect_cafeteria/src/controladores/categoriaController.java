@@ -69,6 +69,7 @@ public class categoriaController implements Runnable {
         vistaCategoria.boton_agregar.setVisible(false);
         vistaCategoria.boton_actualizar.setVisible(true);
         vistaCategoria.jLabel4.setText("Actualizar categoria");
+        vistaCategoria.desr.setText("Editando categoría");
     }
 
     public void rellenarNuevaCategoria() {
@@ -76,6 +77,8 @@ public class categoriaController implements Runnable {
         vistaCategoria.boton_agregar.setVisible(true);
         vistaCategoria.boton_actualizar.setVisible(false);
         vistaCategoria.jLabel4.setText("Nueva categoria");
+                vistaCategoria.desr.setText("Añade una nueva categoría de productos  ");
+
         limpiar();
     }
 
@@ -87,6 +90,8 @@ public class categoriaController implements Runnable {
         vistaCategoria.boton_agregar.setVisible(true);
         vistaCategoria.boton_actualizar.setVisible(false);
         vistaCategoria.jLabel4.setText("Nueva categoria");
+        vistaCategoria.desr.setText("Añade una nueva categoría de productos  ");
+        
     }
 
     public void actualizar() {

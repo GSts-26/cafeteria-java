@@ -1,6 +1,7 @@
 package vistas;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.icons.FlatSearchIcon;
 import controladores.Ingrediente_Controller;
 import utils.render;
 
@@ -21,11 +22,12 @@ public class Ingredientes extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         contenido_table = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         advertencia = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -34,9 +36,10 @@ public class Ingredientes extends javax.swing.JPanel {
         T_Ingrediente = new javax.swing.JTable();
         info = new javax.swing.JPanel();
         contadornumero = new javax.swing.JLabel();
-        boton_nuevo = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        lblIngrediente = new javax.swing.JLabel();
+        boton_cancelar = new javax.swing.JButton();
+        boton_crear = new javax.swing.JButton();
+        boton_actualizar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -52,22 +55,37 @@ public class Ingredientes extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         txtproteinas = new javax.swing.JSpinner();
-        boton_cancelar = new javax.swing.JButton();
-        boton_crear = new javax.swing.JButton();
-        boton_actualizar = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        dr = new javax.swing.JLabel();
+        lblIngrediente = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        boton_nuevo = new javax.swing.JButton();
+        filtro = new javax.swing.JPanel();
+        jLabel30 = new javax.swing.JLabel();
+        txt_filtrado = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(249, 249, 249));
+        setBackground(new java.awt.Color(248, 249, 250));
         setPreferredSize(new java.awt.Dimension(1131, 650));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane2.setBackground(new java.awt.Color(248, 249, 250));
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(1192, 650));
+
+        jPanel4.setBackground(new java.awt.Color(248, 249, 250));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(94, 83, 82));
         jLabel4.setText("Ingredientes");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 15, -1, 40));
 
         jLabel3.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(94, 83, 82));
         jLabel3.setText("Gestiona los diferentes ingredientes");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 61, -1, -1));
 
         contenido_table.setBackground(new java.awt.Color(255, 255, 255));
         contenido_table.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -77,26 +95,23 @@ public class Ingredientes extends javax.swing.JPanel {
         jLabel2.setText("Lista De Ingredientes");
         contenido_table.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 240, 40));
 
-        jSeparator1.setForeground(new java.awt.Color(198, 124, 78));
-        contenido_table.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 370, 10));
-
         advertencia.setBackground(new java.awt.Color(255, 255, 255));
         advertencia.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel13.setFont(new java.awt.Font("Sora", 1, 28)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(94, 83, 82));
         jLabel13.setText("Agrega Un Ingrediente");
-        advertencia.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, -1, -1));
+        advertencia.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(94, 83, 82));
         jLabel6.setText("Agrega Tu Primer Ingrediente");
-        advertencia.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, 20));
+        advertencia.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, -1, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-ingredients-100.png"))); // NOI18N
-        advertencia.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, -1));
+        advertencia.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, -1, -1));
 
-        contenido_table.add(advertencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 350, 390));
+        contenido_table.add(advertencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 470, 390));
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
@@ -141,7 +156,7 @@ public class Ingredientes extends javax.swing.JPanel {
         ///
         //T_productos.setBorder(new MatteBorder(1, 0, 0, 0, Color.decode("0xECECEC")));
 
-        contenido_table.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 370, 450));
+        contenido_table.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 490, 450));
 
         info.setBackground(new java.awt.Color(198, 124, 78));
         info.setForeground(new java.awt.Color(255, 255, 255));
@@ -168,26 +183,63 @@ public class Ingredientes extends javax.swing.JPanel {
         info.putClientProperty(FlatClientProperties.STYLE,
             "arc: 50");
 
-        boton_nuevo.setBackground(new java.awt.Color(198, 124, 78));
-        boton_nuevo.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
-        boton_nuevo.setForeground(new java.awt.Color(249, 242, 237));
-        boton_nuevo.setText("Nuevo");
-        boton_nuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_nuevoActionPerformed(evt);
-            }
-        });
-        contenido_table.add(boton_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 100, 40));
+        jPanel4.add(contenido_table, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 540, -1));
+        contenido_table.putClientProperty(FlatClientProperties.STYLE,
+            "arc: 20");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblIngrediente.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
-        lblIngrediente.setForeground(new java.awt.Color(94, 83, 82));
-        lblIngrediente.setText("Nuevo Ingrediente");
-        jPanel1.add(lblIngrediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 14, -1, 40));
+        boton_cancelar.setBackground(new java.awt.Color(198, 124, 78));
+        boton_cancelar.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
+        boton_cancelar.setForeground(new java.awt.Color(249, 242, 237));
+        boton_cancelar.setText("Resetear");
+        boton_cancelar.setBorder(boton_cancelar.getBorder());
+        boton_cancelar.setBorderPainted(false);
+        boton_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_cancelarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(boton_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 630, 130, 40));
+        boton_cancelar.putClientProperty(FlatClientProperties.STYLE,
+            "arc: 20");
 
-        jPanel2.setBackground(new java.awt.Color(249, 249, 249));
+        boton_crear.setBackground(new java.awt.Color(249, 242, 237));
+        boton_crear.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
+        boton_crear.setForeground(new java.awt.Color(198, 124, 78));
+        boton_crear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-add-25.png"))); // NOI18N
+        boton_crear.setText("Crear Ingrediente");
+        boton_crear.setBorder(boton_cancelar.getBorder());
+        boton_crear.setBorderPainted(false);
+        boton_crear.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        boton_crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_crearActionPerformed(evt);
+            }
+        });
+        jPanel1.add(boton_crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 630, 200, 40));
+        boton_cancelar.putClientProperty(FlatClientProperties.STYLE,
+            "arc: 20");
+
+        boton_actualizar.setBackground(new java.awt.Color(249, 242, 237));
+        boton_actualizar.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
+        boton_actualizar.setForeground(new java.awt.Color(198, 124, 78));
+        boton_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-add-25.png"))); // NOI18N
+        boton_actualizar.setText("Actualizar");
+        boton_actualizar.setBorder(boton_cancelar.getBorder());
+        boton_actualizar.setBorderPainted(false);
+        boton_actualizar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        boton_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_actualizarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(boton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 630, 200, 40));
+        boton_cancelar.putClientProperty(FlatClientProperties.STYLE,
+            "arc: 20");
+
+        jPanel2.setBackground(new java.awt.Color(248, 249, 250));
 
         jLabel14.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(94, 83, 82));
@@ -199,7 +251,7 @@ public class Ingredientes extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,9 +261,9 @@ public class Ingredientes extends javax.swing.JPanel {
                 .addContainerGap(101, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 127, 170, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 230, -1));
 
-        jPanel3.setBackground(new java.awt.Color(249, 249, 249));
+        jPanel3.setBackground(new java.awt.Color(248, 249, 250));
 
         jLabel7.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(94, 83, 82));
@@ -316,59 +368,41 @@ public class Ingredientes extends javax.swing.JPanel {
         txtNombre.putClientProperty(FlatClientProperties.STYLE,
             "arc: 12");
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 72, -1, -1));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
-        boton_cancelar.setBackground(new java.awt.Color(198, 124, 78));
-        boton_cancelar.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
-        boton_cancelar.setForeground(new java.awt.Color(249, 242, 237));
-        boton_cancelar.setText("Resetear");
-        boton_cancelar.setBorder(boton_cancelar.getBorder());
-        boton_cancelar.setBorderPainted(false);
-        boton_cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_cancelarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(boton_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 540, 130, 40));
-        boton_cancelar.putClientProperty(FlatClientProperties.STYLE,
-            "arc: 20");
+        jPanel5.setBackground(new java.awt.Color(249, 242, 237));
 
-        boton_crear.setBackground(new java.awt.Color(249, 242, 237));
-        boton_crear.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
-        boton_crear.setForeground(new java.awt.Color(198, 124, 78));
-        boton_crear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-add-25.png"))); // NOI18N
-        boton_crear.setText("Crear Ingrediente");
-        boton_crear.setBorder(boton_cancelar.getBorder());
-        boton_crear.setBorderPainted(false);
-        boton_crear.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        boton_crear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_crearActionPerformed(evt);
-            }
-        });
-        jPanel1.add(boton_crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, 200, 40));
-        boton_cancelar.putClientProperty(FlatClientProperties.STYLE,
-            "arc: 20");
+        dr.setBackground(new java.awt.Color(255, 255, 255));
+        dr.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        dr.setForeground(new java.awt.Color(94, 83, 82));
+        dr.setText("Añade un nuevo ingrediente al inventario  ");
 
-        boton_actualizar.setBackground(new java.awt.Color(249, 242, 237));
-        boton_actualizar.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
-        boton_actualizar.setForeground(new java.awt.Color(198, 124, 78));
-        boton_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-add-25.png"))); // NOI18N
-        boton_actualizar.setText("Actualizar");
-        boton_actualizar.setBorder(boton_cancelar.getBorder());
-        boton_actualizar.setBorderPainted(false);
-        boton_actualizar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        boton_actualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_actualizarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(boton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, 200, 40));
-        boton_cancelar.putClientProperty(FlatClientProperties.STYLE,
-            "arc: 20");
+        lblIngrediente.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
+        lblIngrediente.setForeground(new java.awt.Color(94, 83, 82));
+        lblIngrediente.setText("Nuevo Ingrediente");
 
-        jLabel5.setText("Falta resetear los valores cuando se crea un ingrediente");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, -1, -1));
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblIngrediente)
+                    .addComponent(dr)))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lblIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(dr, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 110));
+
+        jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 100, 550, 710));
 
         jButton4.setBackground(new java.awt.Color(249, 242, 237));
         jButton4.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
@@ -383,43 +417,95 @@ public class Ingredientes extends javax.swing.JPanel {
                 jButton4ActionPerformed(evt);
             }
         });
+        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 15, -1, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(34, 34, 34)
-                        .addComponent(jButton4))
-                    .addComponent(contenido_table, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(118, 118, 118))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
+        boton_nuevo.setBackground(new java.awt.Color(198, 124, 78));
+        boton_nuevo.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
+        boton_nuevo.setForeground(new java.awt.Color(249, 242, 237));
+        boton_nuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/añadir.png"))); // NOI18N
+        boton_nuevo.setText("Nuevo Ingrediente");
+        boton_nuevo.setIconTextGap(20);
+        boton_nuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_nuevoActionPerformed(evt);
+            }
+        });
+        jPanel4.add(boton_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 20, 230, 40));
+
+        filtro.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel30.setFont(new java.awt.Font("Sora", 1, 21)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel30.setText("Filtros");
+
+        txt_filtrado.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        txt_filtrado.setForeground(new java.awt.Color(153, 153, 153));
+        txt_filtrado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_filtradoKeyReleased(evt);
+            }
+        });
+
+        jButton2.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(94, 83, 82));
+        jButton2.setText("Excel");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(94, 83, 82));
+        jButton3.setText("Txt");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout filtroLayout = new javax.swing.GroupLayout(filtro);
+        filtro.setLayout(filtroLayout);
+        filtroLayout.setHorizontalGroup(
+            filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(filtroLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(filtroLayout.createSequentialGroup()
+                        .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(filtroLayout.createSequentialGroup()
+                        .addComponent(txt_filtrado, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(contenido_table, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31))))
+        );
+        filtroLayout.setVerticalGroup(
+            filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(filtroLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txt_filtrado)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        contenido_table.putClientProperty(FlatClientProperties.STYLE,
+        txt_filtrado.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Buscar Ingredientes...");
+        txt_filtrado.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSearchIcon());
+
+        jPanel4.add(filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 108, 540, 110));
+        filtro.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
+
+        jScrollPane2.setViewportView(jPanel4);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
     }// </editor-fold>//GEN-END:initComponents
 
     private void T_IngredienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_T_IngredienteMouseClicked
@@ -451,6 +537,18 @@ public class Ingredientes extends javax.swing.JPanel {
         controlador.rellenarNuevo();
     }//GEN-LAST:event_boton_cancelarActionPerformed
 
+    private void txt_filtradoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_filtradoKeyReleased
+        //        controlador.listarEmpleado();
+    }//GEN-LAST:event_txt_filtradoKeyReleased
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTable T_Ingrediente;
@@ -461,7 +559,11 @@ public class Ingredientes extends javax.swing.JPanel {
     private javax.swing.JButton boton_nuevo;
     public javax.swing.JLabel contadornumero;
     private javax.swing.JPanel contenido_table;
+    public javax.swing.JLabel dr;
+    private javax.swing.JPanel filtro;
     private javax.swing.JPanel info;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -473,20 +575,23 @@ public class Ingredientes extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JLabel lblIngrediente;
     public javax.swing.JSpinner txtAzucar;
     public javax.swing.JSpinner txtCarbo;
     public javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txt_filtrado;
     public javax.swing.JSpinner txtcalorias;
     public javax.swing.JSpinner txtproteinas;
     // End of variables declaration//GEN-END:variables

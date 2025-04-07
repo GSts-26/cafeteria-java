@@ -242,4 +242,8 @@ public class CarroComprasController {
     public void OperacionBd() {
         Daoitems.TransaccionOperacional(carro);
     }
+    
+    public double vueltos(){
+        return Integer.parseInt(vista.monto.getText())-total;
+    }
 }

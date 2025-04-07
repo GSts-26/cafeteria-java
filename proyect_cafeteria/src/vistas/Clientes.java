@@ -36,25 +36,19 @@ public class Clientes extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         contenido_table = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         advertencia = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         T_Clientes = new javax.swing.JTable();
-        info = new javax.swing.JPanel();
-        numero = new javax.swing.JLabel();
-        txt_filtrado = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         crear_cliente = new javax.swing.JPanel();
-        lblCliente = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtnombre = new javax.swing.JTextField();
         txtcedula = new javax.swing.JTextField();
@@ -77,34 +71,51 @@ public class Clientes extends javax.swing.JPanel {
         m3FechaVacia = new javax.swing.JLabel();
         m2NombreVacio = new javax.swing.JLabel();
         boton_actualizar = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        lblCliente = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         nuevoCliente = new javax.swing.JButton();
+        filtro = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        txt_filtrado = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        contar_categoria = new javax.swing.JLabel();
+        info1 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        numero = new javax.swing.JLabel();
+        info2 = new javax.swing.JPanel();
 
-        setBackground(new java.awt.Color(249, 249, 249));
+        setBackground(new java.awt.Color(251, 250, 248));
         setForeground(new java.awt.Color(94, 83, 82));
         setPreferredSize(new java.awt.Dimension(1131, 660));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane2.setBackground(new java.awt.Color(248, 249, 250));
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setToolTipText("");
+
+        jPanel1.setBackground(new java.awt.Color(248, 249, 250));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1150, 907));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel3.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(94, 83, 82));
         jLabel3.setText("Gestion De Empleados");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, 20));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, 30));
 
         jLabel4.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(94, 83, 82));
         jLabel4.setText("Clientes");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 40));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 50));
 
         contenido_table.setBackground(new java.awt.Color(255, 255, 255));
         contenido_table.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Sora", 1, 21)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(94, 83, 82));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-empleados-20.png"))); // NOI18N
-        jLabel2.setText("Lista De Empleados");
-        contenido_table.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 250, 40));
-
-        jSeparator1.setForeground(new java.awt.Color(198, 124, 78));
-        contenido_table.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 550, 10));
 
         advertencia.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -144,10 +155,10 @@ public class Clientes extends javax.swing.JPanel {
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel14)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
-        contenido_table.add(advertencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 540, 330));
+        contenido_table.add(advertencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 540, 330));
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
@@ -204,88 +215,26 @@ public class Clientes extends javax.swing.JPanel {
         ///
         //T_productos.setBorder(new MatteBorder(1, 0, 0, 0, Color.decode("0xECECEC")));
 
-        contenido_table.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 550, 390));
+        contenido_table.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 550, 440));
 
-        info.setBackground(new java.awt.Color(198, 124, 78));
-        info.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Sora", 1, 21)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-empleados-20.png"))); // NOI18N
+        jLabel5.setText("Lista De Clientes");
+        contenido_table.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 250, 40));
 
-        numero.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        numero.setForeground(new java.awt.Color(255, 255, 255));
-        numero.setText("0");
-
-        javax.swing.GroupLayout infoLayout = new javax.swing.GroupLayout(info);
-        info.setLayout(infoLayout);
-        infoLayout.setHorizontalGroup(
-            infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(infoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(numero)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        infoLayout.setVerticalGroup(
-            infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(numero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        contenido_table.add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, 25));
-        info.putClientProperty(FlatClientProperties.STYLE,
-            "arc: 50");
-
-        txt_filtrado.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
-        txt_filtrado.setForeground(new java.awt.Color(153, 153, 153));
-        txt_filtrado.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_filtradoKeyReleased(evt);
-            }
-        });
-        contenido_table.add(txt_filtrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 260, 40));
-        txt_filtrado.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Buscar Clientes...");
-        txt_filtrado.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSearchIcon());
-
-        jButton1.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(94, 83, 82));
-        jButton1.setText("Txt");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        contenido_table.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, 100, 40));
-
-        jButton2.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(94, 83, 82));
-        jButton2.setText("Excel");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        contenido_table.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 100, 40));
-
-        add(contenido_table, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 600, 540));
+        jPanel1.add(contenido_table, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 600, 520));
         contenido_table.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
 
         crear_cliente.setBackground(new java.awt.Color(255, 255, 255));
         crear_cliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblCliente.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
-        lblCliente.setForeground(new java.awt.Color(94, 83, 82));
-        lblCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-client-management-19.png"))); // NOI18N
-        lblCliente.setText("Nuevo Cliente");
-        crear_cliente.add(lblCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 40));
-
-        jLabel6.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(94, 83, 82));
-        jLabel6.setText("Cedula");
-        crear_cliente.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, 20));
-
         jLabel7.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(94, 83, 82));
         jLabel7.setText("Genero");
-        crear_cliente.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, 20));
+        crear_cliente.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, -1, 20));
 
-        txtnombre.setBackground(null);
         txtnombre.setFont(new java.awt.Font("Sora", 0, 13)); // NOI18N
         txtnombre.setForeground(new java.awt.Color(94, 83, 82));
         txtnombre.addActionListener(new java.awt.event.ActionListener() {
@@ -298,11 +247,10 @@ public class Clientes extends javax.swing.JPanel {
                 txtnombreKeyReleased(evt);
             }
         });
-        crear_cliente.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 180, 30));
+        crear_cliente.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 180, 30));
         txtnombre.putClientProperty(FlatClientProperties.STYLE,
             "arc: 12");
 
-        txtcedula.setBackground(null);
         txtcedula.setFont(new java.awt.Font("Sora", 0, 13)); // NOI18N
         txtcedula.setForeground(new java.awt.Color(94, 83, 82));
         txtcedula.addActionListener(new java.awt.event.ActionListener() {
@@ -315,41 +263,38 @@ public class Clientes extends javax.swing.JPanel {
                 txtcedulaKeyReleased(evt);
             }
         });
-        crear_cliente.add(txtcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 160, 30));
+        crear_cliente.add(txtcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 160, 30));
         txtcedula.putClientProperty(FlatClientProperties.STYLE,
             "arc: 12");
 
         jLabel8.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(94, 83, 82));
         jLabel8.setText("Nombre");
-        crear_cliente.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, 20));
+        crear_cliente.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, 20));
 
-        txtnacimiento.setBackground(null);
         txtnacimiento.setForeground(new java.awt.Color(94, 83, 82));
         txtnacimiento.setFont(new java.awt.Font("Sora", 0, 13)); // NOI18N
-        crear_cliente.add(txtnacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 160, 30));
+        crear_cliente.add(txtnacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 160, 30));
         txtnacimiento.putClientProperty(FlatClientProperties.STYLE,
             "arc: 12");
 
         jLabel9.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(94, 83, 82));
         jLabel9.setText("Fecha De Nacimiento");
-        crear_cliente.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, 20));
+        crear_cliente.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, 20));
 
-        txtgenero.setBackground(null);
         txtgenero.setFont(new java.awt.Font("Sora", 0, 13)); // NOI18N
         txtgenero.setForeground(new java.awt.Color(94, 83, 82));
         txtgenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "masculino", "femenino" }));
-        crear_cliente.add(txtgenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 180, 30));
+        crear_cliente.add(txtgenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 180, 30));
         txtgenero.putClientProperty(FlatClientProperties.STYLE,
             "arc: 12");
 
         jLabel10.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(94, 83, 82));
         jLabel10.setText("Telefono");
-        crear_cliente.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, 20));
+        crear_cliente.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, 20));
 
-        txttelefono.setBackground(null);
         txttelefono.setFont(new java.awt.Font("Sora", 0, 13)); // NOI18N
         txttelefono.setForeground(new java.awt.Color(94, 83, 82));
         txttelefono.addActionListener(new java.awt.event.ActionListener() {
@@ -362,16 +307,15 @@ public class Clientes extends javax.swing.JPanel {
                 txttelefonoKeyReleased(evt);
             }
         });
-        crear_cliente.add(txttelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 250, 30));
+        crear_cliente.add(txttelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 250, 30));
         txttelefono.putClientProperty(FlatClientProperties.STYLE,
             "arc: 12");
 
         jLabel11.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(94, 83, 82));
         jLabel11.setText("Direccion");
-        crear_cliente.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, 20));
+        crear_cliente.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, -1, 20));
 
-        txtDireccion.setBackground(null);
         txtDireccion.setFont(new java.awt.Font("Sora", 0, 13)); // NOI18N
         txtDireccion.setForeground(new java.awt.Color(94, 83, 82));
         txtDireccion.addActionListener(new java.awt.event.ActionListener() {
@@ -384,16 +328,15 @@ public class Clientes extends javax.swing.JPanel {
                 txtDireccionKeyReleased(evt);
             }
         });
-        crear_cliente.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 380, 30));
+        crear_cliente.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 380, 30));
         txtDireccion.putClientProperty(FlatClientProperties.STYLE,
             "arc: 12");
 
         jLabel12.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(94, 83, 82));
         jLabel12.setText("Email");
-        crear_cliente.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, -1, 20));
+        crear_cliente.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, -1, 20));
 
-        txtEmail.setBackground(null);
         txtEmail.setFont(new java.awt.Font("Sora", 0, 13)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(94, 83, 82));
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
@@ -406,7 +349,7 @@ public class Clientes extends javax.swing.JPanel {
                 txtEmailKeyReleased(evt);
             }
         });
-        crear_cliente.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 380, 30));
+        crear_cliente.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 380, 30));
         txtEmail.putClientProperty(FlatClientProperties.STYLE,
             "arc: 12");
 
@@ -420,22 +363,24 @@ public class Clientes extends javax.swing.JPanel {
                 boton_cancelarActionPerformed(evt);
             }
         });
-        crear_cliente.add(boton_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 520, 130, 40));
+        crear_cliente.add(boton_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 600, 130, 40));
         boton_cancelar.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
 
-        boton_crear.setBackground(new java.awt.Color(198, 124, 78));
+        boton_crear.setBackground(new java.awt.Color(255, 138, 61));
         boton_crear.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         boton_crear.setForeground(new java.awt.Color(255, 255, 255));
+        boton_crear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-añadir-25.png"))); // NOI18N
         boton_crear.setText("Crear Cliente");
         boton_crear.setBorder(txtcedula.getBorder());
         boton_crear.setBorderPainted(false);
+        boton_crear.setIconTextGap(10);
         boton_crear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_crearActionPerformed(evt);
             }
         });
-        crear_cliente.add(boton_crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 520, 130, 40));
+        crear_cliente.add(boton_crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 600, 170, 40));
         boton_cancelar.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
 
@@ -443,37 +388,37 @@ public class Clientes extends javax.swing.JPanel {
         m6Emailvacio.setForeground(new java.awt.Color(198, 124, 78));
         m6Emailvacio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m6Emailvacio.setText("Rellena El Campo");
-        crear_cliente.add(m6Emailvacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, 20));
+        crear_cliente.add(m6Emailvacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 570, -1, 20));
 
         m1CedulaVacia.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
         m1CedulaVacia.setForeground(new java.awt.Color(198, 124, 78));
         m1CedulaVacia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m1CedulaVacia.setText("Rellena El Campo");
-        crear_cliente.add(m1CedulaVacia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        crear_cliente.add(m1CedulaVacia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
         m4TelefonoVacio.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
         m4TelefonoVacio.setForeground(new java.awt.Color(198, 124, 78));
         m4TelefonoVacio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m4TelefonoVacio.setText("Rellena El Campo");
-        crear_cliente.add(m4TelefonoVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 302, -1, 20));
+        crear_cliente.add(m4TelefonoVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, 20));
 
         m5DireccionVacia.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
         m5DireccionVacia.setForeground(new java.awt.Color(198, 124, 78));
         m5DireccionVacia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m5DireccionVacia.setText("Rellena El Campo");
-        crear_cliente.add(m5DireccionVacia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, -1, 20));
+        crear_cliente.add(m5DireccionVacia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, -1, 20));
 
         m3FechaVacia.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
         m3FechaVacia.setForeground(new java.awt.Color(198, 124, 78));
         m3FechaVacia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m3FechaVacia.setText("Rellena El Campo");
-        crear_cliente.add(m3FechaVacia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+        crear_cliente.add(m3FechaVacia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
 
         m2NombreVacio.setFont(new java.awt.Font("Sora", 0, 12)); // NOI18N
         m2NombreVacio.setForeground(new java.awt.Color(198, 124, 78));
         m2NombreVacio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m2NombreVacio.setText("Rellena El Campo");
-        crear_cliente.add(m2NombreVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, -1, -1));
+        crear_cliente.add(m2NombreVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, -1));
 
         boton_actualizar.setBackground(new java.awt.Color(198, 124, 78));
         boton_actualizar.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
@@ -485,25 +430,207 @@ public class Clientes extends javax.swing.JPanel {
                 boton_actualizarActionPerformed(evt);
             }
         });
-        crear_cliente.add(boton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 520, 130, 40));
+        crear_cliente.add(boton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 600, 130, 40));
         boton_cancelar.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
 
-        add(crear_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 40, 440, 580));
+        jLabel16.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel16.setText("Cedula");
+        crear_cliente.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, 20));
+
+        jPanel3.setBackground(new java.awt.Color(249, 242, 237));
+
+        lblCliente.setBackground(new java.awt.Color(255, 255, 255));
+        lblCliente.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
+        lblCliente.setForeground(new java.awt.Color(94, 83, 82));
+        lblCliente.setText("Nuevo Cliente");
+
+        jLabel19.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel19.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel19.setText("Añade un nuevo cliente a la base de datos  ");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCliente)
+                    .addComponent(jLabel19))
+                .addContainerGap(98, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(lblCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        crear_cliente.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, -1));
+
+        jPanel1.add(crear_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 120, 440, 670));
         crear_cliente.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
 
-        nuevoCliente.setBackground(new java.awt.Color(249, 242, 237));
+        nuevoCliente.setBackground(new java.awt.Color(255, 138, 61));
         nuevoCliente.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
-        nuevoCliente.setForeground(new java.awt.Color(198, 124, 78));
-        nuevoCliente.setText("Nuevo");
+        nuevoCliente.setForeground(new java.awt.Color(255, 255, 255));
+        nuevoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-añadir-25.png"))); // NOI18N
+        nuevoCliente.setText("Nuevo Cliente");
+        nuevoCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 138, 61)));
         nuevoCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        nuevoCliente.setIconTextGap(25);
         nuevoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nuevoClienteActionPerformed(evt);
             }
         });
-        add(nuevoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 125, 39));
+        jPanel1.add(nuevoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 40, 190, 39));
+
+        filtro.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel2.setFont(new java.awt.Font("Sora", 1, 21)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel2.setText("Filtros");
+
+        txt_filtrado.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        txt_filtrado.setForeground(new java.awt.Color(153, 153, 153));
+        txt_filtrado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_filtradoKeyReleased(evt);
+            }
+        });
+
+        jButton2.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(94, 83, 82));
+        jButton2.setText("Excel");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(94, 83, 82));
+        jButton1.setText("Txt");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout filtroLayout = new javax.swing.GroupLayout(filtro);
+        filtro.setLayout(filtroLayout);
+        filtroLayout.setHorizontalGroup(
+            filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(filtroLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(filtroLayout.createSequentialGroup()
+                        .addComponent(txt_filtrado, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(51, Short.MAX_VALUE))
+        );
+        filtroLayout.setVerticalGroup(
+            filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(filtroLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txt_filtrado, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        txt_filtrado.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Buscar Clientes...");
+        txt_filtrado.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSearchIcon());
+
+        jPanel1.add(filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 600, -1));
+        filtro.putClientProperty(FlatClientProperties.STYLE,
+            "arc: 20");
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel17.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel17.setText("Nuevos (30 días)");
+        jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, 20));
+
+        contar_categoria.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
+        contar_categoria.setForeground(new java.awt.Color(94, 83, 82));
+        contar_categoria.setText("0");
+        jPanel4.add(contar_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, 30));
+
+        info1.setBackground(new java.awt.Color(230, 247, 237));
+        info1.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout info1Layout = new javax.swing.GroupLayout(info1);
+        info1.setLayout(info1Layout);
+        info1Layout.setHorizontalGroup(
+            info1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+        info1Layout.setVerticalGroup(
+            info1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(info1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 50, 50));
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 270, 90));
+        jPanel4.putClientProperty(FlatClientProperties.STYLE,
+            "arc: 20");
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel18.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel18.setText("Total Clientes");
+        jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, 20));
+
+        numero.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
+        numero.setForeground(new java.awt.Color(94, 83, 82));
+        numero.setText("0");
+        jPanel5.add(numero, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, 30));
+
+        info2.setBackground(new java.awt.Color(255, 240, 230));
+        info2.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout info2Layout = new javax.swing.GroupLayout(info2);
+        info2.setLayout(info2Layout);
+        info2Layout.setHorizontalGroup(
+            info2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+        info2Layout.setVerticalGroup(
+            info2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        jPanel5.add(info2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 50, 50));
+
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 270, 90));
+        jPanel5.putClientProperty(FlatClientProperties.STYLE,
+            "arc: 20");
+
+        jScrollPane2.setViewportView(jPanel1);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 650));
+        jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
     }// </editor-fold>//GEN-END:initComponents
 
 //    private void styles() {
@@ -651,9 +778,12 @@ public class Clientes extends javax.swing.JPanel {
     public javax.swing.JButton boton_actualizar;
     private javax.swing.JButton boton_cancelar;
     public javax.swing.JButton boton_crear;
+    public javax.swing.JLabel contar_categoria;
     private javax.swing.JPanel contenido_table;
     private javax.swing.JPanel crear_cliente;
-    private javax.swing.JPanel info;
+    private javax.swing.JPanel filtro;
+    private javax.swing.JPanel info1;
+    private javax.swing.JPanel info2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
@@ -662,15 +792,23 @@ public class Clientes extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JLabel lblCliente;
     public javax.swing.JLabel m1CedulaVacia;
     public javax.swing.JLabel m2NombreVacio;
@@ -679,7 +817,7 @@ public class Clientes extends javax.swing.JPanel {
     public javax.swing.JLabel m5DireccionVacia;
     public javax.swing.JLabel m6Emailvacio;
     private javax.swing.JButton nuevoCliente;
-    private javax.swing.JLabel numero;
+    public javax.swing.JLabel numero;
     public javax.swing.JTextField txtDireccion;
     public javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txt_filtrado;

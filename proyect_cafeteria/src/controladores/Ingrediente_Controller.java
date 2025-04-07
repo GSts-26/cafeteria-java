@@ -35,7 +35,6 @@ public class Ingrediente_Controller {
         this.IngredienteDAO = new DaoIngredienteImpl();
         this.ingredientesContador = 0;
     }
-    
 
     public void ingresar() {
         Ingrediente ingrediente = new Ingrediente(vista.txtNombre.getText(), (int) vista.txtcalorias.getValue(), (int) vista.txtCarbo.getValue(), (int) vista.txtAzucar.getValue(), (int) vista.txtproteinas.getValue());;
@@ -44,9 +43,7 @@ public class Ingrediente_Controller {
         mostrar();
     }
 // metodos para el dialog de agregar ingredientes
-    
-    
-  
+
 //    public void ingresar1() {
 //
 //        String nombre = vista1.txtNombre.getText();
@@ -60,7 +57,6 @@ public class Ingrediente_Controller {
 //        this.limpiarAgreIngrediente();
 //        mostrar();
 //    }
-
     public void mostrar() {
         modeloIngrediente = (DefaultTableModel) vista.T_Ingrediente.getModel();
         modeloIngrediente.setRowCount(0);
@@ -90,21 +86,16 @@ public class Ingrediente_Controller {
         }
     }
 
-
-   
-
-  
-
-  
-
     public void rellenarACtu() {
         vista.lblIngrediente.setText("Actualizar Ingrediente");
+        vista.dr.setText("Actualizando El Ingrediente");
         vista.boton_actualizar.setVisible(true);
         vista.boton_crear.setVisible(false);
     }
 
     public void rellenarNuevo() {
         vista.lblIngrediente.setText("Nuevo Ingrediente");
+        vista.dr.setText("Añade un nuevo ingrediente al inventario  ");
         vista.boton_actualizar.setVisible(false);
         vista.boton_crear.setVisible(true);
         resetear();
@@ -157,6 +148,5 @@ public class Ingrediente_Controller {
         mostrar();
         rellenarNuevo();
     }
-    
-    
+
 }

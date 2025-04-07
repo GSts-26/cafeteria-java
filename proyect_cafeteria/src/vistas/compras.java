@@ -18,13 +18,13 @@ import modelos.Entidades.*;
  * @author Admin
  */
 public class compras extends javax.swing.JPanel {
-    
+
     CarroComprasController controlador = new CarroComprasController(this);
     public producto p;
     public Cliente ClienteSeleccionado;
-    
+
     NumberFormat format = NumberFormat.getInstance(Locale.of("es", "CO"));
-    
+
     public compras() {
         initComponents();
 //        panel_con.addMouseListener(new MouseAdapter() {
@@ -36,9 +36,9 @@ public class compras extends javax.swing.JPanel {
         controlador.rellenarCliente();
         controlador.rellenarCtaegorias();
         venta.setVisible(false);
-        
+
     }
-    
+
     public void mostrarInformacion(producto p) {
         this.p = p;
         txtnombreinfo.setText(p.getNombre());
@@ -48,14 +48,14 @@ public class compras extends javax.swing.JPanel {
         Agregar.setLocationRelativeTo(null);
         Agregar.setVisible(true);
     }
-    
+
     public void actualizarVistaCarro(CarroCompras carro) {
         codigofactura.setText("CR" + carro.getIdCarro());
         cliente.setText(String.valueOf(carro.getCliente()));
         empleado.setText(String.valueOf(carro.getEmpleado()));
-        
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -82,10 +82,21 @@ public class compras extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         seleccionar = new javax.swing.JDialog();
         jPanel12 = new javax.swing.JPanel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        comboIngredientes = new javax.swing.JComboBox<>();
         crear_orden = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jLabel20 = new javax.swing.JLabel();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        vueltos = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        monto = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        totalfactura1 = new javax.swing.JLabel();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         panel_crearOrden = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
@@ -129,7 +140,7 @@ public class compras extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel4.setBackground(new java.awt.Color(243, 241, 239));
+        jPanel4.setBackground(new java.awt.Color(248, 249, 250));
 
         agregardetalle.setBackground(new java.awt.Color(198, 124, 78));
         agregardetalle.setFont(new java.awt.Font("Sora", 1, 18)); // NOI18N
@@ -308,91 +319,110 @@ public class compras extends javax.swing.JPanel {
             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        seleccionar.setModal(true);
+
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel21.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(94, 83, 82));
-        jLabel21.setText("Selecciona un Cliente");
-
-        jLabel17.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(94, 83, 82));
-        jLabel17.setText("Crear Nueva Orden");
-
-        comboIngredientes.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
-        comboIngredientes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                comboIngredientesMouseClicked(evt);
-            }
-        });
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         crear_orden.setBackground(new java.awt.Color(198, 124, 78));
         crear_orden.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         crear_orden.setForeground(new java.awt.Color(255, 255, 255));
-        crear_orden.setText("Crear Orden");
+        crear_orden.setText("Pagar");
         crear_orden.setBorderPainted(false);
         crear_orden.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 crear_ordenActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboIngredientes, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(crear_orden, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel12Layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(jLabel21))))
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jLabel17)))
-                .addContainerGap(161, Short.MAX_VALUE))
-        );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel21)
-                .addGap(10, 10, 10)
-                .addComponent(comboIngredientes, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(crear_orden, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(265, Short.MAX_VALUE))
-        );
-
+        jPanel12.add(crear_orden, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 340, 40));
         crear_orden.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
+
+        jLabel17.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel17.setText("Monto recibido");
+        jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, 40));
+
+        jLabel21.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel21.setText("Selecciona un Cliente");
+        jPanel12.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 49, -1, -1));
+        jPanel12.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 87, 376, 10));
+
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setText("Efectivo");
+        jPanel12.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 218, 114, 29));
+
+        jLabel20.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel20.setText("Proceso de pago");
+        jPanel12.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 15, -1, 40));
+
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        jRadioButton2.setText("Tarjeta");
+        jPanel12.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 218, 92, 29));
+
+        buttonGroup1.add(jRadioButton3);
+        jRadioButton3.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        jRadioButton3.setText("Otro");
+        jPanel12.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 218, 76, 29));
+
+        vueltos.setFont(new java.awt.Font("Sora", 0, 16)); // NOI18N
+        vueltos.setForeground(new java.awt.Color(94, 83, 82));
+        vueltos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vueltos.setText("0.0");
+        jPanel12.add(vueltos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 110, -1));
+
+        jLabel24.setFont(new java.awt.Font("Sora", 0, 16)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel24.setText("Vueltos");
+        jPanel12.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 142, -1, -1));
+
+        monto.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        monto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                montoKeyReleased(evt);
+            }
+        });
+        jPanel12.add(monto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 280, 40));
+        monto.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingrese el Monto");
+
+        jLabel25.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel25.setText("Metodo de pago");
+        jPanel12.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 172, -1, 40));
+
+        jLabel26.setFont(new java.awt.Font("Sora", 0, 16)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel26.setText("Total");
+        jPanel12.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 109, -1, -1));
+
+        totalfactura1.setFont(new java.awt.Font("Sora", 0, 16)); // NOI18N
+        totalfactura1.setForeground(new java.awt.Color(94, 83, 82));
+        totalfactura1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        totalfactura1.setText("Total");
+        jPanel12.add(totalfactura1, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 110, 110, -1));
 
         javax.swing.GroupLayout seleccionarLayout = new javax.swing.GroupLayout(seleccionar.getContentPane());
         seleccionar.getContentPane().setLayout(seleccionarLayout);
         seleccionarLayout.setHorizontalGroup(
             seleccionarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(seleccionarLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         seleccionarLayout.setVerticalGroup(
             seleccionarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(seleccionarLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+            .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         setBackground(new java.awt.Color(249, 249, 249));
         setForeground(new java.awt.Color(94, 83, 82));
         setPreferredSize(new java.awt.Dimension(1131, 660));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panel_crearOrden.setBackground(new java.awt.Color(248, 249, 250));
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -405,7 +435,6 @@ public class compras extends javax.swing.JPanel {
         jLabel18.setText("Crear Nueva Orden");
 
         comboClientes.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
-        comboClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "si" }));
         comboClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 comboClientesMouseClicked(evt);
@@ -482,7 +511,7 @@ public class compras extends javax.swing.JPanel {
             .addGroup(panel_crearOrdenLayout.createSequentialGroup()
                 .addGap(97, 97, 97)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
 
         jPanel13.putClientProperty(FlatClientProperties.STYLE,
@@ -490,7 +519,7 @@ public class compras extends javax.swing.JPanel {
 
         add(panel_crearOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 660));
 
-        venta.setBackground(new java.awt.Color(249, 249, 249));
+        venta.setBackground(new java.awt.Color(248, 249, 250));
 
         jLabel3.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(94, 83, 82));
@@ -511,7 +540,8 @@ public class compras extends javax.swing.JPanel {
 
         totalnumero.setFont(new java.awt.Font("Sora", 1, 15)); // NOI18N
         totalnumero.setForeground(new java.awt.Color(94, 83, 82));
-        totalnumero.setText("Total");
+        totalnumero.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        totalnumero.setText("0.0");
         crear_cliente.add(totalnumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 500, 90, 20));
 
         jLabel14.setFont(new java.awt.Font("Sora", 1, 15)); // NOI18N
@@ -769,16 +799,19 @@ public class compras extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_crear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_crear2ActionPerformed
-        controlador.OperacionBd();
-        int seleccion = JOptionPane.showOptionDialog(
-                null, "El pedido se ha procesado con éxito", "Pago Realizado",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
-                null, new Object[]{"OK", "Imprimir"}, "OK");
-        
-        if (seleccion == 1)
-            System.out.println("Imprimiendo recibo...");
+        DefaultTableModel modelo = (DefaultTableModel) T_Productos.getModel();
+        if (modelo.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "tienes que tener almenos un producto");
+            return;
+
+        }
+        seleccionar.setSize(400, 445);
+        seleccionar.setLocationRelativeTo(null);
+        totalfactura1.setText(totalnumero.getText());
+        seleccionar.setVisible(true);
+
     }//GEN-LAST:event_boton_crear2ActionPerformed
-    
+
     public void ocultar() {
         System.out.println(botonorden.getParent().getName());
         panel_crearOrden.setVisible(true);
@@ -794,13 +827,23 @@ public class compras extends javax.swing.JPanel {
         controlador.borrar_todo();
     }//GEN-LAST:event_boton_eliminar_pdActionPerformed
 
-    private void comboIngredientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboIngredientesMouseClicked
-
-    }//GEN-LAST:event_comboIngredientesMouseClicked
-
     private void crear_ordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crear_ordenActionPerformed
-        
+//        controlador.OperacionBd();
+        if (monto.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ingresa un monto");
+            return;
+        }
         seleccionar.dispose();
+        int seleccion = JOptionPane.showOptionDialog(
+                null, "El pedido se ha procesado con éxito", "Pago Realizado",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+                null, new Object[]{"OK", "Imprimir"}, "OK");
+
+        if (seleccion == 1) {
+            System.out.println("Imprimiendo recibo...");
+        }
+        venta.setVisible(false);
+        panel_crearOrden.setVisible(true);
     }//GEN-LAST:event_crear_ordenActionPerformed
 
     private void comboClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboClientesMouseClicked
@@ -834,7 +877,17 @@ public class compras extends javax.swing.JPanel {
     private void cancelarordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarordenActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cancelarordenActionPerformed
-    
+
+    private void montoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_montoKeyReleased
+
+        if (monto.getText().trim().isEmpty() || !monto.getText().matches("[0-9]+")) {
+            monto.setText("");
+            return;
+        }
+
+        vueltos.setText("$" + controlador.vueltos());
+    }//GEN-LAST:event_montoKeyReleased
+
     private void borrartodo() {
         cliente.setText("");
         empleado.setText("");
@@ -852,6 +905,7 @@ public class compras extends javax.swing.JPanel {
     private javax.swing.JButton boton_crear2;
     private javax.swing.JButton boton_eliminar_pd;
     public javax.swing.JButton botonorden;
+    private javax.swing.ButtonGroup buttonGroup1;
     public javax.swing.JLabel calorias;
     public javax.swing.JButton cancelarorden;
     public javax.swing.JSpinner cantidad;
@@ -859,7 +913,6 @@ public class compras extends javax.swing.JPanel {
     private javax.swing.JTextField cliente;
     public javax.swing.JLabel codigofactura;
     public javax.swing.JComboBox<Object> comboClientes;
-    public javax.swing.JComboBox<Object> comboIngredientes;
     public javax.swing.JComboBox<Object> combocategoria;
     public javax.swing.JPanel contenido_producto;
     private javax.swing.JPanel crear_cliente;
@@ -875,8 +928,12 @@ public class compras extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -895,15 +952,22 @@ public class compras extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    public javax.swing.JTextField monto;
     public javax.swing.JPanel panel_crearOrden;
     public javax.swing.JLabel proteina;
     private javax.swing.JDialog seleccionar;
+    private javax.swing.JLabel totalfactura1;
     public javax.swing.JLabel totalnumero;
     private javax.swing.JLabel txtnombreinfo;
     private javax.swing.JLabel txtprecioinfo;
     private javax.swing.JPanel venta;
+    private javax.swing.JLabel vueltos;
     // End of variables declaration//GEN-END:variables
 }

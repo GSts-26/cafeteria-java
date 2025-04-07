@@ -44,23 +44,44 @@ public class Categorias extends javax.swing.JPanel {
         boton_cancelar = new javax.swing.JButton();
         txt_nombre = new javax.swing.JTextField();
         txt_id = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         boton_actualizar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         m1nombreCampo = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        descripcion = new javax.swing.JTextArea();
+        jLabel14 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        desr = new javax.swing.JLabel();
         contenido_table = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
         no_hay_categorias = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_categoria = new javax.swing.JTable();
-        info = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
         contar_categoria = new javax.swing.JLabel();
-        txt_filtrado_categoria = new javax.swing.JTextField();
+        info1 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        contar_categoria1 = new javax.swing.JLabel();
+        info2 = new javax.swing.JPanel();
+        filtro = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        txt_filtrado = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(248, 249, 250));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
@@ -73,7 +94,7 @@ public class Categorias extends javax.swing.JPanel {
         jLabel2.setText("Gestiona tus categorias");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 60, -1, -1));
 
-        boton_nueva_categoria.setBackground(new java.awt.Color(198, 124, 78));
+        boton_nueva_categoria.setBackground(new java.awt.Color(255, 138, 61));
         boton_nueva_categoria.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         boton_nueva_categoria.setForeground(new java.awt.Color(255, 255, 255));
         boton_nueva_categoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-añadir-25.png"))); // NOI18N
@@ -85,13 +106,13 @@ public class Categorias extends javax.swing.JPanel {
                 boton_nueva_categoriaActionPerformed(evt);
             }
         });
-        add(boton_nueva_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 106, -1, 45));
+        add(boton_nueva_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(948, 20, 160, 45));
 
         ms_nueva_categoria.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         ms_nueva_categoria.setForeground(new java.awt.Color(102, 102, 102));
         ms_nueva_categoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
         ms_nueva_categoria.setText("Agrega nueva categoria");
-        add(ms_nueva_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, -1, -1));
+        add(ms_nueva_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 30, -1, -1));
 
         card_layout_categoria.setBackground(new java.awt.Color(102, 153, 255));
         card_layout_categoria.setLayout(new java.awt.CardLayout());
@@ -100,7 +121,7 @@ public class Categorias extends javax.swing.JPanel {
         jPanel1.setBorder(contenido_table.getBorder());
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        boton_agregar.setBackground(new java.awt.Color(198, 124, 78));
+        boton_agregar.setBackground(new java.awt.Color(255, 138, 61));
         boton_agregar.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         boton_agregar.setForeground(new java.awt.Color(249, 242, 237));
         boton_agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-añadir-25.png"))); // NOI18N
@@ -112,7 +133,7 @@ public class Categorias extends javax.swing.JPanel {
                 boton_agregarActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 153, 45));
+        jPanel1.add(boton_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, 153, 45));
 
         boton_cancelar.setBackground(new java.awt.Color(249, 242, 237));
         boton_cancelar.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
@@ -125,7 +146,7 @@ public class Categorias extends javax.swing.JPanel {
                 boton_cancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 136, 45));
+        jPanel1.add(boton_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 560, 136, 45));
 
         txt_nombre.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         txt_nombre.setForeground(new java.awt.Color(94, 83, 82));
@@ -139,17 +160,18 @@ public class Categorias extends javax.swing.JPanel {
                 txt_nombreKeyReleased(evt);
             }
         });
-        jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 250, 36));
-        txt_nombre.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Nombre");
+        jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 250, 36));
+        txt_nombre.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ej:Bebidas Calientes");
 
         txt_id.setEditable(false);
         txt_id.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
-        jPanel1.add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 60, 36));
+        txt_id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_idActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 60, 36));
         txt_id.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "ID");
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/categoria.png"))); // NOI18N
-        jLabel3.setToolTipText("");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, -1));
 
         boton_actualizar.setBackground(new java.awt.Color(198, 124, 78));
         boton_actualizar.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
@@ -163,22 +185,99 @@ public class Categorias extends javax.swing.JPanel {
                 boton_actualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 153, 45));
-
-        jLabel4.setFont(new java.awt.Font("Sora", 1, 21)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(94, 83, 82));
-        jLabel4.setText("Nueva categoria");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        jPanel1.add(boton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, 153, 45));
 
         m1nombreCampo.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
         m1nombreCampo.setForeground(new java.awt.Color(198, 124, 78));
         m1nombreCampo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m1nombreCampo.setText("Rellena el campo");
-        jPanel1.add(m1nombreCampo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+        jPanel1.add(m1nombreCampo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel8.setText("Descripcion");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 200, 30));
+
+        jLabel10.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel10.setText("ID");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 30, 30));
+
+        jLabel11.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel11.setText("Color");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 200, 30));
+
+        descripcion.setColumns(20);
+        descripcion.setRows(5);
+        jScrollPane2.setViewportView(descripcion);
+        descripcion.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Describe Brevemente esta categoria de productos");
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
+
+        jLabel14.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel14.setText("Nombre De La Categoria");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 200, 30));
+
+        jButton1.setBackground(new java.awt.Color(255, 138, 61));
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 202, 43)));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 50, 40));
+
+        jButton2.setBackground(new java.awt.Color(42, 154, 244));
+        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(252, 227, 235)));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, 50, 40));
+
+        jButton3.setBackground(new java.awt.Color(233, 30, 99));
+        jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 30, 99)));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 490, 50, 40));
+
+        jButton4.setBackground(new java.awt.Color(255, 202, 43));
+        jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 202, 43)));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 490, 50, 40));
+
+        jButton5.setBackground(new java.awt.Color(76, 175, 80));
+        jButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(76, 175, 80)));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 490, 50, 40));
+
+        jPanel3.setBackground(new java.awt.Color(249, 242, 237));
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel4.setText("Nueva Categoria");
+
+        desr.setBackground(new java.awt.Color(255, 255, 255));
+        desr.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        desr.setForeground(new java.awt.Color(94, 83, 82));
+        desr.setText("Añade una nueva categoría de productos  ");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(desr))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(desr, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 110));
 
         card_layout_categoria.add(jPanel1, "card2");
 
-        add(card_layout_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 160, 380, 360));
+        add(card_layout_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 140, 420, 620));
 
         contenido_table.setBackground(new java.awt.Color(255, 255, 255));
         contenido_table.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -186,10 +285,7 @@ public class Categorias extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Sora", 1, 21)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(94, 83, 82));
         jLabel6.setText("Lista De categorias");
-        contenido_table.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 220, 40));
-
-        jSeparator2.setForeground(new java.awt.Color(198, 124, 78));
-        contenido_table.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 510, 10));
+        contenido_table.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 220, 40));
 
         no_hay_categorias.setBackground(new java.awt.Color(255, 255, 255));
         no_hay_categorias.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -255,42 +351,123 @@ public class Categorias extends javax.swing.JPanel {
         ///
         //T_productos.setBorder(new MatteBorder(1, 0, 0, 0, Color.decode("0xECECEC")));
 
-        contenido_table.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 530, 340));
+        contenido_table.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 530, 360));
 
-        info.setBackground(new java.awt.Color(198, 124, 78));
-        info.setForeground(new java.awt.Color(255, 255, 255));
-
-        contar_categoria.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        contar_categoria.setForeground(new java.awt.Color(255, 255, 255));
-        contar_categoria.setText("0");
-
-        javax.swing.GroupLayout infoLayout = new javax.swing.GroupLayout(info);
-        info.setLayout(infoLayout);
-        infoLayout.setHorizontalGroup(
-            infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(infoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(contar_categoria)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        infoLayout.setVerticalGroup(
-            infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(contar_categoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        contenido_table.add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 20, -1, 25));
-        info.putClientProperty(FlatClientProperties.STYLE,
-            "arc: 50");
-
-        txt_filtrado_categoria.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
-        txt_filtrado_categoria.setForeground(new java.awt.Color(153, 153, 153));
-        txt_filtrado_categoria.setBorder(javax.swing.BorderFactory.createTitledBorder(boton_agregar.getBorder(), "Filtrado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sora", 0, 13), new java.awt.Color(94, 83, 82))); // NOI18N
-        contenido_table.add(txt_filtrado_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 270, -1));
-        txt_filtrado_categoria.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingresa nombre");
-        txt_filtrado_categoria.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSearchIcon());
-
-        add(contenido_table, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 550, 430));
+        add(contenido_table, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, 580, 450));
         contenido_table.putClientProperty(FlatClientProperties.STYLE,
+            "arc: 20");
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel9.setText("Total Categorías  ");
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, 20));
+
+        contar_categoria.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
+        contar_categoria.setForeground(new java.awt.Color(94, 83, 82));
+        contar_categoria.setText("0");
+        jPanel4.add(contar_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, 30));
+
+        info1.setBackground(new java.awt.Color(230, 247, 237));
+        info1.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout info1Layout = new javax.swing.GroupLayout(info1);
+        info1.setLayout(info1Layout);
+        info1Layout.setHorizontalGroup(
+            info1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+        info1Layout.setVerticalGroup(
+            info1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(info1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 50, 50));
+
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 270, 90));
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel12.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel12.setText("Total Categorías  ");
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, 20));
+
+        contar_categoria1.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
+        contar_categoria1.setForeground(new java.awt.Color(94, 83, 82));
+        contar_categoria1.setText("0");
+        jPanel5.add(contar_categoria1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, 30));
+
+        info2.setBackground(new java.awt.Color(255, 240, 230));
+        info2.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout info2Layout = new javax.swing.GroupLayout(info2);
+        info2.setLayout(info2Layout);
+        info2Layout.setHorizontalGroup(
+            info2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+        info2Layout.setVerticalGroup(
+            info2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        jPanel5.add(info2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 50, 50));
+
+        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 270, 90));
+
+        filtro.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel3.setFont(new java.awt.Font("Sora", 1, 21)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel3.setText("Filtros");
+
+        txt_filtrado.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        txt_filtrado.setForeground(new java.awt.Color(153, 153, 153));
+        txt_filtrado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_filtradoKeyReleased(evt);
+            }
+        });
+
+        jLabel13.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel13.setText("Mostrar");
+
+        javax.swing.GroupLayout filtroLayout = new javax.swing.GroupLayout(filtro);
+        filtro.setLayout(filtroLayout);
+        filtroLayout.setHorizontalGroup(
+            filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(filtroLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(filtroLayout.createSequentialGroup()
+                        .addComponent(txt_filtrado, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel13)))
+                .addContainerGap(203, Short.MAX_VALUE))
+        );
+        filtroLayout.setVerticalGroup(
+            filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(filtroLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(filtroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_filtrado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        txt_filtrado.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Buscar Clientes...");
+        txt_filtrado.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSearchIcon());
+
+        add(filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 600, -1));
+        filtro.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
     }// </editor-fold>//GEN-END:initComponents
 
@@ -341,6 +518,14 @@ public class Categorias extends javax.swing.JPanel {
         controlCate.limpiar();
     }//GEN-LAST:event_boton_cancelarActionPerformed
 
+    private void txt_filtradoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_filtradoKeyReleased
+        //        controlador.listarEmpleado();
+    }//GEN-LAST:event_txt_filtradoKeyReleased
+
+    private void txt_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_idActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton boton_actualizar;
@@ -349,9 +534,24 @@ public class Categorias extends javax.swing.JPanel {
     private javax.swing.JButton boton_nueva_categoria;
     private javax.swing.JPanel card_layout_categoria;
     public javax.swing.JLabel contar_categoria;
+    public javax.swing.JLabel contar_categoria1;
     private javax.swing.JPanel contenido_table;
-    private javax.swing.JPanel info;
+    private javax.swing.JTextArea descripcion;
+    public javax.swing.JLabel desr;
+    private javax.swing.JPanel filtro;
+    private javax.swing.JPanel info1;
+    private javax.swing.JPanel info2;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -359,14 +559,19 @@ public class Categorias extends javax.swing.JPanel {
     public javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JLabel m1nombreCampo;
     private javax.swing.JLabel ms_nueva_categoria;
     private javax.swing.JPanel no_hay_categorias;
     private javax.swing.JTable tabla_categoria;
-    private javax.swing.JTextField txt_filtrado_categoria;
+    private javax.swing.JTextField txt_filtrado;
     private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_nombre;
     // End of variables declaration//GEN-END:variables
