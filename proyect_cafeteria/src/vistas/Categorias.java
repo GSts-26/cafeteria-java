@@ -334,7 +334,7 @@ public class Categorias extends javax.swing.JPanel {
     }//GEN-LAST:event_boton_actualizarActionPerformed
 
     private void boton_nueva_categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_nueva_categoriaActionPerformed
-        controlCate.rellenarNuevaCategoria();
+        controlCate.limpiar();
     }//GEN-LAST:event_boton_nueva_categoriaActionPerformed
 
     private void boton_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_cancelarActionPerformed

@@ -19,10 +19,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import utils.render;
 
-/**
- *
- * @author duvan
- */
+
 public class panel_productos extends javax.swing.JPanel {
 
     productoController controlador = new productoController(this);
@@ -48,6 +45,7 @@ public class panel_productos extends javax.swing.JPanel {
         Vista = (CardLayout) cardProductos.getLayout();
         controlador.mostrar();
         controlador.ocultarMensajes();
+//        controlador.rellenar_combo_categoria();
         controlador.ocultarMensajeIngredientes();
     }
 

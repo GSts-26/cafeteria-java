@@ -152,9 +152,16 @@ public class DaoProductoImpl implements DAOGeneral<producto> {
         return listaProductos;
     }
 
-    @Override
-    public void actualizar(producto t) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void actualizar1(producto t, int id) {
+        String consulta = "update producto set cantidad=?, existencias=? where id=?";
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(consulta)) {
+            ps.setInt(1, t.getCantidad());
+            ps.setInt(2, t.getStock());
+            ps.setInt(3, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
@@ -169,6 +176,11 @@ public class DaoProductoImpl implements DAOGeneral<producto> {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @Override
+    public void actualizar(producto t) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

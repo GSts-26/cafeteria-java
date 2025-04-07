@@ -26,6 +26,12 @@ public class producto {
 
     private String Descripcion;
     private double precio;
+
+    public producto(int cantidad, int stock) {
+        this.cantidad = cantidad;
+        this.stock = stock;
+    }
+
     private int cantidad;
     private int stock;
     private ArrayList<Integer> idIngredientes;

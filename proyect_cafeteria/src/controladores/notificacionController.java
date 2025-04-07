@@ -1,9 +1,8 @@
 package controladores;
 
+import java.awt.*;
 import java.util.List;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import modelos.DAO.DaoNotificacion;
 import modelos.DAO.DaoProductoImpl;
@@ -71,6 +70,55 @@ public class notificacionController implements EscuchadorProducto {
         } else {
             vista.lblCantiEn_bajo_Stock.setText("0");
         }
+    }
+
+    public void AccionTabla() {
+        int idProducto = 0;
+        modeloTabla = (DefaultTableModel) vista.tabla_notificacion.getModel();
+        int fila = vista.tabla_notificacion.getSelectedRow();
+        int columna = vista.tabla_notificacion.getSelectedColumn();
+        String producto = modeloTabla.getValueAt(fila, 0).toString();
+        int cantidad = (int) modeloTabla.getValueAt(fila, 1);
+        int stock = (int) modeloTabla.getValueAt(fila, 2);
+        if (columna == 3) {
+            for (producto p : listaProducto) {
+                if (p.getNombre().equals(producto)) {
+                    idProducto = p.getId();
+                }
+            }
+            vista.reabastecerProducto.setPreferredSize(new Dimension(407, 330));
+            vista.reabastecerProducto.setMinimumSize(new Dimension(407, 330));
+            vista.reabastecerProducto.setMaximumSize(new Dimension(407, 330));
+            vista.reabastecerProducto.setLocationRelativeTo(null);
+            vista.reabastecerProducto.setVisible(true);
+            vista.txtNombreProducto.setText(producto);
+            vista.txtCantidad.setValue(cantidad);
+            vista.txtStock.setValue(stock);
+            vista.IdProducto.setText(String.valueOf(idProducto));
+            vista.IdProducto.setVisible(false);
+        }
+
+    }
+
+    public void Limpiar() {
+        vista.txtStock.setValue(0);
+        vista.txtNombreProducto.setText("");
+        vista.txtCantidad.setValue(0);
+        vista.IdProducto.setText("");
+        vista.IdProducto.setVisible(false);
+    }
+
+    public void Actualizar() {
+        vista.txtNombreProducto.setText(vista.txtNombreProducto.getText());
+        int Stock = (int) vista.txtStock.getValue();
+        int cantidad = (int) vista.txtCantidad.getValue();
+        int idProducto = Integer.parseInt(vista.IdProducto.getText());
+        producto c = new producto(cantidad, Stock);
+        daoproducto.actualizar1(c, idProducto);
+        Limpiar();
+        EventBus.PublishProducto();
+        JOptionPane.showMessageDialog(null, "Producto Actualizado", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+        vista.reabastecerProducto.dispose();
     }
 
     @Override

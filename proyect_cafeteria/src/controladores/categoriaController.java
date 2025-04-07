@@ -33,10 +33,12 @@ public class categoriaController {
         categoria cate = new categoria(nombre);
         categoriaDao.insertar(cate);
 //        vistaCategoria.getTxt_nombre().setText("");
+        limpiar();
         mostrar();
-        JOptionPane.showMessageDialog(null, "Categoria agregada", "Agregado", JOptionPane.INFORMATION_MESSAGE);
         // metodo que avisa cuando se ingresa una categoria
         EventBus.PublishProducto();
+
+        JOptionPane.showMessageDialog(null, "Categoria agregada", "Agregado", JOptionPane.INFORMATION_MESSAGE);
 
     }
 
@@ -64,20 +66,13 @@ public class categoriaController {
                     botonEliminar});
             }
         }
+        EventBus.PublishProducto();
     }
 
     public void rellenarActualizar() {
         vistaCategoria.boton_agregar.setVisible(false);
         vistaCategoria.boton_actualizar.setVisible(true);
         vistaCategoria.jLabel4.setText("Actualizar categoria");
-    }
-
-    public void rellenarNuevaCategoria() {
-
-        vistaCategoria.boton_agregar.setVisible(true);
-        vistaCategoria.boton_actualizar.setVisible(false);
-        vistaCategoria.jLabel4.setText("Nueva categoria");
-        limpiar();
     }
 
     public void limpiar() {
@@ -88,6 +83,7 @@ public class categoriaController {
         vistaCategoria.boton_agregar.setVisible(true);
         vistaCategoria.boton_actualizar.setVisible(false);
         vistaCategoria.jLabel4.setText("Nueva categoria");
+        vistaCategoria.getTxt_nombre().requestFocus();
     }
 
     public void actualizar() {
@@ -106,11 +102,14 @@ public class categoriaController {
         String nombre = vistaCategoria.getModel_tabla().getValueAt(fila, 1).toString();
         int columna = vistaCategoria.getTabla_cate().getSelectedColumn();
         if (columna == 3) {
+            vistaCategoria.getModel_tabla().removeRow(fila);
             categoriaDao.eliminar(filaseleccionada);
-            mostrar();
-            JOptionPane.showMessageDialog(null, "Categoria eliminada", "Eliminada", JOptionPane.INFORMATION_MESSAGE);
+
             // metodo que envia una alerta cuando se elimina una categoria
             EventBus.PublishProducto();
+            JOptionPane.showMessageDialog(null, "Categoria eliminada", "Eliminada", JOptionPane.INFORMATION_MESSAGE);
+//            mostrar();
+
         } else if (columna == 2) {
             vistaCategoria.getTxt_id().setText(String.valueOf(filaseleccionada));
             vistaCategoria.getTxt_nombre().setText(nombre);

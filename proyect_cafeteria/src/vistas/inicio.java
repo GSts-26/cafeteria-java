@@ -66,6 +66,16 @@ public class inicio extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtFiltrar = new javax.swing.JTextField();
         reabastecerProducto = new javax.swing.JDialog();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        txtCantidad = new javax.swing.JSpinner();
+        jLabel12 = new javax.swing.JLabel();
+        txtStock = new javax.swing.JSpinner();
+        jLabel9 = new javax.swing.JLabel();
+        txtNombreProducto = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        IdProducto = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -187,16 +197,71 @@ public class inicio extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        javax.swing.GroupLayout reabastecerProductoLayout = new javax.swing.GroupLayout(reabastecerProducto.getContentPane());
-        reabastecerProducto.getContentPane().setLayout(reabastecerProductoLayout);
-        reabastecerProductoLayout.setHorizontalGroup(
-            reabastecerProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        reabastecerProductoLayout.setVerticalGroup(
-            reabastecerProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        reabastecerProducto.setMinimumSize(new java.awt.Dimension(407, 330));
+        reabastecerProducto.setResizable(false);
+        reabastecerProducto.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(new java.awt.Color(249, 242, 237));
+        jButton1.setFont(new java.awt.Font("Sora", 1, 15)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(198, 124, 78));
+        jButton1.setText("Actualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        reabastecerProducto.getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, -1, 40));
+
+        jButton2.setBackground(new java.awt.Color(198, 124, 78));
+        jButton2.setFont(new java.awt.Font("Sora", 1, 15)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(249, 242, 237));
+        jButton2.setText("Cancelar");
+        reabastecerProducto.getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, 40));
+
+        jLabel8.setFont(new java.awt.Font("Sora", 1, 21)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel8.setText("Actualizar cantidad de Producto");
+        reabastecerProducto.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        txtCantidad.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        reabastecerProducto.getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 114, 30));
+
+        jLabel12.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel12.setText("Cantidad");
+        reabastecerProducto.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+
+        txtStock.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        reabastecerProducto.getContentPane().add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 114, 30));
+
+        jLabel9.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel9.setText("Stock-minimo");
+        reabastecerProducto.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, -1));
+
+        txtNombreProducto.setEditable(false);
+        txtNombreProducto.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        txtNombreProducto.setForeground(new java.awt.Color(94, 83, 82));
+        txtNombreProducto.setFocusable(false);
+        txtNombreProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreProductoActionPerformed(evt);
+            }
+        });
+        txtNombreProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNombreProductoKeyReleased(evt);
+            }
+        });
+        reabastecerProducto.getContentPane().add(txtNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 150, 30));
+
+        jLabel10.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel10.setText("Nombre");
+        reabastecerProducto.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, 30));
+
+        IdProducto.setText("id");
+        reabastecerProducto.getContentPane().add(IdProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -582,7 +647,7 @@ public class inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_empleados1ActionPerformed
 
     private void tabla_notificacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_notificacionMouseClicked
-
+        controlador.AccionTabla();
 //        int columna = tabla_producto.getSelectedColumn();
 //        if (columna == 5) {
 //            AbrirInfoProducto();
@@ -614,6 +679,18 @@ public class inicio extends javax.swing.JFrame {
 //        hilo.start();
 //        controlador.CantidadEnBajoStock();
     }//GEN-LAST:event_lblCantiEn_bajo_StockPropertyChange
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        controlador.Actualizar();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtNombreProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProductoActionPerformed
+   
+    }//GEN-LAST:event_txtNombreProductoActionPerformed
+
+    private void txtNombreProductoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreProductoKeyReleased
+
+    }//GEN-LAST:event_txtNombreProductoKeyReleased
 
     public static void main(String args[]) {
         FlatLightLaf.setup();
@@ -665,6 +742,7 @@ public class inicio extends javax.swing.JFrame {
     private javax.swing.JLabel Coffee;
     private javax.swing.JPanel Contenido;
     private javax.swing.JButton Empleados;
+    public javax.swing.JLabel IdProducto;
     private javax.swing.JDialog Notificacion;
     public javax.swing.JPanel PanelSinAlertas;
     private javax.swing.JLabel Rol;
@@ -675,13 +753,19 @@ public class inicio extends javax.swing.JFrame {
     private javax.swing.JButton empleados1;
     private javax.swing.JPanel encabezado;
     private javax.swing.JButton ingrediente;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -691,9 +775,12 @@ public class inicio extends javax.swing.JFrame {
     private javax.swing.JPanel menu_lateral;
     private javax.swing.JLabel nombreUsuaio;
     private javax.swing.JButton productos3;
-    private javax.swing.JDialog reabastecerProducto;
+    public javax.swing.JDialog reabastecerProducto;
     public javax.swing.JTable tabla_notificacion;
     private javax.swing.JLabel titulo;
+    public javax.swing.JSpinner txtCantidad;
     private javax.swing.JTextField txtFiltrar;
+    public javax.swing.JTextField txtNombreProducto;
+    public javax.swing.JSpinner txtStock;
     // End of variables declaration//GEN-END:variables
 }
