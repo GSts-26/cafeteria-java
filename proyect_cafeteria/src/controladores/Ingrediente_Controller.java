@@ -31,6 +31,11 @@ public class Ingrediente_Controller implements EscuchadorIngrediente {
     }
 
     public void ingresar() {
+        if(vista.txtNombre.getText().isEmpty()){
+          JOptionPane.showMessageDialog(null, "Ingrese un nombre", "Error", JOptionPane.ERROR_MESSAGE);
+          vista.txtNombre.requestFocus();
+          return;
+        }
         Ingrediente ingrediente = new Ingrediente(vista.txtNombre.getText(), (int) vista.txtcalorias.getValue(), (int) vista.txtCarbo.getValue(), (int) vista.txtAzucar.getValue(), (int) vista.txtproteinas.getValue());;
         IngredienteDAO.insertar(ingrediente);
         this.resetear();

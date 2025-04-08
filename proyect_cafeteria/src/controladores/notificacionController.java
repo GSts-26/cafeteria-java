@@ -135,7 +135,6 @@ public class notificacionController implements EscuchadorProducto {
         EventBus.PublishProducto();
         JOptionPane.showMessageDialog(null, "Producto Actualizado", "Informacion", JOptionPane.INFORMATION_MESSAGE);
         vista.reabastecerProducto.dispose();
-
     }
 
     private boolean CantidadMinimo() {
