@@ -100,8 +100,6 @@ public class inicio extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         Rol = new javax.swing.JLabel();
         empleados1 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
         Contenido = new javax.swing.JPanel();
 
         Notificacion.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -575,12 +573,6 @@ public class inicio extends javax.swing.JFrame {
         Empleados.putClientProperty(FlatClientProperties.STYLE,
             "focusedBackground:#f5eae2;focusedForeground:#C67C4E");
 
-        jLabel11.setText("De actualizar la cantidad y stock");
-        menu_lateral.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, -1, -1));
-
-        jLabel13.setText("Validacion al momento");
-        menu_lateral.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, -1, -1));
-
         jPanel1.add(menu_lateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 97, 220, 650));
         menu_lateral.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
@@ -788,9 +780,7 @@ public class inicio extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
