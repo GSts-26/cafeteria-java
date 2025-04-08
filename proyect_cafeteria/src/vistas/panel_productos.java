@@ -14,9 +14,12 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 import javax.swing.JFileChooser;
+import javax.swing.JFormattedTextField;
+import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.DefaultFormatter;
 import utils.render;
 
 
@@ -784,10 +787,16 @@ public class panel_productos extends javax.swing.JPanel {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtCantidad.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        txtCantidad.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jPanel3.add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 114, 30));
+        JFormattedTextField txt = ((JSpinner.DefaultEditor) txtCantidad.getEditor()).getTextField();
+        ((DefaultFormatter) txt.getFormatter()).setAllowsInvalid(false);
 
         txtStock.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        txtStock.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jPanel3.add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 114, 30));
+        JFormattedTextField txt1 = ((JSpinner.DefaultEditor) txtStock.getEditor()).getTextField();
+        ((DefaultFormatter) txt1.getFormatter()).setAllowsInvalid(false);
 
         jLabel6.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(94, 83, 82));

@@ -11,6 +11,7 @@ import controladores.notificacionController;
 import java.awt.*;
 
 import javax.swing.*;
+import javax.swing.text.DefaultFormatter;
 import modelos.Entidades.usuario;
 import utils.render;
 
@@ -67,7 +68,7 @@ public class inicio extends javax.swing.JFrame {
         txtFiltrar = new javax.swing.JTextField();
         reabastecerProducto = new javax.swing.JDialog();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BotonCancelar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         txtCantidad = new javax.swing.JSpinner();
         jLabel12 = new javax.swing.JLabel();
@@ -76,6 +77,7 @@ public class inicio extends javax.swing.JFrame {
         txtNombreProducto = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         IdProducto = new javax.swing.JLabel();
+        m1CantidadInvalida = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -98,6 +100,8 @@ public class inicio extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         Rol = new javax.swing.JLabel();
         empleados1 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         Contenido = new javax.swing.JPanel();
 
         Notificacion.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -212,11 +216,16 @@ public class inicio extends javax.swing.JFrame {
         });
         reabastecerProducto.getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, -1, 40));
 
-        jButton2.setBackground(new java.awt.Color(198, 124, 78));
-        jButton2.setFont(new java.awt.Font("Sora", 1, 15)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(249, 242, 237));
-        jButton2.setText("Cancelar");
-        reabastecerProducto.getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, 40));
+        BotonCancelar.setBackground(new java.awt.Color(198, 124, 78));
+        BotonCancelar.setFont(new java.awt.Font("Sora", 1, 15)); // NOI18N
+        BotonCancelar.setForeground(new java.awt.Color(249, 242, 237));
+        BotonCancelar.setText("Cancelar");
+        BotonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonCancelarActionPerformed(evt);
+            }
+        });
+        reabastecerProducto.getContentPane().add(BotonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, 40));
 
         jLabel8.setFont(new java.awt.Font("Sora", 1, 21)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(94, 83, 82));
@@ -224,7 +233,10 @@ public class inicio extends javax.swing.JFrame {
         reabastecerProducto.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         txtCantidad.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        txtCantidad.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         reabastecerProducto.getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 114, 30));
+        JFormattedTextField txt1 = ((JSpinner.DefaultEditor) txtCantidad.getEditor()).getTextField();
+        ((DefaultFormatter) txt1.getFormatter()).setAllowsInvalid(false);
 
         jLabel12.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(94, 83, 82));
@@ -232,7 +244,10 @@ public class inicio extends javax.swing.JFrame {
         reabastecerProducto.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
 
         txtStock.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        txtStock.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         reabastecerProducto.getContentPane().add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 114, 30));
+        JFormattedTextField txt = ((JSpinner.DefaultEditor) txtStock.getEditor()).getTextField();
+        ((DefaultFormatter) txt.getFormatter()).setAllowsInvalid(false);
 
         jLabel9.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(94, 83, 82));
@@ -262,6 +277,12 @@ public class inicio extends javax.swing.JFrame {
 
         IdProducto.setText("id");
         reabastecerProducto.getContentPane().add(IdProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
+
+        m1CantidadInvalida.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
+        m1CantidadInvalida.setForeground(new java.awt.Color(198, 124, 78));
+        m1CantidadInvalida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
+        m1CantidadInvalida.setText("Cantidad no permitida");
+        reabastecerProducto.getContentPane().add(m1CantidadInvalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -554,6 +575,12 @@ public class inicio extends javax.swing.JFrame {
         Empleados.putClientProperty(FlatClientProperties.STYLE,
             "focusedBackground:#f5eae2;focusedForeground:#C67C4E");
 
+        jLabel11.setText("De actualizar la cantidad y stock");
+        menu_lateral.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, -1, -1));
+
+        jLabel13.setText("Validacion al momento");
+        menu_lateral.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, -1, -1));
+
         jPanel1.add(menu_lateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 97, 220, 650));
         menu_lateral.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
@@ -685,12 +712,16 @@ public class inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtNombreProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProductoActionPerformed
-   
+
     }//GEN-LAST:event_txtNombreProductoActionPerformed
 
     private void txtNombreProductoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreProductoKeyReleased
 
     }//GEN-LAST:event_txtNombreProductoKeyReleased
+
+    private void BotonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCancelarActionPerformed
+        this.reabastecerProducto.dispose();
+    }//GEN-LAST:event_BotonCancelarActionPerformed
 
     public static void main(String args[]) {
         FlatLightLaf.setup();
@@ -737,6 +768,7 @@ public class inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonCancelar;
     public javax.swing.JLabel BotonNotificacion;
     private javax.swing.JButton Clientes;
     private javax.swing.JLabel Coffee;
@@ -754,10 +786,11 @@ public class inicio extends javax.swing.JFrame {
     private javax.swing.JPanel encabezado;
     private javax.swing.JButton ingrediente;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -771,6 +804,7 @@ public class inicio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane4;
     public javax.swing.JLabel lblCantiEn_bajo_Stock;
+    public javax.swing.JLabel m1CantidadInvalida;
     private javax.swing.JButton menu;
     private javax.swing.JPanel menu_lateral;
     private javax.swing.JLabel nombreUsuaio;

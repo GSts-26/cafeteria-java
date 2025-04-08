@@ -4,6 +4,7 @@ import java.awt.*;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+
 import modelos.DAO.DaoNotificacion;
 import modelos.DAO.DaoProductoImpl;
 import modelos.Entidades.producto;
@@ -18,6 +19,8 @@ public class notificacionController implements EscuchadorProducto {
     private List<producto> listaProducto;
     private DefaultTableModel modeloTabla;
     private JButton botonReabastecer;
+    private int Stock = 0;
+    private int cantidad = 0;
 
     public notificacionController(inicio vista) {
         this.vista = vista;
@@ -42,10 +45,10 @@ public class notificacionController implements EscuchadorProducto {
             int limite = prod.getStock();
             if (cantidad <= limite) {
                 modeloTabla.addRow(new Object[]{
-                    prod.getNombre(),
-                    prod.getCantidad(),
-                    prod.getStock(),
-                    botonReabastecer});
+                        prod.getNombre(),
+                        prod.getCantidad(),
+                        prod.getStock(),
+                        botonReabastecer});
             }
         }
         if (modeloTabla.getRowCount() == 0) {
@@ -96,6 +99,7 @@ public class notificacionController implements EscuchadorProducto {
             vista.txtStock.setValue(stock);
             vista.IdProducto.setText(String.valueOf(idProducto));
             vista.IdProducto.setVisible(false);
+            vista.m1CantidadInvalida.setVisible(false);
         }
 
     }
@@ -110,16 +114,43 @@ public class notificacionController implements EscuchadorProducto {
 
     public void Actualizar() {
         vista.txtNombreProducto.setText(vista.txtNombreProducto.getText());
-        int Stock = (int) vista.txtStock.getValue();
-        int cantidad = (int) vista.txtCantidad.getValue();
+        Stock = (int) vista.txtStock.getValue();
+        cantidad = (int) vista.txtCantidad.getValue();
         int idProducto = Integer.parseInt(vista.IdProducto.getText());
+        if (CantidadMinimo()) {
+            return;
+        }
+        if (cantidad <= Stock) {
+            JOptionPane.showMessageDialog(null,
+                    "No puedes agregar esa cantidad de producto",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            vista.txtCantidad.requestFocus();
+            return;
+        }
+
         producto c = new producto(cantidad, Stock);
         daoproducto.actualizar1(c, idProducto);
         Limpiar();
         EventBus.PublishProducto();
         JOptionPane.showMessageDialog(null, "Producto Actualizado", "Informacion", JOptionPane.INFORMATION_MESSAGE);
         vista.reabastecerProducto.dispose();
+
     }
+
+    private boolean CantidadMinimo() {
+        boolean ok = false;
+        if (cantidad <= 0) {
+            vista.m1CantidadInvalida.setVisible(true);
+            ok = true;
+
+        } else {
+            vista.m1CantidadInvalida.setVisible(false);
+            ok = false;
+        }
+        return ok;
+    }
+
 
     @Override
     public void EscuchadorProductoActivo() {
