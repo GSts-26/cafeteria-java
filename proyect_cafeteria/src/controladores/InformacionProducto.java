@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import modelos.Bd.conexion;
 import modelos.DAO.DaoIngredienteImpl;
 import modelos.DAO.DaoProductoImpl;
+import modelos.DAO.EscuchadorProducto;
 import modelos.Entidades.Ingrediente;
 import modelos.Entidades.producto;
 import vistas.panel_informacion_producto;
@@ -33,6 +34,7 @@ public class InformacionProducto {
     public InformacionProducto(panel_productos product, panel_informacion_producto info) {
         this.product = product;
         this.info = info;
+
     }
 
     //metodo para ver la informacion del producto, los ingredientes y su informacion nutricional
@@ -45,6 +47,7 @@ public class InformacionProducto {
         info.setLbl_nombre_producto().setText(nombreP);
         info.setLbl_precio_producto().setText(String.valueOf(precio));
         info.getArea_ingredientes().setText("");
+
         if (!info.getLbl_descripcion_producto().getText().isEmpty()) {
             info.getLbl_descripcion_producto().setText("");
         }
@@ -69,10 +72,6 @@ public class InformacionProducto {
 
                 if (rsIds.next()) {
                     String[] idsProductos = rsIds.getString("ids_ingrediente").replace("{", "").replace("}", "").replace("\"", "").trim().split(",");
-//                    idsProductos = idsProductos.replace("{", "").replace("}", "").replace("\"", "").trim().split(",");
-//                    Arrays.stream(idsProductos.split(","))
-//                            .map(String::trim)
-//                            .forEach(productosIDS::add);
                     for (String idsProducto : idsProductos) {
                         productosIDS.add(idsProducto);
                     }

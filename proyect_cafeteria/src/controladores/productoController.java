@@ -10,16 +10,16 @@ import modelos.Entidades.*;
 import vistas.panel_productos;
 
 public class productoController implements EscuchadorProducto, EscuchadorIngrediente {
-    
+
     private panel_productos vista;
     private DaoProductoImpl productoDAO;
     private DaoIngredienteImpl IngredienteDAO;
     private DaoCategoria categoriaDAO;
-    
+
     private DefaultTableModel modeloProductos;
     private DefaultTableModel modeloingredientes;
     private int ProductosContador;
-    
+
     private List<producto> productos = new ArrayList<>();
     private List<categoria> categoria = new ArrayList<>();
     private ArrayList<String> listaIds = new ArrayList<>();
@@ -28,7 +28,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
     JButton botonVer = new JButton();
     JButton botonEditar = new JButton();
     JButton botonBorrar = new JButton();
-    
+
     public productoController(panel_productos vista) {
         this.vista = vista;
         this.productoDAO = new DaoProductoImpl();
@@ -41,20 +41,48 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
 
 // ingresar datos de producto
     public void ingresar(ArrayList<Integer> ingredientes) {
-        
+        modeloingredientes = (DefaultTableModel) vista.T_ingredientes.getModel();
+        if (tablaIngreVacia()) {
+            vista.AgregarIngredientes.setSize(374, 370);
+            vista.AgregarIngredientes.setLocationRelativeTo(null);
+            rellenar_Combo_Ingredientes();
+            vista.AgregarIngredientes.setVisible(true);
+            return;
+        }
+        // verificar que no exista un producto con el mismo nombre
+        for (producto producto1 : productos) {
+            if (producto1.getNombre().equalsIgnoreCase(vista.txtNombre.getText())) {
+                JOptionPane.showMessageDialog(null, "Existe un producto con ese nombre", "Error", JOptionPane.ERROR_MESSAGE);
+                vista.txtNombre.setText("");
+                vista.txtNombre.requestFocus();
+                return;
+            }
+        }
         String id = vista.txt_categoria.getSelectedItem().toString();
         String ids = id.split(" - ")[0];
         producto producto = new producto(vista.txtNombre.getText(), Integer.parseInt(ids), vista.txtDescripcion.getText(), (Integer.parseInt(vista.txtprecio.getText())), Integer.parseInt(vista.txtCantidad.getValue().toString()), Integer.parseInt(vista.txtStock.getValue().toString()),
                 ingredientes);
+
         productoDAO.insertar(producto);
+        limpiarCampos();
         // metodo que envia una alerta cuando se ingresa un producto
         EventBus.PublishProducto();
         mostrar();
         JOptionPane.showMessageDialog(null, "Producto Ingresado");
-        
+
     }
 
+    private boolean tablaIngreVacia() {
+        boolean vacia = false;
+        if (modeloingredientes.getRowCount() <= 0) {
+            JOptionPane.showMessageDialog(null, "No puedes dejar vacia la tabla de ingredientes", "Error", JOptionPane.ERROR_MESSAGE);
+            vacia = true;
+        }
+        return vacia;
+
+    }
 //  botones para editar y eliminar
+
     private void estilosBotones() {
         botonEditar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-edit-30.png")));
         botonVer.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-eye-30.png")));
@@ -66,7 +94,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
 
     // rellenar la tabla con los datos del producto
     public void mostrar() {
-        
+
         modeloProductos = (DefaultTableModel) vista.tabla_producto.getModel();
         estilosBotones();
         modeloProductos.setRowCount(0);
@@ -104,7 +132,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
 
     // rellenar todos los campos cuando se va a actualizar un producto
     public void rellenarActualizar() {
-        
+
         Map<Integer, Ingrediente> ingredientesMap = new HashMap<>();
         // recorrer la lista de ingredientes y agregar el id del ingrediente y el objeto ingrediente
         IngredienteDAO.listar().forEach(ingrediente -> ingredientesMap.put(ingrediente.getId(), ingrediente));
@@ -129,7 +157,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         vista.txtNombre.setText(nombre);
         vista.txtprecio.setText(precioFormateado);
         vista.TxtInfoPrecio.setText(precioFormateado);
-        
+
         for (categoria cate : this.categoria) {
             if (cate.getId() == Integer.parseInt(categoria)) {
                 vista.txt_categoria.setSelectedItem(cate.getId() + " - " + cate.getNombre());
@@ -147,7 +175,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
 
         // recorrer la lista de productos y verificar si el id seleccionado concide con el de la lista
         modelo1.setRowCount(0);
-        
+
         int idIngre = 0;
 
         // recorremos la lista de tipo producto 
@@ -176,10 +204,12 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
 
     // metodo para actualizar los datos del producto...
     public void actualizar(ArrayList<Integer> ingredientes) {
-        
+        modeloingredientes = (DefaultTableModel) vista.T_ingredientes.getModel();
         String id = vista.txt_categoria.getSelectedItem().toString();
         String ids = id.split(" - ")[0];
-        
+        if (tablaIngreVacia()) {
+            return;
+        }
         producto producto = new producto(vista.txtNombre.getText(), Integer.parseInt(ids), vista.txtDescripcion.getText(), (Integer.parseInt(vista.txtprecio.getText())), Integer.parseInt(vista.txtCantidad.getValue().toString()), Integer.parseInt(vista.txtStock.getValue().toString()),
                 ingredientes);
         int filaAfectada = productoDAO.actualizar(producto, idprodu);
@@ -189,13 +219,13 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
             mostrar();
             EventBus.PublishProducto();
             JOptionPane.showMessageDialog(null, "Producto Actualizado");
-            
+
         } else {
             System.out.println("No se modifico los datos del producto");
         }
-        
+
     }
-    
+
     public void Acciones_tabla() {
         int columna = vista.tabla_producto.getSelectedColumn();
         int fila = vista.tabla_producto.getSelectedRow();
@@ -210,7 +240,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
             mostrar();
             JOptionPane.showMessageDialog(null, "Producto Eliminado Correctamente");
         }
-        
+
     }
 
     // quitar ingrediente de un producto
@@ -223,7 +253,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
             System.out.println("Fila eliminada correctamente...");
             modelo.removeRow(vista.T_ingredientes.getSelectedRow());
         }
-        
+
     }
 
     // Ingresar los ingredientes al comboBox
@@ -254,9 +284,9 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
             sele.getNombre(),
             botonBorrar
         });
-        
+
     }
-    
+
     public void limpiarCampos() {
         nuevoProducto();
         vista.txtNombre.setText("");
@@ -268,15 +298,15 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         vista.txtInfoNombre.setText("");
         modeloingredientes = (DefaultTableModel) vista.T_ingredientes.getModel();
         modeloingredientes.setNumRows(0);
-        
+
     }
-    
+
     public void ocultarMensajes() {
         vista.m1NombreVacio2.setVisible(false);
         vista.m4PrecioVacio.setVisible(false);
         vista.m5CantidadVacio.setVisible(false);
     }
-    
+
     public boolean verificarCamposVacios() {
         int numero = 0;
         boolean ok = true;
@@ -300,11 +330,11 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         }
         return ok;
     }
-    
+
     public boolean datosIncorrectos() {
         boolean ok = true;
         for (int i = 0; i < vista.txtNombre.getText().length(); i++) {
-            
+
             if (!vista.txtNombre.getText().isEmpty() && Character.isDigit(vista.txtNombre.getText().charAt(i))) {
                 vista.txtNombre.setText("");
                 vista.txtNombre.requestFocus();
@@ -322,7 +352,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         vista.m4AzucarVacio.setVisible(false);
         vista.m5ProteVacio.setVisible(false);
     }
-    
+
     public void limpiarIngredientes() {
         vista.txtNombre.setText("");
         vista.txtAzucar.setText("");
@@ -330,9 +360,9 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         vista.txtcalorias.setText("");
         vista.txtproteinas.setText("");
     }
-    
+
     public boolean campoVacioIngrediente() {
-        
+
         if (vista.txtNombre.getText().isEmpty()) {
             vista.m1NombreVacio.setVisible(true);
             vista.txtNombre.requestFocus();
@@ -340,7 +370,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         } else {
             vista.m1NombreVacio.setVisible(false);
         }
-        
+
         if (vista.txtcalorias.getText().isEmpty()) {
             vista.m2CalVacio.setVisible(true);
             vista.txtcalorias.requestFocus();
@@ -348,7 +378,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         } else {
             vista.m2CalVacio.setVisible(false);
         }
-        
+
         if (vista.txtCarbo.getText().isEmpty()) {
             vista.m3CarboVacio.setVisible(true);
             vista.txtCarbo.requestFocus();
@@ -356,7 +386,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         } else {
             vista.m3CarboVacio.setVisible(false);
         }
-        
+
         if (vista.txtAzucar.getText().isEmpty()) {
             vista.m4AzucarVacio.setVisible(true);
             vista.txtAzucar.requestFocus();
@@ -364,7 +394,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         } else {
             vista.m4AzucarVacio.setVisible(false);
         }
-        
+
         if (vista.txtproteinas.getText().isEmpty()) {
             vista.m5ProteVacio.setVisible(true);
             vista.txtproteinas.requestFocus();
@@ -376,7 +406,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         // Si todos los campos están llenos, retornar verdadero
         return true;
     }
-    
+
     public void IngresarIngrediente() {
         String nombreIngre = vista.txtNombreIngre.getText();
         int caloriasIngre = Integer.parseInt(vista.txtcalorias.getText());
@@ -390,9 +420,9 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         // metodo que envia una notificacion cuando se crea un ingrediente
         EventBus.PublishIngrediente();
         JOptionPane.showMessageDialog(null, "Ingrediente Ingresado", "Ingresado", JOptionPane.INFORMATION_MESSAGE);
-        
+
     }
-    
+
     public void DatosIngreNoAdmitidos() {
         for (int i = 0; i < vista.txtNombreIngre.getText().length(); i++) {
             if (Character.isDigit(vista.txtNombreIngre.getText().charAt(i))) {
@@ -419,9 +449,9 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
                 vista.txtproteinas.setText("");
             }
         }
-        
+
     }
-    
+
     @Override
     public void EscuchadorProductoActivo() {
         try {
@@ -430,9 +460,9 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println(e.getMessage());
         }
-        
+
     }
-    
+
     @Override
     public void EscuchadorIngreActivo() {
         try {
@@ -440,7 +470,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Entro al catch de escuchador ingrediente en producto controller linea 432");
         }
-        
+
     }
-    
+
 }

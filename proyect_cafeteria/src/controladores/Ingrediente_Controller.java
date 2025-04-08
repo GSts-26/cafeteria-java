@@ -36,6 +36,14 @@ public class Ingrediente_Controller implements EscuchadorIngrediente {
           vista.txtNombre.requestFocus();
           return;
         }
+
+        for (Ingrediente ingrediente : ListaIngrediente) {
+            if (ingrediente.getNombre().equalsIgnoreCase(vista.txtNombre.getText())) {
+                JOptionPane.showMessageDialog(null, "Nombre existente", "Error", JOptionPane.ERROR_MESSAGE);
+                resetear();
+                return;
+            }
+        }
         Ingrediente ingrediente = new Ingrediente(vista.txtNombre.getText(), (int) vista.txtcalorias.getValue(), (int) vista.txtCarbo.getValue(), (int) vista.txtAzucar.getValue(), (int) vista.txtproteinas.getValue());;
         IngredienteDAO.insertar(ingrediente);
         this.resetear();
@@ -109,9 +117,10 @@ public class Ingrediente_Controller implements EscuchadorIngrediente {
         idIngre = Integer.parseInt(modelo.getValueAt(fila, 0).toString());
 
         if (columna == 3) {
+            modelo.removeRow(fila);
             IngredienteDAO.eliminar(idEliminar);
             JOptionPane.showMessageDialog(null, "Ingrediente Eliminado Correctamente", "Eliminado", JOptionPane.INFORMATION_MESSAGE);
-            mostrar();
+//            mostrar();
         } else if (columna == 2) {
             rellenarACtu();
             String nombre = modelo.getValueAt(fila, 1).toString();

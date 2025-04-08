@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package modelos.DAO;
 
 import java.sql.Array;
@@ -14,10 +11,6 @@ import java.util.List;
 import modelos.Bd.conexion;
 import modelos.Entidades.producto;
 
-/**
- *
- * @author Admin
- */
 public class DaoProductoImpl implements DAOGeneral<producto> {
 
     @Override

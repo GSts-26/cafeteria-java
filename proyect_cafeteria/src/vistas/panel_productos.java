@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package vistas;
 
 import com.formdev.flatlaf.FlatClientProperties;
@@ -48,7 +45,6 @@ public class panel_productos extends javax.swing.JPanel {
         Vista = (CardLayout) cardProductos.getLayout();
         controlador.mostrar();
         controlador.ocultarMensajes();
-//        controlador.rellenar_combo_categoria();
         controlador.ocultarMensajeIngredientes();
     }
 
@@ -70,11 +66,6 @@ public class panel_productos extends javax.swing.JPanel {
     private void styles() {
         T_ingredientes.setDefaultRenderer(Object.class, new render());
         tabla_producto.setDefaultRenderer(Object.class, new render());
-//        T_ingredientes.getTableHeader().setFont(new Font("Sora", Font.BOLD, 16));
-//        T_ingredientes.getTableHeader().setOpaque(false);
-//        T_ingredientes.getTableHeader().setForeground(Color.decode("#3D3D3E"));
-//        T_ingredientes.getTableHeader().putClientProperty(FlatClientProperties.STYLE,
-//                "separatorColor:#FFFFFF;bottomSeparatorColor:#ECECEC;height:40");
     }
 
 
@@ -916,7 +907,7 @@ public class panel_productos extends javax.swing.JPanel {
             ingredientes.add(valor);
         }
         controlador.ingresar(ingredientes);
-        controlador.limpiarCampos();
+
 
     }//GEN-LAST:event_boton_crearActionPerformed
 
@@ -1108,7 +1099,7 @@ public class panel_productos extends javax.swing.JPanel {
         return (DefaultTableModel) tabla_producto.getModel();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDialog AgregarIngredientes;
+    public javax.swing.JDialog AgregarIngredientes;
     private javax.swing.JDialog Agregar_ingredientes;
     public javax.swing.JTable T_ingredientes;
     public javax.swing.JLabel TxtInfoPrecio;

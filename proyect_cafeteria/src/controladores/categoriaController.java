@@ -31,8 +31,16 @@ public class categoriaController {
     public void ingresar() {
         String nombre = vistaCategoria.getTxt_nombre().getText();
         categoria cate = new categoria(nombre);
+        for (categoria c : lista){
+            if (c.getNombre().equalsIgnoreCase(nombre)){
+                JOptionPane.showMessageDialog(null, "El nombre de categoria ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                limpiar();
+                vistaCategoria.getTxt_nombre().requestFocus();
+                return;
+            }
+        }
         categoriaDao.insertar(cate);
-//        vistaCategoria.getTxt_nombre().setText("");
+
         limpiar();
         mostrar();
         // metodo que avisa cuando se ingresa una categoria
@@ -48,9 +56,6 @@ public class categoriaController {
         botonEliminar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-trash-30.png")));
         botonEditar.setBorder(BorderFactory.createEmptyBorder());
         botonEliminar.setBorder(BorderFactory.createEmptyBorder());
-
-//        botonEliminar.putClientProperty(FlatClientProperties.STYLE, "arc: 20; " + "background: #E6D2D4;");
-//        botonEditar.putClientProperty(FlatClientProperties.STYLE, "arc: 20;" + "background: #F9F2ED;");
         lista = categoriaDao.listar();
         contar();
         if (lista.isEmpty()) {
