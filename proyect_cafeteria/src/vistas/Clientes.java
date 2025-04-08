@@ -180,19 +180,19 @@ public class Clientes extends javax.swing.JPanel {
         jScrollPane1.setViewportView(T_Clientes);
         if (T_Clientes.getColumnModel().getColumnCount() > 0) {
             T_Clientes.getColumnModel().getColumn(0).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(0).setPreferredWidth(80);
+            T_Clientes.getColumnModel().getColumn(0).setPreferredWidth(120);
             T_Clientes.getColumnModel().getColumn(1).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(1).setPreferredWidth(100);
+            T_Clientes.getColumnModel().getColumn(1).setPreferredWidth(150);
             T_Clientes.getColumnModel().getColumn(2).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(2).setPreferredWidth(120);
+            T_Clientes.getColumnModel().getColumn(2).setPreferredWidth(180);
             T_Clientes.getColumnModel().getColumn(3).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(3).setPreferredWidth(80);
+            T_Clientes.getColumnModel().getColumn(3).setPreferredWidth(120);
             T_Clientes.getColumnModel().getColumn(4).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(4).setPreferredWidth(87);
+            T_Clientes.getColumnModel().getColumn(4).setPreferredWidth(120);
             T_Clientes.getColumnModel().getColumn(5).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(5).setPreferredWidth(110);
+            T_Clientes.getColumnModel().getColumn(5).setPreferredWidth(180);
             T_Clientes.getColumnModel().getColumn(6).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(6).setPreferredWidth(110);
+            T_Clientes.getColumnModel().getColumn(6).setPreferredWidth(180);
             T_Clientes.getColumnModel().getColumn(7).setResizable(false);
             T_Clientes.getColumnModel().getColumn(8).setResizable(false);
         }

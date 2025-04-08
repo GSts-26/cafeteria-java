@@ -31,7 +31,7 @@ public class notificacionController implements EscuchadorProducto {
     }
 
     private void EstilosBotones() {
-        botonReabastecer.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-refresh-30.png")));
+        botonReabastecer.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-edit-30.png")));
         botonReabastecer.setBorder(BorderFactory.createEmptyBorder());
     }
 

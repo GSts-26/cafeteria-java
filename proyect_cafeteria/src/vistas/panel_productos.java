@@ -591,9 +591,9 @@ public class panel_productos extends javax.swing.JPanel {
             tabla_producto.getColumnModel().getColumn(2).setResizable(false);
             tabla_producto.getColumnModel().getColumn(2).setPreferredWidth(150);
             tabla_producto.getColumnModel().getColumn(3).setResizable(false);
-            tabla_producto.getColumnModel().getColumn(3).setPreferredWidth(130);
+            tabla_producto.getColumnModel().getColumn(3).setPreferredWidth(160);
             tabla_producto.getColumnModel().getColumn(4).setResizable(false);
-            tabla_producto.getColumnModel().getColumn(4).setPreferredWidth(80);
+            tabla_producto.getColumnModel().getColumn(4).setPreferredWidth(120);
             tabla_producto.getColumnModel().getColumn(5).setResizable(false);
             tabla_producto.getColumnModel().getColumn(6).setResizable(false);
             tabla_producto.getColumnModel().getColumn(7).setResizable(false);
