@@ -77,6 +77,29 @@ public class DaoIngredienteImpl implements DAOGeneral<Ingrediente> {
         }
         return listaIngredientes;
     }
+    public List<Ingrediente> Filtrar(String nombre) {
+        List<Ingrediente> listaIngredientes = new ArrayList<>();
+        String sql = "SELECT * FROM public.ingredientes where nombre like ?";
+        try(Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, '%' + nombre + '%');
+             ResultSet rs = ps.executeQuery();
+             while (rs.next()) {
+                 Ingrediente ing = new Ingrediente(
+                         rs.getInt("id"),
+                         rs.getString("nombre"),
+                         rs.getInt("calorias"),
+                         rs.getInt("carbohidratos"),
+                         rs.getInt("proteina"),
+                         rs.getInt("Azucar")
+                 );
+                 listaIngredientes.add(ing);
+             }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+return listaIngredientes;
+    }
 
     
     public void eliminar(int id) {

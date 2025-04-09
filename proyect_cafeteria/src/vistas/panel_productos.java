@@ -491,6 +491,11 @@ public class panel_productos extends javax.swing.JPanel {
 
         txt_filtrado_producto.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
         txt_filtrado_producto.setForeground(new java.awt.Color(153, 153, 153));
+        txt_filtrado_producto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_filtrado_productoKeyReleased(evt);
+            }
+        });
         jPanel1.add(txt_filtrado_producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 270, 36));
         txt_filtrado_producto.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingresa nombre");
         txt_filtrado_producto.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSearchIcon());
@@ -1090,6 +1095,10 @@ public class panel_productos extends javax.swing.JPanel {
             System.out.println("cancelado");
         }
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void txt_filtrado_productoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_filtrado_productoKeyReleased
+        controlador.filtrar(txt_filtrado_producto.getText());
+    }//GEN-LAST:event_txt_filtrado_productoKeyReleased
 
     public JTable getTabla_producto() {
         return tabla_producto;

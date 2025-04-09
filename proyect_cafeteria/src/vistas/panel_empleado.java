@@ -11,13 +11,13 @@ import javax.swing.JTextField;
 import utils.render;
 
 public class panel_empleado extends javax.swing.JPanel {
-
+    
     EmpleadoController c = new EmpleadoController(this);
-
+    
     private void Styles() {
         Tabla_empleado.setDefaultRenderer(Object.class, new render());
     }
-
+    
     public panel_empleado() {
         initComponents();
         Styles();
@@ -444,7 +444,7 @@ public class panel_empleado extends javax.swing.JPanel {
             }
         });
         contenido_table.add(txt_filtrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 277, 40));
-        txt_filtrado.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingresa nombre o apellido");
+        txt_filtrado.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingresa la cedula a buscar");
         txt_filtrado.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSearchIcon());
 
         add(contenido_table, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 600, 530));
@@ -479,20 +479,20 @@ public class panel_empleado extends javax.swing.JPanel {
         }
 //        controlador.agregar_empleado();
         c.insertar();
-
+        
 
     }//GEN-LAST:event_boton_agregarActionPerformed
-
+    
 
     private void Tabla_empleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_empleadoMouseClicked
-
+        
         int columna = Tabla_empleado.getSelectedColumn();
         if (columna == 8) {
             c.rellenarActualizar();
-
+            
         } else if (columna == 9) {
             c.eliminar();
-
+            
         }
     }//GEN-LAST:event_Tabla_empleadoMouseClicked
 
@@ -545,7 +545,7 @@ public class panel_empleado extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_direccionActionPerformed
 
     private void txt_filtradoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_filtradoKeyReleased
-//        controlador.listarEmpleado();
+        c.filtrarEmpleado(txt_filtrado.getText());
     }//GEN-LAST:event_txt_filtradoKeyReleased
 
     private void boton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_actualizarActionPerformed
@@ -565,11 +565,11 @@ public class panel_empleado extends javax.swing.JPanel {
     }//GEN-LAST:event_boton_cancelarActionPerformed
 
     private void txt_cedulaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaKeyReleased
-       c.datosIncorrectos();
+        c.datosIncorrectos();
     }//GEN-LAST:event_txt_cedulaKeyReleased
 
     private void txt_telefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_telefonoKeyReleased
-       c.datosIncorrectos();
+        c.datosIncorrectos();
     }//GEN-LAST:event_txt_telefonoKeyReleased
 
 
@@ -622,83 +622,83 @@ public class panel_empleado extends javax.swing.JPanel {
 public JDateChooser getFecha_nacimiento() {
         return fecha_nacimiento;
     }
-
+    
     public String getTxt_filtradoStr() {
         return txt_filtrado.getText();
     }
-
+    
     public JLabel getlabelCount() {
         return numero_empleados;
     }
-
+    
     public String getGenero() {
         return genero.getSelectedItem().toString();
     }
-
+    
     public String getTxt_apellido() {
         return txt_apellido.getText().trim();
     }
-
+    
     public long getTxt_cedula() {
         return Long.parseLong(txt_cedula.getText());
     }
-
+    
     public String getTxt_cedulaStr() {
         return txt_cedula.getText();
     }
-
+    
     public String getTxt_telStr() {
         return txt_telefono.getText().trim();
     }
-
+    
     public String getTxt_correo() {
         return txt_correo.getText().trim();
     }
-
+    
     public String getTxt_direccion() {
         return txt_direccion.getText().trim();
     }
-
+    
     public String getTxt_nombre() {
         return txt_nombre.getText().trim();
     }
-
+    
     public long getTxt_telefono() {
         return Long.parseLong(txt_telefono.getText());
     }
-
+    
     public javax.swing.JTable getTabla_empleado() {
         return Tabla_empleado;
     }
-
+    
     public javax.swing.JPanel getadv() {
         return advertencia;
     }
-
+    
     public JLabel getm11correo_campo() {
         return m11correo_campo;
     }
-
+    
     public JLabel getm13nacimiento_campo() {
         return m13fechanacimiento_campo;
     }
-
+    
     public JLabel getm1ced_campo() {
         return m1cedula_campo;
     }
-
+    
     public JLabel getm4nomb_campo() {
         return m4nombre_campo;
     }
-
+    
     public JLabel getm5apell_campo() {
         return m5apellido_campo;
     }
-
+    
     public JLabel getm7direccion_campo() {
         return m7direccion_campo;
     }
-
+    
     public JLabel getm9tel_campo() {
         return m9telefono_campo;
     }

@@ -61,13 +61,35 @@ public class DaoCategoria implements DAOGeneral<categoria> {
         try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(consulta); ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
-                categoria cate = new categoria(rs.getInt("id"), rs.getString("nombre"));
+                categoria cate = new categoria(
+                        rs.getInt("id"),
+                        rs.getString("nombre"));
                 listacate.add(cate);
             }
         } catch (SQLException e) {
             System.out.println("Error al listar: " + e.getMessage());
         }
         return listacate;
+    }
+    
+    public List<categoria> Filtrar(String nombre){
+        List<categoria> listacate = new ArrayList<>();
+        String consulta = "SELECT * FROM categoria WHERE nombre LIKE ?";
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(consulta)) {
+            ps.setString(1, '%'+nombre+'%');
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                categoria cate = new categoria(
+                        rs.getInt("id"),
+                        rs.getString("nombre"));
+                listacate.add(cate);
+            }
+        }catch (SQLException e) {
+            System.out.println("Error al listar: " + e.getMessage());
+        }
+        
+        return listacate;
+        
     }
 
     public int contarCategorias() {

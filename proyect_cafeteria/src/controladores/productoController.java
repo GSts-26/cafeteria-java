@@ -42,13 +42,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
 // ingresar datos de producto
     public void ingresar(ArrayList<Integer> ingredientes) {
         modeloingredientes = (DefaultTableModel) vista.T_ingredientes.getModel();
-        if (tablaIngreVacia()) {
-            vista.AgregarIngredientes.setSize(374, 370);
-            vista.AgregarIngredientes.setLocationRelativeTo(null);
-            rellenar_Combo_Ingredientes();
-            vista.AgregarIngredientes.setVisible(true);
-            return;
-        }
+
         // verificar que no exista un producto con el mismo nombre
         for (producto producto1 : productos) {
             if (producto1.getNombre().equalsIgnoreCase(vista.txtNombre.getText())) {
@@ -58,6 +52,14 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
                 return;
             }
         }
+        if (tablaIngreVacia()) {
+            vista.AgregarIngredientes.setSize(374, 370);
+            vista.AgregarIngredientes.setLocationRelativeTo(null);
+            rellenar_Combo_Ingredientes();
+            vista.AgregarIngredientes.setVisible(true);
+        }else{
+
+
         String id = vista.txt_categoria.getSelectedItem().toString();
         String ids = id.split(" - ")[0];
         producto producto = new producto(vista.txtNombre.getText(), Integer.parseInt(ids), vista.txtDescripcion.getText(), (Integer.parseInt(vista.txtprecio.getText())), Integer.parseInt(vista.txtCantidad.getValue().toString()), Integer.parseInt(vista.txtStock.getValue().toString()),
@@ -69,7 +71,38 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         EventBus.PublishProducto();
         mostrar();
         JOptionPane.showMessageDialog(null, "Producto Ingresado");
+        }
 
+    }
+
+    public void filtrar(String nombre){
+        modeloProductos = (DefaultTableModel) vista.tabla_producto.getModel();
+        estilosBotones();
+        modeloProductos.setRowCount(0);
+        ProductosContador = 0;
+        productos = productoDAO.filtrarProducto(nombre);
+        if (productos.isEmpty()) {
+            vista.no_hay_productos.setVisible(true);
+            System.out.println("No hay productos en la base de datos.");
+        } else {
+            vista.no_hay_productos.setVisible(false);
+            for (producto Producto : productos) {
+                ProductosContador++;
+                System.out.println(Producto.getNombre());
+                modeloProductos.addRow(new Object[]{
+                        Producto.getId(),
+                        Producto.getNombre(),
+                        Producto.getCategoria(),
+                        Producto.getPrecio(),
+                        Producto.getCantidad(),
+                        botonVer,
+                        botonEditar,
+                        botonBorrar
+                });
+            }
+            
+            vista.contar_productos.setText(String.valueOf(ProductosContador));
+        }
     }
 
     private boolean tablaIngreVacia() {

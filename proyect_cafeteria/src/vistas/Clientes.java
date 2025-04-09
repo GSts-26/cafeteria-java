@@ -5,6 +5,7 @@
 package vistas;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.icons.FlatSearchIcon;
 import com.toedter.calendar.JDateChooser;
 import java.awt.*;
 import javax.swing.JComboBox;
@@ -18,12 +19,12 @@ import utils.render;
  * @author Admin
  */
 public class Clientes extends javax.swing.JPanel {
-
+    
     private void styless() {
         T_Clientes.setDefaultRenderer(Object.class, new render());
     }
     Controller_cliente controlador = new Controller_cliente(this);
-
+    
     public Clientes() {
         initComponents();
         styless();
@@ -48,6 +49,7 @@ public class Clientes extends javax.swing.JPanel {
         T_Clientes = new javax.swing.JTable();
         info = new javax.swing.JPanel();
         numero = new javax.swing.JLabel();
+        txt_filtradoCliente = new javax.swing.JTextField();
         crear_cliente = new javax.swing.JPanel();
         lblCliente = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -225,6 +227,17 @@ public class Clientes extends javax.swing.JPanel {
         contenido_table.add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 20, -1, 25));
         info.putClientProperty(FlatClientProperties.STYLE,
             "arc: 50");
+
+        txt_filtradoCliente.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        txt_filtradoCliente.setForeground(new java.awt.Color(153, 153, 153));
+        txt_filtradoCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_filtradoClienteKeyReleased(evt);
+            }
+        });
+        contenido_table.add(txt_filtradoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 277, 40));
+        txt_filtradoCliente.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingresa la cedula a buscar");
+        txt_filtradoCliente.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSearchIcon());
 
         add(contenido_table, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 600, 540));
         contenido_table.putClientProperty(FlatClientProperties.STYLE,
@@ -475,7 +488,7 @@ public class Clientes extends javax.swing.JPanel {
         if (!controlador.CamposVacios()) {
             txtnombre.requestFocus();
         } else if (!controlador.DatosNoAdmitidos()) {
-
+            
         }
 
     }//GEN-LAST:event_txtnombreActionPerformed
@@ -496,7 +509,7 @@ public class Clientes extends javax.swing.JPanel {
             txttelefono.requestFocus();
             return;
         } else if (!controlador.DatosNoAdmitidos()) {
-
+            
         }
         txtDireccion.requestFocus();
     }//GEN-LAST:event_txttelefonoActionPerformed
@@ -518,14 +531,14 @@ public class Clientes extends javax.swing.JPanel {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void boton_crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_crearActionPerformed
-
+        
         if (!controlador.CamposVacios() || txtnacimiento.getDate() == null) {
             return;
         } else {
-
+            
             controlador.ingresar();
         }
-
+        
 
     }//GEN-LAST:event_boton_crearActionPerformed
 
@@ -534,13 +547,13 @@ public class Clientes extends javax.swing.JPanel {
     }//GEN-LAST:event_T_ClientesMouseClicked
 
     private void txtcedulaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcedulaKeyReleased
-
+        
         if (!controlador.CamposVacios()) {
             txtcedula.requestFocus();
         } else if (!controlador.DatosNoAdmitidos()) {
-
+            
         }
-
+        
 
     }//GEN-LAST:event_txtcedulaKeyReleased
 
@@ -548,7 +561,7 @@ public class Clientes extends javax.swing.JPanel {
         if (!controlador.CamposVacios()) {
             txtnombre.requestFocus();
         } else if (!controlador.DatosNoAdmitidos()) ;
-
+        
 
     }//GEN-LAST:event_txtnombreKeyReleased
 
@@ -556,7 +569,7 @@ public class Clientes extends javax.swing.JPanel {
         if (!controlador.CamposVacios()) {
             txttelefono.requestFocus();
         } else if (!controlador.DatosNoAdmitidos()) {
-
+            
         }
     }//GEN-LAST:event_txttelefonoKeyReleased
 
@@ -570,7 +583,7 @@ public class Clientes extends javax.swing.JPanel {
         if (!controlador.CamposVacios()) {
             txtEmail.requestFocus();
         }
-
+        
 
     }//GEN-LAST:event_txtEmailKeyReleased
 
@@ -587,6 +600,10 @@ public class Clientes extends javax.swing.JPanel {
         controlador.limpiarCampos();
         txtcedula.setEditable(true);
     }//GEN-LAST:event_boton_cancelarActionPerformed
+
+    private void txt_filtradoClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_filtradoClienteKeyReleased
+        controlador.filtrar(txt_filtradoCliente.getText());
+    }//GEN-LAST:event_txt_filtradoClienteKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -624,6 +641,7 @@ public class Clientes extends javax.swing.JPanel {
     private javax.swing.JLabel numero;
     public javax.swing.JTextField txtDireccion;
     public javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txt_filtradoCliente;
     public javax.swing.JTextField txtcedula;
     public javax.swing.JComboBox<String> txtgenero;
     public com.toedter.calendar.JDateChooser txtnacimiento;
@@ -634,41 +652,41 @@ public class Clientes extends javax.swing.JPanel {
     public JTextField getTxtDireccion() {
         return txtDireccion;
     }
-
+    
     public JLabel getnumero() {
         return numero;
     }
-
+    
     public JTextField getTxtEmail() {
         return txtEmail;
     }
-
+    
     public JTextField getTxtcedula() {
         return txtcedula;
     }
-
+    
     public JComboBox<String> getTxtgenero() {
         return txtgenero;
     }
-
+    
     public JDateChooser getTxtnacimiento() {
         return txtnacimiento;
     }
-
+    
     public JTextField getTxtnombre() {
         return txtnombre;
     }
-
+    
     public JTextField getTxttelefono() {
         return txttelefono;
     }
-
+    
     public javax.swing.JTable getT_Clientes() {
         return T_Clientes;
     }
-
+    
     public javax.swing.JPanel getAdvertencia() {
         return advertencia;
     }
-
+    
 }

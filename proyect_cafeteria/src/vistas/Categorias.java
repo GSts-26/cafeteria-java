@@ -282,9 +282,14 @@ public class Categorias extends javax.swing.JPanel {
         info.putClientProperty(FlatClientProperties.STYLE,
             "arc: 50");
 
-        txt_filtrado_categoria.setFont(new java.awt.Font("Fira Code Medium", 0, 14)); // NOI18N
+        txt_filtrado_categoria.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         txt_filtrado_categoria.setForeground(new java.awt.Color(153, 153, 153));
         txt_filtrado_categoria.setBorder(javax.swing.BorderFactory.createTitledBorder(boton_agregar.getBorder(), "Filtrado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sora", 0, 13), new java.awt.Color(94, 83, 82))); // NOI18N
+        txt_filtrado_categoria.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_filtrado_categoriaKeyReleased(evt);
+            }
+        });
         contenido_table.add(txt_filtrado_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 270, -1));
         txt_filtrado_categoria.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingresa nombre");
         txt_filtrado_categoria.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSearchIcon());
@@ -340,6 +345,10 @@ public class Categorias extends javax.swing.JPanel {
     private void boton_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_cancelarActionPerformed
         controlCate.limpiar();
     }//GEN-LAST:event_boton_cancelarActionPerformed
+
+    private void txt_filtrado_categoriaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_filtrado_categoriaKeyReleased
+       controlCate.filtrar(txt_filtrado_categoria.getText());
+    }//GEN-LAST:event_txt_filtrado_categoriaKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

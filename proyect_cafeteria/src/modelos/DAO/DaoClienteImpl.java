@@ -7,14 +7,7 @@ import java.sql.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-/**
- *
- * @author Admin
- */
+
 public class DaoClienteImpl implements DAOGeneral<Cliente> {
 
     @Override
@@ -80,6 +73,31 @@ public class DaoClienteImpl implements DAOGeneral<Cliente> {
 
         try (Connection con = conexion.getInstance().getConnection(); PreparedStatement st = con.prepareStatement(sql); ResultSet rs = st.executeQuery()) {
 
+            while (rs.next()) {
+                Cliente cliente = new Cliente(
+                        rs.getLong("cedula"),
+                        rs.getString("nombre"),
+                        rs.getDate("nacimiento"),
+                        rs.getString("genero"),
+                        rs.getLong("telefono"),
+                        rs.getString("email"),
+                        rs.getString("direccion")
+                );
+                listaClientes.add(cliente);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println("Error al listar: " + e.getMessage());
+        }
+        return listaClientes;
+    }
+    public List<Cliente> Filtrar(String cedula) {
+        List<Cliente> listaClientes = new ArrayList<>();
+        String sql = "SELECT * FROM public.cliente where CAST(cedula AS TEXT) like ?";
+
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement st = con.prepareStatement(sql); ) {
+st.setString(1, '%'+cedula+'%');
+ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Cliente cliente = new Cliente(
                         rs.getLong("cedula"),

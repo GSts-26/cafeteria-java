@@ -1,5 +1,7 @@
 package controladores;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
@@ -54,19 +56,19 @@ public class Ingrediente_Controller implements EscuchadorIngrediente {
     public void rellenarListaIngrediente() {
         ListaIngrediente = IngredienteDAO.listar();
     }
+private void estilosBotones(){
 
-    public void mostrar() {
-        rellenarListaIngrediente();
-        modeloIngrediente = (DefaultTableModel) vista.T_Ingrediente.getModel();
-        modeloIngrediente.setRowCount(0);
         botonEditar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-edit-30.png")));
         botonEliminar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-trash-30.png")));
         botonEditar.setBorder(BorderFactory.createEmptyBorder());
         botonEliminar.setBorder(BorderFactory.createEmptyBorder());
-//        botonEliminar.putClientProperty(FlatClientProperties.STYLE, "arc: 20; " + "background: #E6D2D4;");
-//        botonEditar.putClientProperty(FlatClientProperties.STYLE, "arc: 20;" + "background: #F9F2ED;");
+}
+    public void mostrar() {
+        rellenarListaIngrediente();
+        modeloIngrediente = (DefaultTableModel) vista.T_Ingrediente.getModel();
+        modeloIngrediente.setRowCount(0);
         ingredientesContador = 0;
-
+estilosBotones();
         if (ListaIngrediente.isEmpty()) {
             vista.advertencia.setVisible(true);
             System.out.println("No hay ingredientes en la base de datos.");
@@ -84,6 +86,31 @@ public class Ingrediente_Controller implements EscuchadorIngrediente {
             vista.contadornumero.setText(String.valueOf(ingredientesContador));
         }
     }
+
+    public void  filtrar(String nombre){
+        ListaIngrediente = IngredienteDAO.Filtrar(nombre);
+        estilosBotones();
+        modeloIngrediente = (DefaultTableModel) vista.T_Ingrediente.getModel();
+        modeloIngrediente.setRowCount(0);
+        ingredientesContador = 0;
+        if (ListaIngrediente.isEmpty()) {
+            vista.advertencia.setVisible(true);
+            System.out.println("No hay ingredientes en la base de datos.");
+        } else {
+            vista.advertencia.setVisible(false);
+            for (Ingrediente ingrediente : ListaIngrediente) {
+                ingredientesContador++;
+                modeloIngrediente.addRow(new Object[]{
+                        ingrediente.getId(),
+                        ingrediente.getNombre(),
+                        botonEditar,
+                        botonEliminar
+                });
+            }
+            vista.contadornumero.setText(String.valueOf(ingredientesContador));
+        }
+    }
+
 
     public void rellenarACtu() {
         vista.lblIngrediente.setText("Actualizar Ingrediente");

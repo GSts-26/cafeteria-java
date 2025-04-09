@@ -144,6 +144,29 @@ public class DaoProductoImpl implements DAOGeneral<producto> {
 
         return listaProductos;
     }
+    public List<producto> filtrarProducto(String nombre){
+        List<producto> listaProductos = new ArrayList<>();
+        String sql = "SELECT * FROM public.producto where nombre like ?";
+        try(Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+          ps.setString(1, '%' + nombre + '%');
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                producto product = new producto(
+                        rs.getInt("id"),
+                        rs.getString("nombre"),
+                        rs.getInt("id_familia"),
+                        rs.getString("descripcion"),
+                        rs.getDouble("precio"),
+                        rs.getInt("cantidad"),
+                        rs.getInt("existencias"));
+            listaProductos.add(product);
+            }
+
+        }catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return listaProductos;
+    }
 
     public void actualizar1(producto t, int id) {
         String consulta = "update producto set cantidad=?, existencias=? where id=?";

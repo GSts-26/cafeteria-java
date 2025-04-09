@@ -41,9 +41,42 @@ public class EmpleadoController {
         String apellido = vistas.txt_apellido.getText();
         Empleado empleado = new Empleado(cedula, nombre, nacimiento, genero, telefono, email, direccion, apellido);
         empleadoDao.insertar(empleado);
-        JOptionPane.showMessageDialog(null, "Emplaedo registrado correctamente");
+        JOptionPane.showMessageDialog(null, "Empleado registrado correctamente");
         mostrar();
         limpiarCampos();
+    }
+    private void estilosBotones(){
+        botonEditar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-edit-30.png")));
+        botonEliminar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-trash-30.png")));
+        botonEliminar.setBorder(BorderFactory.createEmptyBorder());
+        botonEditar.setBorder(BorderFactory.createEmptyBorder());
+    }
+    public  void filtrarEmpleado(String cedula){
+        DefaultTableModel modeloTabla = (DefaultTableModel) vistas.Tabla_empleado.getModel();
+        modeloTabla.setRowCount(0);
+       estilosBotones();
+        listaEmpleado = empleadoDao.filtrar(cedula);
+        if (listaEmpleado.isEmpty()) {
+            System.out.println("No hay Empleados");
+            vistas.advertencia.setVisible(true);
+
+        } else {
+            vistas.advertencia.setVisible(false);
+            for (Empleado emp : listaEmpleado) {
+                modeloTabla.addRow(new Object[]{
+                        emp.getCedula(),
+                        emp.getNombre(),
+                        emp.getApellido(),
+                        emp.getNacimiento(),
+                        emp.getGenero(),
+                        emp.getTelefono(),
+                        emp.getEmail(),
+                        emp.getDireccion(),
+                        botonEditar,
+                        botonEliminar});
+            }
+            contar();
+        }
     }
     
     public void actualizar() {
@@ -87,13 +120,7 @@ public class EmpleadoController {
         DefaultTableModel modeloTabla = (DefaultTableModel) vistas.Tabla_empleado.getModel();
         modeloTabla.setRowCount(0);
         
-        botonEditar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-edit-30.png")));
-        botonEliminar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-trash-30.png")));
-        botonEliminar.setBorder(BorderFactory.createEmptyBorder());
-        botonEditar.setBorder(BorderFactory.createEmptyBorder());
-
-//        botonEliminar.putClientProperty(FlatClientProperties.STYLE, "arc: 20; " + "background: #E6D2D4;" );
-//        botonEditar.putClientProperty(FlatClientProperties.STYLE, "arc: 20;" + "background: #F9F2ED;");
+      estilosBotones();
         listaEmpleado = empleadoDao.listar();
         if (listaEmpleado.isEmpty()) {
             System.out.println("No hay Empleados");

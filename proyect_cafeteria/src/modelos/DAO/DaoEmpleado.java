@@ -124,6 +124,32 @@ public class DaoEmpleado implements DAOGeneral<Empleado> {
         return lista;
     }
 
+    public List<Empleado> filtrar(String cedula){
+        List<Empleado> lista = new ArrayList<>();
+        String consulta = "SELECT * FROM empleado WHERE CAST(cedula AS TEXT)like ?";
+        try(Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(consulta)) {
+          ps.setString(1, '%'+ cedula+ '%');
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Empleado empleado = new Empleado(
+                        rs.getLong("cedula"),
+                        rs.getString("nombre"),
+                        rs.getDate("nacimiento"),
+                        rs.getString("genero"),
+                        rs.getLong("telefono"),
+                        rs.getString("email"),
+                        rs.getString("direccion"),
+                        rs.getString("apellido")
+                );
+                lista.add(empleado);
+            }
+
+        }catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return lista;
+    }
+
     public int contarEmpleado() {
         int numero = 0;
         String consulta = "SELECT COUNT(*) FROM empleado";

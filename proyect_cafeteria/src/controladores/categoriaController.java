@@ -31,8 +31,8 @@ public class categoriaController {
     public void ingresar() {
         String nombre = vistaCategoria.getTxt_nombre().getText();
         categoria cate = new categoria(nombre);
-        for (categoria c : lista){
-            if (c.getNombre().equalsIgnoreCase(nombre)){
+        for (categoria c : lista) {
+            if (c.getNombre().equalsIgnoreCase(nombre)) {
                 JOptionPane.showMessageDialog(null, "El nombre de categoria ya existe", "Error", JOptionPane.ERROR_MESSAGE);
                 limpiar();
                 vistaCategoria.getTxt_nombre().requestFocus();
@@ -50,13 +50,36 @@ public class categoriaController {
 
     }
 
-    public void mostrar() {
+    private void EstilosBotones() {
 
         botonEditar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-edit-30.png")));
         botonEliminar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-trash-30.png")));
         botonEditar.setBorder(BorderFactory.createEmptyBorder());
         botonEliminar.setBorder(BorderFactory.createEmptyBorder());
+    }
+
+    public void filtrar(String nombre) {
+        lista = categoriaDao.Filtrar(nombre);
+        EstilosBotones();
+        contar();
+        if (lista.isEmpty()) {
+            vistaCategoria.getNohay().setVisible(true);
+        } else {
+            vistaCategoria.getNohay().setVisible(false);
+            vistaCategoria.getModel_tabla().setRowCount(0);
+            for (categoria cate : lista) {
+                vistaCategoria.getModel_tabla().addRow(new Object[]{
+                    cate.getId(),
+                    cate.getNombre(),
+                    botonEditar,
+                    botonEliminar});
+            }
+        }
+    }
+
+    public void mostrar() {
         lista = categoriaDao.listar();
+        EstilosBotones();
         contar();
         if (lista.isEmpty()) {
             vistaCategoria.getNohay().setVisible(true);
