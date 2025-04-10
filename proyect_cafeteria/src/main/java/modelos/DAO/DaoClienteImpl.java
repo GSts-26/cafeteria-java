@@ -7,7 +7,6 @@ import java.sql.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
 public class DaoClienteImpl implements DAOGeneral<Cliente> {
 
     @Override
@@ -91,13 +90,14 @@ public class DaoClienteImpl implements DAOGeneral<Cliente> {
         }
         return listaClientes;
     }
+
     public List<Cliente> Filtrar(String cedula) {
         List<Cliente> listaClientes = new ArrayList<>();
         String sql = "SELECT * FROM public.cliente where CAST(cedula AS TEXT) like ?";
 
-        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement st = con.prepareStatement(sql); ) {
-st.setString(1, '%'+cedula+'%');
-ResultSet rs = st.executeQuery();
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement st = con.prepareStatement(sql);) {
+            st.setString(1, '%' + cedula + '%');
+            ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Cliente cliente = new Cliente(
                         rs.getLong("cedula"),
@@ -115,6 +115,25 @@ ResultSet rs = st.executeQuery();
             System.out.println("Error al listar: " + e.getMessage());
         }
         return listaClientes;
+    }
+    
+     public int contarEmpleadosUltimos30Dias() {
+        String sql = "SELECT COUNT(*) FROM cliente WHERE fecha_re >= CURRENT_DATE - INTERVAL '30' DAY";
+        int count = 0;
+
+        try (Connection con = conexion.getInstance().getConnection();
+             PreparedStatement st = con.prepareStatement(sql);
+             ResultSet rs = st.executeQuery()) {
+
+            if (rs.next()) {
+                count = rs.getInt(1); 
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("Error al contar empleados: " + e.getMessage());
+        }
+
+        return count; // Devuelve el número de empleados
     }
 
 }

@@ -136,7 +136,7 @@ public class CarroComprasController {
         CarroCompras carroActivo;
            
         try {
-            carroActivo = CarroDAO.activo(123);
+            carroActivo = CarroDAO.activo(usuariologeado.getCedula());
             System.out.println(carroActivo);
         } catch (Exception e) {
             return;

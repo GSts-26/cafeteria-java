@@ -35,6 +35,11 @@ public class inicio_empleado extends javax.swing.JFrame {
         nombreUsuaio.setText(c.getNombre()+" "+c.getApellido());
         Rol.setText(c.getRol());
     }
+    
+    public void pedido(){
+    vistacompra.verificar();
+    }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

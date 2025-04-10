@@ -19,7 +19,7 @@ public class DaoProductoImpl implements DAOGeneral<producto> {
         // Convertir el ArrayList a Integer[]
         Integer[] ingredientesArray = t.getIdIngredientes().toArray(new Integer[0]);
 
-        String sql = "INSERT INTO public.producto (nombre, id_familia, descripcion, precio, cantidad, existencias, ids_ingrediente) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO public.producto (nombre, id_familia, descripcion, precio, cantidad, existencias, ids_ingrediente,url_img,id_img) VALUES (?, ?, ?, ?, ?, ?, ?,?,?)";
 
         try (Connection con = conexion.getInstance().getConnection(); PreparedStatement st = con.prepareStatement(sql)) {
 
@@ -32,6 +32,8 @@ public class DaoProductoImpl implements DAOGeneral<producto> {
 
             Array pgArray = con.createArrayOf("INTEGER", ingredientesArray);
             st.setArray(7, pgArray);
+            st.setString(8, t.getImagen());
+            st.setString(9, t.getId_img());
 
             st.executeUpdate();
             System.out.println("Producto ingresado con éxito");
@@ -140,7 +142,8 @@ public class DaoProductoImpl implements DAOGeneral<producto> {
                         rs.getInt("cantidad"),
                         rs.getInt("existencias"),
                         ingredientes,
-                        rs.getString("url_img")
+                        rs.getString("url_img"),
+                        rs.getString("id_img")
                 );
                 listaProductos.add(product);
             }
@@ -205,4 +208,22 @@ public class DaoProductoImpl implements DAOGeneral<producto> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public int contarproductosUltimos30Dias() {
+        String sql = "SELECT COUNT(*) FROM producto WHERE time_registrp >= CURRENT_DATE - INTERVAL '30' DAY";
+        int count = 0;
+
+        try (Connection con = conexion.getInstance().getConnection();
+             PreparedStatement st = con.prepareStatement(sql);
+             ResultSet rs = st.executeQuery()) {
+
+            if (rs.next()) {
+                count = rs.getInt(1); 
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("Error al contar empleados: " + e.getMessage());
+        }
+
+        return count; // Devuelve el número de empleados
+    }
 }

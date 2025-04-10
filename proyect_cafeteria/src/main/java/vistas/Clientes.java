@@ -30,6 +30,7 @@ public class Clientes extends javax.swing.JPanel {
         styless();
         controlador.OcultarMensajes();
         controlador.mostrar();
+        controlador.dias();
 //        T_Clientes.setDefaultRenderer(Object.class, new render());
     }
 
@@ -83,7 +84,7 @@ public class Clientes extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        contar_categoria = new javax.swing.JLabel();
+        nuevoscli = new javax.swing.JLabel();
         info1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
@@ -569,10 +570,10 @@ public class Clientes extends javax.swing.JPanel {
         jLabel17.setText("Nuevos (30 días)");
         jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, 20));
 
-        contar_categoria.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
-        contar_categoria.setForeground(new java.awt.Color(94, 83, 82));
-        contar_categoria.setText("0");
-        jPanel4.add(contar_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, 30));
+        nuevoscli.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
+        nuevoscli.setForeground(new java.awt.Color(94, 83, 82));
+        nuevoscli.setText("0");
+        jPanel4.add(nuevoscli, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, 30));
 
         info1.setBackground(new java.awt.Color(230, 247, 237));
         info1.setForeground(new java.awt.Color(255, 255, 255));
@@ -778,7 +779,6 @@ public class Clientes extends javax.swing.JPanel {
     public javax.swing.JButton boton_actualizar;
     private javax.swing.JButton boton_cancelar;
     public javax.swing.JButton boton_crear;
-    public javax.swing.JLabel contar_categoria;
     private javax.swing.JPanel contenido_table;
     private javax.swing.JPanel crear_cliente;
     private javax.swing.JPanel filtro;
@@ -817,6 +817,7 @@ public class Clientes extends javax.swing.JPanel {
     public javax.swing.JLabel m5DireccionVacia;
     public javax.swing.JLabel m6Emailvacio;
     private javax.swing.JButton nuevoCliente;
+    public javax.swing.JLabel nuevoscli;
     public javax.swing.JLabel numero;
     public javax.swing.JTextField txtDireccion;
     public javax.swing.JTextField txtEmail;

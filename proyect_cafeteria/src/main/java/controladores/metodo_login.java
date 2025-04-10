@@ -22,10 +22,10 @@ public class metodo_login {
     }
 
     public static usuario usuariologeado;
-    
-    public void cargarinterfaz(){
-    ventanaprincipal = new inicio();
-    ventanaempleado = new inicio_empleado();
+
+    public void cargarinterfaz() {
+        ventanaprincipal = new inicio();
+        ventanaempleado = new inicio_empleado();
     }
 
     public void acceso() {
@@ -34,12 +34,22 @@ public class metodo_login {
             String rol = usuariologeado.getRol();
             switch (rol) {
                 case "empleado":
+                    new Thread() {
+                        public void run() {
+                            ventanaempleado.pedido();
+                        }
+                    }.start();
                     JOptionPane.showMessageDialog(null, "Ingresando como Empleado");
                     vista.setVisible(false);
                     ventanaempleado.obteneruser(this.usuariologeado);
                     ventanaempleado.setVisible(true);
                     break;
                 case "administrador":
+                    new Thread() {
+                        public void run() {
+                            ventanaprincipal.pedido();
+                        }
+                    }.start();
                     JOptionPane.showMessageDialog(null, "Ingresando como Administrador");
                     abrirVentanaPrincipal(ventanaprincipal);
                     break;
@@ -60,6 +70,7 @@ public class metodo_login {
 
     private void abrirVentanaPrincipal(JFrame si) {
         vista.dispose();
+
         ventanaprincipal.obteneruser(this.usuariologeado);
         ventanaprincipal.setVisible(true);
     }

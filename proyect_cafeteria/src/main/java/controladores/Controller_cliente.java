@@ -43,7 +43,11 @@ public class Controller_cliente {
         clienteDAO.insertar(cliente);
         JOptionPane.showMessageDialog(null, "Cliente Ingresado");
         mostrar();
-
+        dias();
+    }
+    
+    public void dias(){
+    vista.nuevoscli.setText(clienteDAO.contarEmpleadosUltimos30Dias()+"");
     }
 private void EstilosBotones(){
 

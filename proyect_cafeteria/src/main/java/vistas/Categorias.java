@@ -34,6 +34,8 @@ public class Categorias extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         boton_nueva_categoria = new javax.swing.JButton();
@@ -48,15 +50,9 @@ public class Categorias extends javax.swing.JPanel {
         m1nombreCampo = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         descripcion = new javax.swing.JTextArea();
         jLabel14 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         desr = new javax.swing.JLabel();
@@ -83,15 +79,23 @@ public class Categorias extends javax.swing.JPanel {
         setBackground(new java.awt.Color(248, 249, 250));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane3.setBorder(null);
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(1150, 650));
+
+        jPanel2.setBackground(new java.awt.Color(248, 249, 250));
+        jPanel2.setPreferredSize(new java.awt.Dimension(1150, 825));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(94, 83, 82));
         jLabel1.setText("Categorias");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 23, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 23, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(94, 83, 82));
         jLabel2.setText("Gestiona tus categorias");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 60, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 60, -1, -1));
 
         boton_nueva_categoria.setBackground(new java.awt.Color(255, 138, 61));
         boton_nueva_categoria.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
@@ -105,13 +109,13 @@ public class Categorias extends javax.swing.JPanel {
                 boton_nueva_categoriaActionPerformed(evt);
             }
         });
-        add(boton_nueva_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(948, 20, 160, 45));
+        jPanel2.add(boton_nueva_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(948, 20, 160, 45));
 
         ms_nueva_categoria.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         ms_nueva_categoria.setForeground(new java.awt.Color(102, 102, 102));
         ms_nueva_categoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Info1.png"))); // NOI18N
         ms_nueva_categoria.setText("Agrega nueva categoria");
-        add(ms_nueva_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 30, -1, -1));
+        jPanel2.add(ms_nueva_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 30, -1, -1));
 
         card_layout_categoria.setBackground(new java.awt.Color(102, 153, 255));
         card_layout_categoria.setLayout(new java.awt.CardLayout());
@@ -202,11 +206,6 @@ public class Categorias extends javax.swing.JPanel {
         jLabel10.setText("ID");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 30, 30));
 
-        jLabel11.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(94, 83, 82));
-        jLabel11.setText("Color");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 200, 30));
-
         descripcion.setColumns(20);
         descripcion.setRows(5);
         jScrollPane2.setViewportView(descripcion);
@@ -218,26 +217,6 @@ public class Categorias extends javax.swing.JPanel {
         jLabel14.setForeground(new java.awt.Color(94, 83, 82));
         jLabel14.setText("Nombre De La Categoria");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 200, 30));
-
-        jButton1.setBackground(new java.awt.Color(255, 138, 61));
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 202, 43)));
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 50, 40));
-
-        jButton2.setBackground(new java.awt.Color(42, 154, 244));
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(252, 227, 235)));
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, 50, 40));
-
-        jButton3.setBackground(new java.awt.Color(233, 30, 99));
-        jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(233, 30, 99)));
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 490, 50, 40));
-
-        jButton4.setBackground(new java.awt.Color(255, 202, 43));
-        jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 202, 43)));
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 490, 50, 40));
-
-        jButton5.setBackground(new java.awt.Color(76, 175, 80));
-        jButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(76, 175, 80)));
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 490, 50, 40));
 
         jPanel3.setBackground(new java.awt.Color(249, 242, 237));
 
@@ -269,14 +248,14 @@ public class Categorias extends javax.swing.JPanel {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(desr, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 110));
 
         card_layout_categoria.add(jPanel1, "card2");
 
-        add(card_layout_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 140, 420, 620));
+        jPanel2.add(card_layout_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 140, 420, 620));
 
         contenido_table.setBackground(new java.awt.Color(255, 255, 255));
         contenido_table.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -352,7 +331,7 @@ public class Categorias extends javax.swing.JPanel {
 
         contenido_table.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 530, 360));
 
-        add(contenido_table, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, 580, 450));
+        jPanel2.add(contenido_table, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, 580, 450));
         contenido_table.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
 
@@ -385,7 +364,7 @@ public class Categorias extends javax.swing.JPanel {
 
         jPanel4.add(info1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 50, 50));
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 270, 90));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 270, 90));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -416,7 +395,7 @@ public class Categorias extends javax.swing.JPanel {
 
         jPanel5.add(info2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 50, 50));
 
-        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 270, 90));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 270, 90));
 
         filtro.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -456,9 +435,14 @@ public class Categorias extends javax.swing.JPanel {
         txt_filtrado_categoria.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Buscar Clientes...");
         txt_filtrado_categoria.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSearchIcon());
 
-        add(filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 600, -1));
+        jPanel2.add(filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 600, -1));
         filtro.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
+
+        jScrollPane3.setViewportView(jPanel2);
+
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jScrollPane3.getVerticalScrollBar().setUnitIncrement(16);
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_agregarActionPerformed
@@ -532,14 +516,8 @@ public class Categorias extends javax.swing.JPanel {
     private javax.swing.JPanel filtro;
     private javax.swing.JPanel info1;
     private javax.swing.JPanel info2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel18;
@@ -552,11 +530,13 @@ public class Categorias extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     public javax.swing.JLabel m1nombreCampo;
     private javax.swing.JLabel ms_nueva_categoria;
     private javax.swing.JPanel no_hay_categorias;

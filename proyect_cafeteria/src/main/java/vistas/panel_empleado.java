@@ -91,6 +91,7 @@ public class panel_empleado extends javax.swing.JPanel {
         jScrollPane2.setBackground(new java.awt.Color(251, 250, 248));
         jScrollPane2.setBorder(null);
         jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(1150, 650));
 
         jPanel2.setBackground(new java.awt.Color(248, 249, 250));
         jPanel2.setPreferredSize(new java.awt.Dimension(1140, 792));
@@ -518,6 +519,7 @@ public class panel_empleado extends javax.swing.JPanel {
         jScrollPane2.setViewportView(jPanel2);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_agregarActionPerformed

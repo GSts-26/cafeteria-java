@@ -14,6 +14,8 @@ public class producto {
     private int id;
     private String nombre;
     private int categoria;
+    private String id_img;
+    private String imagen;
 
     public String getImagen() {
         return imagen;
@@ -23,9 +25,16 @@ public class producto {
         this.imagen = imagen;
     }
 
-    private String imagen;
+    public String getId_img() {
+        return id_img;
+    }
+
+    public void setId_img(String id_img) {
+        this.id_img = id_img;
+    }
 
     public producto() {
+
     }
 
     public producto(int id, String nombre, int categoria, String descripcion, double precio, int cantidad, int stock) {
@@ -54,7 +63,7 @@ public class producto {
         this.idIngredientes = idIngredientes;
     }
 
-    public producto(int id, String nombre, int categoria, String Descripcion, double precio, int cantidad, int stock, ArrayList<Integer> idIngredientes, String imagen) {
+    public producto(int id, String nombre, int categoria, String Descripcion, double precio, int cantidad, int stock, ArrayList<Integer> idIngredientes, String imagen, String id_img) {
         this.id = id;
         this.nombre = nombre;
         this.categoria = categoria;
@@ -64,6 +73,7 @@ public class producto {
         this.stock = stock;
         this.idIngredientes = idIngredientes;
         this.imagen = imagen;
+        this.id_img = id_img;
     }
 
     private String Descripcion;

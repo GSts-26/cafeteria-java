@@ -29,16 +29,16 @@ public class compras extends javax.swing.JPanel {
 
     public compras() {
         initComponents();
-//        panel_con.addMouseListener(new MouseAdapter() {
-//        });
-//        panel_con.setBackground(new Color(0, 0, 0, 65));
 
-        controlador.pedidoActivo();
         controlador.relenar_productos();
         controlador.rellenarCliente();
         controlador.rellenarCtaegorias();
         venta.setVisible(false);
         Panel_pedidoActivo.setVisible(false);
+    }
+
+    public void verificar() {
+        controlador.pedidoActivo();
     }
 
     public void mostrarInformacion(producto p) {
@@ -48,8 +48,8 @@ public class compras extends javax.swing.JPanel {
         Agregar.setSize(800, 490);
         controlador.MostrarIngredientes();
 
-    try {
-        URL url;
+        try {
+            URL url;
             url = new URL(p.getImagen());
             ImageIcon imageIcon = new ImageIcon(url);
 
@@ -57,7 +57,7 @@ public class compras extends javax.swing.JPanel {
         } catch (Exception ex) {
             System.out.println(ex);
         }
-    
+
         Agregar.setLocationRelativeTo(null);
         Agregar.setVisible(true);
     }

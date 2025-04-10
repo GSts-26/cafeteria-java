@@ -15,20 +15,18 @@ import java.awt.CardLayout;
 import java.awt.Image;
 import java.awt.Insets;
 import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import modelos.Bd.CloudinaryConfig;
 import utils.render;
+
 /**
  *
  * @author duvan
@@ -42,10 +40,12 @@ public class panel_productos extends javax.swing.JPanel {
     CardLayout Vista;
     JFileChooser j = new JFileChooser("d:");
     public File fichero;
+    public String imagenUrl = null, publicId = null;
 
     public panel_productos() {
         initComponents();
         styles();
+        controlador.dias();
         System.out.println(System.getProperty("java.class.path"));
         Vista = (CardLayout) cardProductos.getLayout();
         controlador.mostrar();
@@ -168,12 +168,13 @@ public class panel_productos extends javax.swing.JPanel {
         info1 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        numero_empleados2 = new javax.swing.JLabel();
+        nuevos = new javax.swing.JLabel();
         info2 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
         numero_empleados3 = new javax.swing.JLabel();
         info3 = new javax.swing.JPanel();
+        jLabel34 = new javax.swing.JLabel();
         filtro = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         txt_filtrado_producto = new javax.swing.JTextField();
@@ -653,12 +654,12 @@ public class panel_productos extends javax.swing.JPanel {
 
         TxtInfoPrecio.setFont(new java.awt.Font("Sora", 1, 15)); // NOI18N
         TxtInfoPrecio.setForeground(new java.awt.Color(198, 124, 78));
-        TxtInfoPrecio.setText("$0");
+        TxtInfoPrecio.setText("$0.0");
         jPanel5.add(TxtInfoPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         txtInfoNombre.setFont(new java.awt.Font("Sora", 1, 15)); // NOI18N
         txtInfoNombre.setForeground(new java.awt.Color(94, 83, 82));
-        txtInfoNombre.setText("Producto");
+        txtInfoNombre.setText("Nombre Producto");
         jPanel5.add(txtInfoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 160, 30));
 
         jPanel6.setBackground(new java.awt.Color(248, 249, 250));
@@ -932,10 +933,10 @@ public class panel_productos extends javax.swing.JPanel {
         jLabel19.setText("Nuevos (30 días)");
         jPanel12.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, 20));
 
-        numero_empleados2.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
-        numero_empleados2.setForeground(new java.awt.Color(102, 102, 102));
-        numero_empleados2.setText("0");
-        jPanel12.add(numero_empleados2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 21, -1, 30));
+        nuevos.setFont(new java.awt.Font("Sora", 1, 24)); // NOI18N
+        nuevos.setForeground(new java.awt.Color(102, 102, 102));
+        nuevos.setText("0");
+        jPanel12.add(nuevos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 21, -1, 30));
 
         info2.setBackground(new java.awt.Color(229, 233, 251));
         info2.setForeground(new java.awt.Color(255, 255, 255));
@@ -971,15 +972,23 @@ public class panel_productos extends javax.swing.JPanel {
         info3.setBackground(new java.awt.Color(255, 246, 218));
         info3.setForeground(new java.awt.Color(255, 255, 255));
 
+        jLabel34.setText("jLabel34");
+
         javax.swing.GroupLayout info3Layout = new javax.swing.GroupLayout(info3);
         info3.setLayout(info3Layout);
         info3Layout.setHorizontalGroup(
             info3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
+            .addGroup(info3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel34)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         info3Layout.setVerticalGroup(
             info3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, info3Layout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanel13.add(info3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 50, 50));
@@ -1124,6 +1133,7 @@ public class panel_productos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_crearActionPerformed
+
         if (!controlador.verificarCamposVacios()) {
             return;
         }
@@ -1132,8 +1142,21 @@ public class panel_productos extends javax.swing.JPanel {
             int valor = Integer.parseInt(T_ingredientes.getValueAt(i, 0).toString());
             ingredientes.add(valor);
         }
-        
-        controlador.ingresar(ingredientes);
+        if (fichero == null || fichero.length() == 0) {
+
+        } else {
+            try {
+                Cloudinary cloudinary = CloudinaryConfig.getInstance();
+                Map uploadResult = cloudinary.uploader().upload(fichero, ObjectUtils.emptyMap());
+                imagenUrl = uploadResult.get("secure_url").toString();
+                publicId = uploadResult.get("public_id").toString();
+                controlador.transformar_imagen();
+            } catch (Exception e) {
+
+            }
+        }
+
+        controlador.ingresar(ingredientes, imagenUrl);
         controlador.limpiarCampos();
 
     }//GEN-LAST:event_boton_crearActionPerformed
@@ -1214,14 +1237,42 @@ public class panel_productos extends javax.swing.JPanel {
     }//GEN-LAST:event_tabla_productoMouseClicked
 
     private void boton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_actualizarActionPerformed
+        try {
+            Cloudinary cloudinary = CloudinaryConfig.getInstance();
+            System.out.println(fichero.getAbsolutePath());
+//            Map uploadResult = cloudinary.uploader().upload(fichero, ObjectUtils.emptyMap());
+//            imagenUrl = uploadResult.get("secure_url").toString();
+//            publicId = uploadResult.get("public_id").toString();
+//            controlador.transformar_imagen();
+        } catch (Exception e) {
+
+        }
         DefaultTableModel modelo = (DefaultTableModel) T_ingredientes.getModel();
         int filas = T_ingredientes.getRowCount();
+
         ArrayList<Integer> listaIds = new ArrayList<>();
         for (int i = 0; i < filas; i++) {
             int ids = Integer.parseInt(modelo.getValueAt(i, 0).toString());
             listaIds.add(ids);
         }
         controlador.actualizar(listaIds);
+//        new Thread() {
+//            public void run() {
+//                try {
+//                    Cloudinary cloudinary = CloudinaryConfig.getInstance();
+//                    Map<String, Object> deleteResult = cloudinary.uploader().destroy(publicId, ObjectUtils.emptyMap());
+//
+//                    if ("ok".equals(deleteResult.get("result"))) {
+//
+//                    } else {
+//                        System.out.println("⚠️ No se pudo eliminar la imagen anterior.");
+//                    }
+//                } catch (Exception e) {
+//                    System.out.println("❌ Error al eliminar imagen: " + e.getMessage());
+//                }
+//            }
+//        }.start();
+
     }//GEN-LAST:event_boton_actualizarActionPerformed
 
     private void T_ingredientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_T_ingredientesMouseClicked
@@ -1360,7 +1411,7 @@ public class panel_productos extends javax.swing.JPanel {
     public javax.swing.JLabel contar_productos;
     private javax.swing.JPanel crear_cliente;
     private javax.swing.JPanel filtro;
-    private javax.swing.JLabel imagenpro;
+    public javax.swing.JLabel imagenpro;
     private javax.swing.JPanel info1;
     private javax.swing.JPanel info2;
     private javax.swing.JPanel info3;
@@ -1395,6 +1446,7 @@ public class panel_productos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1429,7 +1481,7 @@ public class panel_productos extends javax.swing.JPanel {
     public javax.swing.JLabel m5CantidadVacio;
     public javax.swing.JLabel m5ProteVacio;
     public javax.swing.JPanel no_hay_productos;
-    public javax.swing.JLabel numero_empleados2;
+    public javax.swing.JLabel nuevos;
     public javax.swing.JLabel numero_empleados3;
     public javax.swing.JTable tabla_producto;
     public javax.swing.JTextField txtAzucar;

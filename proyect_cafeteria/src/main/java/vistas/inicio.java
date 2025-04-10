@@ -38,6 +38,10 @@ public class inicio extends javax.swing.JFrame {
         this.repaint();
         this.revalidate();
     }
+    
+    public void pedido(){
+    vistacompra.verificar();
+    }
 
     public void obteneruser(usuario c) {
         this.c = c;

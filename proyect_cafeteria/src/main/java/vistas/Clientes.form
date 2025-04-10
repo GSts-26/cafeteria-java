@@ -1098,7 +1098,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JLabel" name="contar_categoria">
+                <Component class="javax.swing.JLabel" name="nuevoscli">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Sora" size="24" style="1"/>
