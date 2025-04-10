@@ -25,12 +25,13 @@ import modelos.Entidades.itemsCarro;
 import vistas.compras;
 import vistas.menu.producto_info;
 import static controladores.metodo_login.usuariologeado;
- import modelos.DAO.EscuchadorCarroCompras;
+import modelos.DAO.EscuchadorCarroCompras;
+
 /**
  *
  * @author SENA
  */
-public class CarroComprasController implements EscuchadorCarroCompras{
+public class CarroComprasController implements EscuchadorCarroCompras {
 
     private final compras vista; // Referencia a la interfaz gráfica
     private DaoProductoImpl ProductosDAO;
@@ -44,7 +45,6 @@ public class CarroComprasController implements EscuchadorCarroCompras{
     private DaoCategoria categoriaDao;
     private double total = 0;
     HashMap<Integer, Object> productosCarro = new HashMap<>();
-    
 
     // Variables para almacenar información nutricional de los productos
     private int totalProteina = 0;
@@ -70,7 +70,6 @@ public class CarroComprasController implements EscuchadorCarroCompras{
         this.ListaProductos = ProductosDAO.listar(); // Carga la lista de productos
     }
 
-
     // Llena la interfaz con los productos disponibles
     public void relenar_productos() {
         vista.contenido_producto.setLayout(new GridLayout(0, 4, 16, 16));
@@ -93,8 +92,9 @@ public class CarroComprasController implements EscuchadorCarroCompras{
     }
 
     public void rellenarCtaegorias() {
+        vista.combocategoria.removeAllItems();
         categoriaDao.listar().forEach(cate -> {
-        vista.combocategoria.addItem(cate);
+            vista.combocategoria.addItem(cate);
         });
     }
 
@@ -143,7 +143,7 @@ public class CarroComprasController implements EscuchadorCarroCompras{
         DefaultTableModel modeloproductosCarro = (DefaultTableModel) vista.T_Productos.getModel();
 
         CarroCompras carroActivo;
-           
+
         try {
             carroActivo = CarroDAO.activo(usuariologeado.getCedula());
             System.out.println(carroActivo);
@@ -253,17 +253,25 @@ public class CarroComprasController implements EscuchadorCarroCompras{
 
     public void OperacionBd() {
         Daoitems.TransaccionOperacional(carro);
-        EventBus.PublishCarroCompras();
+
+        new Thread() {
+            public void run() {
+
+                EventBus.PublishCarroCompras();
+                EventBus.PublishProducto();
+            }
+        }.start();
+
     }
-    
-    public double vueltos(){
-        return Integer.parseInt(vista.monto.getText())-total;
+
+    public double vueltos() {
+        return Integer.parseInt(vista.monto.getText()) - total;
     }
-    
-    
-    public void actualizar(){
-    CarroDAO.actualizarValor((long) total, carro);
+
+    public void actualizar() {
+        CarroDAO.actualizarValor((long) total, carro);
     }
+
     @Override
     public void EscuchadorCarroCompras() {
 

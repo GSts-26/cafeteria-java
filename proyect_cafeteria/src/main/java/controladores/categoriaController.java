@@ -44,7 +44,7 @@ public class categoriaController {
         limpiar();
         mostrar();
         // metodo que avisa cuando se ingresa una categoria
-        EventBus.PublishProducto();
+//        EventBus.PublishProducto();
 
         JOptionPane.showMessageDialog(null, "Categoria agregada", "Agregado", JOptionPane.INFORMATION_MESSAGE);
 
@@ -94,8 +94,13 @@ public class categoriaController {
                     botonEliminar});
             }
         }
-        EventBus.PublishProducto();
-         EventBus.PublishCarroCompras();
+
+        new Thread() {
+            public void run() {
+                EventBus.PublishCarroCompras();
+                EventBus.PublishProducto();
+            }
+        }.start();
     }
 
     public void rellenarActualizar() {
@@ -122,7 +127,7 @@ public class categoriaController {
         limpiar();
         JOptionPane.showMessageDialog(null, "Datos modificados", "Modificado", JOptionPane.INFORMATION_MESSAGE);
         // envia una alerta cuando se modifica una categoria
-        EventBus.PublishProducto();
+//        EventBus.PublishProducto();
     }
 
     public void accionTabla() {

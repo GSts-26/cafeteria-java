@@ -30,10 +30,7 @@ import modelos.Entidades.categoria;
 import modelos.Entidades.producto;
 import vistas.panel_productos;
 
-/**
- *
- * @author Admin
- */
+
 public class productoController implements EscuchadorProducto, EscuchadorIngrediente, EscuchadorCarroCompras {
 
     private panel_productos vista;
@@ -104,12 +101,12 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
             limpiarCampos();
             mostrar();
             // metodo que envia una alerta cuando se ingresa un producto
-            new Thread() {
-                public void run() {
-
-                    EventBus.PublishProducto();
-                }
-            }.start();
+//            new Thread() {
+//                public void run() {
+//
+//                    EventBus.PublishProducto();
+//                }
+//            }.start();
             JOptionPane.showMessageDialog(null, "Producto Ingresado");
 
         }
