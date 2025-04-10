@@ -41,7 +41,6 @@ public class panel_empleado extends javax.swing.JPanel {
         txt_apellido = new javax.swing.JTextField();
         txt_direccion = new javax.swing.JTextField();
         txt_correo = new javax.swing.JTextField();
-        fecha_nacimiento = new com.toedter.calendar.JDateChooser();
         genero = new javax.swing.JComboBox<>();
         m2cedula_dato = new javax.swing.JLabel();
         m1cedula_campo = new javax.swing.JLabel();
@@ -65,6 +64,7 @@ public class panel_empleado extends javax.swing.JPanel {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        fecha_nacimiento = new com.toedter.calendar.JDateChooser();
         contenido_table = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -156,10 +156,6 @@ public class panel_empleado extends javax.swing.JPanel {
         });
         jPanel3.add(txt_correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 256, 36));
         txt_correo.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Empleado@ejemplo.com");
-
-        fecha_nacimiento.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
-        jPanel3.add(fecha_nacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 142, 36));
-        jPanel3.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "01/03/2025");
 
         genero.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         genero.setForeground(new java.awt.Color(102, 102, 102));
@@ -315,6 +311,9 @@ public class panel_empleado extends javax.swing.JPanel {
         jLabel18.setText("Direccion");
         jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, -1, 20));
 
+        fecha_nacimiento.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        jPanel3.add(fecha_nacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 256, 140, 30));
+
         card_layout_empleado.add(jPanel3, "card2");
 
         jPanel2.add(card_layout_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 470, 710));
@@ -388,7 +387,7 @@ public class panel_empleado extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, true
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -410,6 +409,26 @@ public class panel_empleado extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(Tabla_empleado);
+        if (Tabla_empleado.getColumnModel().getColumnCount() > 0) {
+            Tabla_empleado.getColumnModel().getColumn(0).setResizable(false);
+            Tabla_empleado.getColumnModel().getColumn(0).setPreferredWidth(140);
+            Tabla_empleado.getColumnModel().getColumn(1).setResizable(false);
+            Tabla_empleado.getColumnModel().getColumn(1).setPreferredWidth(180);
+            Tabla_empleado.getColumnModel().getColumn(2).setResizable(false);
+            Tabla_empleado.getColumnModel().getColumn(2).setPreferredWidth(180);
+            Tabla_empleado.getColumnModel().getColumn(3).setResizable(false);
+            Tabla_empleado.getColumnModel().getColumn(3).setPreferredWidth(160);
+            Tabla_empleado.getColumnModel().getColumn(4).setResizable(false);
+            Tabla_empleado.getColumnModel().getColumn(4).setPreferredWidth(120);
+            Tabla_empleado.getColumnModel().getColumn(5).setResizable(false);
+            Tabla_empleado.getColumnModel().getColumn(5).setPreferredWidth(140);
+            Tabla_empleado.getColumnModel().getColumn(6).setResizable(false);
+            Tabla_empleado.getColumnModel().getColumn(6).setPreferredWidth(200);
+            Tabla_empleado.getColumnModel().getColumn(7).setResizable(false);
+            Tabla_empleado.getColumnModel().getColumn(7).setPreferredWidth(200);
+            Tabla_empleado.getColumnModel().getColumn(8).setResizable(false);
+            Tabla_empleado.getColumnModel().getColumn(9).setResizable(false);
+        }
         ///
         //T_productos.setBorder(new MatteBorder(1, 0, 0, 0, Color.decode("0xECECEC")));
 
