@@ -1,6 +1,9 @@
 package controladores;
 
+import Reportes.ExportarExcel;
+import Reportes.metodoTxt;
 import com.formdev.flatlaf.FlatClientProperties;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -17,6 +20,7 @@ import modelos.DAO.DaoCategoria;
 
 import modelos.DAO.DaoIngredienteImpl;
 import modelos.DAO.DaoProductoImpl;
+import modelos.DAO.EscuchadorCarroCompras;
 import modelos.DAO.EscuchadorIngrediente;
 import modelos.DAO.EscuchadorProducto;
 import modelos.Entidades.Ingrediente;
@@ -24,11 +28,7 @@ import modelos.Entidades.categoria;
 import modelos.Entidades.producto;
 import vistas.panel_productos;
 
-/**
- *
- * @author Admin
- */
-public class productoController implements EscuchadorProducto, EscuchadorIngrediente {
+public class productoController implements EscuchadorProducto, EscuchadorIngrediente, EscuchadorCarroCompras {
 
     private panel_productos vista;
     private DaoProductoImpl productoDAO;
@@ -56,6 +56,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         this.ProductosContador = 0;
         EventBus.SubscribirseProducto(this);
         EventBus.SubscribirseIngrediente(this);
+        EventBus.subscribirseCarroCompras(this);
 
     }
 
@@ -75,25 +76,25 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
             vista.AgregarIngredientes.setLocationRelativeTo(null);
             rellenar_Combo_Ingredientes();
             vista.AgregarIngredientes.setVisible(true);
-        }else{
+        } else {
 
+            String id = vista.txt_categoria.getSelectedItem().toString();
+            String ids = id.split(" - ")[0];
+            producto producto = new producto(vista.txtNombre.getText(), Integer.parseInt(ids), vista.txtDescripcion.getText(), (Integer.parseInt(vista.txtprecio.getText())), Integer.parseInt(vista.txtCantidad.getValue().toString()), Integer.parseInt(vista.txtStock.getValue().toString()),
+                    ingredientes, "si");
 
-        String id = vista.txt_categoria.getSelectedItem().toString();
-        String ids = id.split(" - ")[0];
-        producto producto = new producto(vista.txtNombre.getText(), Integer.parseInt(ids), vista.txtDescripcion.getText(), (Integer.parseInt(vista.txtprecio.getText())), Integer.parseInt(vista.txtCantidad.getValue().toString()), Integer.parseInt(vista.txtStock.getValue().toString()),
-                ingredientes,"si");
+            productoDAO.insertar(producto);
+            limpiarCampos();
+            // metodo que envia una alerta cuando se ingresa un producto
+            EventBus.PublishProducto();
+            mostrar();
+            JOptionPane.showMessageDialog(null, "Producto Ingresado");
 
-        productoDAO.insertar(producto);
-        limpiarCampos();
-        // metodo que envia una alerta cuando se ingresa un producto
-        EventBus.PublishProducto();
-        mostrar();
-        JOptionPane.showMessageDialog(null, "Producto Ingresado");
+        }
 
     }
-    
-}
-    public void filtrar(String nombre){
+
+    public void filtrar(String nombre) {
         modeloProductos = (DefaultTableModel) vista.tabla_producto.getModel();
         estilosBotones();
         modeloProductos.setRowCount(0);
@@ -108,20 +109,21 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
                 ProductosContador++;
                 System.out.println(Producto.getNombre());
                 modeloProductos.addRow(new Object[]{
-                        Producto.getId(),
-                        Producto.getNombre(),
-                        Producto.getCategoria(),
-                        Producto.getPrecio(),
-                        Producto.getCantidad(),
-                        botonVer,
-                        botonEditar,
-                        botonBorrar
+                    Producto.getId(),
+                    Producto.getNombre(),
+                    Producto.getCategoria(),
+                    Producto.getPrecio(),
+                    Producto.getCantidad(),
+                    botonVer,
+                    botonEditar,
+                    botonBorrar
                 });
             }
-            
+
             vista.contar_productos.setText(String.valueOf(ProductosContador));
         }
     }
+
     private boolean tablaIngreVacia() {
         boolean vacia = false;
         if (modeloingredientes.getRowCount() <= 0) {
@@ -131,7 +133,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         return vacia;
 
     }
-    
+
 //  botones para editar y eliminar
     private void estilosBotones() {
         botonEditar.setIcon(new ImageIcon(getClass().getResource("/imagenes/icons8-edit-30.png")));
@@ -169,6 +171,8 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
                     botonBorrar
                 });
             }
+            EventBus.PublishCarroCompras();
+
             vista.contar_productos.setText(String.valueOf(ProductosContador));
         }
     }
@@ -182,7 +186,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
     }
 
     // rellenar todos los campos cuando se va a actualizar un producto
-   public void rellenarActualizar() {
+    public void rellenarActualizar() {
 
         Map<Integer, Ingrediente> ingredientesMap = new HashMap<>();
         // recorrer la lista de ingredientes y agregar el id del ingrediente y el objeto ingrediente
@@ -254,7 +258,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
     }
 
     // metodo para actualizar los datos del producto...
-   public void actualizar(ArrayList<Integer> ingredientes) {
+    public void actualizar(ArrayList<Integer> ingredientes) {
         modeloingredientes = (DefaultTableModel) vista.T_ingredientes.getModel();
         String id = vista.txt_categoria.getSelectedItem().toString();
         String ids = id.split(" - ")[0];
@@ -262,7 +266,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
             return;
         }
         producto producto = new producto(vista.txtNombre.getText(), Integer.parseInt(ids), vista.txtDescripcion.getText(), (Integer.parseInt(vista.txtprecio.getText())), Integer.parseInt(vista.txtCantidad.getValue().toString()), Integer.parseInt(vista.txtStock.getValue().toString()),
-                ingredientes,"si");
+                ingredientes, "si");
         int filaAfectada = productoDAO.actualizar(producto, idprodu);
         if (filaAfectada > 0) {
             nuevoProducto();
@@ -277,8 +281,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
 
     }
 
-   
-   public void Acciones_tabla() {
+    public void Acciones_tabla() {
         int columna = vista.tabla_producto.getSelectedColumn();
         int fila = vista.tabla_producto.getSelectedRow();
         // editar
@@ -294,7 +297,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         }
 
     }
-   
+
     // quitar ingrediente de un producto
     public void eliminaringrediente() {
         DefaultTableModel modelo = (DefaultTableModel) vista.T_ingredientes.getModel();
@@ -317,24 +320,20 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
     }
 
     // Ingresar las categorias al comboBox
-     private void rellenar_combo_categoria() {
+    private void rellenar_combo_categoria() {
         categoria = categoriaDAO.listar();
         if (!categoria.isEmpty()) {
             vista.txt_categoria.removeAllItems();
-           categoria.forEach(catego -> {
-    // Imprimir el ID de cada categoria
-    System.out.println("ID: " + catego.getId());
+            categoria.forEach(catego -> {
+                // Imprimir el ID de cada categoria
+                System.out.println("ID: " + catego.getId());
 
-    // Añadir al comboBox
-    vista.txt_categoria.addItem(String.valueOf(catego.getId() + " - " + catego.getNombre()));
-});
+                // Añadir al comboBox
+                vista.txt_categoria.addItem(String.valueOf(catego.getId() + " - " + catego.getNombre()));
+            });
 
         }
     }
-
-//    public void actualizarCombo() {
-//        rellenar_combo_categoria();
-//    }
 
 // Obtenemos el campo selecionado en el combobobox y se agrega a la tabla de ingredientes para el producto
     public void agregar_Ingredientes() {
@@ -513,6 +512,20 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
 
     }
 
+    public void GenerarTxt() {
+        metodoTxt c = new metodoTxt();
+        c.exportarTabla(vista.tabla_producto, "Producto.txt");
+        JOptionPane.showMessageDialog(null, "Txt generado exitosamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+    }
+    public void GenerarExcel(){
+        try {
+            ExportarExcel c = new ExportarExcel();
+            c.exportarExcel(vista.tabla_producto);
+        } catch (IOException ex) {
+            Logger.getLogger(productoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     @Override
     public void EscuchadorProductoActivo() {
         try {
@@ -532,5 +545,9 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
             System.out.println("Entro al catch de escuchador ingrediente en producto controller linea 432");
         }
 
+    }
+
+    @Override
+    public void EscuchadorCarroCompras() {
     }
 }

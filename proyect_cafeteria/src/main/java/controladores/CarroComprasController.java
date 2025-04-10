@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controladores;
 
 import java.awt.GridLayout;
@@ -13,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.table.DefaultTableModel;
+
 import modelos.DAO.DaoProductoImpl;
 import modelos.DAO.DaoClienteImpl;
 import modelos.DAO.DaoIngredienteImpl;
@@ -24,13 +21,12 @@ import modelos.Entidades.CarroCompras;
 import modelos.Entidades.itemsCarro;
 import vistas.compras;
 import vistas.menu.producto_info;
+
 import static controladores.metodo_login.usuariologeado;
 
-/**
- *
- * @author SENA
- */
-public class CarroComprasController {
+import modelos.DAO.EscuchadorCarroCompras;
+
+public class CarroComprasController implements EscuchadorCarroCompras {
 
     private final compras vista; // Referencia a la interfaz gráfica
     private DaoProductoImpl ProductosDAO;
@@ -44,7 +40,6 @@ public class CarroComprasController {
     private DaoCategoria categoriaDao;
     private double total = 0;
     HashMap<Integer, Object> productosCarro = new HashMap<>();
-    
 
     // Variables para almacenar información nutricional de los productos
     private int totalProteina = 0;
@@ -62,18 +57,26 @@ public class CarroComprasController {
         this.ClienteDAO = new DaoClienteImpl();
         this.CarroDAO = new DaoCarro();
         this.Daoitems = new DaoitemsCarro();
+        EventBus.subscribirseCarroCompras(this);
+
+    }
+
+    public void rellenarListaProducto() {
         this.ListaProductos = ProductosDAO.listar(); // Carga la lista de productos
     }
 
     // Llena la interfaz con los productos disponibles
     public void relenar_productos() {
         vista.contenido_producto.setLayout(new GridLayout(0, 4, 16, 16));
-
+        rellenarListaProducto();
+        vista.contenido_producto.removeAll();
         for (producto producto : ListaProductos) {
+
             vista.contenido_producto.add(new producto_info(producto, this.vista));
-            vista.contenido_producto.revalidate();
-            vista.contenido_producto.repaint();
+
         }
+        vista.contenido_producto.revalidate();
+        vista.contenido_producto.repaint();
     }
 
     // Carga la lista de clientes en el combo de selección
@@ -85,7 +88,7 @@ public class CarroComprasController {
 
     public void rellenarCtaegorias() {
         categoriaDao.listar().forEach(cate -> {
-        vista.combocategoria.addItem(cate);
+            vista.combocategoria.addItem(cate);
         });
     }
 
@@ -134,7 +137,7 @@ public class CarroComprasController {
         DefaultTableModel modeloproductosCarro = (DefaultTableModel) vista.T_Productos.getModel();
 
         CarroCompras carroActivo;
-           
+
         try {
             carroActivo = CarroDAO.activo(123);
             System.out.println(carroActivo);
@@ -244,14 +247,25 @@ public class CarroComprasController {
 
     public void OperacionBd() {
         Daoitems.TransaccionOperacional(carro);
+        EventBus.PublishCarroCompras();
     }
-    
-    public double vueltos(){
-        return Integer.parseInt(vista.monto.getText())-total;
+
+    public double vueltos() {
+        return Integer.parseInt(vista.monto.getText()) - total;
     }
-    
-    
-    public void actualizar(){
-    CarroDAO.actualizarValor((long) total, carro);
+
+    public void actualizar() {
+        CarroDAO.actualizarValor((long) total, carro);
+    }
+
+    @Override
+    public void EscuchadorCarroCompras() {
+
+        try {
+            relenar_productos();
+            rellenarCtaegorias();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

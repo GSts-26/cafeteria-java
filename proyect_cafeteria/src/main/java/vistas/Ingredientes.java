@@ -58,7 +58,6 @@ public class Ingredientes extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         dr = new javax.swing.JLabel();
         lblIngrediente = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
         boton_nuevo = new javax.swing.JButton();
         filtro = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
@@ -115,6 +114,7 @@ public class Ingredientes extends javax.swing.JPanel {
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
+        T_Ingrediente.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         T_Ingrediente.setForeground(new java.awt.Color(94, 83, 82));
         T_Ingrediente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -148,8 +148,9 @@ public class Ingredientes extends javax.swing.JPanel {
         jScrollPane1.setViewportView(T_Ingrediente);
         if (T_Ingrediente.getColumnModel().getColumnCount() > 0) {
             T_Ingrediente.getColumnModel().getColumn(0).setResizable(false);
+            T_Ingrediente.getColumnModel().getColumn(0).setPreferredWidth(140);
             T_Ingrediente.getColumnModel().getColumn(1).setResizable(false);
-            T_Ingrediente.getColumnModel().getColumn(1).setPreferredWidth(200);
+            T_Ingrediente.getColumnModel().getColumn(1).setPreferredWidth(220);
             T_Ingrediente.getColumnModel().getColumn(2).setResizable(false);
             T_Ingrediente.getColumnModel().getColumn(3).setResizable(false);
         }
@@ -404,21 +405,6 @@ public class Ingredientes extends javax.swing.JPanel {
 
         jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 100, 550, 710));
 
-        jButton4.setBackground(new java.awt.Color(249, 242, 237));
-        jButton4.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(198, 124, 78));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-restart-25.png"))); // NOI18N
-        jButton4.setText("Refrescar");
-        jButton4.setBorderPainted(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 15, -1, 40));
-
         boton_nuevo.setBackground(new java.awt.Color(198, 124, 78));
         boton_nuevo.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         boton_nuevo.setForeground(new java.awt.Color(249, 242, 237));
@@ -521,10 +507,6 @@ public class Ingredientes extends javax.swing.JPanel {
         controlador.ingresar();
     }//GEN-LAST:event_boton_crearActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        controlador.mostrar();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void boton_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_nuevoActionPerformed
         controlador.rellenarNuevo();
     }//GEN-LAST:event_boton_nuevoActionPerformed
@@ -565,7 +547,6 @@ public class Ingredientes extends javax.swing.JPanel {
     private javax.swing.JPanel info;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

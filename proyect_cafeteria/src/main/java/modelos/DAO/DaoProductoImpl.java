@@ -1,6 +1,6 @@
-
 package modelos.DAO;
 
+import controladores.EventBus;
 import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -119,7 +119,7 @@ public class DaoProductoImpl implements DAOGeneral<producto> {
         return ids;
     }
 
-   @Override
+    @Override
     public List<producto> listar() {
         List<producto> listaProductos = new ArrayList<>();
         String sql = "SELECT * FROM public.producto";
@@ -143,6 +143,7 @@ public class DaoProductoImpl implements DAOGeneral<producto> {
                         rs.getString("url_img")
                 );
                 listaProductos.add(product);
+
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -150,11 +151,12 @@ public class DaoProductoImpl implements DAOGeneral<producto> {
         return listaProductos;
 
     }
-    public List<producto> filtrarProducto(String nombre){
+
+    public List<producto> filtrarProducto(String nombre) {
         List<producto> listaProductos = new ArrayList<>();
         String sql = "SELECT * FROM public.producto where nombre like ?";
-        try(Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
-          ps.setString(1, '%' + nombre + '%');
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, '%' + nombre + '%');
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 producto product = new producto(
@@ -165,10 +167,10 @@ public class DaoProductoImpl implements DAOGeneral<producto> {
                         rs.getDouble("precio"),
                         rs.getInt("cantidad"),
                         rs.getInt("existencias"));
-            listaProductos.add(product);
+                listaProductos.add(product);
             }
 
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return listaProductos;

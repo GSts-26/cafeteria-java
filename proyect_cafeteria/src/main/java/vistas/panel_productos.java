@@ -120,8 +120,8 @@ public class panel_productos extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tabla_producto = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        BotonExcel = new javax.swing.JButton();
+        BotonTxt = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         cardProductos = new javax.swing.JPanel();
         crear_cliente = new javax.swing.JPanel();
@@ -489,8 +489,6 @@ public class panel_productos extends javax.swing.JPanel {
 
         jScrollPane3.setBackground(new java.awt.Color(248, 249, 250));
         jScrollPane3.setBorder(null);
-        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         jScrollPane3.setPreferredSize(new java.awt.Dimension(1150, 1074));
 
         jPanel14.setBackground(new java.awt.Color(248, 249, 250));
@@ -503,7 +501,7 @@ public class panel_productos extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        no_hay_productos.setBackground(new java.awt.Color(249, 249, 249));
+        no_hay_productos.setBackground(new java.awt.Color(255, 255, 255));
         no_hay_productos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/no hay productos.png"))); // NOI18N
@@ -519,7 +517,7 @@ public class panel_productos extends javax.swing.JPanel {
         jLabel14.setText("No Tienes productos, Ingresa tu primer producto a la plataforma");
         no_hay_productos.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
 
-        jPanel1.add(no_hay_productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 570, 280));
+        jPanel1.add(no_hay_productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 570, 260));
 
         jLabel1.setFont(new java.awt.Font("Sora", 1, 21)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(94, 83, 82));
@@ -527,8 +525,7 @@ public class panel_productos extends javax.swing.JPanel {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 30));
 
         jScrollPane4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 
         tabla_producto.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         tabla_producto.setForeground(new java.awt.Color(94, 83, 82));
@@ -564,11 +561,15 @@ public class panel_productos extends javax.swing.JPanel {
         jScrollPane4.setViewportView(tabla_producto);
         if (tabla_producto.getColumnModel().getColumnCount() > 0) {
             tabla_producto.getColumnModel().getColumn(0).setResizable(false);
-            tabla_producto.getColumnModel().getColumn(0).setPreferredWidth(56);
+            tabla_producto.getColumnModel().getColumn(0).setPreferredWidth(100);
             tabla_producto.getColumnModel().getColumn(1).setResizable(false);
+            tabla_producto.getColumnModel().getColumn(1).setPreferredWidth(160);
             tabla_producto.getColumnModel().getColumn(2).setResizable(false);
+            tabla_producto.getColumnModel().getColumn(2).setPreferredWidth(160);
             tabla_producto.getColumnModel().getColumn(3).setResizable(false);
+            tabla_producto.getColumnModel().getColumn(3).setPreferredWidth(160);
             tabla_producto.getColumnModel().getColumn(4).setResizable(false);
+            tabla_producto.getColumnModel().getColumn(4).setPreferredWidth(120);
             tabla_producto.getColumnModel().getColumn(5).setResizable(false);
             tabla_producto.getColumnModel().getColumn(6).setResizable(false);
             tabla_producto.getColumnModel().getColumn(7).setResizable(false);
@@ -576,27 +577,29 @@ public class panel_productos extends javax.swing.JPanel {
         ///
         //T_productos.setBorder(new MatteBorder(1, 0, 0, 0, Color.decode("0xECECEC")));
 
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 600, 360));
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 920, 360));
 
-        jButton2.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(94, 83, 82));
-        jButton2.setText("Excel");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BotonExcel.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        BotonExcel.setForeground(new java.awt.Color(94, 83, 82));
+        BotonExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/excel.png"))); // NOI18N
+        BotonExcel.setBorderPainted(false);
+        BotonExcel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BotonExcelActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 80, 30));
+        jPanel1.add(BotonExcel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
 
-        jButton3.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(94, 83, 82));
-        jButton3.setText("Txt");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        BotonTxt.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        BotonTxt.setForeground(new java.awt.Color(94, 83, 82));
+        BotonTxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/txt.png"))); // NOI18N
+        BotonTxt.setBorderPainted(false);
+        BotonTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                BotonTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 80, 30));
+        jPanel1.add(BotonTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(94, 83, 82));
@@ -777,7 +780,8 @@ public class panel_productos extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(248, 249, 250));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        T_ingredientes.setFont(new java.awt.Font("Sora", 0, 13)); // NOI18N
+        T_ingredientes.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        T_ingredientes.setForeground(new java.awt.Color(94, 83, 82));
         T_ingredientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -804,9 +808,9 @@ public class panel_productos extends javax.swing.JPanel {
         jScrollPane2.setViewportView(T_ingredientes);
         if (T_ingredientes.getColumnModel().getColumnCount() > 0) {
             T_ingredientes.getColumnModel().getColumn(0).setResizable(false);
-            T_ingredientes.getColumnModel().getColumn(0).setPreferredWidth(45);
+            T_ingredientes.getColumnModel().getColumn(0).setPreferredWidth(60);
             T_ingredientes.getColumnModel().getColumn(1).setResizable(false);
-            T_ingredientes.getColumnModel().getColumn(1).setPreferredWidth(91);
+            T_ingredientes.getColumnModel().getColumn(1).setPreferredWidth(120);
             T_ingredientes.getColumnModel().getColumn(2).setResizable(false);
             T_ingredientes.getColumnModel().getColumn(2).setPreferredWidth(45);
         }
@@ -885,7 +889,7 @@ public class panel_productos extends javax.swing.JPanel {
         m4PrecioVacio.setForeground(new java.awt.Color(198, 124, 78));
         m4PrecioVacio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
         m4PrecioVacio.setText("Rellena el campo");
-        jPanel15.add(m4PrecioVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 32, 130, 30));
+        jPanel15.add(m4PrecioVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 140, 20));
 
         crear_cliente.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 210, 100));
 
@@ -1110,7 +1114,7 @@ public class panel_productos extends javax.swing.JPanel {
                         .addGap(32, 32, 32)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(cardProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jPanel1.setBorder(new FlatLineBorder(new Insets(0, 0, 0, 0), new java.awt.Color(231, 229, 228), 1, 25));
@@ -1119,7 +1123,7 @@ public class panel_productos extends javax.swing.JPanel {
 
         jScrollPane3.setViewportView(jPanel14);
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1192, 650));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 1080));
         jScrollPane3.getVerticalScrollBar().setUnitIncrement(16);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1246,13 +1250,13 @@ public class panel_productos extends javax.swing.JPanel {
         controlador.filtrar(txt_filtrado_producto.getText());
     }//GEN-LAST:event_txt_filtrado_productoKeyReleased
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void BotonExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonExcelActionPerformed
+   controlador.GenerarExcel();
+    }//GEN-LAST:event_BotonExcelActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void BotonTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonTxtActionPerformed
+      controlador.GenerarTxt();
+    }//GEN-LAST:event_BotonTxtActionPerformed
 
     private void comboIngredientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboIngredientesMouseClicked
         //        controlador.rellenar_Combo_Ingredientes();
@@ -1343,6 +1347,8 @@ public class panel_productos extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JDialog AgregarIngredientes;
     private javax.swing.JDialog Agregar_ingredientes;
+    public javax.swing.JButton BotonExcel;
+    public javax.swing.JButton BotonTxt;
     public javax.swing.JTable T_ingredientes;
     public javax.swing.JLabel TxtInfoPrecio;
     private javax.swing.JButton botonAgregarIngrediente;
@@ -1365,8 +1371,6 @@ public class panel_productos extends javax.swing.JPanel {
     private javax.swing.JPanel info2;
     private javax.swing.JPanel info3;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

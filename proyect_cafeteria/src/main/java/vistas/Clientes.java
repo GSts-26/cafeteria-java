@@ -53,7 +53,6 @@ public class Clientes extends javax.swing.JPanel {
         txtnombre = new javax.swing.JTextField();
         txtcedula = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        txtnacimiento = new com.toedter.calendar.JDateChooser();
         jLabel9 = new javax.swing.JLabel();
         txtgenero = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
@@ -196,19 +195,19 @@ public class Clientes extends javax.swing.JPanel {
         jScrollPane1.setViewportView(T_Clientes);
         if (T_Clientes.getColumnModel().getColumnCount() > 0) {
             T_Clientes.getColumnModel().getColumn(0).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(0).setPreferredWidth(80);
+            T_Clientes.getColumnModel().getColumn(0).setPreferredWidth(140);
             T_Clientes.getColumnModel().getColumn(1).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(1).setPreferredWidth(100);
+            T_Clientes.getColumnModel().getColumn(1).setPreferredWidth(180);
             T_Clientes.getColumnModel().getColumn(2).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(2).setPreferredWidth(120);
+            T_Clientes.getColumnModel().getColumn(2).setPreferredWidth(160);
             T_Clientes.getColumnModel().getColumn(3).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(3).setPreferredWidth(80);
+            T_Clientes.getColumnModel().getColumn(3).setPreferredWidth(120);
             T_Clientes.getColumnModel().getColumn(4).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(4).setPreferredWidth(87);
+            T_Clientes.getColumnModel().getColumn(4).setPreferredWidth(140);
             T_Clientes.getColumnModel().getColumn(5).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(5).setPreferredWidth(110);
+            T_Clientes.getColumnModel().getColumn(5).setPreferredWidth(200);
             T_Clientes.getColumnModel().getColumn(6).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(6).setPreferredWidth(110);
+            T_Clientes.getColumnModel().getColumn(6).setPreferredWidth(200);
             T_Clientes.getColumnModel().getColumn(7).setResizable(false);
             T_Clientes.getColumnModel().getColumn(8).setResizable(false);
         }
@@ -271,12 +270,6 @@ public class Clientes extends javax.swing.JPanel {
         jLabel8.setForeground(new java.awt.Color(94, 83, 82));
         jLabel8.setText("Nombre");
         crear_cliente.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, 20));
-
-        txtnacimiento.setForeground(new java.awt.Color(94, 83, 82));
-        txtnacimiento.setFont(new java.awt.Font("Sora", 0, 13)); // NOI18N
-        crear_cliente.add(txtnacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 160, 30));
-        txtnacimiento.putClientProperty(FlatClientProperties.STYLE,
-            "arc: 12");
 
         jLabel9.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(94, 83, 82));
@@ -823,7 +816,6 @@ public class Clientes extends javax.swing.JPanel {
     private javax.swing.JTextField txt_filtradoCliente;
     public javax.swing.JTextField txtcedula;
     public javax.swing.JComboBox<String> txtgenero;
-    public com.toedter.calendar.JDateChooser txtnacimiento;
     public javax.swing.JTextField txtnombre;
     public javax.swing.JTextField txttelefono;
     // End of variables declaration//GEN-END:variables

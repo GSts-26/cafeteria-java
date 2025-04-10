@@ -18,6 +18,7 @@ import modelos.DAO.DaoClienteImpl;
 import modelos.DAO.DaoEmpleado;
 import modelos.DAO.DaoFactura;
 import modelos.DAO.DaoProductoImpl;
+import modelos.DAO.EscuchadorCarroCompras;
 import modelos.Entidades.Cliente;
 import modelos.Entidades.Empleado;
 import modelos.Entidades.detalleVenta;
@@ -25,7 +26,7 @@ import modelos.Entidades.producto;
 import modelos.Entidades.ventas;
 import vistas.Panel_factura;
 
-public class FacturaController {
+public class FacturaController implements EscuchadorCarroCompras {
 
     private final Panel_factura vistaFactura;
     private DefaultTableModel modeloTabla;
@@ -60,6 +61,7 @@ public class FacturaController {
         this.daoClienteImpl = new DaoClienteImpl();
         this.daoEmpleado = new DaoEmpleado();
         this.daoProducto = new DaoProductoImpl();
+        EventBus.subscribirseCarroCompras(this);
     }
 
     private void ComboFechaSeleccionada() {
@@ -302,6 +304,18 @@ public class FacturaController {
         vistaFactura.numero_factura.setVisible(true);
         vistaFactura.fecha_factura.setVisible(true);
         vistaFactura.total.setVisible(true);
+    }
+
+    @Override
+    public void EscuchadorCarroCompras() {
+        try {
+            System.out.println("Rellenando la tabla de ventas con el escuchador carro compra");
+            listarProductosCompra();
+            rellenarTablaVentas();
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }
