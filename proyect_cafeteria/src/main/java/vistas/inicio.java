@@ -14,6 +14,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.text.DefaultFormatter;
 import modelos.Entidades.usuario;
+import utils.render;
 
 public class inicio extends javax.swing.JFrame {
 
@@ -28,6 +29,10 @@ public class inicio extends javax.swing.JFrame {
     notificacionController controlador = new notificacionController(this);
     protected usuario c = null;
 
+    private void styles() {
+        tabla_notificacion.setDefaultRenderer(Object.class, new render());
+    }
+
     public inicio() {
         initComponents();
         Vista = (CardLayout) Contenido.getLayout();
@@ -35,17 +40,18 @@ public class inicio extends javax.swing.JFrame {
         controlador.CantidadEnBajoStock();
         Contenido.add(vistacompra, "menu");
         Vista.show(Contenido, "menu");
+        styles();
         this.repaint();
         this.revalidate();
     }
-    
-    public void pedido(){
-    vistacompra.verificar();
+
+    public void pedido() {
+        vistacompra.verificar();
     }
 
     public void obteneruser(usuario c) {
         this.c = c;
-       nombreUsuaio.setText(c.getNombre()+" "+c.getApellido());
+        nombreUsuaio.setText(c.getNombre() + " " + c.getApellido());
         Rol.setText(c.getRol());
     }
 
@@ -71,6 +77,7 @@ public class inicio extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tabla_notificacion = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -109,6 +116,7 @@ public class inicio extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Sora", 1, 15)); // NOI18N
         jButton1.setForeground(new java.awt.Color(198, 124, 78));
         jButton1.setText("Actualizar");
+        jButton1.setBorderPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -120,6 +128,7 @@ public class inicio extends javax.swing.JFrame {
         BotonCancelar.setFont(new java.awt.Font("Sora", 1, 15)); // NOI18N
         BotonCancelar.setForeground(new java.awt.Color(249, 242, 237));
         BotonCancelar.setText("Cancelar");
+        BotonCancelar.setBorderPainted(false);
         BotonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonCancelarActionPerformed(evt);
@@ -202,6 +211,9 @@ public class inicio extends javax.swing.JFrame {
         jLabel7.setText("No tienes produtos en bajo Stock");
         PanelSinAlertas.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
 
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/productosSinBajoStock.png"))); // NOI18N
+        PanelSinAlertas.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, -1, -1));
+
         jPanel2.add(PanelSinAlertas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 420, 190));
 
         jScrollPane4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -238,6 +250,15 @@ public class inicio extends javax.swing.JFrame {
             }
         });
         jScrollPane4.setViewportView(tabla_notificacion);
+        if (tabla_notificacion.getColumnModel().getColumnCount() > 0) {
+            tabla_notificacion.getColumnModel().getColumn(0).setResizable(false);
+            tabla_notificacion.getColumnModel().getColumn(0).setPreferredWidth(200);
+            tabla_notificacion.getColumnModel().getColumn(1).setResizable(false);
+            tabla_notificacion.getColumnModel().getColumn(1).setPreferredWidth(140);
+            tabla_notificacion.getColumnModel().getColumn(2).setResizable(false);
+            tabla_notificacion.getColumnModel().getColumn(2).setPreferredWidth(140);
+            tabla_notificacion.getColumnModel().getColumn(3).setResizable(false);
+        }
         ///
         //T_productos.setBorder(new MatteBorder(1, 0, 0, 0, Color.decode("0xECECEC")));
 
@@ -697,14 +718,14 @@ public class inicio extends javax.swing.JFrame {
         controlador.AccionTabla();
         //        int columna = tabla_producto.getSelectedColumn();
         //        if (columna == 5) {
-            //            AbrirInfoProducto();
-            //            control.rellenar();
-            //            System.out.println("columna 5");
-            //        } else {
-            //            controlador.Acciones_tabla();
-            //            abrirNuevoProducto();
-            //
-            //        }
+        //            AbrirInfoProducto();
+        //            control.rellenar();
+        //            System.out.println("columna 5");
+        //        } else {
+        //            controlador.Acciones_tabla();
+        //            abrirNuevoProducto();
+        //
+        //        }
     }//GEN-LAST:event_tabla_notificacionMouseClicked
 
     public static void main(String args[]) {
@@ -716,7 +737,6 @@ public class inicio extends javax.swing.JFrame {
             UIManager.put("OptionPane.background", new Color(240, 240, 240)); // Fondo del panel
             UIManager.put("OptionPane.messageForeground", new Color(94, 83, 82)); // Color del texto
 
-           
             UIManager.put("Button.background", new Color(249, 249, 249)); // Fondo de los botones
             UIManager.put("Button.foreground", new Color(94, 83, 82)); //
 //            UIManager.put("Button.font", new Font("Fira Code", Font.PLAIN, 14)); // Fuente del botón
@@ -742,7 +762,7 @@ public class inicio extends javax.swing.JFrame {
 //            UIManager.put("Table.background", "#FFFFFF"); // Fondo general de la tabla
 //            UIManager.put("Table.foreground", "#333333"); // Color del texto general
 
-  Border selectedBorder = BorderFactory.createLineBorder(Color.red, 2); // Ejemplo: borde azul
+            Border selectedBorder = BorderFactory.createLineBorder(Color.red, 2); // Ejemplo: borde azul
             UIManager.put("Button.focusedBorder", selectedBorder);
             UIManager.put("TextField.focusedBorder", selectedBorder);
             UIManager.put("ComboBox.focusedBorder", selectedBorder);
@@ -778,6 +798,7 @@ public class inicio extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;

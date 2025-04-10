@@ -197,19 +197,19 @@ public class Clientes extends javax.swing.JPanel {
         jScrollPane1.setViewportView(T_Clientes);
         if (T_Clientes.getColumnModel().getColumnCount() > 0) {
             T_Clientes.getColumnModel().getColumn(0).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(0).setPreferredWidth(80);
+            T_Clientes.getColumnModel().getColumn(0).setPreferredWidth(140);
             T_Clientes.getColumnModel().getColumn(1).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(1).setPreferredWidth(100);
+            T_Clientes.getColumnModel().getColumn(1).setPreferredWidth(200);
             T_Clientes.getColumnModel().getColumn(2).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(2).setPreferredWidth(120);
+            T_Clientes.getColumnModel().getColumn(2).setPreferredWidth(180);
             T_Clientes.getColumnModel().getColumn(3).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(3).setPreferredWidth(80);
+            T_Clientes.getColumnModel().getColumn(3).setPreferredWidth(130);
             T_Clientes.getColumnModel().getColumn(4).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(4).setPreferredWidth(87);
+            T_Clientes.getColumnModel().getColumn(4).setPreferredWidth(160);
             T_Clientes.getColumnModel().getColumn(5).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(5).setPreferredWidth(110);
+            T_Clientes.getColumnModel().getColumn(5).setPreferredWidth(200);
             T_Clientes.getColumnModel().getColumn(6).setResizable(false);
-            T_Clientes.getColumnModel().getColumn(6).setPreferredWidth(110);
+            T_Clientes.getColumnModel().getColumn(6).setPreferredWidth(200);
             T_Clientes.getColumnModel().getColumn(7).setResizable(false);
             T_Clientes.getColumnModel().getColumn(8).setResizable(false);
         }
@@ -368,11 +368,11 @@ public class Clientes extends javax.swing.JPanel {
         boton_cancelar.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
 
-        boton_crear.setBackground(new java.awt.Color(255, 138, 61));
+        boton_crear.setBackground(new java.awt.Color(198, 124, 78));
         boton_crear.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         boton_crear.setForeground(new java.awt.Color(255, 255, 255));
         boton_crear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-añadir-25.png"))); // NOI18N
-        boton_crear.setText("Crear Cliente");
+        boton_crear.setText("Crear");
         boton_crear.setBorder(txtcedula.getBorder());
         boton_crear.setBorderPainted(false);
         boton_crear.setIconTextGap(10);
@@ -381,7 +381,7 @@ public class Clientes extends javax.swing.JPanel {
                 boton_crearActionPerformed(evt);
             }
         });
-        crear_cliente.add(boton_crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 600, 170, 40));
+        crear_cliente.add(boton_crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 600, 130, 40));
         boton_cancelar.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
 
@@ -479,12 +479,12 @@ public class Clientes extends javax.swing.JPanel {
         crear_cliente.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
 
-        nuevoCliente.setBackground(new java.awt.Color(255, 138, 61));
+        nuevoCliente.setBackground(new java.awt.Color(198, 124, 78));
         nuevoCliente.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         nuevoCliente.setForeground(new java.awt.Color(255, 255, 255));
         nuevoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-añadir-25.png"))); // NOI18N
         nuevoCliente.setText("Nuevo Cliente");
-        nuevoCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 138, 61)));
+        nuevoCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(198, 124, 78)));
         nuevoCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nuevoCliente.setIconTextGap(25);
         nuevoCliente.addActionListener(new java.awt.event.ActionListener() {

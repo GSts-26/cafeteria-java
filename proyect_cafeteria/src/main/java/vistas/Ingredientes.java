@@ -115,6 +115,7 @@ public class Ingredientes extends javax.swing.JPanel {
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
+        T_Ingrediente.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         T_Ingrediente.setForeground(new java.awt.Color(94, 83, 82));
         T_Ingrediente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -148,6 +149,7 @@ public class Ingredientes extends javax.swing.JPanel {
         jScrollPane1.setViewportView(T_Ingrediente);
         if (T_Ingrediente.getColumnModel().getColumnCount() > 0) {
             T_Ingrediente.getColumnModel().getColumn(0).setResizable(false);
+            T_Ingrediente.getColumnModel().getColumn(0).setPreferredWidth(90);
             T_Ingrediente.getColumnModel().getColumn(1).setResizable(false);
             T_Ingrediente.getColumnModel().getColumn(1).setPreferredWidth(200);
             T_Ingrediente.getColumnModel().getColumn(2).setResizable(false);

@@ -389,7 +389,7 @@ public class panel_empleado extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, true
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -411,6 +411,26 @@ public class panel_empleado extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(Tabla_empleado);
+        if (Tabla_empleado.getColumnModel().getColumnCount() > 0) {
+            Tabla_empleado.getColumnModel().getColumn(0).setResizable(false);
+            Tabla_empleado.getColumnModel().getColumn(0).setPreferredWidth(140);
+            Tabla_empleado.getColumnModel().getColumn(1).setResizable(false);
+            Tabla_empleado.getColumnModel().getColumn(1).setPreferredWidth(200);
+            Tabla_empleado.getColumnModel().getColumn(2).setResizable(false);
+            Tabla_empleado.getColumnModel().getColumn(2).setPreferredWidth(200);
+            Tabla_empleado.getColumnModel().getColumn(3).setResizable(false);
+            Tabla_empleado.getColumnModel().getColumn(3).setPreferredWidth(180);
+            Tabla_empleado.getColumnModel().getColumn(4).setResizable(false);
+            Tabla_empleado.getColumnModel().getColumn(4).setPreferredWidth(130);
+            Tabla_empleado.getColumnModel().getColumn(5).setResizable(false);
+            Tabla_empleado.getColumnModel().getColumn(5).setPreferredWidth(160);
+            Tabla_empleado.getColumnModel().getColumn(6).setResizable(false);
+            Tabla_empleado.getColumnModel().getColumn(6).setPreferredWidth(200);
+            Tabla_empleado.getColumnModel().getColumn(7).setResizable(false);
+            Tabla_empleado.getColumnModel().getColumn(7).setPreferredWidth(200);
+            Tabla_empleado.getColumnModel().getColumn(8).setResizable(false);
+            Tabla_empleado.getColumnModel().getColumn(9).setResizable(false);
+        }
         ///
         //T_productos.setBorder(new MatteBorder(1, 0, 0, 0, Color.decode("0xECECEC")));
 

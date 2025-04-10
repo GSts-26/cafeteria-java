@@ -97,7 +97,7 @@ public class Categorias extends javax.swing.JPanel {
         jLabel2.setText("Gestiona tus categorias");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 60, -1, -1));
 
-        boton_nueva_categoria.setBackground(new java.awt.Color(255, 138, 61));
+        boton_nueva_categoria.setBackground(new java.awt.Color(198, 124, 78));
         boton_nueva_categoria.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         boton_nueva_categoria.setForeground(new java.awt.Color(255, 255, 255));
         boton_nueva_categoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-añadir-25.png"))); // NOI18N
@@ -124,7 +124,7 @@ public class Categorias extends javax.swing.JPanel {
         jPanel1.setBorder(contenido_table.getBorder());
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        boton_agregar.setBackground(new java.awt.Color(255, 138, 61));
+        boton_agregar.setBackground(new java.awt.Color(198, 124, 78));
         boton_agregar.setFont(new java.awt.Font("Sora", 1, 14)); // NOI18N
         boton_agregar.setForeground(new java.awt.Color(249, 242, 237));
         boton_agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-añadir-25.png"))); // NOI18N
@@ -319,8 +319,9 @@ public class Categorias extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tabla_categoria);
         if (tabla_categoria.getColumnModel().getColumnCount() > 0) {
             tabla_categoria.getColumnModel().getColumn(0).setResizable(false);
+            tabla_categoria.getColumnModel().getColumn(0).setPreferredWidth(80);
             tabla_categoria.getColumnModel().getColumn(1).setResizable(false);
-            tabla_categoria.getColumnModel().getColumn(1).setPreferredWidth(180);
+            tabla_categoria.getColumnModel().getColumn(1).setPreferredWidth(200);
             tabla_categoria.getColumnModel().getColumn(2).setResizable(false);
             tabla_categoria.getColumnModel().getColumn(2).setPreferredWidth(100);
             tabla_categoria.getColumnModel().getColumn(3).setResizable(false);

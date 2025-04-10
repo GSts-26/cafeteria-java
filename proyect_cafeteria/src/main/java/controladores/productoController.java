@@ -97,12 +97,19 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
             producto.setIdIngredientes(ingredientes);
             producto.setImagen(transformar_imagen());
             producto.setId_img(vista.publicId);
+            String cate = vista.txt_categoria.getSelectedItem().toString().split(" - ")[0];
+            producto.setCategoria(Integer.parseInt(cate));
 
             productoDAO.insertar(producto);
             limpiarCampos();
-            // metodo que envia una alerta cuando se ingresa un producto
-            EventBus.PublishProducto();
             mostrar();
+            // metodo que envia una alerta cuando se ingresa un producto
+            new Thread() {
+                public void run() {
+
+                    EventBus.PublishProducto();
+                }
+            }.start();
             JOptionPane.showMessageDialog(null, "Producto Ingresado");
 
         }
@@ -186,7 +193,13 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
                     botonBorrar
                 });
             }
+            
+            new Thread(){
+                public void run(){
+                    
             EventBus.PublishCarroCompras();
+                }
+            }.start();
 
             vista.contar_productos.setText(String.valueOf(ProductosContador));
         }
@@ -305,6 +318,8 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         producto.setCantidad(Integer.parseInt(vista.txtCantidad.getValue().toString()));
         producto.setStock(Integer.parseInt(vista.txtStock.getValue().toString()));
         producto.setIdIngredientes(ingredientes);
+        String cate = vista.txt_categoria.getSelectedItem().toString().split(" - ")[0];
+        producto.setCategoria(Integer.parseInt(cate));
 //        producto.setImagen(transformar_imagen());
         producto.setId_img(vista.publicId);
 
@@ -314,7 +329,13 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
             nuevoProducto();
             limpiarCampos();
             mostrar();
-            EventBus.PublishProducto();
+//            EventBus.PublishProducto();
+            new Thread() {
+                public void run() {
+
+                    EventBus.PublishProducto();
+                }
+            }.start();
             JOptionPane.showMessageDialog(null, "Producto Actualizado");
 
         } else {
@@ -368,7 +389,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
             vista.txt_categoria.removeAllItems();
             categoria.forEach(catego -> {
                 // Imprimir el ID de cada categoria
-                System.out.println("ID: " + catego.getId());
+//                System.out.println("ID: " + catego.getId());
 
                 // Añadir al comboBox
                 vista.txt_categoria.addItem(String.valueOf(catego.getId() + " - " + catego.getNombre()));
@@ -596,8 +617,8 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
     public void dias() {
         vista.nuevos.setText(productoDAO.contarproductosUltimos30Dias() + "");
     }
-    
-     @Override
+
+    @Override
     public void EscuchadorCarroCompras() {
     }
 }

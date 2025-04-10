@@ -528,8 +528,6 @@ public class panel_productos extends javax.swing.JPanel {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 30));
 
         jScrollPane4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         tabla_producto.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
         tabla_producto.setForeground(new java.awt.Color(94, 83, 82));
@@ -565,11 +563,15 @@ public class panel_productos extends javax.swing.JPanel {
         jScrollPane4.setViewportView(tabla_producto);
         if (tabla_producto.getColumnModel().getColumnCount() > 0) {
             tabla_producto.getColumnModel().getColumn(0).setResizable(false);
-            tabla_producto.getColumnModel().getColumn(0).setPreferredWidth(56);
+            tabla_producto.getColumnModel().getColumn(0).setPreferredWidth(80);
             tabla_producto.getColumnModel().getColumn(1).setResizable(false);
+            tabla_producto.getColumnModel().getColumn(1).setPreferredWidth(180);
             tabla_producto.getColumnModel().getColumn(2).setResizable(false);
+            tabla_producto.getColumnModel().getColumn(2).setPreferredWidth(160);
             tabla_producto.getColumnModel().getColumn(3).setResizable(false);
+            tabla_producto.getColumnModel().getColumn(3).setPreferredWidth(180);
             tabla_producto.getColumnModel().getColumn(4).setResizable(false);
+            tabla_producto.getColumnModel().getColumn(4).setPreferredWidth(160);
             tabla_producto.getColumnModel().getColumn(5).setResizable(false);
             tabla_producto.getColumnModel().getColumn(6).setResizable(false);
             tabla_producto.getColumnModel().getColumn(7).setResizable(false);
@@ -805,9 +807,9 @@ public class panel_productos extends javax.swing.JPanel {
         jScrollPane2.setViewportView(T_ingredientes);
         if (T_ingredientes.getColumnModel().getColumnCount() > 0) {
             T_ingredientes.getColumnModel().getColumn(0).setResizable(false);
-            T_ingredientes.getColumnModel().getColumn(0).setPreferredWidth(45);
+            T_ingredientes.getColumnModel().getColumn(0).setPreferredWidth(70);
             T_ingredientes.getColumnModel().getColumn(1).setResizable(false);
-            T_ingredientes.getColumnModel().getColumn(1).setPreferredWidth(91);
+            T_ingredientes.getColumnModel().getColumn(1).setPreferredWidth(160);
             T_ingredientes.getColumnModel().getColumn(2).setResizable(false);
             T_ingredientes.getColumnModel().getColumn(2).setPreferredWidth(45);
         }

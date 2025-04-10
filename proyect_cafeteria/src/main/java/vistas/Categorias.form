@@ -93,7 +93,7 @@
             <Component class="javax.swing.JButton" name="boton_nueva_categoria">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="3d" green="8a" red="ff" type="rgb"/>
+                  <Color blue="4e" green="7c" red="c6" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Sora" size="14" style="1"/>
@@ -174,7 +174,7 @@
                     <Component class="javax.swing.JButton" name="boton_agregar">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="3d" green="8a" red="ff" type="rgb"/>
+                          <Color blue="4e" green="7c" red="c6" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Sora" size="14" style="1"/>
@@ -611,12 +611,12 @@
                         <Property name="autoResizeMode" type="int" value="0"/>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="80" resizable="false">
                               <Title/>
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="180" resizable="false">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="200" resizable="false">
                               <Title/>
                               <Editor/>
                               <Renderer/>
