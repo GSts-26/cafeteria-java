@@ -10,6 +10,8 @@ import java.net.URL;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
@@ -44,6 +46,22 @@ public class compras extends javax.swing.JPanel {
         controlador.pedidoActivo();
     }
 
+    public String ajustarEscalaCloudinary(String url) {
+        Pattern pattern = Pattern.compile("(h|w)_(\\d+)");
+        Matcher matcher = pattern.matcher(url);
+        StringBuffer resultado = new StringBuffer();
+
+        while (matcher.find()) {
+            String tipo = matcher.group(1); // "h" o "w"
+            int valor = Integer.parseInt(matcher.group(2));
+            int nuevoValor = valor + 100;
+            matcher.appendReplacement(resultado, tipo + "_" + nuevoValor);
+        }
+
+        matcher.appendTail(resultado);
+        return resultado.toString();
+    }
+
     public void mostrarInformacion(producto p) {
         this.p = p;
         txtnombreinfo.setText(p.getNombre());
@@ -52,20 +70,23 @@ public class compras extends javax.swing.JPanel {
         controlador.MostrarIngredientes();
 
         try {
+        long i = System.currentTimeMillis();
             URL url;
-            url = new URL(p.getImagen());
+            url = new URL(ajustarEscalaCloudinary(p.getImagen()));
             ImageIcon imageIcon = new ImageIcon(url);
 
             imagen.setIcon(imageIcon);
+        long f = System.currentTimeMillis();
+            System.out.println("imagen"+(f - i));
         } catch (Exception ex) {
             System.out.println(ex);
         }
-
+        
         SpinnerNumberModel model = (SpinnerNumberModel) cantidad.getModel();
         model.setMaximum(p.getCantidad());
 
         JFormattedTextField txt = ((JSpinner.DefaultEditor) cantidad.getEditor()).getTextField();
-txt.setEditable(false);
+        txt.setEditable(false);
 
         Agregar.setLocationRelativeTo(null);
         Agregar.setVisible(true);
@@ -147,6 +168,7 @@ txt.setEditable(false);
         jPanel1 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         combocategoria = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
         contenido_producto = new javax.swing.JPanel();
         Panel_pedidoActivo = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
@@ -330,8 +352,10 @@ txt.setEditable(false);
         jScrollPane1.setViewportView(Area_ingredientes);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 200, 180));
-        jPanel2.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 156, 130, 120));
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 350, 290));
+
+        imagen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel2.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 76, 230, 220));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 350, 290));
 
         javax.swing.GroupLayout AgregarLayout = new javax.swing.GroupLayout(Agregar.getContentPane());
         Agregar.getContentPane().setLayout(AgregarLayout);
@@ -707,7 +731,11 @@ txt.setEditable(false);
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        contenido_producto.setBackground(new java.awt.Color(249, 249, 249));
+        jScrollPane3.setBorder(null);
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(690, 420));
+
+        contenido_producto.setBackground(new java.awt.Color(248, 249, 250));
 
         javax.swing.GroupLayout contenido_productoLayout = new javax.swing.GroupLayout(contenido_producto);
         contenido_producto.setLayout(contenido_productoLayout);
@@ -720,26 +748,33 @@ txt.setEditable(false);
             .addGap(0, 420, Short.MAX_VALUE)
         );
 
+        jScrollPane3.setViewportView(contenido_producto);
+
         javax.swing.GroupLayout ventaLayout = new javax.swing.GroupLayout(venta);
         venta.setLayout(ventaLayout);
         ventaLayout.setHorizontalGroup(
             ventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1130, Short.MAX_VALUE)
+            .addGroup(ventaLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(419, Short.MAX_VALUE))
             .addGroup(ventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ventaLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addGroup(ventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel4)
                         .addComponent(jLabel3)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(contenido_producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(40, 40, 40)
                     .addComponent(crear_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         ventaLayout.setVerticalGroup(
             ventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 660, Short.MAX_VALUE)
+            .addGroup(ventaLayout.createSequentialGroup()
+                .addGap(211, 211, 211)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
             .addGroup(ventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ventaLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -749,9 +784,7 @@ txt.setEditable(false);
                             .addGap(0, 0, 0)
                             .addComponent(jLabel3)
                             .addGap(10, 10, 10)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(20, 20, 20)
-                            .addComponent(contenido_producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(ventaLayout.createSequentialGroup()
                             .addGap(10, 10, 10)
                             .addComponent(crear_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -916,7 +949,7 @@ txt.setEditable(false);
     }//GEN-LAST:event_montoKeyReleased
 
     private void cantidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cantidadKeyReleased
-       
+
     }//GEN-LAST:event_cantidadKeyReleased
 
     private void borrartodo() {
@@ -989,6 +1022,7 @@ txt.setEditable(false);
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     public javax.swing.JTextField monto;

@@ -76,6 +76,7 @@ public class producto_info extends javax.swing.JPanel {
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(198, 124, 78));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(198, 124, 78)));
 
         info.setBackground(new java.awt.Color(255, 255, 255));
         info.setFont(new java.awt.Font("Sora", 1, 12)); // NOI18N
@@ -89,11 +90,11 @@ public class producto_info extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(info)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(info, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+            .addComponent(info, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
         );
 
         jPanel13.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 70, 20));
@@ -138,7 +139,7 @@ public class producto_info extends javax.swing.JPanel {
        }
         comprasPanel.mostrarInformacion(producto);
         
-        this.setBorder(new FlatLineBorder(new Insets(0, 0, 0, 0), new java.awt.Color(240, 132, 156), 1, 25));
+        this.setBorder(new FlatLineBorder(new Insets(0, 0, 0, 0), new java.awt.Color(198,124,78), 1, 25));
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
