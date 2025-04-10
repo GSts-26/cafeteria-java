@@ -11,7 +11,10 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 import javax.swing.ImageIcon;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 import modelos.Entidades.*;
 
@@ -57,6 +60,12 @@ public class compras extends javax.swing.JPanel {
         } catch (Exception ex) {
             System.out.println(ex);
         }
+
+        SpinnerNumberModel model = (SpinnerNumberModel) cantidad.getModel();
+        model.setMaximum(p.getCantidad());
+
+        JFormattedTextField txt = ((JSpinner.DefaultEditor) cantidad.getEditor()).getTextField();
+txt.setEditable(false);
 
         Agregar.setLocationRelativeTo(null);
         Agregar.setVisible(true);
@@ -303,6 +312,11 @@ public class compras extends javax.swing.JPanel {
         jPanel2.add(txtprecioinfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 100, -1));
 
         cantidad.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        cantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cantidadKeyReleased(evt);
+            }
+        });
         jPanel2.add(cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 110, 34));
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -317,8 +331,6 @@ public class compras extends javax.swing.JPanel {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 200, 180));
         jPanel2.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 156, 130, 120));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Admin\\Downloads\\as.png")); // NOI18N
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 350, 290));
 
         javax.swing.GroupLayout AgregarLayout = new javax.swing.GroupLayout(Agregar.getContentPane());
@@ -902,6 +914,10 @@ public class compras extends javax.swing.JPanel {
 
         vueltos.setText("$" + controlador.vueltos());
     }//GEN-LAST:event_montoKeyReleased
+
+    private void cantidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cantidadKeyReleased
+       
+    }//GEN-LAST:event_cantidadKeyReleased
 
     private void borrartodo() {
         cliente.setText("");

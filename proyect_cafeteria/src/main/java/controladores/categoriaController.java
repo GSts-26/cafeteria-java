@@ -95,6 +95,7 @@ public class categoriaController {
             }
         }
         EventBus.PublishProducto();
+         EventBus.PublishCarroCompras();
     }
 
     public void rellenarActualizar() {

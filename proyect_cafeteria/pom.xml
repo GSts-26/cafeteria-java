@@ -24,7 +24,12 @@
         <exec.mainClass>com.mycompany.cafeteriamaven.CafeteriaMaven</exec.mainClass>
     </properties>
     <dependencies>
-        
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>5.4.1</version>
+            <type>jar</type>
+        </dependency>
         <dependency>
             <groupId>com.toedter</groupId>
             <artifactId>jcalendar</artifactId>

@@ -25,12 +25,12 @@ import modelos.Entidades.itemsCarro;
 import vistas.compras;
 import vistas.menu.producto_info;
 import static controladores.metodo_login.usuariologeado;
-
+ import modelos.DAO.EscuchadorCarroCompras;
 /**
  *
  * @author SENA
  */
-public class CarroComprasController {
+public class CarroComprasController implements EscuchadorCarroCompras{
 
     private final compras vista; // Referencia a la interfaz gráfica
     private DaoProductoImpl ProductosDAO;
@@ -62,18 +62,27 @@ public class CarroComprasController {
         this.ClienteDAO = new DaoClienteImpl();
         this.CarroDAO = new DaoCarro();
         this.Daoitems = new DaoitemsCarro();
+        EventBus.subscribirseCarroCompras(this);
+
+    }
+
+    public void rellenarListaProducto() {
         this.ListaProductos = ProductosDAO.listar(); // Carga la lista de productos
     }
+
 
     // Llena la interfaz con los productos disponibles
     public void relenar_productos() {
         vista.contenido_producto.setLayout(new GridLayout(0, 4, 16, 16));
-
+        rellenarListaProducto();
+        vista.contenido_producto.removeAll();
         for (producto producto : ListaProductos) {
+
             vista.contenido_producto.add(new producto_info(producto, this.vista));
-            vista.contenido_producto.revalidate();
-            vista.contenido_producto.repaint();
+
         }
+        vista.contenido_producto.revalidate();
+        vista.contenido_producto.repaint();
     }
 
     // Carga la lista de clientes en el combo de selección
@@ -244,6 +253,7 @@ public class CarroComprasController {
 
     public void OperacionBd() {
         Daoitems.TransaccionOperacional(carro);
+        EventBus.PublishCarroCompras();
     }
     
     public double vueltos(){
@@ -253,5 +263,15 @@ public class CarroComprasController {
     
     public void actualizar(){
     CarroDAO.actualizarValor((long) total, carro);
+    }
+    @Override
+    public void EscuchadorCarroCompras() {
+
+        try {
+            relenar_productos();
+            rellenarCtaegorias();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

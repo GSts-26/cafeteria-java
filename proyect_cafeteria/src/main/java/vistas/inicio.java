@@ -53,17 +53,6 @@ public class inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Notificacion = new javax.swing.JDialog();
-        jPanel2 = new javax.swing.JPanel();
-        PanelSinAlertas = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        tabla_notificacion = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        txtFiltrar = new javax.swing.JTextField();
         reabastecerProducto = new javax.swing.JDialog();
         jButton1 = new javax.swing.JButton();
         BotonCancelar = new javax.swing.JButton();
@@ -76,6 +65,17 @@ public class inicio extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         IdProducto = new javax.swing.JLabel();
         m1CantidadInvalida = new javax.swing.JLabel();
+        Notificacion = new javax.swing.JDialog();
+        jPanel2 = new javax.swing.JPanel();
+        PanelSinAlertas = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tabla_notificacion = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtFiltrar = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -100,6 +100,89 @@ public class inicio extends javax.swing.JFrame {
         empleados1 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         Contenido = new javax.swing.JPanel();
+
+        reabastecerProducto.setMinimumSize(new java.awt.Dimension(407, 330));
+        reabastecerProducto.setResizable(false);
+        reabastecerProducto.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(new java.awt.Color(249, 242, 237));
+        jButton1.setFont(new java.awt.Font("Sora", 1, 15)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(198, 124, 78));
+        jButton1.setText("Actualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        reabastecerProducto.getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, -1, 40));
+
+        BotonCancelar.setBackground(new java.awt.Color(198, 124, 78));
+        BotonCancelar.setFont(new java.awt.Font("Sora", 1, 15)); // NOI18N
+        BotonCancelar.setForeground(new java.awt.Color(249, 242, 237));
+        BotonCancelar.setText("Cancelar");
+        BotonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonCancelarActionPerformed(evt);
+            }
+        });
+        reabastecerProducto.getContentPane().add(BotonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, 40));
+
+        jLabel8.setFont(new java.awt.Font("Sora", 1, 21)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel8.setText("Actualizar cantidad de Producto");
+        reabastecerProducto.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        txtCantidad.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        txtCantidad.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        reabastecerProducto.getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 114, 30));
+        JFormattedTextField txt1 = ((JSpinner.DefaultEditor) txtCantidad.getEditor()).getTextField();
+        ((DefaultFormatter) txt1.getFormatter()).setAllowsInvalid(false);
+
+        jLabel12.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel12.setText("Cantidad");
+        reabastecerProducto.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+
+        txtStock.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        txtStock.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        reabastecerProducto.getContentPane().add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 114, 30));
+        JFormattedTextField txt = ((JSpinner.DefaultEditor) txtStock.getEditor()).getTextField();
+        ((DefaultFormatter) txt.getFormatter()).setAllowsInvalid(false);
+
+        jLabel9.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel9.setText("Stock-minimo");
+        reabastecerProducto.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, -1));
+
+        txtNombreProducto.setEditable(false);
+        txtNombreProducto.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        txtNombreProducto.setForeground(new java.awt.Color(94, 83, 82));
+        txtNombreProducto.setFocusable(false);
+        txtNombreProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreProductoActionPerformed(evt);
+            }
+        });
+        txtNombreProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNombreProductoKeyReleased(evt);
+            }
+        });
+        reabastecerProducto.getContentPane().add(txtNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 150, 30));
+
+        jLabel10.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(94, 83, 82));
+        jLabel10.setText("Nombre");
+        reabastecerProducto.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, 30));
+
+        IdProducto.setText("id");
+        reabastecerProducto.getContentPane().add(IdProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
+
+        m1CantidadInvalida.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
+        m1CantidadInvalida.setForeground(new java.awt.Color(198, 124, 78));
+        m1CantidadInvalida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
+        m1CantidadInvalida.setText("Cantidad no permitida");
+        reabastecerProducto.getContentPane().add(m1CantidadInvalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
         Notificacion.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -186,89 +269,6 @@ public class inicio extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-
-        reabastecerProducto.setMinimumSize(new java.awt.Dimension(407, 330));
-        reabastecerProducto.setResizable(false);
-        reabastecerProducto.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton1.setBackground(new java.awt.Color(249, 242, 237));
-        jButton1.setFont(new java.awt.Font("Sora", 1, 15)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(198, 124, 78));
-        jButton1.setText("Actualizar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        reabastecerProducto.getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, -1, 40));
-
-        BotonCancelar.setBackground(new java.awt.Color(198, 124, 78));
-        BotonCancelar.setFont(new java.awt.Font("Sora", 1, 15)); // NOI18N
-        BotonCancelar.setForeground(new java.awt.Color(249, 242, 237));
-        BotonCancelar.setText("Cancelar");
-        BotonCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonCancelarActionPerformed(evt);
-            }
-        });
-        reabastecerProducto.getContentPane().add(BotonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, 40));
-
-        jLabel8.setFont(new java.awt.Font("Sora", 1, 21)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(94, 83, 82));
-        jLabel8.setText("Actualizar cantidad de Producto");
-        reabastecerProducto.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        txtCantidad.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
-        txtCantidad.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        reabastecerProducto.getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 114, 30));
-        JFormattedTextField txt1 = ((JSpinner.DefaultEditor) txtCantidad.getEditor()).getTextField();
-        ((DefaultFormatter) txt1.getFormatter()).setAllowsInvalid(false);
-
-        jLabel12.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(94, 83, 82));
-        jLabel12.setText("Cantidad");
-        reabastecerProducto.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
-
-        txtStock.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
-        txtStock.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        reabastecerProducto.getContentPane().add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 114, 30));
-        JFormattedTextField txt = ((JSpinner.DefaultEditor) txtStock.getEditor()).getTextField();
-        ((DefaultFormatter) txt.getFormatter()).setAllowsInvalid(false);
-
-        jLabel9.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(94, 83, 82));
-        jLabel9.setText("Stock-minimo");
-        reabastecerProducto.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, -1));
-
-        txtNombreProducto.setEditable(false);
-        txtNombreProducto.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
-        txtNombreProducto.setForeground(new java.awt.Color(94, 83, 82));
-        txtNombreProducto.setFocusable(false);
-        txtNombreProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreProductoActionPerformed(evt);
-            }
-        });
-        txtNombreProducto.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtNombreProductoKeyReleased(evt);
-            }
-        });
-        reabastecerProducto.getContentPane().add(txtNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 150, 30));
-
-        jLabel10.setFont(new java.awt.Font("Sora", 0, 15)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(94, 83, 82));
-        jLabel10.setText("Nombre");
-        reabastecerProducto.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, 30));
-
-        IdProducto.setText("id");
-        reabastecerProducto.getContentPane().add(IdProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
-
-        m1CantidadInvalida.setFont(new java.awt.Font("JetBrains Mono", 0, 12)); // NOI18N
-        m1CantidadInvalida.setForeground(new java.awt.Color(198, 124, 78));
-        m1CantidadInvalida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-info-22 (1).png"))); // NOI18N
-        m1CantidadInvalida.setText("Cantidad no permitida");
-        reabastecerProducto.getContentPane().add(m1CantidadInvalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -677,20 +677,6 @@ public class inicio extends javax.swing.JFrame {
 
     }//GEN-LAST:event_BotonNotificacion5PropertyChange
 
-    private void tabla_notificacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_notificacionMouseClicked
-        controlador.AccionTabla();
-        //        int columna = tabla_producto.getSelectedColumn();
-        //        if (columna == 5) {
-            //            AbrirInfoProducto();
-            //            control.rellenar();
-            //            System.out.println("columna 5");
-            //        } else {
-            //            controlador.Acciones_tabla();
-            //            abrirNuevoProducto();
-            //
-            //        }
-    }//GEN-LAST:event_tabla_notificacionMouseClicked
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         controlador.Actualizar();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -706,6 +692,20 @@ public class inicio extends javax.swing.JFrame {
     private void txtNombreProductoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreProductoKeyReleased
 
     }//GEN-LAST:event_txtNombreProductoKeyReleased
+
+    private void tabla_notificacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_notificacionMouseClicked
+        controlador.AccionTabla();
+        //        int columna = tabla_producto.getSelectedColumn();
+        //        if (columna == 5) {
+            //            AbrirInfoProducto();
+            //            control.rellenar();
+            //            System.out.println("columna 5");
+            //        } else {
+            //            controlador.Acciones_tabla();
+            //            abrirNuevoProducto();
+            //
+            //        }
+    }//GEN-LAST:event_tabla_notificacionMouseClicked
 
     public static void main(String args[]) {
         FlatLightLaf.setup();

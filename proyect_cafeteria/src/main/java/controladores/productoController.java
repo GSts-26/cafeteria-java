@@ -1,6 +1,9 @@
 package controladores;
 
+import Reportes.ExportarExcel;
+import Reportes.metodoTxt;
 import com.formdev.flatlaf.FlatClientProperties;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,6 +22,7 @@ import modelos.DAO.DaoCategoria;
 
 import modelos.DAO.DaoIngredienteImpl;
 import modelos.DAO.DaoProductoImpl;
+import modelos.DAO.EscuchadorCarroCompras;
 import modelos.DAO.EscuchadorIngrediente;
 import modelos.DAO.EscuchadorProducto;
 import modelos.Entidades.Ingrediente;
@@ -30,7 +34,7 @@ import vistas.panel_productos;
  *
  * @author Admin
  */
-public class productoController implements EscuchadorProducto, EscuchadorIngrediente {
+public class productoController implements EscuchadorProducto, EscuchadorIngrediente, EscuchadorCarroCompras {
 
     private panel_productos vista;
     private DaoProductoImpl productoDAO;
@@ -58,6 +62,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         this.ProductosContador = 0;
         EventBus.SubscribirseProducto(this);
         EventBus.SubscribirseIngrediente(this);
+        EventBus.subscribirseCarroCompras(this);
 
     }
 
@@ -181,6 +186,8 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
                     botonBorrar
                 });
             }
+            EventBus.PublishCarroCompras();
+
             vista.contar_productos.setText(String.valueOf(ProductosContador));
         }
     }
@@ -550,6 +557,21 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
 
     }
 
+    public void GenerarTxt() {
+        metodoTxt c = new metodoTxt();
+        c.exportarTabla(vista.tabla_producto, "Producto.txt");
+        JOptionPane.showMessageDialog(null, "Txt generado exitosamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void GenerarExcel() {
+        try {
+            ExportarExcel c = new ExportarExcel();
+            c.exportarExcel(vista.tabla_producto);
+        } catch (IOException ex) {
+            Logger.getLogger(productoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     @Override
     public void EscuchadorProductoActivo() {
         try {
@@ -573,5 +595,9 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
 
     public void dias() {
         vista.nuevos.setText(productoDAO.contarproductosUltimos30Dias() + "");
+    }
+    
+     @Override
+    public void EscuchadorCarroCompras() {
     }
 }
