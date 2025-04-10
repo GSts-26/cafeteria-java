@@ -74,6 +74,7 @@ public class Clientes extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         lblCliente = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        txtnacimiento = new com.toedter.calendar.JDateChooser();
         nuevoCliente = new javax.swing.JButton();
         filtro = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -467,6 +468,9 @@ public class Clientes extends javax.swing.JPanel {
 
         crear_cliente.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, -1));
 
+        txtnacimiento.setFont(new java.awt.Font("Sora", 0, 14)); // NOI18N
+        crear_cliente.add(txtnacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 140, 30));
+
         jPanel1.add(crear_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 120, 440, 670));
         crear_cliente.putClientProperty(FlatClientProperties.STYLE,
             "arc: 20");
@@ -816,6 +820,7 @@ public class Clientes extends javax.swing.JPanel {
     private javax.swing.JTextField txt_filtradoCliente;
     public javax.swing.JTextField txtcedula;
     public javax.swing.JComboBox<String> txtgenero;
+    public com.toedter.calendar.JDateChooser txtnacimiento;
     public javax.swing.JTextField txtnombre;
     public javax.swing.JTextField txttelefono;
     // End of variables declaration//GEN-END:variables
