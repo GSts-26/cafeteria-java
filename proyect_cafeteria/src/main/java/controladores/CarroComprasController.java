@@ -66,19 +66,17 @@ public class CarroComprasController implements EscuchadorCarroCompras {
 
     }
 
-    public void rellenarListaProducto() {
-        this.ListaProductos = ProductosDAO.listar(); // Carga la lista de productos
-    }
-
+//    public void rellenarListaProducto() {
+//        this.ListaProductos = ProductosDAO.listar(); // Carga la lista de productos
+//    }
     // Llena la interfaz con los productos disponibles
     public void relenar_productos() {
-        vista.contenido_producto.setLayout(new GridLayout(0, 4, 16, 16));
-        rellenarListaProducto();
+        this.ListaProductos = ProductosDAO.listar(); // Carga la lista de productos
         vista.contenido_producto.removeAll();
+        vista.contenido_producto.setLayout(new GridLayout(0, 4, 16, 16));
+//        rellenarListaProducto();
         for (producto producto : ListaProductos) {
-
             vista.contenido_producto.add(new producto_info(producto, this.vista));
-
         }
         vista.contenido_producto.revalidate();
         vista.contenido_producto.repaint();
@@ -256,7 +254,6 @@ public class CarroComprasController implements EscuchadorCarroCompras {
 
         new Thread() {
             public void run() {
-
                 EventBus.PublishCarroCompras();
                 EventBus.PublishProducto();
             }

@@ -35,7 +35,7 @@ public class compras extends javax.swing.JPanel {
     public compras() {
         initComponents();
 
-        controlador.relenar_productos();
+//        controlador.relenar_productos();
         controlador.rellenarCliente();
         controlador.rellenarCtaegorias();
         venta.setVisible(false);
