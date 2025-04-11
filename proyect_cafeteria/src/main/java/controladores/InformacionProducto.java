@@ -10,6 +10,7 @@ import modelos.DAO.DaoIngredienteImpl;
 import modelos.DAO.DaoProductoImpl;
 import modelos.Entidades.Ingrediente;
 import modelos.Entidades.producto;
+import utils.CacheService;
 import vistas.panel_informacion_producto;
 import vistas.panel_productos;
 
@@ -60,7 +61,7 @@ public class InformacionProducto {
             try (Connection con = conexion.getInstance().getConnection()) {
 
                 Map<Integer, Ingrediente> ingredientesMap = new HashMap<>();
-                daoIngre.listar().forEach(ingrediente -> ingredientesMap.put(ingrediente.getId(), ingrediente));
+                CacheService.obtenerIngredientes().forEach(ing -> ingredientesMap.put(ing.getId(), ing));
 
                 String consulta = "SELECT ids_ingrediente FROM producto WHERE id=?";
                 PreparedStatement ps = con.prepareStatement(consulta);
@@ -74,7 +75,8 @@ public class InformacionProducto {
                     }
                 }
 
-                daoproduc.listar().forEach(prods -> {
+                
+                CacheService.obtenerProductos().forEach(prods -> {
                     if (idP == prods.getId()) {
                         if (prods.getDescripcion().isEmpty()) {
                             info.getLbl_descripcion_producto().append("Este Producto No tiene una descripcion");

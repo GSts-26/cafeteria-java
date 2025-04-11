@@ -35,7 +35,7 @@ public class compras extends javax.swing.JPanel {
     public compras() {
         initComponents();
 
-//        controlador.relenar_productos();
+        controlador.relenar_productos();
         controlador.rellenarCliente();
         controlador.rellenarCtaegorias();
         venta.setVisible(false);
@@ -354,7 +354,9 @@ public class compras extends javax.swing.JPanel {
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 200, 180));
 
         imagen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 76, 230, 220));
+        jPanel2.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 230, 220));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/as.png"))); // NOI18N
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 350, 290));
 
         javax.swing.GroupLayout AgregarLayout = new javax.swing.GroupLayout(Agregar.getContentPane());

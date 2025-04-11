@@ -7,6 +7,7 @@ import modelos.Entidades.Ingrediente;
 import java.sql.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import utils.CacheService;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -29,7 +30,7 @@ public class DaoIngredienteImpl implements DAOGeneral<Ingrediente> {
             st.setInt(4, t.getProteinas());
             st.setInt(5, t.getAzucar());
             st.executeUpdate();
-
+            CacheService.invalidarCacheIngredientes();
             this.listar();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -48,7 +49,7 @@ public class DaoIngredienteImpl implements DAOGeneral<Ingrediente> {
             ps.setInt(5, t.getProteinas());
             ps.setInt(6, t.getId());
             ps.executeUpdate();
-
+            CacheService.invalidarCacheIngredientes();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -76,32 +77,33 @@ public class DaoIngredienteImpl implements DAOGeneral<Ingrediente> {
             System.out.println(e.getMessage());
         }
         return listaIngredientes;
+        
     }
+
     public List<Ingrediente> Filtrar(String nombre) {
         List<Ingrediente> listaIngredientes = new ArrayList<>();
         String sql = "SELECT * FROM public.ingredientes where nombre like ?";
-        try(Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+        try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, '%' + nombre + '%');
-             ResultSet rs = ps.executeQuery();
-             while (rs.next()) {
-                 Ingrediente ing = new Ingrediente(
-                         rs.getInt("id"),
-                         rs.getString("nombre"),
-                         rs.getInt("calorias"),
-                         rs.getInt("carbohidratos"),
-                         rs.getInt("proteina"),
-                         rs.getInt("Azucar")
-                 );
-                 listaIngredientes.add(ing);
-             }
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Ingrediente ing = new Ingrediente(
+                        rs.getInt("id"),
+                        rs.getString("nombre"),
+                        rs.getInt("calorias"),
+                        rs.getInt("carbohidratos"),
+                        rs.getInt("proteina"),
+                        rs.getInt("Azucar")
+                );
+                listaIngredientes.add(ing);
+            }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-return listaIngredientes;
+        return listaIngredientes;
     }
 
-    
     public void eliminar(int id) {
         String sql = "DELETE FROM ingredientes WHERE id=?";
         try (Connection con = conexion.getInstance().getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
@@ -112,6 +114,7 @@ return listaIngredientes;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        CacheService.invalidarCacheIngredientes();
     }
 
     public ArrayList<Integer> obtenerInfoNutri(int id) {

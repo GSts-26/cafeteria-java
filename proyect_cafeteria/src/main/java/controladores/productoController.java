@@ -29,6 +29,7 @@ import modelos.Entidades.Ingrediente;
 import modelos.Entidades.categoria;
 import modelos.Entidades.producto;
 import vistas.panel_productos;
+import utils.CacheService;
 
 
 public class productoController implements EscuchadorProducto, EscuchadorIngrediente, EscuchadorCarroCompras {
@@ -169,7 +170,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         estilosBotones();
         modeloProductos.setRowCount(0);
         ProductosContador = 0;
-        productos = productoDAO.listar();
+        productos = CacheService.obtenerProductos();
         if (productos.isEmpty()) {
             vista.no_hay_productos.setVisible(true);
             System.out.println("No hay productos en la base de datos.");
@@ -215,7 +216,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
 
         Map<Integer, Ingrediente> ingredientesMap = new HashMap<>();
         // recorrer la lista de ingredientes y agregar el id del ingrediente y el objeto ingrediente
-        IngredienteDAO.listar().forEach(ingrediente -> ingredientesMap.put(ingrediente.getId(), ingrediente));
+        CacheService.obtenerIngredientes().forEach(ingrediente -> ingredientesMap.put(ingrediente.getId(), ingrediente));
 
         // Obtener los datos de la fila seleccionada
         DefaultTableModel modelo1 = (DefaultTableModel) vista.T_ingredientes.getModel();

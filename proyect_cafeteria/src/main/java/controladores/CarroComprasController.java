@@ -26,6 +26,7 @@ import vistas.compras;
 import vistas.menu.producto_info;
 import static controladores.metodo_login.usuariologeado;
 import modelos.DAO.EscuchadorCarroCompras;
+import utils.CacheService;
 
 /**
  *
@@ -71,11 +72,13 @@ public class CarroComprasController implements EscuchadorCarroCompras {
 //    }
     // Llena la interfaz con los productos disponibles
     public void relenar_productos() {
-        this.ListaProductos = ProductosDAO.listar(); // Carga la lista de productos
+        this.ListaProductos = CacheService.obtenerProductos();
+        // Carga la lista de productos
         vista.contenido_producto.removeAll();
         vista.contenido_producto.setLayout(new GridLayout(0, 4, 16, 16));
 //        rellenarListaProducto();
         for (producto producto : ListaProductos) {
+            System.out.println(producto);
             vista.contenido_producto.add(new producto_info(producto, this.vista));
         }
         vista.contenido_producto.revalidate();
@@ -101,7 +104,7 @@ public class CarroComprasController implements EscuchadorCarroCompras {
         vista.Area_ingredientes.setText(""); // Limpia el área de ingredientes
 
         vista.p.getIdIngredientes().forEach(ids -> {
-            IngredientesDAO.listar().forEach(nombreingrediente -> {
+            CacheService.obtenerIngredientes().forEach(nombreingrediente -> {
                 if (ids == nombreingrediente.getId()) {
                     vista.Area_ingredientes.append("-" + nombreingrediente + "\n");
                     totalcalorias += nombreingrediente.getCalorias();

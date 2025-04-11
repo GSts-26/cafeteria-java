@@ -11,6 +11,8 @@ import java.util.Arrays;
 import java.util.List;
 import modelos.Bd.conexion;
 import modelos.Entidades.producto;
+import utils.CacheService;
+
 
 public class DaoProductoImpl implements DAOGeneral<producto> {
 
@@ -36,6 +38,7 @@ public class DaoProductoImpl implements DAOGeneral<producto> {
             st.setString(9, t.getId_img());
 
             st.executeUpdate();
+            CacheService.invalidarCacheProductos();
             System.out.println("Producto ingresado con éxito");
 
         } catch (SQLException e) {
@@ -63,6 +66,7 @@ public class DaoProductoImpl implements DAOGeneral<producto> {
             ps.setInt(8, id);
 
             filaAfectada = ps.executeUpdate();
+            CacheService.invalidarCacheProductos();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -82,6 +86,7 @@ public class DaoProductoImpl implements DAOGeneral<producto> {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        CacheService.invalidarCacheProductos();
     }
 
     public int eliminarIngrediente(int id) {
