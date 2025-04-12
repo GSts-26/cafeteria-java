@@ -82,7 +82,7 @@ public class DaoProductoImpl implements DAOGeneral<producto> {
 
             st.setLong(1, id);
             st.executeUpdate();
-
+            CacheService.invalidarCacheProductos();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -97,6 +97,7 @@ public class DaoProductoImpl implements DAOGeneral<producto> {
 
             ps.setInt(1, id);
             filaAfectada = ps.executeUpdate();
+            CacheService.invalidarCacheIngredientes();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -189,6 +190,7 @@ public class DaoProductoImpl implements DAOGeneral<producto> {
             ps.setInt(2, t.getStock());
             ps.setInt(3, id);
             ps.executeUpdate();
+            CacheService.invalidarCacheProductos();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -202,7 +204,7 @@ public class DaoProductoImpl implements DAOGeneral<producto> {
 
             ps.setLong(1, id);
             ps.executeUpdate();
-
+            CacheService.invalidarCacheProductos();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

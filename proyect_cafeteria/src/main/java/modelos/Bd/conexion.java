@@ -92,6 +92,9 @@ public class conexion {
             config.setUsername("CafeteriaDB_owner");
             config.setPassword("npg_nx3ZIE0ruPyv");
 
+//            config.setJdbcUrl("jdbc:postgresql://localhost:5432/cafeteriabd?sslmode=require");
+//            config.setUsername("postgres");
+//            config.setPassword("12345678");
             // Configuración del pool
             config.setMaximumPoolSize(10);
             config.setMinimumIdle(2);
