@@ -31,18 +31,17 @@ import modelos.Entidades.producto;
 import vistas.panel_productos;
 import utils.CacheService;
 
-
 public class productoController implements EscuchadorProducto, EscuchadorIngrediente, EscuchadorCarroCompras {
-
+    
     private panel_productos vista;
     private DaoProductoImpl productoDAO;
     private DaoIngredienteImpl IngredienteDAO;
     private DaoCategoria categoriaDAO;
-
+    
     private DefaultTableModel modeloProductos;
     private DefaultTableModel modeloingredientes;
     private int ProductosContador;
-
+    
     private List<producto> productos = new ArrayList<>();
     private List<categoria> categoria = new ArrayList<>();
     private ArrayList<String> listaIds = new ArrayList<>();
@@ -51,7 +50,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
     JButton botonVer = new JButton();
     JButton botonEditar = new JButton();
     JButton botonBorrar = new JButton();
-
+    
     public productoController(panel_productos vista) {
         this.vista = vista;
         this.productoDAO = new DaoProductoImpl();
@@ -61,9 +60,9 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         EventBus.SubscribirseProducto(this);
         EventBus.SubscribirseIngrediente(this);
         EventBus.subscribirseCarroCompras(this);
-
+        
     }
-
+    
     public void ingresar(ArrayList<Integer> ingredientes, String url) {
         String textoSinFormato = vista.txtprecio.getText().replaceAll("[^\\d]", "");
         modeloingredientes = (DefaultTableModel) vista.T_ingredientes.getModel();
@@ -82,7 +81,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
             rellenar_Combo_Ingredientes();
             vista.AgregarIngredientes.setVisible(true);
         } else {
-
+            
             String id = vista.txt_categoria.getSelectedItem().toString();
             String ids = id.split(" - ")[0];
             producto producto = new producto();
@@ -97,7 +96,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
             producto.setId_img(vista.publicId);
             String cate = vista.txt_categoria.getSelectedItem().toString().split(" - ")[0];
             producto.setCategoria(Integer.parseInt(cate));
-
+            
             productoDAO.insertar(producto);
             limpiarCampos();
             mostrar();
@@ -109,11 +108,11 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
 //                }
 //            }.start();
             JOptionPane.showMessageDialog(null, "Producto Ingresado");
-
+            
         }
         vista.imagenpro.setIcon(null);
     }
-
+    
     public void filtrar(String nombre) {
         modeloProductos = (DefaultTableModel) vista.tabla_producto.getModel();
         estilosBotones();
@@ -139,11 +138,11 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
                     botonBorrar
                 });
             }
-
+            
             vista.contar_productos.setText(String.valueOf(ProductosContador));
         }
     }
-
+    
     private boolean tablaIngreVacia() {
         boolean vacia = false;
         if (modeloingredientes.getRowCount() <= 0) {
@@ -151,7 +150,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
             vacia = true;
         }
         return vacia;
-
+        
     }
 
 //  botones para editar y eliminar
@@ -192,13 +191,13 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
                 });
             }
             
-            new Thread(){
-                public void run(){
+            new Thread() {
+                public void run() {
                     
-            EventBus.PublishCarroCompras();
+                    EventBus.PublishCarroCompras();
                 }
             }.start();
-
+            
             vista.contar_productos.setText(String.valueOf(ProductosContador));
         }
     }
@@ -213,7 +212,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
 
     // rellenar todos los campos cuando se va a actualizar un producto
     public void rellenarActualizar() {
-
+        
         Map<Integer, Ingrediente> ingredientesMap = new HashMap<>();
         // recorrer la lista de ingredientes y agregar el id del ingrediente y el objeto ingrediente
         CacheService.obtenerIngredientes().forEach(ingrediente -> ingredientesMap.put(ingrediente.getId(), ingrediente));
@@ -238,13 +237,13 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         vista.txtNombre.setText(nombre);
         vista.txtprecio.setText(precioFormateado);
         vista.TxtInfoPrecio.setText(precioFormateado);
-
+        
         for (categoria cate : this.categoria) {
             if (cate.getId() == Integer.parseInt(categoria)) {
                 vista.txt_categoria.setSelectedItem(cate.getId() + " - " + cate.getNombre());
             }
         }
-
+        
         vista.txtCantidad.setValue(Integer.parseInt(cantidad));
 
         // obtener el string que viene desde productoDao
@@ -256,7 +255,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
 
         // recorrer la lista de productos y verificar si el id seleccionado concide con el de la lista
         modelo1.setRowCount(0);
-
+        
         int idIngre = 0;
 
         // recorremos la lista de tipo producto 
@@ -293,7 +292,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
             }
         }
     }
-
+    
     public String transformar_imagen() {
         String cloudName = "ddc47jehx";  // Reemplaza esto con tu nombre de Cloudinary
         String transformedUrl = "https://res.cloudinary.com/" + cloudName + "/image/upload/q_auto/f_auto/r_12,c_fill,h_110,w_120/" + vista.imagenUrl.split("/")[vista.imagenUrl.split("/").length - 1];
@@ -320,9 +319,9 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         producto.setCategoria(Integer.parseInt(cate));
 //        producto.setImagen(transformar_imagen());
         producto.setId_img(vista.publicId);
-
+        
         int filaAfectada = productoDAO.actualizar(producto, idprodu);
-
+        
         if (filaAfectada > 0) {
             nuevoProducto();
             limpiarCampos();
@@ -330,19 +329,20 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
 //            EventBus.PublishProducto();
             new Thread() {
                 public void run() {
-
+                    
                     EventBus.PublishProducto();
                 }
             }.start();
             JOptionPane.showMessageDialog(null, "Producto Actualizado");
-
+            
         } else {
             System.out.println("No se modifico los datos del producto");
         }
-
+        
     }
-
+    
     public void Acciones_tabla() {
+        modeloProductos = (DefaultTableModel) vista.tabla_producto.getModel();
         int columna = vista.tabla_producto.getSelectedColumn();
         int fila = vista.tabla_producto.getSelectedRow();
         // editar
@@ -352,11 +352,12 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
             // eliminar
         } else if (columna == 7) {
             Long idEliminar = Long.valueOf(vista.tabla_producto.getValueAt(fila, 0).toString());
+            modeloProductos.removeRow(fila);
             productoDAO.eliminar(idEliminar);
             mostrar();
             JOptionPane.showMessageDialog(null, "Producto Eliminado Correctamente");
         }
-
+        
     }
 
     // quitar ingrediente de un producto
@@ -369,7 +370,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
             System.out.println("Fila eliminada correctamente...");
             modelo.removeRow(vista.T_ingredientes.getSelectedRow());
         }
-
+        
     }
 
     // Ingresar los ingredientes al comboBox
@@ -392,7 +393,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
                 // Añadir al comboBox
                 vista.txt_categoria.addItem(String.valueOf(catego.getId() + " - " + catego.getNombre()));
             });
-
+            
         }
     }
 
@@ -408,9 +409,9 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
             sele.getNombre(),
             botonBorrar
         });
-
+        
     }
-
+    
     public void limpiarCampos() {
         nuevoProducto();
         vista.txtNombre.setText("");
@@ -424,13 +425,13 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         modeloingredientes.setNumRows(0);
         vista.imagenpro.setIcon(null);
     }
-
+    
     public void ocultarMensajes() {
         vista.m1NombreVacio2.setVisible(false);
         vista.m4PrecioVacio.setVisible(false);
         vista.m5CantidadVacio.setVisible(false);
     }
-
+    
     public boolean verificarCamposVacios() {
         int numero = 0;
         boolean ok = true;
@@ -454,11 +455,11 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         }
         return ok;
     }
-
+    
     public boolean datosIncorrectos() {
         boolean ok = true;
         for (int i = 0; i < vista.txtNombre.getText().length(); i++) {
-
+            
             if (!vista.txtNombre.getText().isEmpty() && Character.isDigit(vista.txtNombre.getText().charAt(i))) {
                 vista.txtNombre.setText("");
                 vista.txtNombre.requestFocus();
@@ -476,7 +477,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         vista.m4AzucarVacio.setVisible(false);
         vista.m5ProteVacio.setVisible(false);
     }
-
+    
     public void limpiarIngredientes() {
         vista.txtNombre.setText("");
         vista.txtAzucar.setText("");
@@ -484,9 +485,9 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         vista.txtcalorias.setText("");
         vista.txtproteinas.setText("");
     }
-
+    
     public boolean campoVacioIngrediente() {
-
+        
         if (vista.txtNombre.getText().isEmpty()) {
             vista.m1NombreVacio.setVisible(true);
             vista.txtNombre.requestFocus();
@@ -494,7 +495,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         } else {
             vista.m1NombreVacio.setVisible(false);
         }
-
+        
         if (vista.txtcalorias.getText().isEmpty()) {
             vista.m2CalVacio.setVisible(true);
             vista.txtcalorias.requestFocus();
@@ -502,7 +503,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         } else {
             vista.m2CalVacio.setVisible(false);
         }
-
+        
         if (vista.txtCarbo.getText().isEmpty()) {
             vista.m3CarboVacio.setVisible(true);
             vista.txtCarbo.requestFocus();
@@ -510,7 +511,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         } else {
             vista.m3CarboVacio.setVisible(false);
         }
-
+        
         if (vista.txtAzucar.getText().isEmpty()) {
             vista.m4AzucarVacio.setVisible(true);
             vista.txtAzucar.requestFocus();
@@ -518,7 +519,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         } else {
             vista.m4AzucarVacio.setVisible(false);
         }
-
+        
         if (vista.txtproteinas.getText().isEmpty()) {
             vista.m5ProteVacio.setVisible(true);
             vista.txtproteinas.requestFocus();
@@ -530,7 +531,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         // Si todos los campos están llenos, retornar verdadero
         return true;
     }
-
+    
     public void IngresarIngrediente() {
         String nombreIngre = vista.txtNombreIngre.getText();
         int caloriasIngre = Integer.parseInt(vista.txtcalorias.getText());
@@ -544,9 +545,9 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         // metodo que envia una notificacion cuando se crea un ingrediente
         EventBus.PublishIngrediente();
         JOptionPane.showMessageDialog(null, "Ingrediente Ingresado", "Ingresado", JOptionPane.INFORMATION_MESSAGE);
-
+        
     }
-
+    
     public void DatosIngreNoAdmitidos() {
         for (int i = 0; i < vista.txtNombreIngre.getText().length(); i++) {
             if (Character.isDigit(vista.txtNombreIngre.getText().charAt(i))) {
@@ -573,15 +574,15 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
                 vista.txtproteinas.setText("");
             }
         }
-
+        
     }
-
+    
     public void GenerarTxt() {
         metodoTxt c = new metodoTxt();
         c.exportarTabla(vista.tabla_producto, "Producto.txt");
         JOptionPane.showMessageDialog(null, "Txt generado exitosamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
     }
-
+    
     public void GenerarExcel() {
         try {
             ExportarExcel c = new ExportarExcel();
@@ -590,7 +591,7 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
             Logger.getLogger(productoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     @Override
     public void EscuchadorProductoActivo() {
         try {
@@ -599,9 +600,9 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println(e.getMessage());
         }
-
+        
     }
-
+    
     @Override
     public void EscuchadorIngreActivo() {
         try {
@@ -609,13 +610,13 @@ public class productoController implements EscuchadorProducto, EscuchadorIngredi
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Entro al catch de escuchador ingrediente en producto controller linea 432");
         }
-
+        
     }
-
+    
     public void dias() {
         vista.nuevos.setText(productoDAO.contarproductosUltimos30Dias() + "");
     }
-
+    
     @Override
     public void EscuchadorCarroCompras() {
     }

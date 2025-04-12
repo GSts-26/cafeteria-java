@@ -14,7 +14,7 @@ import modelos.Entidades.Ingrediente;
 
 public class CacheService {
 
-  private static final DaoProductoImpl daoProducto = new DaoProductoImpl();
+    private static final DaoProductoImpl daoProducto = new DaoProductoImpl();
     private static final DaoIngredienteImpl daoIngrediente = new DaoIngredienteImpl();
 
     private static final Cache<String, List<producto>> productoCache = Caffeine.newBuilder()
